@@ -1,0 +1,63 @@
+</div>
+<div id="footer" class="adminFooter">
+    <div class="footer " id="footer">
+        <ul class="social">
+            <li class="facebook"><a href="#"></a></li>
+            <li class="instagram"><a href="#"></a></li>
+            <li class="twitter"><a href="#"></a></li>
+            <li class="youtube"><a href="#"></a></li>
+            <li class="google"><a href="#"></a></li>
+        </ul>
+        <script type="text/javascript" src="http://127.0.0.1/medicjoint/skin/frontend/rwd/lomedic/js/plugins.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/medicjoint/skin/frontend/rwd/lomedic/js/select2.min.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/medicjoint/skin/frontend/rwd/lomedic/js/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/medicjoint/skin/frontend/rwd/lomedic/js/jPages.min.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/medicjoint/skin/frontend/rwd/lomedic/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/medicjoint/skin/frontend/rwd/lomedic/js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/medicjoint/skin/frontend/rwd/lomedic/js/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/medicjoint/skin/frontend/rwd/lomedic/js/scripts.js"></script>
+<script type="text/javascript">
+    var wait = 'Por favor espere';
+    jQuery(document).ready(function(){
+        jQuery(".fancybox").bind("click", function() {
+            jQuery('#forgotpass_form_button').show();
+            jQuery("#forgot_password_error").html("");
+            jQuery("#forgot_password_success").html("");
+        });
+        jQuery("#forgotpass_form").bind("submit", function() {
+            jQuery("#forgot_password_error").html("");
+            jQuery("#forgot_password_success").html(wait);
+            jQuery.ajax({
+                type : "POST",
+                cache : false,
+                url: "http://127.0.0.1/medicjoint/customer/account/forgotpasswordpost/?___SID=U",
+                data: {
+                    email: jQuery('#forgotpass_form_email').val()
+                },
+                success:function(data){
+                    var data = JSON.parse(data);
+                    if(data.success == true){
+                        jQuery("#forgot_password_error").html("");
+                        jQuery("#forgot_password_success").html(data.mes);
+                        jQuery('#forgotpass_form_button').hide();
+                    }else{
+                        jQuery("#forgot_password_success").html("");
+                        jQuery("#forgot_password_error").html(data.mes);
+                    }
+                }
+            });
+            return false;
+        });
+    });
+</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>        <address class="copyright">
+            &copy; 2016 MedicJoint Demo Store. All Rights Reserved. | <a href="http://127.0.0.1/medicjoint/privacy-policy/?___SID=U">Aviso de Privacidad</a>
+        </address>
+    </div>

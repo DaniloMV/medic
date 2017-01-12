@@ -1,0 +1,343 @@
+
+<div class="nav-bar">
+<!-- menu start -->
+<script type='text/javascript'>var isRecruiter=false;</script><ul id="nav">
+<li  class="  level0" id="li-dashboard"> <a href="http://127.0.0.1/medicjoint/index.php/admin/dashboard/index/key/$dashboard/index$/"   class="" ><span>Panel de administración</span></a>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level0" id="li-marketplace"> <a href="#"  onclick="return false" class="" ><span>Marketplace Management</span></a>
+<ul >
+<li  class="  level1" id="li-marketplace_products"> <a href="http://127.0.0.1/medicjoint/index.php/marketplace/adminhtml_products/index/key/$adminhtml_products/index$/"   class="" ><span>Gestionar los productos &amp; lotes</span></a>
+</li>
+<li  class="  level1" id="li-marketplace_partners"> <a href="http://127.0.0.1/medicjoint/index.php/marketplace/adminhtml_partners/index/key/$adminhtml_partners/index$/"   class="" ><span>Manage Sellers</span></a>
+</li>
+<li  class="  level1" id="li-marketplace_commision"> <a href="http://127.0.0.1/medicjoint/index.php/marketplace/adminhtml_commisions/index/key/$adminhtml_commisions/index$/"   class="" ><span>Manage Commission</span></a>
+</li>
+<li  class="  level1" id="li-marketplace_transaction"> <a href="http://127.0.0.1/medicjoint/index.php/marketplace/adminhtml_transaction/index/key/$adminhtml_transaction/index$/"   class="" ><span>Sellers Transaction</span></a>
+</li>
+<li  class="  level1" id="li-marketplace_feedback"> <a href="http://127.0.0.1/medicjoint/index.php/marketplace/adminhtml_feedback/index/key/$adminhtml_feedback/index$/"   class="" ><span>Manage Feedback</span></a>
+</li>
+<li  class="  last level1" id="li-configuremarketplace"> <a href="http://127.0.0.1/medicjoint/index.php/admin/system_config/edit/section/marketplace/key/$system_config/edit$/"   class="" ><span>Configuración</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level0" id="li-sales"> <a href="#"  onclick="return false" class="" ><span>Ventas</span></a>
+<ul >
+<li  class="  level1" id="li-order"> <a href="http://127.0.0.1/medicjoint/index.php/admin/sales_order/index/key/$sales_order/index$/"   class="" ><span>Pedidos</span></a>
+</li>
+<li  class="  level1" id="li-invoice"> <a href="http://127.0.0.1/medicjoint/index.php/admin/sales_invoice/index/key/$sales_invoice/index$/"   class="" ><span>Facturas</span></a>
+</li>
+<li  class="  level1" id="li-shipment"> <a href="http://127.0.0.1/medicjoint/index.php/admin/sales_shipment/index/key/$sales_shipment/index$/"   class="" ><span>Envíos</span></a>
+</li>
+<li  class="  level1" id="li-creditmemo"> <a href="http://127.0.0.1/medicjoint/index.php/admin/sales_creditmemo/index/key/$sales_creditmemo/index$/"   class="" ><span>Notas de crédito</span></a>
+</li>
+<li  class="  level1" id="li-transactions"> <a href="http://127.0.0.1/medicjoint/index.php/admin/sales_transactions/index/key/$sales_transactions/index$/"   class="" ><span>Transactions</span></a>
+</li>
+<li  class="  level1" id="li-recurring_profile"> <a href="http://127.0.0.1/medicjoint/index.php/admin/sales_recurring_profile/index/key/$sales_recurring_profile/index$/"   class="" ><span>Recurring Profiles (beta)</span></a>
+</li>
+<li  class="  level1" id="li-billing_agreement"> <a href="http://127.0.0.1/medicjoint/index.php/admin/sales_billing_agreement/index/key/$sales_billing_agreement/index$/"   class="" ><span>Billing Agreements</span></a>
+</li>
+<li  class="  level1" id="li-checkoutagreement"> <a href="http://127.0.0.1/medicjoint/index.php/admin/checkout_agreement/index/key/$checkout_agreement/index$/"   class="" ><span>Términos y condiciones</span></a>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent last level1" id="li-tax"> <a href="#"  onclick="return false" class="" ><span>Impuestos</span></a>
+<ul >
+<li  class="  level2" id="li-rules"> <a href="http://127.0.0.1/medicjoint/index.php/admin/tax_rule/index/key/$tax_rule/index$/"   class="" ><span>Gestionar reglas de impuestos</span></a>
+</li>
+<li  class="  level2" id="li-rates"> <a href="http://127.0.0.1/medicjoint/index.php/admin/tax_rate/index/key/$tax_rate/index$/"   class="" ><span>Manage Tax Zones &amp; Rates</span></a>
+</li>
+<li  class="  level2" id="li-import_export"> <a href="http://127.0.0.1/medicjoint/index.php/admin/tax_rate/importExport/key/$tax_rate/importExport$/"   class="" ><span>Importar / Exportar las tasas de impuesto</span></a>
+</li>
+<li  class="  level2" id="li-classes_customer"> <a href="http://127.0.0.1/medicjoint/index.php/admin/tax_class_customer/index/key/$tax_class_customer/index$/"   class="" ><span>Impuestos al cliente</span></a>
+</li>
+<li  class="  last level2" id="li-classes_product"> <a href="http://127.0.0.1/medicjoint/index.php/admin/tax_class_product/index/key/$tax_class_product/index$/"   class="" ><span>Impuestos al producto</span></a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level0" id="li-catalog"> <a href="#"  onclick="return false" class="" ><span>Catálogo</span></a>
+<ul >
+<li  class="  level1" id="li-products"> <a href="http://127.0.0.1/medicjoint/index.php/admin/catalog_product/index/key/$catalog_product/index$/"   class="" ><span>Gestionar los productos &amp; lotes</span></a>
+</li>
+<li  class="  level1" id="li-categories"> <a href="http://127.0.0.1/medicjoint/index.php/admin/catalog_category/index/key/$catalog_category/index$/"   class="" ><span>Gestionar las categorías</span></a>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level1" id="li-attributes"> <a href="#"  onclick="return false" class="" ><span>Atributos</span></a>
+<ul >
+<li  class="  level2" id="li-attributes"> <a href="http://127.0.0.1/medicjoint/index.php/admin/catalog_product_attribute/index/key/$catalog_product_attribute/index$/"   class="" ><span>Gestionar los atributos</span></a>
+</li>
+<li  class="  last level2" id="li-sets"> <a href="http://127.0.0.1/medicjoint/index.php/admin/catalog_product_set/index/key/$catalog_product_set/index$/"   class="" ><span>Gestionar los conjuntos de atributos</span></a>
+</li>
+</ul>
+</li>
+<li  class="  level1" id="li-urlrewrite"> <a href="http://127.0.0.1/medicjoint/index.php/admin/urlrewrite/index/key/$urlrewrite/index$/"   class="" ><span>URL Rewrite Management</span></a>
+</li>
+<li  class="  level1" id="li-search"> <a href="http://127.0.0.1/medicjoint/index.php/admin/catalog_search/index/key/$catalog_search/index$/"   class="" ><span>Términos de búsqueda</span></a>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level1" id="li-reviews_ratings"> <a href="#"  onclick="return false" class="" ><span>Comentarios y puntuaciones</span></a>
+<ul >
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level2" id="li-reviews"> <a href="#"  onclick="return false" class="" ><span>Opiniones del cliente</span></a>
+<ul >
+<li  class="  level3" id="li-pending"> <a href="http://127.0.0.1/medicjoint/index.php/admin/catalog_product_review/pending/key/$catalog_product_review/pending$/"   class="" ><span>Opiniones pendientes</span></a>
+</li>
+<li  class="  last level3" id="li-all"> <a href="http://127.0.0.1/medicjoint/index.php/admin/catalog_product_review/index/key/$catalog_product_review/index$/"   class="" ><span>Todas las opiniones</span></a>
+</li>
+</ul>
+</li>
+<li  class="  last level2" id="li-ratings"> <a href="http://127.0.0.1/medicjoint/index.php/admin/rating/index/key/$rating/index$/"   class="" ><span>Gestionar comentarios</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level1" id="li-tag"> <a href="#"  onclick="return false" class="" ><span>Etiquetas</span></a>
+<ul >
+<li  class="  level2" id="li-all"> <a href="http://127.0.0.1/medicjoint/index.php/admin/tag/index/key/$tag/index$/"   class="" ><span>Todas las etiquetas</span></a>
+</li>
+<li  class="  last level2" id="li-pending"> <a href="http://127.0.0.1/medicjoint/index.php/admin/tag/pending/key/$tag/pending$/"   class="" ><span>Etiquetas pendientes</span></a>
+</li>
+</ul>
+</li>
+<li  class="  last level1" id="li-sitemap"> <a href="http://127.0.0.1/medicjoint/index.php/admin/sitemap/index/key/$sitemap/index$/"   class="" ><span>Mapa del sitio Google</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level0" id="li-customer"> <a href="#"  onclick="return false" class="" ><span>Clientes</span></a>
+<ul >
+<li  class="  level1" id="li-manage"> <a href="http://127.0.0.1/medicjoint/index.php/admin/customer/index/key/$customer/index$/"   class="" ><span>Gestionar clientes</span></a>
+</li>
+<li  class="  level1" id="li-group"> <a href="http://127.0.0.1/medicjoint/index.php/admin/customer_group/index/key/$customer_group/index$/"   class="" ><span>Grupos de clientes</span></a>
+</li>
+<li  class="  last level1" id="li-online"> <a href="http://127.0.0.1/medicjoint/index.php/admin/customer_online/index/key/$customer_online/index$/"   class="" ><span>Clientes Conectados</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level0" id="li-promo"> <a href="#"  onclick="return false" class="" ><span>Promociones</span></a>
+<ul >
+<li  class="  level1" id="li-catalog"> <a href="http://127.0.0.1/medicjoint/index.php/admin/promo_catalog/index/key/$promo_catalog/index$/"   class="" ><span>Reglas de precios del catálogo</span></a>
+</li>
+<li  class="  last level1" id="li-quote"> <a href="http://127.0.0.1/medicjoint/index.php/admin/promo_quote/index/key/$promo_quote/index$/"   class="" ><span>Reglas de precios del carrito de compras</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level0" id="li-newsletter"> <a href="#"  onclick="return false" class="" ><span>Boletín de noticias</span></a>
+<ul >
+<li  class="  level1" id="li-template"> <a href="http://127.0.0.1/medicjoint/index.php/admin/newsletter_template/index/key/$newsletter_template/index$/"   class="" ><span>Plantillas del Boletín de noticias</span></a>
+</li>
+<li  class="  level1" id="li-queue"> <a href="http://127.0.0.1/medicjoint/index.php/admin/newsletter_queue/index/key/$newsletter_queue/index$/"   class="" ><span>Cola de tareas del Boletín de noticias</span></a>
+</li>
+<li  class="  level1" id="li-subscriber"> <a href="http://127.0.0.1/medicjoint/index.php/admin/newsletter_subscriber/index/key/$newsletter_subscriber/index$/"   class="" ><span>Suscriptos al Boletín de noticias</span></a>
+</li>
+<li  class="  last level1" id="li-problem"> <a href="http://127.0.0.1/medicjoint/index.php/admin/newsletter_problem/index/key/$newsletter_problem/index$/"   class="" ><span>Informes de problemas del Boletín de noticias</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level0" id="li-cms"> <a href="#"  onclick="return false" class="" ><span>CMS</span></a>
+<ul >
+<li  class="  level1" id="li-page"> <a href="http://127.0.0.1/medicjoint/index.php/admin/cms_page/index/key/$cms_page/index$/"   class="" ><span>Pages</span></a>
+</li>
+<li  class="  level1" id="li-block"> <a href="http://127.0.0.1/medicjoint/index.php/admin/cms_block/index/key/$cms_block/index$/"   class="" ><span>Bloques estáticos</span></a>
+</li>
+<li  class="  level1" id="li-widget_instance"> <a href="http://127.0.0.1/medicjoint/index.php/admin/widget_instance/index/key/$widget_instance/index$/"   class="" ><span>Widgets</span></a>
+</li>
+<li  class="  last level1" id="li-poll"> <a href="http://127.0.0.1/medicjoint/index.php/admin/poll/index/key/$poll/index$/"   class="" ><span>Encuestas</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level0" id="li-news"> <a href="#"  onclick="return false" class="" ><span>Noticias</span></a>
+<ul >
+<li  class="  last level1" id="li-items"> <a href="http://127.0.0.1/medicjoint/index.php/news/adminhtml_news/index/key/$adminhtml_news/index$/"   class="" ><span>Manage News</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level0" id="li-report"> <a href="#"  onclick="return false" class="" ><span>Informes</span></a>
+<ul >
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level1" id="li-salesroot"> <a href="#"  onclick="return false" class="" ><span>Ventas</span></a>
+<ul >
+<li  class="  level2" id="li-sales"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_sales/sales/key/$report_sales/sales$/"   class="" ><span>Pedidos</span></a>
+</li>
+<li  class="  level2" id="li-tax"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_sales/tax/key/$report_sales/tax$/"   class="" ><span>Impuesto</span></a>
+</li>
+<li  class="  level2" id="li-invoiced"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_sales/invoiced/key/$report_sales/invoiced$/"   class="" ><span>Facturado</span></a>
+</li>
+<li  class="  level2" id="li-shipping"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_sales/shipping/key/$report_sales/shipping$/"   class="" ><span>Envío</span></a>
+</li>
+<li  class="  level2" id="li-refunded"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_sales/refunded/key/$report_sales/refunded$/"   class="" ><span>Reembolsos</span></a>
+</li>
+<li  class="  level2" id="li-coupons"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_sales/coupons/key/$report_sales/coupons$/"   class="" ><span>Cupones</span></a>
+</li>
+<li  class="  last level2" id="li-paypal_settlement_reports"> <a href="http://127.0.0.1/medicjoint/index.php/admin/paypal_reports/index/key/$paypal_reports/index$/"   class="" ><span>PayPal Settlement Reports</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level1" id="li-shopcart"> <a href="#"  onclick="return false" class="" ><span>Carrito de compras</span></a>
+<ul >
+<li  class="  level2" id="li-product"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_shopcart/product/key/$report_shopcart/product$/"   class="" ><span>Productos en carritos</span></a>
+</li>
+<li  class="  last level2" id="li-abandoned"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_shopcart/abandoned/key/$report_shopcart/abandoned$/"   class="" ><span>Carritos abandonados</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level1" id="li-products"> <a href="#"  onclick="return false" class="" ><span>Productos</span></a>
+<ul >
+<li  class="  level2" id="li-bestsellers"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_sales/bestsellers/key/$report_sales/bestsellers$/"   class="" ><span>Más vendidos</span></a>
+</li>
+<li  class="  level2" id="li-sold"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_product/sold/key/$report_product/sold$/"   class="" ><span>Products Ordered</span></a>
+</li>
+<li  class="  level2" id="li-viewed"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_product/viewed/key/$report_product/viewed$/"   class="" ><span>Más Visto</span></a>
+</li>
+<li  class="  level2" id="li-lowstock"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_product/lowstock/key/$report_product/lowstock$/"   class="" ><span>Existencia baja</span></a>
+</li>
+<li  class="  last level2" id="li-downloads"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_product/downloads/key/$report_product/downloads$/"   class="" ><span>Descargas</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level1" id="li-customers"> <a href="#"  onclick="return false" class="" ><span>Clientes</span></a>
+<ul >
+<li  class="  level2" id="li-accounts"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_customer/accounts/key/$report_customer/accounts$/"   class="" ><span>Nuevas cuentas</span></a>
+</li>
+<li  class="  level2" id="li-totals"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_customer/totals/key/$report_customer/totals$/"   class="" ><span>Clientes por total de Pedidos</span></a>
+</li>
+<li  class="  last level2" id="li-orders"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_customer/orders/key/$report_customer/orders$/"   class="" ><span>Clientes por número de Pedidos</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level1" id="li-tags"> <a href="#"  onclick="return false" class="" ><span>Etiquetas</span></a>
+<ul >
+<li  class="  level2" id="li-customer"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_tag/customer/key/$report_tag/customer$/"   class="" ><span>Clientes</span></a>
+</li>
+<li  class="  level2" id="li-product"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_tag/product/key/$report_tag/product$/"   class="" ><span>Productos</span></a>
+</li>
+<li  class="  last level2" id="li-popular"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_tag/popular/key/$report_tag/popular$/"   class="" ><span>Popular</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level1" id="li-review"> <a href="#"  onclick="return false" class="" ><span>Opiniones</span></a>
+<ul >
+<li  class="  level2" id="li-customer"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_review/customer/key/$report_review/customer$/"   class="" ><span>Comentarios de los clientes</span></a>
+</li>
+<li  class="  last level2" id="li-product"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_review/product/key/$report_review/product$/"   class="" ><span>Comentarios de los productos</span></a>
+</li>
+</ul>
+</li>
+<li  class="  level1" id="li-search"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report/search/key/$report/search$/"   class="" ><span>Términos de búsqueda</span></a>
+</li>
+<li  class="  last level1" id="li-statistics"> <a href="http://127.0.0.1/medicjoint/index.php/admin/report_statistics/index/key/$report_statistics/index$/"   class="" ><span>Refresh Statistics</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class=" active  parent level0" id="li-system"> <a href="#"  onclick="return false" class="active" ><span>Sistema</span></a>
+<ul >
+<li  class="  level1" id="li-myaccount"> <a href="http://127.0.0.1/medicjoint/index.php/admin/system_account/index/key/$system_account/index$/"   class="" ><span>Mi cuenta</span></a>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level1" id="li-tools"> <a href="#"  onclick="return false" class="" ><span>Herramientas</span></a>
+<ul >
+<li  class="  level2" id="li-backup"> <a href="http://127.0.0.1/medicjoint/index.php/admin/system_backup/index/key/$system_backup/index$/"   class="" ><span>Copias de seguridad</span></a>
+</li>
+<li  class="  last level2" id="li-compiler"> <a href="http://127.0.0.1/medicjoint/index.php/admin/compiler_process/index/key/$compiler_process/index$/"   class="" ><span>Compilation</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level1" id="li-api"> <a href="#"  onclick="return false" class="" ><span>Servicios web</span></a>
+<ul >
+<li  class="  level2" id="li-users"> <a href="http://127.0.0.1/medicjoint/index.php/admin/api_user/index/key/$api_user/index$/"   class="" ><span>SOAP/XML-RPC - Users</span></a>
+</li>
+<li  class="  level2" id="li-roles"> <a href="http://127.0.0.1/medicjoint/index.php/admin/api_role/index/key/$api_role/index$/"   class="" ><span>SOAP/XML-RPC - Roles</span></a>
+</li>
+<li  class="  level2" id="li-rest_roles"> <a href="http://127.0.0.1/medicjoint/index.php/admin/api2_role/index/key/$api2_role/index$/"   class="" ><span>REST - Roles</span></a>
+</li>
+<li  class="  level2" id="li-rest_attributes"> <a href="http://127.0.0.1/medicjoint/index.php/admin/api2_attribute/index/key/$api2_attribute/index$/"   class="" ><span>REST - Attributes</span></a>
+</li>
+<li  class="  level2" id="li-oauth_consumer"> <a href="http://127.0.0.1/medicjoint/index.php/admin/oauth_consumer/index/key/$oauth_consumer/index$/"   class="" ><span>REST - OAuth Consumers</span></a>
+</li>
+<li  class="  level2" id="li-oauth_authorized_tokens"> <a href="http://127.0.0.1/medicjoint/index.php/admin/oauth_authorizedTokens/index/key/$oauth_authorizedTokens/index$/"   class="" ><span>REST - OAuth Authorized Tokens</span></a>
+</li>
+<li  class="  last level2" id="li-oauth_admin_token"> <a href="http://127.0.0.1/medicjoint/index.php/admin/oauth_admin_token/index/key/$oauth_admin_token/index$/"   class="" ><span>REST - My Apps</span></a>
+</li>
+</ul>
+</li>
+<li  class="  level1" id="li-design"> <a href="http://127.0.0.1/medicjoint/index.php/admin/system_design/index/key/$system_design/index$/"   class="" ><span>Diseño</span></a>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level1" id="li-convert"> <a href="#"  onclick="return false" class="" ><span>Importar/Exportar</span></a>
+<ul >
+<li  class="  level2" id="li-import"> <a href="http://127.0.0.1/medicjoint/index.php/admin/import/index/key/$import/index$/"   class="" ><span>Importar</span></a>
+</li>
+<li  class="  level2" id="li-export"> <a href="http://127.0.0.1/medicjoint/index.php/admin/export/index/key/$export/index$/"   class="" ><span>Exportar</span></a>
+</li>
+<li  class="  level2" id="li-gui"> <a href="http://127.0.0.1/medicjoint/index.php/admin/system_convert_gui/index/key/$system_convert_gui/index$/"   class="" ><span>Dataflow - Profiles</span></a>
+</li>
+<li  class="  last level2" id="li-profiles"> <a href="http://127.0.0.1/medicjoint/index.php/admin/system_convert_profile/index/key/$system_convert_profile/index$/"   class="" ><span>Dataflow - Advanced Profiles</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level1" id="li-currency"> <a href="http://127.0.0.1/medicjoint/index.php/admin/system_currency/index/key/$system_currency/index$/"   class="" ><span>Manage Currency</span></a>
+<ul >
+<li  class="  level2" id="li-rates"> <a href="http://127.0.0.1/medicjoint/index.php/admin/system_currency/index/key/$system_currency/index$/"   class="" ><span>Tarifas</span></a>
+</li>
+<li  class="  last level2" id="li-symbols"> <a href="http://127.0.0.1/medicjoint/index.php/admin/system_currencysymbol/index/key/$system_currencysymbol/index$/"   class="" ><span>Symbols</span></a>
+</li>
+</ul>
+</li>
+<li  class="  level1" id="li-email_template"> <a href="http://127.0.0.1/medicjoint/index.php/admin/system_email_template/index/key/$system_email_template/index$/"   class="" ><span>Correos electrónicos transaccionales</span></a>
+</li>
+<li  class="  level1" id="li-variable"> <a href="http://127.0.0.1/medicjoint/index.php/admin/system_variable/index/key/$system_variable/index$/"   class="" ><span>Custom Variables</span></a>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level1" id="li-acl"> <a href="#"  onclick="return false" class="" ><span>Permisos</span></a>
+<ul >
+<li  class="  level2" id="li-users"> <a href="http://127.0.0.1/medicjoint/index.php/admin/permissions_user/index/key/$permissions_user/index$/"   class="" ><span>Usuarios</span></a>
+</li>
+<li  class="  last level2" id="li-roles"> <a href="http://127.0.0.1/medicjoint/index.php/admin/permissions_role/index/key/$permissions_role/index$/"   class="" ><span>Roles</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level1" id="li-extensions"> <a href="#"  onclick="return false" class="" ><span>Magento Connect</span></a>
+<ul >
+<li  class="  level2" id="li-local"> <a href="http://127.0.0.1/medicjoint/index.php/admin/extension_local/index/key/$extension_local/index$/"   class="" ><span>Magento Connect Manager</span></a>
+</li>
+<li  class="  last level2" id="li-custom"> <a href="http://127.0.0.1/medicjoint/index.php/admin/extension_custom/index/key/$extension_custom/index$/"   class="" ><span>Extensiones del paquete</span></a>
+</li>
+</ul>
+</li>
+<li  class="  level1" id="li-cache"> <a href="http://127.0.0.1/medicjoint/index.php/admin/cache/index/key/$cache/index$/"   class="" ><span>Gestor de la cache</span></a>
+</li>
+<li  class="  level1" id="li-index"> <a href="http://127.0.0.1/medicjoint/index.php/admin/process/list/key/$process/list$/"   class="" ><span>Index Management</span></a>
+</li>
+<li  class="  level1" id="li-store"> <a href="http://127.0.0.1/medicjoint/index.php/admin/system_store/index/key/$system_store/index$/"   class="" ><span>Gestionar tiendas</span></a>
+</li>
+<li  class="  level1" id="li-order_statuses"> <a href="http://127.0.0.1/medicjoint/index.php/admin/sales_order_status/index/key/$sales_order_status/index$/"   class="" ><span>Order Statuses</span></a>
+</li>
+<li  class="  last level1" id="li-config"> <a href="http://127.0.0.1/medicjoint/index.php/admin/system_config/index/key/$system_config/index$/"   class="" ><span>Configuración</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level0" id="li-visits"> <a href="#"  onclick="return false" class="" ><span>Administración</span></a>
+<ul >
+<li  class="  level1" id="li-index"> <a href="http://127.0.0.1/medicjoint/index.php/admin/visits/index/key/$visits/index$/"   class="" ><span>Administrar visitas</span></a>
+</li>
+<li  class="  last level1" id="li-companies"> <a href="http://127.0.0.1/medicjoint/index.php/admin/companies/index/key/$companies/index$/"   class="" ><span>Administrar compañías</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level0" id="li-loimport"> <a href="#"  onclick="return false" class="" ><span>Catálogo del gobierno</span></a>
+<ul >
+<li  class="  level1" id="li-export"> <a href="http://127.0.0.1/medicjoint/index.php/import/export/index/key/$export/index$/"   class="" ><span>Exportar</span></a>
+</li>
+<li  class="  last level1" id="li-import"> <a href="http://127.0.0.1/medicjoint/index.php/import/import/index/key/$import/index$/"   class="" ><span>Importar</span></a>
+</li>
+</ul>
+</li>
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent level0" id="li-nwdthemes"> <a href="#"  onclick="return false" class="" ><span>NWDThemes</span></a>
+<ul >
+<li onmouseover="Element.addClassName(this,'over')"onmouseout="Element.removeClassName(this,'over')" class="  parent last level1" id="li-wunderadmin"> <a href="#"  onclick="return false" class="" ><span>Wunderadmin</span></a>
+<ul >
+<li  class="  level2" id="li-wunderadmin"> <a href="http://127.0.0.1/medicjoint/index.php/admin/wunderadmin/index/key/$wunderadmin/index$/"   class="" ><span>Manage Themes</span></a>
+</li>
+<li  class="  last level2" id="li-configuration"> <a href="http://127.0.0.1/medicjoint/index.php/admin/system_config/edit/section/wunderadmin_config/key/$system_config/edit$/"   class="" ><span>Configuración</span></a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- menu end -->
+
+    <a id="page-help-link" href="http://www.magentocommerce.com/gethelp/es_ES/Mage_Adminhtml/system_config/edit/fendertons3/">Obtener ayuda para esta página</a>
+    <script type="text/javascript">$('page-help-link').target = 'magento_page_help'</script>
+
+</div>
