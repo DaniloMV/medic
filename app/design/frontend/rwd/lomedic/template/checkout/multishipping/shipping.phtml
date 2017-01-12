@@ -1,0 +1,119 @@
+<div class="text multiple-checkout">
+    <div class="form clearfix">
+        <div class="page-title">
+            <h1><?php echo $this->__('Select Shipping Method') ?></h1>
+        </div>
+
+        <?php echo $this->getMessagesBlock()->toHtml(); ?>
+
+        <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="shipping_method_form">
+            <?php foreach ($this->getAddresses() as $_index => $_address): ?>
+                <div class="col2-set">
+                    <h2><?php echo Mage::helper('buyercheckout')->getCompanyFromAddress($_address); ?></h2>
+
+                    <div class="col-1 col-narrow">
+                        <div class="box box-pad box-sp-methods">
+                            <div class="pointer"></div>
+                            <div class="box-title">
+                                <h3><?php echo $this->__('Shipping Method'); ?></h3>
+                            </div>
+                            <div class="box-content">
+                                <?php if (!($_shippingRateGroups = $this->getShippingRates($_address))): ?>
+                                    <p><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></p>
+                                <?php else: ?>
+                                <dl class="sp-methods">
+                                    <?php $_sole = count($_shippingRateGroups) == 1; foreach ($_shippingRateGroups as $code => $_rates): ?>
+                                        <dt><?php echo $this->escapeHtml($this->getCarrierName($code)) ?>
+                                            <?php
+                                                if ($this->getCarrierName($code) == "Envío Express") {
+                                                    $strUrlLogoDHL = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."dhl/logo.jpg";
+                                                    echo "<img src='$strUrlLogoDHL' alt='Logo DHL' height='60' width='150'>";
+                                                }
+                                            ?>
+                                        </dt>
+                                        <dd>
+                                            <ul>
+                                            <?php $_sole = $_sole && count($_rates) == 1; foreach ($_rates as $_rate): ?>
+                                                <li<?php if ($_rate->getErrorMessage()) echo ' class="error-msg"' ?>>
+                                                   <?php if ($_rate->getErrorMessage()): ?>
+                                                        <?php echo $this->escapeHtml($_rate->getCarrierTitle()) ?>: <?php echo $this->escapeHtml($_rate->getErrorMessage()) ?>
+                                                   <?php else: ?>
+                                                        <?php if ($_sole) : ?>
+                                                        <span class="no-display"><input type="radio" name="shipping_method[<?php echo $_address->getId() ?>]" value="<?php echo $this->escapeHtml($_rate->getCode()) ?>" id="s_method_<?php echo $_address->getId() ?>_<?php echo $_rate->getCode() ?>" checked="checked"/></span>
+                                                        <?php else: ?>
+                                                        <input type="radio" name="shipping_method[<?php echo $_address->getId() ?>]" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_address->getId() ?>_<?php echo $_rate->getCode() ?>"<?php if($_rate->getCode()===$this->getAddressShippingMethod($_address)) echo ' checked="checked"' ?> class="radio" />
+                                                        <?php endif; ?>
+                                                        <label for="s_method_<?php echo $_address->getId() ?>_<?php echo $_rate->getCode() ?>"><?php echo $this->escapeHtml($_rate->getMethodTitle()) ?>
+                                                        <?php $_excl = $this->getShippingPrice($_address, $_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+                                                        <?php $_incl = $this->getShippingPrice($_address, $_rate->getPrice(), true); ?>
+                                                        <?php echo $_excl; ?>
+                                                        <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                                                            (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+                                                        <?php endif; ?>
+                                                        </label>
+                                                   <?php endif ?>
+                                                </li>
+                                            <?php endforeach; ?>
+                                            </ul>
+                                        </dd>
+                                    <?php endforeach; ?>
+                                </dl>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-2 col-wide">
+                        <h3><?php echo $this->__('Items') ?></h3>
+                        <div class="scroll">
+                            <table class="data-table table" id="shipping-table-<?php echo $_address->getId() ?>">
+                                <col />
+                                <col width="1" />
+                                <thead>
+                                    <tr>
+                                       <tr>
+                                            <th><?php echo $this->__("Batch #")?></th>
+                                            <th><?php echo $this->__("Product Name")?></th>
+                                            <th><?php echo $this->__("Expiration Date")?></th>
+                                            <th><?php echo $this->__('Qty') ?></th>
+                                            <th><?php echo $this->__("Presentation")?></th>
+                                            <th class="a-center"><?php echo $this->__("Ordered qty")?></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($this->getAddressItems($_address) as $_item): ?>
+                                        <tr>
+                                            <?php echo $this->getItemHtml($_item->getQuoteItem()) ?>
+                                            <td class="a-center"><?php echo $_item->getQty() ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+
+            <?php echo $this->getChildHtml('checkout_billing_items') ?>
+
+            <div class="buttons-set">
+                <p class="back-link"><a href="<?php echo $this->getBackUrl() ?>"><small>&laquo; </small><?php echo $this->__('Back to Select Addresses') ?></a></p>
+                <button data-action="checkout-continue-billing" type="submit" title="<?php echo $this->__('Continue to Billing Information') ?>" class="button tar"><span><span><?php echo $this->__('Continue to Billing Information') ?></span></span></button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+jQuery('document').ready(function() {
+jQuery(".scroll").each(function(){
+if (jQuery(this).height() > 242){
+	jQuery(this).height(242).css('margin-bottom','15px').mCustomScrollbar({
+	  scrollInertia:100,
+	  axis:"yx",
+	  alwaysShowScrollbar: 2,
+	  scrollbarPosition: "outside"
+	});
+}
+});
+});
+</script>

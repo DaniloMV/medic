@@ -1,0 +1,549 @@
+<?php $_cfg = $this->getCfg(); ?>
+
+/* Fonts */
+
+<?php if ($_cfg['main_font']) : ?>
+.wunderadmin,
+.wunderadmin .magento_title     { font-family: '<?php echo $_cfg['main_font']; ?>'; }
+<?php endif; ?>
+
+<?php if ($_cfg['navigation_font']) : ?>
+.wunderadmin .nav-bar           { font-family: '<?php echo $_cfg['navigation_font']; ?>'; }
+<?php endif; ?>
+
+<?php if ($_cfg['heading_font']) : ?>
+.wunderadmin .content-header h3,
+.wunderadmin .head-categories,
+.wunderadmin .entry-edit .entry-edit-head h4,
+.wunderadmin .login-form h2,
+.wunderadmin .side-col h3,
+.wunderadmin .side-col .switcher label,
+.wunderadmin ul.tabs-horiz li a,
+.wunderadmin ul.config-tabs dt,
+.wunderadmin dl.accordion dt a,
+.wunderadmin .entry-edit .entry-edit-head a
+                                { font-family: '<?php echo $_cfg['heading_font']; ?>'; }
+<?php endif; ?>
+
+<?php if ($_cfg['button_font']) : ?>
+.wunderadmin button,
+.wunderadmin .form-button,
+.wunderadmin .notification-global .f-right a,
+.wunderadmin .go-try,
+.wunderadmin #page-help-link
+                                { font-family: '<?php echo $_cfg['button_font']; ?>'; }
+<?php endif; ?>
+
+/* Global and Layout */
+
+.wunderadmin a                  { color: <?php echo $_cfg['link_color']; ?>; }
+.wunderadmin .entry-edit input[type=text],
+.wunderadmin .input-ele input[type=text],
+.wunderadmin .input-ele input[type=textbox],
+.wunderadmin input.input-text,
+.wunderadmin textarea,
+.wunderadmin select
+                                {
+                                    border-color: <?php echo $_cfg['input_border']; ?>;
+                                    background-color: <?php echo $_cfg['input_background']; ?>;
+                                    color: <?php echo $_cfg['input_text']; ?>;
+                                }
+.wunderadmin .field-100 input.input-text,
+.wunderadmin .field-100
+                                { border-color: <?php echo $_cfg['input_border']; ?>; }
+.wunderadmin ::-webkit-input-placeholder
+                                { color: <?php echo $_cfg['input_text']; ?>; }
+.wunderadmin :-moz-placeholder  { color: <?php echo $_cfg['input_text']; ?>; }
+.wunderadmin ::-moz-placeholder { color: <?php echo $_cfg['input_text']; ?>; }
+.wunderadmin :-ms-input-placeholder
+                                { color: <?php echo $_cfg['input_text']; ?>; }
+body.wunderadmin,
+#page-login.wunderadmin,
+.wunderadmin .middle            { background-color: <?php echo $_cfg['body_background']; ?>; color: <?php echo $_cfg['text_color']; ?>; }
+
+.wunderadmin .login-form h2     { color: <?php echo $_cfg['text_color']; ?>; }
+
+.wunderadmin input[type=checkbox] + span.wa_checkbox_helper:before
+                                {
+                                    color: <?php echo $_cfg['checkbox_bg']; ?>;
+                                    background: <?php echo $_cfg['checkbox_bg']; ?>;
+                                    border-color: <?php echo $_cfg['checkbox_border']; ?>;
+                                }
+.wunderadmin input[type=checkbox]:checked + span.wa_checkbox_helper:before
+                                {
+                                    background: <?php echo $_cfg['checkbox_icon']; ?>;
+                                    border-color: <?php echo $_cfg['checkbox_icon']; ?>;
+                                }
+.wunderadmin input[type=checkbox]:disabled + span.wa_checkbox_helper:before
+                                {
+                                    color: <?php echo $_cfg['checkbox_disabled']; ?>;
+                                    background: <?php echo $_cfg['checkbox_disabled']; ?>;
+                                    border-color: <?php echo $_cfg['checkbox_disabled']; ?>;
+                                }
+.wunderadmin input[type=checkbox]:checked:disabled + span.wa_checkbox_helper:before
+                                {
+                                    color: <?php echo $_cfg['checkbox_bg']; ?>;
+                                    background: <?php echo $_cfg['checkbox_disabled']; ?>;
+                                    border-color: <?php echo $_cfg['checkbox_disabled']; ?>;
+                                }
+.wunderadmin .separator,
+.wunderadmin .pipe              { color: <?php echo $_cfg['separator']; ?>; }
+
+/* Header */
+
+.wunderadmin .header            { background: <?php echo $_cfg['header_background']; ?>; }
+.wunderadmin .header .header-top > a
+                                { background: <?php echo $_cfg['header_logo_bg']; ?>; }
+.wunderadmin .header-right fieldset input.input-text
+                                { color: <?php echo $_cfg['header_search_text']; ?>; }
+.wunderadmin .header-right fieldset:before
+                                { color: <?php echo $_cfg['header_serach_icon']; ?>; }
+.wunderadmin .header-right .super
+                                { color: <?php echo $_cfg['header_text']; ?>; }
+.wunderadmin .header-right .super a
+                                { color: <?php echo $_cfg['header_links']; ?>; }
+.wunderadmin .header-right .super .fa
+                                { color: <?php echo $_cfg['header_links']; ?>; }
+.wunderadmin .header-right .super a.go-try
+                                { border-color: <?php echo $_cfg['header_gotry_button']; ?>;  }
+.wunderadmin #page-help-link    {
+                                    color: <?php echo $_cfg['header_help_text']; ?>;
+                                    background: <?php echo $_cfg['header_help_background']; ?>;
+                                    border-color: <?php echo $_cfg['header_help_border']; ?>;
+                                }
+.wunderadmin .content-header h3 { color: <?php echo $_cfg['heading_color']; ?>; }
+.wunderadmin .head-categories   { color: <?php echo $_cfg['heading_color']; ?> !important; }
+.wunderadmin .head-categories:before
+                                {
+                                    color: <?php echo $_cfg['heading_icon_color']; ?>;
+                                }
+.wunderadmin div.main-col       { border-left-color: <?php echo $_cfg['column_border']; ?>; }
+
+/* Menu */
+
+.wunderadmin .nav-bar           { background: <?php echo $_cfg['navigation_background']; ?>; }
+.wunderadmin #nav a             { color: <?php echo $_cfg['navigation_text']; ?>; }
+.wunderadmin #nav > li:first-child
+                                { border-left-color: <?php echo $_cfg['navigation_vertical_separators']; ?>; }
+.wunderadmin #nav > li          { border-right-color: <?php echo $_cfg['navigation_vertical_separators']; ?>; }
+.wunderadmin #nav > li > a:hover,
+.wunderadmin #nav > li.over > a
+                                { background-color: <?php echo $_cfg['navigation_hover']; ?>; color: <?php echo $_cfg['navigation_hover_text']; ?> !important; }
+.wunderadmin #nav li.active     { background: <?php echo $_cfg['navigation_active']; ?>; }
+.wunderadmin #nav a.active      { color: <?php echo $_cfg['navigation_active_text']; ?>; }
+.wunderadmin #nav ul li a       { background: <?php echo $_cfg['navigation_item_level_1']; ?>; border-bottom-color: <?php echo $_cfg['navigation_horizontal_separators']; ?>; }
+.wunderadmin #nav li.over a     { color: <?php echo $_cfg['navigation_item_hover_text']; ?>; }
+.wunderadmin #nav li.over li a  { color: <?php echo $_cfg['navigation_item_level_1_text']; ?>; }
+.wunderadmin #nav ul li.parent li a
+                                { color: <?php echo $_cfg['navigation_item_level_2_text']; ?>; background: <?php echo $_cfg['navigation_item_level_2']; ?>; }
+.wunderadmin #nav ul li a:hover,
+.wunderadmin #nav ul li.parent li a:hover
+                                { background: <?php echo $_cfg['navigation_item_hover']; ?>; color: <?php echo $_cfg['navigation_item_hover_text']; ?>; }
+
+/* Notifications */
+
+.wunderadmin .notification-global .label
+                                { color: <?php echo $_cfg['notify_highlight']; ?>; }
+.wunderadmin .notification-global .f-right a
+                                {
+                                    background: <?php echo $_cfg['notify_button_bg']; ?>;
+                                    color: <?php echo $_cfg['notify_button_text']; ?>;
+                                }
+.wunderadmin .notification-global
+                                {
+                                    border-color: <?php echo $_cfg['notify_border']; ?>;
+                                }
+.wunderadmin .notification-global:before
+                                {
+                                    color: <?php echo $_cfg['notify_icon']; ?>;
+                                }
+.wunderadmin .notification-global-notice:before
+                                {
+                                    color: <?php echo $_cfg['notify_notice_icon']; ?>;
+                                }
+.wunderadmin .error-msg:before  { color: <?php echo $_cfg['notify_icon']; ?>; }
+.wunderadmin .notice-msg:before { color: <?php echo $_cfg['notify_notice_icon']; ?>; }
+.wunderadmin .success-msg:before
+                                { color: <?php echo $_cfg['notify_success_icon']; ?>; }
+
+/* Footer */
+
+.wunderadmin .footer            {
+                                    background: <?php echo $_cfg['footer_bg']; ?>;
+                                    border-top-color: <?php echo $_cfg['footer_border']; ?>;
+                                    color: <?php echo $_cfg['footer_text']; ?>;
+                                }
+
+/* Buttons */
+
+.wunderadmin button,
+.wunderadmin .form-button,
+.wunderadmin .side-col #order-sidebar button
+                                { background: <?php echo $_cfg['button_bg']; ?>; color: <?php echo $_cfg['button_text']; ?>; }
+.wunderadmin button:hover,
+.wunderadmin .form-button:hover,
+.wunderadmin button.fail:hover,
+.wunderadmin button.cancel:hover,
+.wunderadmin button.delete:hover,
+.wunderadmin button.back:hover,
+.wunderadmin .notification-global a:hover,
+.wunderadmin .side-col #order-sidebar button:hover
+                                { background: <?php echo $_cfg['button_hover_bg']; ?>; }
+.wunderadmin button.fail,
+.wunderadmin button.cancel,
+.wunderadmin button.delete      { background: <?php echo $_cfg['button_delete_bg']; ?>; }
+.wunderadmin button.back        { background: <?php echo $_cfg['button_back_bg']; ?>; }
+.wunderadmin .side-col button,
+.wunderadmin .side-col .content-header button,
+.wunderadmin .side-col .form-button
+                                { background: <?php echo $_cfg['button_side_bg']; ?>; border-color: <?php echo $_cfg['button_side_border']; ?>; color: <?php echo $_cfg['button_side_text']; ?>; }
+.wunderadmin button span:before,
+.wunderadmin .side-col #order-sidebar button span:before
+                                {
+                                    color: <?php echo $_cfg['button_icon']; ?>;
+                                }
+.wunderadmin .side-col button span:before
+                                { color: <?php echo $_cfg['button_side_icon']; ?>; }
+
+/* Scope Switcher */
+
+.wunderadmin .switcher          { background: <?php echo $_cfg['scope_switcher_bg']; ?>; border-color: <?php echo $_cfg['scope_switcher_border']; ?>; }
+.wunderadmin .switcher .link-store-scope:before,
+.wunderadmin .link-store-scope:before
+                                {
+                                    color: <?php echo $_cfg['scope_switcher_help']; ?>;
+                                }
+
+/* Tree */
+
+.wunderadmin .tree-actions a:before
+                                {
+                                    color: <?php echo $_cfg['tree_actions_icon']; ?>;
+                                }
+.wunderadmin .x-tree-node a span,
+.wunderadmin .x-dd-drag-ghost a span
+                                { color: <?php echo $_cfg['tree_item_color']; ?>; }
+
+/* Tabs */
+
+.wunderadmin ul.tabs-horiz      { background-color: <?php echo $_cfg['tabs_bg']; ?>; border-bottom-color: <?php echo $_cfg['tabs_border']; ?>; }
+.wunderadmin ul.tabs-horiz li a { color: <?php echo $_cfg['tabs_item_text']; ?> !important; background: <?php echo $_cfg['tabs_item_bg']; ?>; border-color: <?php echo $_cfg['tabs_border']; ?>; border-bottom-color: <?php echo $_cfg['tabs_active_border']; ?>; }
+.wunderadmin ul.tabs-horiz li a.active
+                                {
+                                    border-color: <?php echo $_cfg['tabs_active_border']; ?>;
+                                    border-bottom-color: <?php echo $_cfg['tabs_active_item_bg']; ?>;
+                                    color: <?php echo $_cfg['tabs_active_item_text']; ?> !important;
+                                    background: <?php echo $_cfg['tabs_active_item_bg']; ?>;
+                                }
+.wunderadmin .wa_dashboard_wrap { border-color: <?php echo $_cfg['tabs_border']; ?>; }                                
+
+/* Forms */
+
+.wunderadmin dl.accordion dt,
+.wunderadmin .entry-edit .entry-edit-head
+                                { background-color: <?php echo $_cfg['form_heading_bg']; ?>;  }
+.wunderadmin .entry-edit .entry-edit-head h4,
+.wunderadmin .entry-edit .entry-edit-head strong,
+.wunderadmin .entry-edit .entry-edit-head a
+                                { color: <?php echo $_cfg['form_heading_text']; ?>; }
+.wunderadmin label              { color: <?php echo $_cfg['form_label_text']; ?>; }
+.wunderadmin .box,
+.wunderadmin .entry-edit fieldset,
+.wunderadmin .entry-edit .fieldset,
+.wunderadmin .section-config .section-config > .config
+                                { border-color: <?php echo $_cfg['form_border']; ?>; background-color: <?php echo $_cfg['form_bg']; ?>; }
+.wunderadmin .form-list tr td.scope-label span
+                                {
+                                    color: <?php echo $_cfg['form_scope']; ?>;
+                                    border-color: <?php echo $_cfg['form_scope_border']; ?>;
+                                }
+.wunderadmin .form-list tr td.scope-label span span,
+.wunderadmin .grid tbody
+                                { background-color: <?php echo $_cfg['form_bg']; ?>; }
+.wunderadmin .form-list tr:hover > td.scope-label > span
+                                { color: <?php echo $_cfg['form_scope_hover']; ?>; border-color: <?php echo $_cfg['form_scope_hover']; ?>; }
+
+/* Configuration Tabs */
+
+.wunderadmin ul.config-tabs dt  { background: <?php echo $_cfg['config_tab_section_head_bg']; ?>; border-color: <?php echo $_cfg['config_tab_border']; ?>; border-bottom-color: <?php echo $_cfg['config_tab_section_head_separator']; ?>; color: <?php echo $_cfg['config_tab_section_head_text']; ?>; }
+.wunderadmin ul.config-tabs dt:after
+                                {
+                                    color: <?php echo $_cfg['config_tab_section_head_icon']; ?>;
+                                }
+.wunderadmin ul.config-tabs dt.collapsed
+                                { border-bottom-color: <?php echo $_cfg['config_tab_border']; ?>; }
+.wunderadmin ul.config-tabs dt.collapsed:after
+                                {
+                                    color: <?php echo $_cfg['config_tab_section_head_icon_collapsed']; ?>;
+                                }
+.wunderadmin ul.tabs span       { background: <?php echo $_cfg['config_tab_bg']; ?>; color: <?php echo $_cfg['config_tab_text']; ?>; border-color: <?php echo $_cfg['config_tab_border']; ?>; border-bottom-color: <?php echo $_cfg['config_tab_separator']; ?>; }
+.wunderadmin ul.tabs .active span,
+.wunderadmin ul.tabs .active:hover span
+                                { background: <?php echo $_cfg['config_tab_active_bg']; ?>; color: <?php echo $_cfg['config_tab_active_text']; ?>; }
+
+/* System configuration forms */
+
+.wunderadmin .content-header h3,
+.wunderadmin .side-col h3,
+.wunderadmin .switcher label
+                                { color: <?php echo $_cfg['heading_color']; ?>; }
+.wunderadmin .content-header h3:before
+                                {
+                                    color: <?php echo $_cfg['heading_icon_color']; ?>;
+                                }
+.wunderadmin .section-config:after
+                                {
+                                    color: <?php echo $_cfg['system_handle_icon']; ?>;
+                                    background: <?php echo $_cfg['system_handle_bg']; ?>;
+                                }
+.wunderadmin .section-config.active:after
+                                {
+                                    color: <?php echo $_cfg['system_handle_active_icon']; ?>;
+                                    background: <?php echo $_cfg['system_handle_active_bg']; ?>;
+                                }
+.wunderadmin dl.accordion dt a:after
+                                {
+                                    color: <?php echo $_cfg['system_handle_icon']; ?>;
+                                    background: <?php echo $_cfg['system_handle_bg']; ?>;
+                                }
+.wunderadmin dl.accordion dt.open a:after
+                                {
+                                    color: <?php echo $_cfg['system_handle_active_icon']; ?>;
+                                    background: <?php echo $_cfg['system_handle_active_bg']; ?>;
+                                }
+.wunderadmin .section-config .config-advanced > .entry-edit-head a
+                                { color: <?php echo $_cfg['config_tab_section_head_text']; ?> !important; }
+.wunderadmin .section-config .config-advanced > .entry-edit-head a.open
+                                { color: <?php echo $_cfg['system_handle_active_icon']; ?> !important; }
+
+/* Grid Massactions */
+
+.wunderadmin .massaction        { background: <?php echo $_cfg['grid_massactions_bg']; ?>; border-color: <?php echo $_cfg['grid_massactions_border']; ?>; color: <?php echo $_cfg['grid_massactions_text']; ?>; }
+.wunderadmin .massaction a      { color: <?php echo $_cfg['grid_massactions_text']; ?>; border-right-color: <?php echo $_cfg['grid_massactions_border']; ?>; }
+.wunderadmin .massaction .entry-edit fieldset
+                                { background-color:<?php echo $_cfg['grid_massactions_bg']; ?>; }
+.wunderadmin .massaction .entry-edit .field-row label
+                                { color: <?php echo $_cfg['grid_massactions_text']; ?>; }
+
+/* Grid Headings */
+
+.wunderadmin .grid tr.headings  { background: <?php echo $_cfg['grid_heading_bg']; ?>; }
+.wunderadmin .grid tr.headings th
+                                { border-color: <?php echo $_cfg['grid_heading_border']; ?>; border-left-color: <?php echo $_cfg['grid_heading_bg']; ?>; }
+.wunderadmin .grid tr.headings th:first-child
+                                { border-left-color: <?php echo $_cfg['grid_heading_border']; ?>; }
+.wunderadmin .grid tr.headings th a:hover
+                                { color: <?php echo $_cfg['grid_heading_hover_text']; ?>;  }
+.wunderadmin .grid tr.headings th:hover
+                                { background: <?php echo $_cfg['grid_heading_hover_bg']; ?>; border-color: <?php echo $_cfg['grid_heading_hover_border']; ?>; }
+.wunderadmin .grid tr.headings th a.sort-arrow-desc,
+.wunderadmin .grid tr.headings th a.sort-arrow-asc
+                                { background: <?php echo $_cfg['grid_sort_bg']; ?>; border-color: <?php echo $_cfg['grid_sort_border']; ?>;  }
+.wunderadmin .grid tr.headings th a.sort-arrow-desc span.sort-title:after,
+.wunderadmin .grid tr.headings th a.sort-arrow-asc span.sort-title:after
+                                {
+                                    color: <?php echo $_cfg['grid_sort_icon']; ?>;
+                                }
+
+/* Grid Filters */
+
+.wunderadmin .grid tr.filter    { background: <?php echo $_cfg['grid_filter_bg']; ?>; }
+.wunderadmin .grid tr.filter th { border-color: <?php echo $_cfg['grid_filter_border']; ?>; }
+.wunderadmin .grid tr.filter th:first-child
+                                { border-left-color: <?php echo $_cfg['grid_filter_border']; ?>; }
+.wunderadmin .grid tr.filter th:last-child
+                                { border-right-color: <?php echo $_cfg['grid_filter_border']; ?>; }
+
+/* Grid Data */
+
+.wunderadmin .grid tr.even, .grid tr.even tr
+                                { background: <?php echo $_cfg['grid_data_bg']; ?>; }
+.wunderadmin .grid table td     { border-color: <?php echo $_cfg['grid_data_border']; ?>; }
+.wunderadmin .grid table tbody:last-child td
+                                { border-bottom-color: <?php echo $_cfg['grid_data_border']; ?>; }
+.wunderadmin .grid table td.last
+                                { border-right-color: <?php echo $_cfg['grid_data_border']; ?>; }
+.wunderadmin .grid tr.on-mouse  { background: <?php echo $_cfg['grid_data_hover_row']; ?>; }
+
+/* Popups */
+
+.wunderadmin .dialog table.table_window
+                                { background: <?php echo $_cfg['popup_heading_bg']; ?>;  }
+.wunderadmin .magento_title     { color: <?php echo $_cfg['popup_heading_text']; ?>; }
+.wunderadmin .magento_w,
+.wunderadmin .magento_e,
+.wunderadmin .magento_content,
+.wunderadmin .magento_content .middle
+                                { background: <?php echo $_cfg['popup_bg']; ?>; }
+.wunderadmin .magento_close:after
+                                {
+                                    color: <?php echo $_cfg['popup_close_icon']; ?>;
+                                }
+
+/* M2EPro */
+
+.wunderadmin button.button_link
+                                { background: <?php echo $_cfg['button_bg']; ?> !important; color: <?php echo $_cfg['button_text']; ?> !important; }
+.wunderadmin button.button_link:hover
+                                { background: <?php echo $_cfg['button_hover_bg']; ?>; }
+
+/* Other */
+
+.wunderadmin ul.tabs a.error span.error:after
+                                {
+                                    color: <?php echo $_cfg['tab_error_icon']; ?>;
+                                }
+.wunderadmin ul.tabs a.changed span.changed:after
+                                {
+                                    color: <?php echo $_cfg['tab_changed_icon']; ?>;
+                                }
+.wunderadmin .login-form        { background: <?php echo $_cfg['login_form_bg']; ?>; border-color: <?php echo $_cfg['form_border']; ?>; }
+.wunderadmin .login-container .legal
+                                { background: <?php echo $_cfg['body_background']; ?>; border-color: <?php echo $_cfg['form_border']; ?>; color: <?php echo $_cfg['legal_text']; ?>; }
+
+.wunderadmin .wa_calendar_icon  { color: <?php echo $_cfg['button_bg']; ?>; }
+
+#loading-mask                   { color: <?php echo $_cfg['loader_color']; ?>; }
+#loading-mask .loader           { background-color: <?php echo $_cfg['loader_background']; ?>; border-color: <?php echo $_cfg['loader_border']; ?>; color: <?php echo $_cfg['loader_color']; ?>; }
+
+<?php if ($_cfg['theme'] == 'clean') : ?>
+
+/* Clean Blue */
+
+.wunderadmin .header-right .super a.go-try
+                                {
+                                    border-color: none;
+                                    background: <?php echo $_cfg['header_gotry_button']; ?>;
+                                    color: <?php echo $_cfg['header_gotry_text']; ?>;
+                                }
+.wunderadmin .nav-bar           { border-bottom-color: <?php echo $_cfg['navigation_horizontal_separators']; ?>; }
+.wunderadmin #nav li.active     { background: none; }
+.wunderadmin #nav li span
+                                { border-bottom-color: <?php echo $_cfg['navigation_horizontal_separators']; ?>; }
+.wunderadmin #nav li.active a span
+                                { border-bottom-color: <?php echo $_cfg['navigation_active']; ?>; }
+.wunderadmin #nav ul li a       { border-color: <?php echo $_cfg['navigation_horizontal_separators']; ?>; }
+
+.wunderadmin.tipsy_help .tipsy-inner { background-color: <?php echo $_cfg['header_help_background']; ?>; color: <?php echo $_cfg['header_help_text']; ?>; }
+.wunderadmin.tipsy_help .tipsy-arrow-n { border-bottom-color: <?php echo $_cfg['header_help_background']; ?>; }
+.wunderadmin.tipsy_help .tipsy-arrow-s { border-top-color: <?php echo $_cfg['header_help_background']; ?>; }
+.wunderadmin.tipsy_help .tipsy-arrow-e { border-left-color: <?php echo $_cfg['header_help_background']; ?>; }
+.wunderadmin.tipsy_help .tipsy-arrow-w { border-right-color: <?php echo $_cfg['header_help_background']; ?>; }
+
+.wunderadmin.tipsy_button .tipsy-inner { background-color: <?php echo $_cfg['button_bg']; ?>; color: <?php echo $_cfg['button_text']; ?>; }
+.wunderadmin.tipsy_button .tipsy-arrow-n { border-bottom-color: <?php echo $_cfg['button_bg']; ?>; }
+.wunderadmin.tipsy_button .tipsy-arrow-s { border-top-color: <?php echo $_cfg['button_bg']; ?>; }
+.wunderadmin.tipsy_button .tipsy-arrow-e { border-left-color: <?php echo $_cfg['button_bg']; ?>; }
+.wunderadmin.tipsy_button .tipsy-arrow-w { border-right-color: <?php echo $_cfg['button_bg']; ?>; }
+
+.wunderadmin .side-col button:hover,
+.wunderadmin .side-col .content-header button:hover,
+.wunderadmin .side-col .form-button:hover
+                                {
+                                    background: <?php echo $_cfg['button_bg']; ?>;
+                                    border-color: <?php echo $_cfg['button_bg']; ?>;
+                                }
+.wunderadmin .side-col button:hover span:before
+                                { color: <?php echo $_cfg['button_text']; ?>; }
+
+.wunderadmin ul.tabs-horiz      { background-color: <?php echo $_cfg['tabs_bg']; ?>; border-bottom-color: <?php echo $_cfg['tabs_border']; ?>; }
+.wunderadmin ul.tabs-horiz li a { color: <?php echo $_cfg['tabs_item_text']; ?> !important; background: <?php echo $_cfg['tabs_item_bg']; ?>; border-color: none; border-bottom-color: <?php echo $_cfg['tabs_border']; ?> }
+.wunderadmin ul.tabs-horiz li a.active
+                                {
+                                    border-color: none;
+                                    color: <?php echo $_cfg['tabs_active_border']; ?> !important;
+                                    border-bottom-color: <?php echo $_cfg['tabs_active_border']; ?>;
+                                    background: <?php echo $_cfg['tabs_active_item_bg']; ?>;
+                                }
+
+.wunderadmin ul.config-tabs dt  { color: <?php echo $_cfg['config_tab_active_text']; ?>; border-bottom-color: <?php echo $_cfg['config_tab_active_text']; ?>; }
+.wunderadmin ul.config-tabs dt.collapsed
+                                { color: <?php echo $_cfg['config_tab_section_head_text']; ?>; }
+
+.wunderadmin dl.accordion dt a,
+.wunderadmin .entry-edit .entry-edit-head a
+                                { border-bottom-color: <?php echo $_cfg['form_border']; ?>; color: <?php echo $_cfg['config_tab_section_head_text']; ?>; }
+.wunderadmin dl.accordion dt.open a,
+.wunderadmin div.collapseable a.open
+                                { border-bottom-color: <?php echo $_cfg['system_handle_active_icon']; ?>; color: <?php echo $_cfg['system_handle_active_icon']; ?>; }
+
+<?php endif; ?>
+
+<?php if ($_cfg['theme'] == 'modern') : ?>
+
+/* Modern Green */
+
+body.wunderadmin                { background-color: <?php echo $_cfg['navigation_background']; ?>; }
+.wunderadmin .wa_notifications_wrap
+                                { background-color: <?php echo $_cfg['body_background']; ?>; }
+.wunderadmin .header-right .super a.go-try
+                                {
+                                    border-color: none;
+                                    background: <?php echo $_cfg['header_gotry_button']; ?>;
+                                    color: <?php echo $_cfg['header_gotry_text']; ?>;
+                                }
+.wunderadmin #nav > li          { border-bottom-color: <?php echo $_cfg['navigation_horizontal_separators']; ?>; }
+.wunderadmin #nav ul li a       { border-top-color: <?php echo $_cfg['navigation_horizontal_separators']; ?>; }
+.wunderadmin #page-help-link:after
+                                { border-color: <?php echo $_cfg['header_help_border']; ?>; }
+
+.wunderadmin.tipsy_button .tipsy-inner { background-color: <?php echo $_cfg['button_bg']; ?>; color: <?php echo $_cfg['button_text']; ?>; }
+.wunderadmin.tipsy_button .tipsy-arrow-n { border-bottom-color: <?php echo $_cfg['button_bg']; ?>; }
+.wunderadmin.tipsy_button .tipsy-arrow-s { border-top-color: <?php echo $_cfg['button_bg']; ?>; }
+.wunderadmin.tipsy_button .tipsy-arrow-e { border-left-color: <?php echo $_cfg['button_bg']; ?>; }
+.wunderadmin.tipsy_button .tipsy-arrow-w { border-right-color: <?php echo $_cfg['button_bg']; ?>; }
+
+.wunderadmin .side-col button:hover,
+.wunderadmin .side-col .content-header button:hover,
+.wunderadmin .side-col .form-button:hover
+                                {
+                                    background: <?php echo $_cfg['button_bg']; ?>;
+                                    border-color: <?php echo $_cfg['button_bg']; ?>;
+                                }
+
+.wunderadmin .side-col button:hover span:before,
+.wunderadmin .side-col .content-header button:hover span:before,
+.wunderadmin .side-col .form-button:hover span:before
+                                {
+                                    color: <?php echo $_cfg['button_text']; ?>;
+                                    background: <?php echo $_cfg['button_bg']; ?>;
+                                }
+.wunderadmin .side-col #order-sidebar button span:before,
+.wunderadmin button span:before {
+                                    background: <?php echo $_cfg['button_icon_bg']; ?>;
+                                }
+.wunderadmin .side-col #order-sidebar button:hover span:before,
+.wunderadmin button:hover span:before {
+                                    background: <?php echo $_cfg['button_icon_hover_bg']; ?>;
+                                }
+.wunderadmin .side-col button span:before,
+.wunderadmin .side-col .content-header button span:before,
+.wunderadmin .side-col .form-button span:before
+                                { background: <?php echo $_cfg['button_side_border']; ?>; }
+
+.wunderadmin .tree-actions a    {
+                                    color: <?php echo $_cfg['tree_actions_icon']; ?>;
+                                    background: <?php echo $_cfg['button_bg']; ?>;
+                                }
+.wunderadmin .tree-actions a:before
+                                { background: <?php echo $_cfg['button_side_icon']; ?>; }
+.wunderadmin .pager input,
+.wunderadmin .pager select,
+.wunderadmin .grid input,
+.wunderadmin .grid .field-100,
+.wunderadmin .grid select,
+.wunderadmin .grid textarea
+                                { border-color: <?php echo $_cfg['grid_sort_border']; ?>; }
+
+.wunderadmin #wa_toggle_navigation
+								{ color: <?php echo $_cfg['header_gotry_text']; ?>; }
+
+<?php endif; ?>
+
+<?php if ( isset($_cfg['custom_css']) ) : ?>
+
+/* Custom CSS */
+
+<?php echo $_cfg['custom_css']; ?>
+
+<?php endif; ?>

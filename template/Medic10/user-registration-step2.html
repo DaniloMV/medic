@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<!--[if IE 6]>         <html class="no-js ie ie6 lte-ie6 lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js ie ie7 lte-ie7 lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js ie ie8 lte-ie8 lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie ie9 lte-ie9 lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<!--[if lte IE 8]>
+			<meta http-equiv="refresh" content="0;url=http://browsehappy.com">
+		<![endif]-->
+		
+		<!-- if we need ie8, put this on conditional comment for ie8 -->
+		<!-- <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> -->
+		
+
+		<!--[if IE]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+			<link rel="stylesheet" href="css/ie.css" />
+		<![endif]-->
+		
+
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/select2.css">
+		<meta name="title" content="" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+		<!-- <script src="js/modernizr-2.6.2.min.js"></script> -->
+
+		<!--[if IE]>
+			<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js">IE7_PNG_SUFFIX=".png";</script>
+			<link rel="stylesheet" href="css/ie.css" />
+		<![endif]-->
+		<!--[if gte IE 9]>
+			<style type="text/css">
+				.gradient {
+					filter: none !important;
+				}
+			</style>
+		<![endif]-->
+		<title>Medic Joint</title>
+	</head>
+	<body>
+		<div id="wrapper" class="clearfix">
+			<div class="wrapSlider">
+				<header id="header" class="adminHeader"> 
+					<a href="index.html"><img class="logo" src="img/logo.png" alt="" /></a>
+					<div class="user clearfix">
+						<div class="user_name">User1 “nombre”</div>
+						<div class="user_img"><img src="img/user.jpg" /></div>
+						<div class="user_off"><a href="#">Cerrar sesión</a></div>
+					</div>					
+				</header>
+			</div>				
+			<div id="body" class="adminBody">
+				<div class="text">
+					<h1 class="tac mt30">Estatus de proceso de registro</h1>
+					<div class="subtitle tac">Su asistente personal es: Nombre. E-mail: mail@mail.com</div>
+					<p class="tac">En este paso del proceso de registro es necesario que llene el formulario de pre-registro.  Si tiene alguna duda, por favor consúltenos a traves\rde nuestro chat de asistencia en línea o escribanos desde la sección de soporte tecnico.</p>
+					<p class="tac"><a href="support.html">Soporte</a></p>
+					
+					<ul class="registerSteps">
+						<li class="filled"><a href="user-registration-step1.html">Solicitud de registro</a></li>
+						<li class="active"><a href="user-registration-step2.html">Formato de pre-registro</a></li>
+						<li>Documentación</li>
+						<li>Visita/Validación</li>
+						<li>Contrato</li>
+					</ul>
+
+					<div class="form">
+						<form action="#">
+							<div class="subtitle">Administrativos</div>
+							<hr />
+							<div class="form_field halfAndHalf">
+								<div class="rightpart label"><span>*</span>Nombre/Razón Social:</div>
+							</div>
+							<div class="form_field halfAndHalf">
+								<select class="niceSelect leftpart" data-placeholder="Elegir">
+									<option></option>
+									<option>Persona física</option>
+									<option>Persona moral</option>
+								</select>								
+								<input type="text" class="rightpart">
+							</div>
+							<div class="form_field halfAndHalf">
+								<span class="label tar leftpart"><span>*</span>Numero de instrumento de acta constitutiva:</span>
+								<input type="text" class="rightpart">
+							</div>
+							<div class="form_field halfAndHalf">
+								<span class="label tar leftpart"><span>*</span>Folio de registro Publico de la Propiedad delacta constitutiva:</span>
+								<input type="text" class="rightpart">
+							</div>
+							<div class="form_field halfAndHalf">
+								<div class="rightpart">
+									<input type="checkbox" name="check" id="checkbox2" value="">
+									<label for="checkbox2"><span class="checkSpan"></span>Hay modificaciones al acta constitutiva.</label>
+								</div>
+							</div>											
+							<div class="form_field halfAndHalf">
+								<span class="label tar leftpart">Numero de instrumento de última modificación:</span>
+								<input type="text" class="rightpart">
+							</div>
+							<div class="form_field halfAndHalf">
+								<span class="label tar leftpart">Folio de registro publico de la propiedad ultima modificación:</span>
+								<input type="text" class="rightpart">
+							</div>
+							
+							<div class="subtitleGrey"><span>*</span>Domicilio de facturación</div>
+							<div class="clearfix registration">
+								<div class="half">
+									<div class="form_field"><span class="label">Calle:</span></div>
+									<div class="form_field"><input type="text"></div>
+									<div class="form_field"><span class="label">Colonia:</span></div>
+									<div class="form_field"><input type="text"></div>
+									<div class="form_field"><span class="label">Pais:</span></div>
+									<div class="form_field"><input type="text"></div>
+								</div>
+								<div class="half">
+									<div class="clearfix">
+										<div class="half">
+											<div class="form_field"><span class="label">Numero exterior:</span></div>
+											<div class="form_field"><input type="text"></div>
+											<div class="form_field"><span class="label">Delegacion/Municipio:</span></div>
+											<div class="form_field"><input type="text"></div>
+										</div>
+										<div class="half">
+											<div class="form_field"><span class="label">Numero interior:</span></div>
+											<div class="form_field"><input type="text"></div>
+											<div class="form_field"><span class="label">Estado:</span></div>
+											<div class="form_field"><input type="text"></div>
+										</div>
+									</div>	
+									<div class="form_field"><span class="label">C.P.:</span></div>
+									<div class="form_field"><input type="text"></div>									
+								</div>	
+							</div>
+							
+							<div class="subtitleGrey addForm clearfix"><a href="#"></a>Añadir domicilio alterno</div>
+						
+							<div class="clearfix registration hidden">
+								<div class="half">
+									<div class="form_field"><span class="label">Calle:</span></div>
+									<div class="form_field"><input type="text"></div>
+									<div class="form_field"><span class="label">Colonia:</span></div>
+									<div class="form_field"><input type="text"></div>
+									<div class="form_field"><span class="label">Pais:</span></div>
+									<div class="form_field"><input type="text"></div>
+								</div>
+								<div class="half">
+									<div class="clearfix">
+										<div class="half">
+											<div class="form_field"><span class="label">Numero exterior:</span></div>
+											<div class="form_field"><input type="text"></div>
+											<div class="form_field"><span class="label">Delegacion/Municipio:</span></div>
+											<div class="form_field"><input type="text"></div>
+										</div>
+										<div class="half">
+											<div class="form_field"><span class="label">Numero interior:</span></div>
+											<div class="form_field"><input type="text"></div>
+											<div class="form_field"><span class="label">Estado:</span></div>
+											<div class="form_field"><input type="text"></div>
+										</div>
+									</div>	
+									<div class="form_field"><span class="label">C.P.:</span></div>
+									<div class="form_field"><input type="text"></div>									
+								</div>	
+							</div>							
+							
+							<p class="tac">La información que en lo sucesivo se le solicita es de suma importancia para su beneficio y seguridad, ya que gracias ella podemos garantizar que todos nuestros socios son empresas serias y confiables. De igual forma, el tener una visión más amplia de su negocio nos permite ofrecerle un servicio diseñado especialmente para usted y su empresa.</p>
+							<div class="subtitle">Finanzas</div>
+							<hr />
+							<div class="form_field halfAndHalf">
+								<span class="label tar leftpart"><span>*</span>Capital contable declarado en el año fiscal anterior:</span>
+								<input type="text" class="rightpart">
+							</div>
+							<div class="subtitle">Infraestructura</div>
+							<hr />
+							<div class="form_field halfAndHalf">
+								<span class="label tar leftpart"><span>*</span>Numero de personas que labora en su empresa:</span>
+								<input type="text" class="rightpart">
+							</div>							
+							<div class="form_field halfAndHalf">
+								<span class="label tar leftpart"><span>*</span>Numero de equipos de computo en su empresa:</span>
+								<input type="text" class="rightpart">
+							</div>	
+							<div class="form_field halfAndHalf">
+								<span class="label tar leftpart"><span>*</span>Área de las instalaciones de oficina:</span>
+								<input type="text" class="rightpart">
+							</div>	
+							<div class="form_field halfAndHalf">
+								<span class="label tar leftpart"><span>*</span>Área de las instalaciones de almacun:</span>
+								<input type="text" class="rightpart">
+							</div>	
+							<div class="form_field halfAndHalf">
+								<span class="label tar leftpart"><span>*</span>Numero de vehículos con los que cuenta la empresa:</span>
+								<input type="text" class="rightpart">
+							</div>								
+
+							<div class="subtitle">Licencias y permisos</div>
+							<hr />
+							<div class="form_field halfAndHalf">
+								<span class="label tar leftpart"><span>*</span>Aviso de funcionamiento ante COFEPRIS:</span>
+								<input type="text" class="rightpart">
+							</div>			
+							<div class="form_field halfAndHalf">
+								<span class="label tar leftpart"><span>*</span>Nombre del responsable sanitario COFEPRIS:</span>
+								<input type="text" class="rightpart">
+							</div>	
+							<div class="form_field halfAndHalf">
+								<span class="label tar leftpart"><span>*</span>Numero de cédula profesional SEP del responsable sanitario:</span>
+								<input type="text" class="rightpart">
+							</div>	
+							<div class="form_field halfAndHalf">
+								<div class="rightpart">
+									<input type="checkbox" name="check" id="checkbox" value="">
+									<label class="label" for="checkbox"><span class="checkSpan"></span><span>*</span>Manejo medicamentos controlados o productos de origin biológico</label>
+								</div>
+							</div>								
+							<div class="form_field halfAndHalf">
+								<span class="label tar leftpart"><span>*</span>Numero de Licencia sanitaria COFEPRIS:</span>
+								<input type="text" class="rightpart">
+							</div>								
+							<div class="form_field validate validate-center">Por favor llene todos los campos marcados con!</div>
+							<div class="form_field halfAndHalf">
+								<div class="button tar leftpart"><input type="button" value="Editar"></div>
+								<div class="button tal rightpart"><input type="button" value="Salvar y continuar"></div>
+							</div>	
+						</form>
+						
+					</div>						
+				</div>
+
+			</div>
+		</div>
+		<footer id="footer" class="adminFooter">
+			<div class="copyright">&copy 2015 <a href="#">Aviso de privacidad</a></div>
+		</footer>
+		
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="js/ie10-viewport-bug-workaround.js"></script>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+		<script src="js/plugins.js"></script>
+		<script src="js/select2.min.js"></script>
+		<script src="js/scripts.js"></script>
+	</body>
+</html>

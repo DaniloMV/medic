@@ -1,0 +1,129 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+<div class="text arial_font">
+    <p>En MedicJoint nos interesa mucho tu entera satisfacción. Por ello, estamos listos para aclarar cualquier duda, apoyarte en cualquier procedimiento y asistirte con cualquier problemática o contratiempo. Recuerda que estamos para servirte.</p>
+    <p>En MedicJoint nos interesa mucho tu entera satisfacción. Por ello, estamos listos aclarar cualquier duda, apoyarte en cualquier procedimiento y asistirte con cualquier problemática o contratiempo. Recuerda que estamos para servirte.</p>
+    <h1 class="tac mt30">Estamos para asistirlo!</h1>
+    <div class="supportForm">
+        <p>Si tiene una sugerencia, queja, pregunta o necesita ayuda por favor permítanos conocerla usando el siguiente formulario. Nuestro equipo lo contactará a la brevedad.</p>
+
+
+        <form action="<?php echo $this->getUrl('loregistration/support/post'); ?>" id="contactForm" method="post">
+            <div class="supportForm_field">
+                <span class="label"><?php echo Mage::helper('contacts')->__('Telephone'); ?>:</span>
+                <input name="telephone" id="telephone<?php echo rand(0,100);?>" title="<?php echo Mage::helper('contacts')->__('Telephone'); ?>" value="" class="input-text" type="text" />
+            </div>
+            <div class="supportForm_field">
+                <span class="label"><span>*</span><?php echo Mage::helper('contacts')->__('Email'); ?>:</span>
+                <input name="email" id="email<?php echo rand(0,100);?>" title="<?php echo Mage::helper('contacts')->__('Email'); ?>" value="" class="input-text required-entry validate-email" type="text" >
+            </div>
+            <div class="supportForm_field">
+                <span class="label"><span>*</span><?php echo Mage::helper('contacts')->__('Name'); ?>:</span>
+                <input name="name" id="name<?php echo rand(0,100);?>" title="<?php echo Mage::helper('contacts')->__('Name'); ?>" value="" class="input-text required-entry" type="text">
+            </div>
+            <div class="supportForm_field">
+                <textarea placeholder="<?php echo Mage::helper('contacts')->__('Your message...'); ?>" class="required-entry input-text" name="comment" id="comment" title="<?php echo Mage::helper('contacts')->__('Comment') ?>" cols="5" rows="3"></textarea>
+            </div>
+            <div class="button"><input value="<?php echo Mage::helper('contacts')->__('Send'); ?>" type="submit"></div>
+        </form>
+    </div>
+</div>
+<div class="title">CONTÁCTANOS</div>
+<div class="contactsBlock text clearfix">
+  <div class="contactsBlock_img">
+    <iframe style="border: 0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d240968.4167230541!2d-99.15218449999999!3d19.3200988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce0026db097507%3A0x54061076265ee841!2z0JzQtdGF0LjQutC-LCDQpNC10LTQtdGA0LDQu9GM0L3Ri9C5INC-0LrRgNGD0LMsINCc0LXQutGB0LjQutCw!5e0!3m2!1sru!2s!4v1423041148467" height="290" width="600"></iframe>
+  </div>
+  <div class="contactsBlock_text fll">
+    <div class="phone">
+      <div>+52 1 (33) 1976 8339</div>
+    </div>
+    <div class="email">
+      <a href="mailto:email@email.com">david.mercado@medicjoint.com</a>
+    </div>
+    <div class="address">
+      <div>222 West 96th Street, City,</div>
+      <div>2222222 Country</div>
+    </div>
+  </div>
+</div>
+<!-- <div class="title">Preguntas frecuentes</div>
+<div class="text">
+    <div class="questions ">
+        <p>
+            Preguntas frecuentes?<span></span>
+        </p>
+        <div style="display: none;" class="answer">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </div>
+    </div>
+    <hr>
+    <div class="questions ">
+        <p>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.  lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?<span></span>
+        </p>
+        <div style="display: none;" class="answer">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </div>
+    </div>
+    <hr>
+    <div class="questions ">
+        <p>
+            Lorem ipsum dolor sit amet?<span></span>
+        </p>
+        <div style="display: none;" class="answer">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </div>
+    </div>
+    <hr>
+    <div style="display: none;" class="more remove-top-margin">
+        <div class="questions ">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua veniam, quis nostrud?<span></span>
+            </p>
+            <div style="display: none;" class="answer">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </div>
+        </div>
+        <hr>
+        <div class="questions ">
+            <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.  lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?<span></span>
+            </p>
+            <div style="display: none;" class="answer">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
+<div class="button mt30 tac more-button "><a href="#"><span class="down">Ver todas</span></a></div> -->
+<script type="text/javascript">
+    //<![CDATA[
+    var contactForm = new VarienForm('contactForm', true);
+    //]]>
+</script>

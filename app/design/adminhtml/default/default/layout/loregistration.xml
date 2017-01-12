@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>lomedic.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>main.css</name></action>
+            <!--<action method="addItem"><type>skin_js</type><name>js/jquery.mCustomScrollbar.js</name></action>-->
+            <action method="addJs"><script>lib/jquery/jquery-1.10.2.min.js</script></action>
+            <action method="addJs"><script>lib/jquery/noconflict.js</script></action>
+            <action method="addJs"><script>customer/customer_files.js</script></action>
+            <action method="addJs"><script>customer/navigation.js</script></action>
+        </reference>
+    </default>
+    <loregistration_customer_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="loregistration/adminhtml_dashboard_registration_grid" name="registration.grid"/>
+        </block>
+    </loregistration_customer_grid>
+    <adminhtml_customer_edit>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/jquery.datetimepicker.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/jquery.datetimepicker.js</name></action>
+            <action method="addJs"><script>inputmask.min.js</script></action>
+            <action method="addJs"><script>jquery.inputmask.min.js</script></action>
+        </reference>
+    </adminhtml_customer_edit>
+    <adminhtml_userscompany_new>
+        <!--
+        <reference name="root">
+            <action method="setTemplate"><template>registration/userscompany/new.phtml</template></action>
+        </reference>
+        -->
+        <reference name="content">
+            <block type="loregistration/adminhtml_usersCompany_grid" name="new" template="registration/userscompany/new.phtml" />
+        </reference>
+    </adminhtml_userscompany_new>
+    <adminhtml_userscompany_edit>
+        <reference name="content">
+            <block type="loregistration/adminhtml_usersCompany_grid" name="edit" template="registration/userscompany/edit.phtml" />
+        </reference>
+    </adminhtml_userscompany_edit>
+    
+    <adminhtml_catalog_product_new>
+        <reference name="catalog_product_js">
+            <action method="setTemplate"><template>registration/catalog/product/js.phtml</template></action>
+        </reference>
+    </adminhtml_catalog_product_new>
+
+    <adminhtml_catalog_product_edit>
+        <reference name="catalog_product_js">
+            <action method="setTemplate"><template>registration/catalog/product/js.phtml</template></action>
+        </reference>
+    </adminhtml_catalog_product_edit>
+</layout>

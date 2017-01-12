@@ -1,0 +1,7 @@
+(function(){
+
+    /*
+    * Approve customer file
+    * */
+
+})();

@@ -1,0 +1,8 @@
+#wunderimport_window .magento_content {
+    height: auto !important;
+    min-height: 300px;
+}
+.nwdthemes_gfont_preview {
+    clear: both;
+    padding-top: 10px;
+}

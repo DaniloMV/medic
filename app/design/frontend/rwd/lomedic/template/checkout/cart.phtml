@@ -1,0 +1,70 @@
+<?php $_sellerItems = $this->getItemsGroupedBySeller(); ?>
+
+<div class="text">
+    <h1 class="tac mt30"><?php echo $this->__('Your Shopping Cart') ?></h1>
+    <?php echo $this->getMessagesBlock()->toHtml(); ?>
+    <?php echo $this->getChildHtml('form_before'); ?>
+
+    <form id="cart-update" action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
+        <?php echo $this->getBlockHtml('formkey'); ?>
+
+        <?php foreach($_sellerItems as $_sellerId => $_items): ?>
+            <p class="clearfix"><span class="subtitleSpan"><?php echo $this->__('Seller'); ?>:</span> <span class="blue ttn subtitle"><?php echo $this->getCompanyName($_sellerId); ?></span></p>
+            <table class="cart">
+                <colgroup>
+                    <col width="57%">
+                    <col width="11%">
+                    <col width="20%">
+                    <col width="2%">
+                </colgroup>
+                <tr>
+                    <th><?php echo $this->__('Product'); ?></th>
+                    <th class="tac"><?php echo $this->__('Quantity'); ?></th>
+                    <th><?php echo $this->__('Price'); ?></th>
+                    <th><a title="<?php echo $this->__("Remove all items")?>" data-id="<?php echo $_sellerId; ?>" class="del del-all" href="javascript:void(0);"></a></th>
+                </tr>
+                <?php $_sellerTotals = 0; ?>
+                <?php foreach($_items as $_productNum => $_item): ?>
+                    <tr>
+                        <td class="cart_product">
+                            <span class="number"><?php echo ++$_productNum; ?>.</span>
+                            <?php echo $this->getItemHtml($_item); ?>
+                    </tr>
+                    <?php $_sellerTotals += $_item->getRowTotal(); ?>
+                <?php endforeach; ?>
+                <tr>
+                    <td colspan="5" class="tar pt0">
+                        <div class="totalPrice">
+                            <?php echo $this->__('Total price'); ?>: <span><?php echo $this->helper('checkout')->formatPrice($_sellerTotals); ?></span>
+                        </div>
+                        <div class="cart_btn form">
+                            <div class="button">
+                                <input onclick="window.location='<?php echo $this->getUrl('checkout/multishipping', array('seller' => $_sellerId)); ?>';" type="button" value="<?php echo $this->__('Buy from this seller'); ?>">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        <?php endforeach; ?>
+    </form>
+
+    <div class="total">
+        <?php echo $this->__('All total (%s products)', count($_sellerItems)); ?>: <span><?php echo $this->helper('checkout')->formatPrice($this->helper('checkout/cart')->getQuote()->getGrandTotal()); ?></span>
+    </div>
+
+    <div class="form clearfix">
+        <?php if (!$this->hasError()): ?>
+            <div class="button flr"><input onclick="window.location='<?php echo $this->getUrl('checkout/multishipping'); ?>';" type="button" value="<?php echo $this->__("Buy all")?>"></div>
+        <?php endif; ?>
+
+        <?php if ($this->getContinueShoppingUrl()): ?>
+            <div class="button fll">
+                <input type="button" value="<?php echo $this->__('Continue Shopping') ?>" onclick="setLocation('<?php echo $this->getUrl('catalog/product/list'); ?>')">
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+
+<?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
+<?php echo $this->getChildHtml('checkout_cart_widget'); ?>
+<?php echo $this->getChildHtml('checkout.cart.extra'); ?>

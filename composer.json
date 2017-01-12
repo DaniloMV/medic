@@ -1,0 +1,21 @@
+{
+  "require" : {
+    "php": "^5.4",
+    "ext-gd": "*",
+    "ext-mysqlnd": "*",
+    "ext-mbstring": "*",
+    "aws/aws-sdk-php": "~2.6"
+  },
+  "require-dev": {
+    "heroku/heroku-buildpack-php": "*"
+  },
+
+    "name": "mage/awssdk",
+    "description": "Magento Wrapper for AWS SDK for PHP",
+    "authors": [
+        {
+            "name": "Autor"
+        }
+    ],
+    "type": "magento-module"
+}

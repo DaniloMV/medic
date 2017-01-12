@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!--[if IE 6]>         <html class="no-js ie ie6 lte-ie6 lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js ie ie7 lte-ie7 lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js ie ie8 lte-ie8 lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie ie9 lte-ie9 lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<!--[if lte IE 8]>
+			<meta http-equiv="refresh" content="0;url=http://browsehappy.com">
+		<![endif]-->
+		
+		<!-- if we need ie8, put this on conditional comment for ie8 -->
+		<!-- <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> -->
+		
+
+		<!--[if IE]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+			<link rel="stylesheet" href="css/ie.css" />
+		<![endif]-->
+		
+
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/select2.css">
+		<link rel="stylesheet" href="css/jquery.datetimepicker.css">
+		<meta name="title" content="" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+		<!-- <script src="js/modernizr-2.6.2.min.js"></script> -->
+
+		<!--[if IE]>
+			<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js">IE7_PNG_SUFFIX=".png";</script>
+			<link rel="stylesheet" href="css/ie.css" />
+		<![endif]-->
+		<!--[if gte IE 9]>
+			<style type="text/css">
+				.gradient {
+					filter: none !important;
+				}
+			</style>
+		<![endif]-->
+		<title>Medic Joint</title>
+	</head>
+	<body>
+		<div id="wrapper" class="clearfix">
+			<div class="wrapSlider">
+				<header id="header" class="adminHeader"> 
+					<a href="index.html"><img class="logo" src="img/logo.png" alt="" /></a>
+					<div class="back"><a href="#">Regresar a panel de control</a></div>
+					<div class="user clearfix">
+						<div class="user_name">Asistente personal “nombre”</div>
+						<div class="user_img"><i count="9"><img src="img/user.jpg" /></i></div>
+						<div class="user_off"><a href="#">Cerrar sesión</a></div>
+					</div>					
+				</header>
+			</div>				
+			<div id="body" class="adminBody">
+				<div class="text">
+					<ul class="registerSteps">
+						<li class="filled"><a href="#">Solicitud de registro</a></li>
+						<li class="filled"><a href="#">Formato de pre-registro</a></li>
+						<li class="filled"><a href="#">Documentación</a></li>
+						<li class="active"><a href="#">Visita/Validación</a></li>
+						<li>Contrato</li>
+					</ul>
+
+					<div class="form">
+						
+							<div class="subtitle">Visita</div>
+							<hr />
+							<div class="subtitleGrey">1. Seleccione un día Y la hora para la visita:</div>
+							<form action="#">
+								<div class="clearfix">
+									<div class="calendar form_field"><input type="text" class="datepicker"></div>
+									<div class="hours form_field"><input type="text" class="timepicker"></div>
+									<div class="validate form_field fll">Lorem ipsum dolor sit amet!</div>
+								</div>	
+								<p class="blue">1 visit is appointed on 12/12/2014 at 2pm!</p>
+							</form>
+							<div class="subtitleGrey mt30">2. El lugar de la visita:</div>
+							<ul class="form_link">
+								<li class="showForm"><a href="#">Seleccionar dirección del solicitante</a></li>
+								<li class="showForm"><a href="#">Introducir dirección</a></li>
+							</ul>
+						
+							<div class="clearfix registration hidden">
+								<form action="#">
+								<div class="half">
+									<div class="form_field"><span class="label">Calle:</span></div>
+									<div class="form_field"><input type="text"></div>
+									<div class="form_field"><span class="label">Colonia:</span></div>
+									<div class="form_field"><input type="text"></div>
+									<div class="form_field"><span class="label">Pais:</span></div>
+									<div class="form_field"><input type="text"></div>
+								</div>
+								<div class="half">
+									<div class="clearfix">
+										<div class="half">
+											<div class="form_field"><span class="label">Numero exterior:</span></div>
+											<div class="form_field"><input type="text"></div>
+											<div class="form_field"><span class="label">Delegacion/Municipio:</span></div>
+											<div class="form_field"><input type="text"></div>
+										</div>
+										<div class="half">
+											<div class="form_field"><span class="label">Numero interior:</span></div>
+											<div class="form_field"><input type="text"></div>
+											<div class="form_field"><span class="label">Estado:</span></div>
+											<div class="form_field"><input type="text"></div>
+										</div>
+									</div>	
+									<div class="form_field"><span class="label">C.P.:</span></div>
+									<div class="form_field"><input type="text"></div>									
+								</div>
+								</form>								
+							</div>
+							
+							<div class="subtitleGrey">Comentarios para el solicitante.</div>
+							<form action="#">
+								<div class="js_comments">
+									<div class="comment">
+										<div class="comment_date">14/15/2014</div>
+										<div class="comment_text" id="foo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, facere dignissimos aliquam eaque velit at iure cupiditate quam ipsam in assumenda unde quae id fuga dolores reprehenderit laborum totam nam.</div>
+									</div>
+								</div>	
+								<div class="form_field"><textarea placeholder="Comentarios..."></textarea></div>	
+								<div class="button tar add_comment"><input type="button" value="Añadir"></div>
+							</form>		
+							<div class="subtitle">Validación</div>
+							<hr />
+							<div class="approve"><a href="#">Pre-aprobar al solicitante</a></div>
+							<ul class="approve_list">
+								<li>El solicitante ha sido pre-aprobado. En espera de la aprobación del supervisor!</li>
+								<li>El solicitante ha sido aprobado por el supervisor.</li>
+							</ul>
+							<p class="download">Contrato: <a href="#">ContratoDocumentNombre.doc</a></p>
+							<p class="form_field validate ml40">El solicitante ha sido rechazado por el supervisor. Favor de revisar las desviaciones!</p>
+							<div class="subtitleGrey mt30">Desviaciones encontradas por el supervisor:</div>
+							<table class="table mb30">
+								<tr><td>14/15/2014</td><td>Lorem ipsum dolor sit amet.Consectetur adipisicing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td></tr>
+								<tr><td>14/15/2014</td><td>Lorem ipsum dolor sit amet.</td></tr>
+							</table>
+							<p>If the prospect can't be pre-approved leave deviations and close the process:</p>
+							<form action="#">
+								<div class="form_field"><textarea placeholder="Escriba aquí las desviaciones."></textarea></div>
+								<div class="button tar"><input type="button" value="Cerrar proceso"></div>
+							</form>	
+						
+						
+					</div>						
+				</div>
+
+			</div>
+		</div>
+		<footer id="footer" class="adminFooter">
+			<div class="copyright">&copy 2015 <a href="#">Aviso de privacidad</a></div>
+		</footer>
+		
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="js/ie10-viewport-bug-workaround.js"></script>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+		<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/select2.min.js"></script>
+		<script src="js/jquery.datetimepicker.js"></script>
+		<script src="js/scripts.js"></script>
+	</body>
+</html>

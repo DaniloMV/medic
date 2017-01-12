@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2015, Мedic Joint.
+ * Developed by Softeq Development Corp. for Lomedic  S.A..
+ */
+-->
+<config>
+    <modules>
+        <Lomedic_Registration>
+            <version>1.0.0.34</version> 
+        </Lomedic_Registration>
+    </modules>
+    <global>
+        <helpers>
+            <loregistration>
+                <class>Lomedic_Registration_Helper</class>
+            </loregistration>
+        </helpers>
+        <blocks>
+            <loregistration>
+                <class>Lomedic_Registration_Block</class>
+            </loregistration>
+            <customer>
+                <rewrite>
+                    <form_register>Lomedic_Registration_Block_Rewrite_Customer_Form_Register</form_register>
+                </rewrite>
+            </customer>
+            <adminhtml>
+                <rewrite>
+                    <page_menu>Lomedic_Registration_Block_Rewrite_Adminhtml_Page_Menu</page_menu>
+                    <customer_edit_tabs>Lomedic_Registration_Block_Rewrite_Adminhtml_Customer_Edit_Tabs</customer_edit_tabs>
+                    <catalog_product_edit_tabs>Lomedic_Registration_Block_Rewrite_Adminhtml_Catalog_Product_Edit_Tabs</catalog_product_edit_tabs>
+                    <catalog_product_edit_tab_attributes_create>Lomedic_Registration_Block_Rewrite_Adminhtml_Catalog_Product_Edit_Tab_Attributes_Create</catalog_product_edit_tab_attributes_create>
+                    <customer_edit_tab_addresses>Lomedic_Registration_Block_Rewrite_Adminhtml_Customer_Edit_Tab_Addresses</customer_edit_tab_addresses>
+                    <customer_form_element_file>Lomedic_Registration_Block_Rewrite_Adminhtml_Customer_Form_Element_File</customer_form_element_file>
+                    <dashboard>Lomedic_Registration_Block_Rewrite_Adminhtml_Dashboard</dashboard>
+                    <permissions_user_grid>Lomedic_Registration_Block_Rewrite_Adminhtml_Permissions_User_Grid</permissions_user_grid>
+                    <permissions_user_edit_tabs>Lomedic_Registration_Block_Rewrite_Adminhtml_Permissions_User_Edit_Tabs</permissions_user_edit_tabs>
+                    <customer_grid>Lomedic_Registration_Block_Rewrite_Adminhtml_Customer_Grid</customer_grid>
+                    <customer_edit>Lomedic_Registration_Block_Rewrite_Adminhtml_Customer_Edit</customer_edit>
+		        </rewrite>
+            </adminhtml>
+        </blocks>
+        <models>
+            <loregistration>
+                <class>Lomedic_Registration_Model</class>
+                <resourceModel>loregistration_resource</resourceModel>
+            </loregistration>
+            <loregistration_resource>
+                <class>Lomedic_Registration_Model_Resource</class>
+                <deprecatedNode>loregistration_mysql4</deprecatedNode>
+                <entities>
+                    <files>
+                        <table>customer_files</table>
+                    </files>
+                    <companies>
+                        <table>customer_companies</table>
+                    </companies>
+                    <usersCompany>
+                        <table>customer_users_company</table>
+                    </usersCompany>
+                    <userCompanyPrivileges>
+                        <table>customer_user_company_privileges</table>
+                    </userCompanyPrivileges>
+                    <usersCompanyPrivileges>
+                        <table>customer_users_company_privileges</table>
+                    </usersCompanyPrivileges>
+                    <zip>
+                        <table>zip</table>
+                    </zip>
+                    <visits>
+                        <table>customer_visits</table>
+                    </visits>
+                    <lock_registration>
+                        <table>loregistration_lock</table>
+                    </lock_registration>
+                </entities>
+            </loregistration_resource>
+            <customer>
+                <rewrite>
+                    <customer>Lomedic_Registration_Model_Rewrite_Customer_Customer</customer>
+                    <address>Lomedic_Registration_Model_Rewrite_Customer_Address</address>
+                </rewrite>
+            </customer>
+        </models>
+        <resources>
+            <loregistration_setup>
+                <setup>
+                    <module>Lomedic_Registration</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+            </loregistration_setup>
+        </resources>
+        <events>
+            <controller_action_predispatch_customer_account_loginPost>
+                <observers>
+                    <captcha>
+                        <class>loregistration/captcha_observer</class>
+                        <method>checkUserLogin</method>
+                    </captcha>
+                </observers>
+            </controller_action_predispatch_customer_account_loginPost>
+            <controller_action_postdispatch_adminhtml_customer_save>
+                <observers>
+                    <loregistration>
+                        <class>loregistration/observer</class>
+                        <method>customerAdminSaveAfter</method>
+                    </loregistration>
+                </observers>
+            </controller_action_postdispatch_adminhtml_customer_save>
+            <controller_action_postdispatch_adminhtml_permissions_user_save>
+                <observers>
+                    <loregistration>
+                        <class>loregistration/observer</class>
+                        <method>userAdminSaveAfter</method>
+                    </loregistration>
+                </observers>
+            </controller_action_postdispatch_adminhtml_permissions_user_save>
+            <adminhtml_customer_prepare_save>
+                <observers>
+                    <loregistration>
+                        <class>loregistration/observer</class>
+                        <method>customerAdminPrepareSave</method>
+                    </loregistration>
+                </observers>
+            </adminhtml_customer_prepare_save>
+            <customer_save_before>
+                <observers>
+                    <loregistration>
+                        <class>loregistration/observer</class>
+                        <method>customerSave</method>
+                    </loregistration>
+                </observers>
+            </customer_save_before>
+            <controller_action_predispatch_adminhtml_customer_edit>
+                <observers>
+                    <loregistration>
+                        <class>loregistration/observer</class>
+                        <method>lockRegistration</method>
+                    </loregistration>
+                </observers>
+            </controller_action_predispatch_adminhtml_customer_edit>
+            <customer_address_format>
+                <observers>
+                    <loregistration>
+                        <class>loregistration/observer</class>
+                        <method>updateAddressTemplate</method>
+                    </loregistration>
+                </observers>
+            </customer_address_format>
+        </events>
+        <template>
+            <email>
+                <loregistration_user_company translate="label" module="loregistration">
+                    <label>Credentials</label>
+                    <file>loregistration_user_company.html</file>
+                    <type>html</type>
+                </loregistration_user_company>
+                <lomedicregistration_files_to_check translate="label" module="loregistration">
+                    <label>Files to check</label>
+                    <file>lomedicregistration_files_to_check.html</file>
+                    <type>html</type>
+                </lomedicregistration_files_to_check>
+                <loregistration_password_new translate="label" module="loregistration">
+                    <label>New password</label>
+                    <file>loregistration_password_new.html</file>
+                    <type>html</type>
+                </loregistration_password_new>
+                <loregistration_registration_success translate="label" module="loregistration">
+                    <label>Successful registration</label>
+                    <file>loregistration_registration_success.html</file>
+                    <type>html</type>
+                </loregistration_registration_success>
+                <complete_registration translate="label" module="loregistration">
+                    <label>Complete Registration</label>
+                    <file>complete_registration.html</file>
+                    <type>html</type>
+                </complete_registration>
+                <close_registration translate="label" module="loregistration">
+                    <label>Close Registration</label>
+                    <file>close_registration.html</file>
+                    <type>html</type>
+                </close_registration>
+                <correction_file_registration translate="label" module="loregistration">
+                    <label>Need file correction</label>
+                    <file>correction_file_registration.html</file>
+                    <type>html</type>
+                </correction_file_registration>
+                <visit_registration translate="label" module="loregistration">
+                    <label>Visit Appointment</label>
+                    <file>visit_registration</file>
+                    <type>html</type>
+                </visit_registration>
+                <new_user_company translate="label" module="loregistration">
+                    <label>New User Company</label>
+                    <file>new_user_company.html</file>
+                    <type>html</type>
+                </new_user_company>
+                <file_validated_info translate="label" module="loregistration">
+                    <label>All files validated. Customer inform email</label>
+                    <file>loregistration_file_validated_info.html</file>
+                    <type>html</type>
+                </file_validated_info>
+                <file_nonvalidated_info translate="label" module="loregistration">
+                    <label>All files validated. Customer inform email</label>
+                    <file>loregistration_file_nonvalidated_info.html</file>
+                    <type>html</type>
+                </file_nonvalidated_info>
+            </email>
+        </template>
+    </global>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Lomedic_Registration>
+                    <files>
+                        <default>Lomedic_Registration.csv</default>
+                    </files>
+                </Lomedic_Registration>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <loregistration>
+                    <file>loregistration.xml</file>
+                </loregistration>
+            </updates>
+        </layout>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <loregistration before="Mage_Adminhtml">Lomedic_Registration_Adminhtml</loregistration>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <frontend>
+        <routers>
+            <loregistration>
+                <use>standard</use>
+                <args>
+                    <module>Lomedic_Registration</module>
+                    <frontName>registration</frontName>
+                </args>
+            </loregistration>
+            <customer>
+                <use>standard</use>
+                <args>
+                    <modules>
+                        <loregistration before="Mage_Customer">Lomedic_Registration</loregistration>
+                    </modules>
+                </args>
+            </customer>
+        </routers>
+        <events>
+        </events>
+        <translate>
+            <modules>
+                <Lomedic_Registration>
+                    <files>
+                        <default>Lomedic_Registration.csv</default>
+                    </files>
+                </Lomedic_Registration>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <loregistration>
+                    <file>loregistration.xml</file>
+                </loregistration>
+            </updates>
+        </layout>
+    </frontend>
+    <default>
+    </default>
+    <crontab>
+        <jobs>
+            <loregistration_check_status>
+                <schedule>
+                    <cron_expr>*/30 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>loregistration/observer::checkStatusRegistration</model>
+                </run>
+            </loregistration_check_status>
+        </jobs>
+    </crontab>
+</config>

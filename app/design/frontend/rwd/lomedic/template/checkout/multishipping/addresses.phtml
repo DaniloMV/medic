@@ -1,0 +1,35 @@
+<div class="text multiple-checkout">
+    <div class="form clearfix">
+        <div class="page-title">
+            <h1><?php echo $this->__('Ship to Address'); ?></h1>
+        </div>
+        <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+        <form id="checkout_multishipping_form" action="<?php echo $this->getPostActionUrl() ?>" method="post">
+            <input type="hidden" name="continue" value="0" id="can_continue_flag" />
+            <input type="hidden" name="new_address" value="0" id="add_new_address_flag" />
+
+            <div class="clearfix form_field_radio addressBlock">
+                <?php $i = 1; $_addresses = $this->getAddresses(); $_checkedId = $_addresses['checked']; foreach ($_addresses['data'] as $_id => $_address): ?>
+                    <?php
+                        $_checked = $i == 1;
+
+                        if ($_checkedId) {
+                            $_checked = $_id == $_checkedId;
+                        }
+                    ?>
+                    <div class="form_field radio addressBlock_item">
+                    <input type="radio" name="ship[address]" id="roundedOne<?php echo $i; ?>" value="<?php echo $_id; ?>" <?php if ($_checked): ?>checked<?php endif; ?>>
+                        <label class="mt0 mb0" for="roundedOne<?php echo $i; ?>"><?php echo $this->__('Address') . " $i"; ?></label>
+                        <div class="addressBlock_item_desc"><?php echo $_address; ?></div>
+                    </div>
+                <?php $i++; endforeach; ?>
+            </div>
+
+            <div class="buttons-set">
+                <p class="back-link"><a href="<?php echo $this->getBackUrl() ?>"><small>&laquo; </small><?php echo $this->__('Back to Shopping Cart') ?></a></p>
+                <button type="submit" data-action="checkout-continue-shipping" title="<?php echo $this->__('Continue to Shipping Information') ?>" class="button<?php if ($this->isContinueDisabled()):?> disabled<?php endif; ?> tar" onclick="$('can_continue_flag').value=1"<?php if ($this->isContinueDisabled()):?> disabled="disabled"<?php endif; ?>><span><span><?php echo $this->__('Continue to Shipping Information') ?></span></span></button>
+            </div>
+        </form>
+    </div>
+</div>

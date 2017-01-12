@@ -1,0 +1,132 @@
+<?php
+    $resultArr = $this->prepareProductFilters();
+    $params = $this->getRequest()->getParams();
+    $helper=Mage::helper('marketplace');
+    $sellers = $this->prepareSellerFilter();
+?>
+<style>
+    .left_column .button input {
+        font-size: 1.5em;
+        padding: 10px 40px;
+    }
+    .button input {
+        background: #31ade3 none repeat scroll 0 0;
+        border-radius: 3px;
+        color: #fff;
+        font: 2em "Myriad-Bold";
+        padding: 10px 60px;
+        text-decoration: none;
+        text-transform: uppercase;
+        border: none;
+    }
+</style>
+ <div class="button mb20">
+    <form action="<?php echo $this->getUrl('seller/marketplaceaccount/new/'); ?>" method="get">
+        <input type="hidden" name="set" value="4">
+        <input type="hidden" name="type" value="simple">
+        <input type="submit" value="<?php echo $helper->__('Add new product') ?>">
+    </form>
+</div>
+<form id="filter_form" action="<?php echo $this->getUrl('marketplace/marketplaceaccount/myproductslist/'); ?>" method="get">
+    <div class="subtitle"><?php echo $this->__('Basic frame ID') ?></div>
+    <?php $data = $this->getGovermentCatalogId(); ?>
+    <ul class="leftMenu">
+        <li>
+             <div class="menuCheck">
+                <select name="filter_code" id="filter_code" class="select-with-search"  placeholder="<?php echo $this->__('Search by ID') ?>">
+                        <option></option>
+                        <?php foreach($data as $id =>$value):?>
+                        <option <?php echo ((isset($params['filter_code']) && !empty($params['filter_code']) && $id==$params['filter_code'])?'selected=selected':'')?> value="<?php echo $id?>"><?php echo $value?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </li>
+    </ul>
+    
+    <div class="subtitle"><?php echo $this->__('Particularity') ?></div>
+    <ul class="leftMenu">
+        <?php foreach($resultArr as $key => $val):
+            $kkk = 0;
+            foreach($val["child"] as $chil) {
+                if(array_key_exists($val['id']."-".$chil["id"],$params['generic_name'])){
+                    $kkk = 1;
+                }
+            }?>
+            <li <?php if(((!isset($params['generic_name']) || empty($params['generic_name'])) && $key == 0) || ($kkk==1)){?> class="active" <?php }?> >
+                <a style="cursor: pointer"><?php echo $this->__($val["name"]) ?></a>
+                <ul <?php if(((!isset($params['generic_name']) || empty($params['generic_name'])) && $key == 0) || ($kkk==1)){?>class="not_hide"<?php }?> style="<?php if(((!isset($params['generic_name']) || empty($params['generic_name'])) && $key == 0) || ($kkk==1)){?>display: block !important;<?php }else{?>display: none;<?php }?> overflow-y: auto;overflow-x:hidden; max-height: 250px;">
+                    <?php foreach($val["child"] as $option): ?>
+                        <li>
+                            <div class="menuCheck">
+                                <input type="checkbox" <?php if(isset($params['generic_name']) && !empty($params['generic_name']) && array_key_exists($val['id']."-".$option["id"],$params['generic_name'])):?>checked="checked" <?php endif;?>  name="generic_name[<?php echo $val['id']."-".$option["id"] ?>]" id="generic_name<?php echo $val['id']."-".$option["id"] ?>">
+                                <label for="generic_name<?php echo $val['id']."-".$option["id"] ?>"><span class="checkSpan"></span><?php echo $option["name"]?></label>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </li>
+        <?php endforeach;?>
+    </ul>
+    <div class="menuCheck">
+        <input <?php if(isset($params['public_sector']) && !empty($params['public_sector']) && $params['public_sector'] == "on"):?>checked="checked" <?php endif;?> id="checkbox" name="public_sector" type="checkbox">
+        <label for="checkbox"><span class="checkSpan"></span><?php echo $this->__('For sale to the public sector') ?></label>
+    </div>
+    <div class="menuCheck leftMenu">
+        <input <?php if(isset($params['private_sector']) && !empty($params['private_sector']) && $params['private_sector'] == "on"):?>checked="checked" <?php endif;?>  id="checkbox2" name="private_sector" type="checkbox">
+        <label for="checkbox2"><span class="checkSpan"></span><?php echo $this->__('For sale to the private sector') ?></label>
+    </div>
+    <div class="form leftMenu">
+        <div class="search form_field" style="padding-bottom: 0px; margin-bottom: 20px">
+            <input placeholder="<?php echo $this->__('Search...') ?>" id="search" name="search" type="text" value="<?php if(isset($params['search']) && !empty($params['search'])){ echo $params['search']; }?>"><span id="btn_search"></span>
+        </div>
+    </div>
+
+    <div class="button mb20">
+        <a href="<?php echo $this->getUrl('marketplace/marketplaceaccount/myproductslist/'); ?>">
+            <?php echo $this->__('Clear all') ?>
+        </a>
+    </div>
+
+    <div class="button mb20" style="display: none;">
+        <input type="submit" value="<?php echo $this->__('Find for filter') ?>" >
+    </div>
+</form>
+
+
+<script type="text/javascript">
+    $j('#filter_form').find("label").on("click",function(){
+        $j(document).ready(function(){
+            setTimeout(function(){$j('#filter_form').submit();},200);
+        });
+    });
+
+    $j("#btn_search").on("click",function(){
+        $j(document).ready(function(){
+            setTimeout(function(){$j('#filter_form').submit();},200);
+        });
+    });
+
+    $j('#search').keyup(function(e){
+        if(e.keyCode == 13){
+            $j(document).ready(function(){
+                setTimeout(function(){$j('#filter_form').submit();},200);
+            });
+        }
+    });
+
+    $j('#filter_seller').change(function(){
+        $j(document).ready(function(){
+            setTimeout(function(){$j('#filter_form').submit();},200);
+        });
+    });
+    $j('#filter_code').change(function(){
+        $j(document).ready(function(){
+            setTimeout(function(){$j('#filter_form').submit();},200);
+        });
+    });
+    $j('#filter_description').change(function(){
+        $j(document).ready(function(){
+            setTimeout(function(){$j('#filter_form').submit();},200);
+        });
+    });
+</script>

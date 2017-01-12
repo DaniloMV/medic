@@ -1,0 +1,116 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<p class="bug-report">
+    <span class="locale_select"><?php echo $this->__('Interface Locale: %s', $this->getLanguageSelect()) ?></span>
+</p>
+<p class="legality">
+    <img src="<?php echo $this->getSkinUrl('images/varien_logo.gif') ?>" class="v-middle" alt="" />&nbsp;&nbsp;
+    <?php echo $this->__('Magento&trade; is a trademark of Magento Inc.<br/>Copyright &copy; %s Magento Inc.', date('Y')) ?>
+</p>
+<?php echo $this->__('Magento ver. %s', Mage::getVersion()) ?>
+<script type="text/javascript">
+
+    var waButtons = [{class: 'reset', title: '<?php echo $this->__('Reset'); ?>'}
+                    ,{class: 'reset', title: '<?php echo $this->__('Reset Filter'); ?>'}
+                    ,{class: 'reset', title: '<?php echo $this->__('Refresh'); ?>'}
+                    ,{class: 'reset', title: '<?php echo $this->__('Synchronize'); ?>'}
+                    ,{class: 'save_continue', title: '<?php echo $this->__('Save and Continue Edit'); ?>'}
+                    ,{class: 'save_apply', title: '<?php echo $this->__('Save and Apply'); ?>'}
+                    ,{class: 'save_as', title: '<?php echo $this->__('Save As'); ?>'}
+                    ,{class: 'save_as', title: '<?php echo $this->__('Save Data and Create Package'); ?>'}
+                    ,{class: 'save_custom', title: '<?php echo $this->__('Save package with custom package file name'); ?>'}
+                    ,{class: 'save', title: '<?php echo $this->__('Submit'); ?>'}
+                    ,{class: 'save', title: '<?php echo $this->__('OK'); ?>'}
+                    ,{class: 'save', title: '<?php echo $this->__('Apply'); ?>'}
+                    ,{class: 'save', title: '<?php echo $this->__('Apply Rules'); ?>'}
+                    ,{class: 'save', title: '<?php echo $this->__('Update Changes'); ?>'}
+                    ,{class: 'save', title: '<?php echo $this->__('Continue'); ?>'}
+                    ,{class: 'save', title: '<?php echo $this->__('Save package with custom package file name'); ?>'}
+                    ,{class: 'save', title: '<?php echo $this->__('Save Data and Create Package'); ?>'}
+                    ,{class: 'save', title: '<?php echo $this->__('Add Products'); ?>'}
+                    ,{class: 'save', title: <?php echo json_encode( $this->__("Update Items and Qty's") ); ?>}
+                    ,{class: 'save', title: <?php echo json_encode( $this->__("Update Qty's") ); ?>}
+                    ,{class: 'export_button', title: '<?php echo $this->__('Export'); ?>'}
+                    ,{class: 'export_button', title: '<?php echo $this->__('Export Tax Rates'); ?>'}
+                    ,{class: 'import', title: '<?php echo $this->__('Import Tax Rates'); ?>'}
+                    ,{class: 'email', title: '<?php echo $this->__('Send Email'); ?>'}
+                    ,{class: 'email', title: '<?php echo $this->__('Send Tracking Information'); ?>'}
+                    ,{class: 'flush', title: '<?php echo $this->__('Flush Magento Cache'); ?>'}
+                    ,{class: 'flush_storage', title: '<?php echo $this->__('Flush Cache Storage'); ?>'}
+                    ,{class: 'order_credit_memo', title: '<?php echo $this->__('Credit Memo'); ?>'}
+                    ,{class: 'order_reorder', title: '<?php echo $this->__('Reorder'); ?>'}                    
+                    ,{class: 'order_unhold', title: '<?php echo $this->__('Unhold'); ?>'}                    
+                    ,{class: 'order_hold', title: '<?php echo $this->__('Hold'); ?>'}
+                    ,{class: 'order_hold', title: '<?php echo $this->__('Suspend'); ?>'}
+                    ,{class: 'order_invoice', title: '<?php echo $this->__('Invoice'); ?>'}                           
+                    ,{class: 'order_ship', title: '<?php echo $this->__('Ship'); ?>'}
+                    ,{class: 'backup_system', title: '<?php echo $this->__('System Backup'); ?>'}
+                    ,{class: 'backup_media', title: '<?php echo $this->__('Database and Media Backup'); ?>'}
+                    ,{class: 'backup_database', title: '<?php echo $this->__('Database Backup'); ?>'}
+                    ,{class: 'button_preview', title: '<?php echo $this->__('Preview Template'); ?>'}
+                    ,{class: 'button_plain_text', title: '<?php echo $this->__('Convert to Plain Text'); ?>'}
+                    ,{class: 'button_html', title: '<?php echo $this->__('Return HTML Version'); ?>'}
+                    ,{class: 'button_preview', title: '<?php echo $this->__('Show Report'); ?>'}
+                    ,{class: 'button_edit', title: '<?php echo $this->__('Edit'); ?>'}
+                    ,{class: 'cancel_button', title: '<?php echo $this->__('Cancel'); ?>'}
+                    ,{class: 'button_select', title: '<?php echo $this->__('Select Block...'); ?>'}
+                    ,{class: 'button_select', title: '<?php echo $this->__('Select Category...'); ?>'}
+                    ,{class: 'button_select', title: '<?php echo $this->__('Select Page...'); ?>'}
+                    ,{class: 'button_select', title: '<?php echo $this->__('Select Product...'); ?>'}
+                    ,{class: 'delete', title: '<?php echo $this->__('Disable'); ?>'}
+                    ,{class: 'delete', title: '<?php echo $this->__('Close Window'); ?>'}
+                    ,{class: 'delete', title: '<?php echo $this->__('Clear Shopping Cart'); ?>'}
+                    ,{class: 'delete', title: '<?php echo $this->__('Delete Package'); ?>'}
+                    ,{class: 'button_config', title: '<?php echo $this->__('Configure'); ?>'}
+                    ,{class: 'button_config', title: '<?php echo $this->__('This product does not have any configurable options'); ?>'}
+                    ,{class: 'button_add_website', title: '<?php echo $this->__('Create Website'); ?>'}
+                    ,{class: 'button_add_store', title: '<?php echo $this->__('Create Store'); ?>'}
+                    ,{class: 'button_add_store_view', title: '<?php echo $this->__('Create Store View'); ?>'}
+                    ,{class: 'button_assign', title: '<?php echo $this->__('Assign Status to State'); ?>'}
+                    ,{class: 'add-variable', title: '<?php echo $this->__('Insert Variable...'); ?>'}
+                    ,{class: 'button_label', title: '<?php echo $this->__('Create Shipping Label...'); ?>'}
+                    ,{class: 'button_print', title: '<?php echo $this->__('Print'); ?>'}
+                    ,{class: 'add', title: '<?php echo $this->__('Add Package'); ?>'}
+                    ,{class: 'search', title: '<?php echo $this->__('Search'); ?>'}];
+
+    var waTheme = '<?php echo Mage::helper('wunderadmin')->getWunderStyle('theme'); ?>';
+
+    if (typeof jscolor != 'undefined')
+    {
+        jscolor.dir = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS) . 'jscolor/'; ?>';
+    }
+
+    $j('footer_bug_tracking').target = 'Varien_External';
+    $j('footer_connect').target = 'Varien_External';
+    function setInterfaceLanguage(evt){
+        var elem = Event.element(evt);
+        if(elem){
+            setLocation('<?php echo $this->getChangeLocaleUrl() ?>locale/'+elem.value+'/<?php echo $this->getRefererParamName() ?>/<?php echo $this->getUrlForReferer() ?>');
+        }
+    }
+    Event.observe('interface_locale', 'change', setInterfaceLanguage)
+</script>

@@ -1,0 +1,43 @@
+<?php echo $this->getCssJsHtml() ?>
+<script type="text/javascript">
+    var wait = '<?php echo $this->__("Please wait");?>';
+    jQuery(document).ready(function(){
+        jQuery(".fancybox").bind("click", function() {
+            jQuery('#forgotpass_form_button').show();
+            jQuery("#forgot_password_error").html("");
+            jQuery("#forgot_password_success").html("");
+        });
+        jQuery("#forgotpass_form").bind("submit", function() {
+            jQuery("#forgot_password_error").html("");
+            jQuery("#forgot_password_success").html(wait);
+            jQuery.ajax({
+                type : "POST",
+                cache : false,
+                url: "<?php echo $this->getUrl('customer/account/forgotpasswordpost')?>",
+                data: {
+                    email: jQuery('#forgotpass_form_email').val()
+                },
+                success:function(data){
+                    var data = JSON.parse(data);
+                    if(data.success == true){
+                        jQuery("#forgot_password_error").html("");
+                        jQuery("#forgot_password_success").html(data.mes);
+                        jQuery('#forgotpass_form_button').hide();
+                    }else{
+                        jQuery("#forgot_password_success").html("");
+                        jQuery("#forgot_password_error").html(data.mes);
+                    }
+                }
+            });
+            return false;
+        });
+    });
+</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>

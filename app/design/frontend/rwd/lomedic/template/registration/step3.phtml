@@ -1,0 +1,1143 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Create account form template
+ *
+ * @see app/design/frontend/base/default/template/customer/form/register.phtml
+ */
+/** @var $this Mage_Customer_Block_Form_Register */
+
+//if($this->getCustomer()->getRegistrationStatus() > Lomedic_Registration_Model_System_Config_Source_Status::VALIDATION){
+    $customerFiles = $this->getValidatedFiles();
+//}
+?>
+
+<div class="text">
+    <h1 class="tac mt30"><?php echo $this->__('Status of the process of registration')?></h1>
+    <?php if($this->getRecruter()): ?>
+        <div class="subtitle tac"><?php echo $this->__("Your personal recruiter is: %s <a href='mailto:%s'>%s</a>",$this->getRecruter()->getName(),$this->getRecruter()->getEmail(),$this->getRecruter()->getEmail())?></div>
+    <?php endif; ?>    
+    <div class="tac"><?php echo $this->__("<p>In this step, we ask you to upload in our system the digitalized version of the documents we require through the next form. </p><p>We strongly recommend to click the button 'Save and continue' after each upload in order to save the changes.</p>")?></div>
+    <p class="tac"><a href="<?php echo $this->getSupportUrl()?>"><?php echo $this->__('Support')?></a></p>
+    <ul class="registerSteps">
+        <li class="filled"><a href="<?php echo $this->getUrl('*/*/step1')?>"><?php echo $this->__('Registration request')?></a></li>
+        <li class="filled"><?php if($this->getPage2Url()):?>
+                <a href="<?php echo $this->getPage2Url()?>"><?php echo $this->__('Pre-registration form')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Pre-registration form')?>
+            <?php endif;?>
+        </li>
+        <li class="active"><?php if($this->getPage3Url()):?>
+            <a href="<?php echo $this->getPage3Url()?>"><?php echo $this->__('Documentation')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Documentation')?>
+            <?php endif;?>
+        </li>
+        <li>
+            <?php if($this->getPage4Url()):?>
+                <a href="<?php echo $this->getPage4Url()?>"><?php echo $this->__('Visit\Validation')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Visit\Validation')?>
+            <?php endif;?>
+        </li>
+        <li><?php if($this->getPage5Url()):?>
+                <a href="<?php echo $this->getPage5Url()?>"><?php echo $this->__('Contract')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Contract')?>
+            <?php endif;?>
+        </li>
+    </ul>
+    <div class="tac"><?php echo $this->__("<p>In order to make the visit process more agile, we ask you to upload the digitalized version of the documents listed in the following form. </p><p>For security purposes, we ask you to have the original documents while the visit is carried out. If you do not want to upload you documents, please call your personal assistant; he will ask you to have copies of the solicited documentation at the beginning of the visit to your facilities. If you do not have some documents, we can help and assist you, please let us know by telling you personal assistant which documents are missing. </p><p>He will help you to go forward in the registration process. Your satisfaction and safety is very important for us. </p><p>Keep in mind that our technical support team is prepared to help and support you in any part of the registration process.</p>")?></div>
+
+
+    <div class="tac" style="border: 1px solid #31ade3;border-radius: 3px; margin: 15px; padding: 15px;"><p><?php echo $this->__('As soon as you have uploaded the required documentation, they will be validated for your personal assistant. In case all of them are valid, you will be able to continue to the next step of the process. Otherwise, You can see the cause of refusal beside the file uploaded and we will appreciate that you upload a new document once you have fixed the problem.')?></p></div>
+
+    <div class="form">
+        <form id="step3" name="step3" action="<?php echo $this->getUrl('customer/account/step3Post'); ?>" method="post" class="" enctype="multipart/form-data">
+            <div class="subtitle"><?php echo $this->__('Administrative')?></div>
+
+            <?php
+            if($this->getCustomer()->getRegistrationStatus()>Lomedic_Registration_Model_System_Config_Source_Status::VALIDATION
+            && $this->getCustomer()->getRegistrationStatus() != Lomedic_Registration_Model_System_Config_Source_Status::CORRECTION): ?>
+                <input type="hidden" id="registration_status" name="registration_status" value="<?php echo $this->getCustomer()->getRegistrationStatus(); ?>" />
+            <?php else: ?>
+                <input type="hidden" id="registration_status" name="registration_status" value="<?php echo Lomedic_Registration_Model_System_Config_Source_Status::VALIDATION; ?>" />
+            <?php endif;?>
+            <hr>
+            <div class="documents">
+                <?php if($this->getCustomer()->getAccountType() == 1):?>
+                    <div class="form_field">
+                        <span class="label"><?php echo $this->__('ID for taxation purposes')?>:</span>
+                    <span class="file-wrapper">
+                        <?php if(isset($customerFiles["taxation_purposes"])):?>
+                            <?php if($customerFiles["taxation_purposes"]["approve"] == 1):?>
+                                <span id="taxation_purposes_file" class="file-holder"><?php echo substr($this->getCustomer()->getTaxationPurposes(),strrpos($this->getCustomer()->getTaxationPurposes(),"/")+1); ?></span>
+                                <span class="success"></span>
+                            <?php else: ?>
+                                <input id="taxation_purposes" accept=".pdf" name="taxation_purposes" class="pdf-file max-ten" type="file">
+                                <?php if(isset($customerFiles["taxation_purposes"]["comment"]) && $customerFiles["taxation_purposes"]["show_comment"] == 1):?>
+                                    <div class="validation-advice comment"><?php echo $customerFiles["taxation_purposes"]["comment"];?></div>
+                                <?php endif;?>
+                                <?php if(!$this->getCustomer()->getTaxationPurposes()):?>
+                                    <span id="taxation_purposes_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                                <?php else: ?>
+                                    <span id="taxation_purposes_file" class="file-holder"><?php echo substr($this->getCustomer()->getTaxationPurposes(),strrpos($this->getCustomer()->getTaxationPurposes(),"/")+1); ?></span>
+                                    <span class="edit"></span>
+                                <?php endif;?>
+                                <span class="error"></span>
+                            <?php endif;?>
+                        <?php elseif($this->getCustomer()->getTaxationPurposes()):?>
+                            <span id="taxation_purposes_file" class="file-holder"><?php echo substr($this->getCustomer()->getTaxationPurposes(),strrpos($this->getCustomer()->getTaxationPurposes(),"/")+1); ?></span>
+                            <span sel="taxation_purposes" class="delete"></span>
+                            <span class="edit"></span>
+
+                            <input id="taxation_purposes" accept=".pdf" name="taxation_purposes" class="pdf-file max-ten" type="file">
+                            <span style="display: none;" id="taxation_purposes_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                        <?php else: ?>
+                            <input id="taxation_purposes" accept=".pdf" name="taxation_purposes" class="pdf-file max-ten" type="file" >
+                            <span class="button"><?php echo $this->__('Upload document')?></span>
+                            <!--<span class="success"></span>-->
+                        <?php endif;?>
+                    </span>
+                    </div>
+                    <div class="form_field">
+                        <span class="label"><?php echo $this->__('Subscription in taxes department')?>:</span>
+                        <span class="file-wrapper">
+                        <?php if(isset($customerFiles["taxes_department"])):?>
+                            <?php if($customerFiles["taxes_department"]["approve"] == 1):?>
+                                <span id="taxes_department_file" class="file-holder"><?php echo substr($this->getCustomer()->getTaxesDepartment(),strrpos($this->getCustomer()->getTaxesDepartment(),"/")+1); ?></span>
+                                <span class="success"></span>
+                            <?php else: ?>
+                                <input id="taxes_department" accept=".pdf" name="taxes_department" class="pdf-file max-ten" type="file">
+                                <?php if(isset($customerFiles["taxes_department"]["comment"]) && $customerFiles["taxes_department"]["show_comment"] == 1):?>
+                                    <div class="validation-advice comment"><?php echo $customerFiles["taxes_department"]["comment"];?></div>
+                                <?php endif;?>
+                                <?php if(!$this->getCustomer()->getTaxesDepartment()):?>
+                                    <span id="taxes_department_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                                <?php else: ?>
+                                    <span id="taxes_department_file" class="file-holder"><?php echo substr($this->getCustomer()->getTaxesDepartment(),strrpos($this->getCustomer()->getTaxesDepartment(),"/")+1); ?></span>
+                                    <span class="edit"></span>
+                                <?php endif;?>
+                                <span class="error"></span>
+                            <?php endif;?>
+                        <?php elseif($this->getCustomer()->getTaxesDepartment()): ?>
+                            <span id="taxes_department_file" class="file-holder"><?php echo substr($this->getCustomer()->getTaxesDepartment(),strrpos($this->getCustomer()->getTaxesDepartment(),"/")+1); ?></span>
+                            <span sel="taxes_department" class="delete"></span>
+                            <span class="edit"></span>
+                            <input accept=".pdf" id="taxes_department" name="taxes_department" class="pdf-file max-ten" type="file">
+                            <span style="display: none;" id="taxes_department_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                        <?php else: ?>
+                            <input id="taxes_department" accept=".pdf" name="taxes_department" class="pdf-file max-ten" type="file">
+                            <span class="button"><?php echo $this->__('Upload document')?></span>
+                            <!--<span class="error"></span>-->
+                        <?php endif; ?>
+                        </span>
+                    </div>
+                    <div class="form_field">
+                        <span class="label"><?php echo $this->__('Oficial ID (Voting card or Passport)')?>:</span>
+                        <span class="file-wrapper">
+                        <?php if(isset($customerFiles["oficial_id"])):?>
+                            <?php if($customerFiles["oficial_id"]["approve"] == 1):?>
+                                <span id="oficial_id_file" class="file-holder"><?php echo substr($this->getCustomer()->getOficialId(),strrpos($this->getCustomer()->getOficialId(),"/")+1); ?></span>
+                                <span class="success"></span>
+                            <?php else: ?>
+                                <input id="oficial_id" accept=".pdf" name="oficial_id" class="pdf-file max-ten" type="file">
+                                <?php if(isset($customerFiles["oficial_id"]["comment"]) && $customerFiles["oficial_id"]["show_comment"] == 1):?>
+                                    <div class="validation-advice comment"><?php echo $customerFiles["oficial_id"]["comment"];?></div>
+                                <?php endif;?>
+                                <?php if(!$this->getCustomer()->getOficialId()):?>
+                                    <span id="oficial_id_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                                <?php else: ?>
+                                    <span id="oficial_id_file" class="file-holder"><?php echo substr($this->getCustomer()->getOficialId(),strrpos($this->getCustomer()->getOficialId(),"/")+1); ?></span>
+                                    <span class="edit"></span>
+                                <?php endif;?>
+                                <span class="error"></span>
+                            <?php endif;?>
+                        <?php elseif($this->getCustomer()->getOficialId()): ?>
+                            <span id="oficial_id_file" class="file-holder"><?php echo substr($this->getCustomer()->getOficialId(),strrpos($this->getCustomer()->getOficialId(),"/")+1); ?></span>
+                            <span sel="oficial_id" class="delete"></span>
+                            <span class="edit"></span>
+                            <input accept=".pdf" id="oficial_id" name="oficial_id" class="pdf-file max-ten" type="file">
+                            <span style="display: none;" id="oficial_id_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                        <?php else: ?>
+                            <input id="oficial_id" accept=".pdf" name="oficial_id" class="pdf-file max-ten" type="file">
+                            <span class="button"><?php echo $this->__('Upload document')?></span>
+                            <!--<span class="error"></span>-->
+                        <?php endif; ?>
+                        </span>
+                    </div>
+
+
+
+                     <div class="form_field">
+                        <span class="label"><?php echo $this->__('Power of attorney of the legal representative')?>:</span>
+                        <span class="file-wrapper">
+                        <?php if(isset($customerFiles["power_attorney"])):?>
+                            <?php if($customerFiles["power_attorney"]["approve"] == 1):?>
+                                <span id="power_attorney_file" class="file-holder"><?php echo substr($this->getCustomer()->getPowerAttorney(),strrpos($this->getCustomer()->getPowerAttorney(),"/")+1); ?></span>
+                                <span class="success"></span>
+                            <?php else: ?>
+                                <input id="power_attorney" accept=".pdf" name="power_attorney" class="pdf-file max-ten" type="file">
+                                <?php if(isset($customerFiles["power_attorney"]["comment"]) && $customerFiles["power_attorney"]["show_comment"] == 1):?>
+                                    <div class="validation-advice comment"><?php echo $customerFiles["power_attorney"]["comment"];?></div>
+                                <?php endif;?>
+                                <?php if(!$this->getCustomer()->getPowerAttorney()):?>
+                                    <span id="power_attorney_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                                <?php else: ?>
+                                    <span id="power_attorney_file" class="file-holder"><?php echo substr($this->getCustomer()->getPowerAttorney(),strrpos($this->getCustomer()->getPowerAttorney(),"/")+1); ?></span>
+                                    <span class="edit"></span>
+                                <?php endif;?>
+                                <span class="error"></span>
+                            <?php endif;?>
+                        <?php elseif($this->getCustomer()->getPowerAttorney()): ?>
+                            <span id="power_attorney_file" class="file-holder"><?php echo substr($this->getCustomer()->getPowerAttorney(),strrpos($this->getCustomer()->getPowerAttorney(),"/")+1); ?></span>
+                            <span sel="power_attorney" class="delete"></span>
+                            <span class="edit"></span>
+                            <input accept=".pdf" id="power_attorney" name="power_attorney" class="pdf-file max-ten" type="file">
+                            <span style="display: none;" id="power_attorney_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                        <?php else: ?>
+                            <input id="power_attorney" accept=".pdf" name="power_attorney" class="pdf-file max-ten" type="file">
+                            <span class="button"><?php echo $this->__('Upload document')?></span>
+                            <!--<span class="error"></span>-->
+                        <?php endif; ?>
+                        </span>
+                    </div>
+
+                <?php else:?>
+                    <div class="form_field">
+                        <span class="label"><?php echo $this->__('ID for taxation purposes')?>:</span>
+                    <span class="file-wrapper">
+                        <?php if(isset($customerFiles["taxation_purposes"])):?>
+                            <?php if($customerFiles["taxation_purposes"]["approve"] == 1):?>
+                                <span id="taxation_purposes_file" class="file-holder"><?php echo substr($this->getCustomer()->getTaxationPurposes(),strrpos($this->getCustomer()->getTaxationPurposes(),"/")+1); ?></span>
+                                <span class="success"></span>
+                            <?php else: ?>
+                                <input id="taxation_purposes" accept=".pdf" name="taxation_purposes" class="pdf-file max-ten" type="file">
+                                <?php if(isset($customerFiles["taxation_purposes"]["comment"]) && $customerFiles["taxation_purposes"]["show_comment"] == 1):?>
+                                    <div class="validation-advice comment"><?php echo $customerFiles["taxation_purposes"]["comment"];?></div>
+                                <?php endif;?>
+                                <?php if(!$this->getCustomer()->getTaxationPurposes()):?>
+                                    <span id="taxation_purposes_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                                <?php else: ?>
+                                    <span id="taxation_purposes_file" class="file-holder"><?php echo substr($this->getCustomer()->getTaxationPurposes(),strrpos($this->getCustomer()->getTaxationPurposes(),"/")+1); ?></span>
+                                    <span class="edit"></span>
+                                <?php endif;?>
+                                <span class="error"></span>
+                            <?php endif;?>
+                        <?php elseif($this->getCustomer()->getTaxationPurposes()):?>
+                            <span id="taxation_purposes_file" class="file-holder"><?php echo substr($this->getCustomer()->getTaxationPurposes(),strrpos($this->getCustomer()->getTaxationPurposes(),"/")+1); ?></span>
+                            <span sel="taxation_purposes" class="delete"></span>
+                            <span class="edit"></span>
+
+                            <input id="taxation_purposes" accept=".pdf" name="taxation_purposes" class="pdf-file max-ten" type="file">
+                            <span style="display: none;" id="taxation_purposes_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                        <?php else: ?>
+                            <input id="taxation_purposes" accept=".pdf" name="taxation_purposes" class="pdf-file max-ten" type="file" >
+                            <span class="button"><?php echo $this->__('Upload document')?></span>
+                            <!--<span class="success"></span>-->
+                        <?php endif;?>
+                    </span>
+                    </div>
+                    <div class="form_field">
+                        <span class="label"><?php echo $this->__('Subscription in taxes department')?>:</span>
+                        <span class="file-wrapper">
+                        <?php if(isset($customerFiles["taxes_department"])):?>
+                            <?php if($customerFiles["taxes_department"]["approve"] == 1):?>
+                                <span id="taxes_department_file" class="file-holder"><?php echo substr($this->getCustomer()->getTaxesDepartment(),strrpos($this->getCustomer()->getTaxesDepartment(),"/")+1); ?></span>
+                                <span class="success"></span>
+                            <?php else: ?>
+                                <input id="taxes_department" accept=".pdf" name="taxes_department" class="pdf-file max-ten" type="file">
+                                <?php if(isset($customerFiles["taxes_department"]["comment"]) && $customerFiles["taxes_department"]["show_comment"] == 1):?>
+                                    <div class="validation-advice comment"><?php echo $customerFiles["taxes_department"]["comment"];?></div>
+                                <?php endif;?>
+                                <?php if(!$this->getCustomer()->getTaxesDepartment()):?>
+                                    <span id="taxes_department_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                                <?php else: ?>
+                                    <span id="taxes_department_file" class="file-holder"><?php echo substr($this->getCustomer()->getTaxesDepartment(),strrpos($this->getCustomer()->getTaxesDepartment(),"/")+1); ?></span>
+                                    <span class="edit"></span>
+                                <?php endif;?>
+                                <span class="error"></span>
+                            <?php endif;?>
+                        <?php elseif($this->getCustomer()->getTaxesDepartment()): ?>
+                            <span id="taxes_department_file" class="file-holder"><?php echo substr($this->getCustomer()->getTaxesDepartment(),strrpos($this->getCustomer()->getTaxesDepartment(),"/")+1); ?></span>
+                            <span sel="taxes_department" class="delete"></span>
+                            <span class="edit"></span>
+                            <input accept=".pdf" id="taxes_department" name="taxes_department" class="pdf-file max-ten" type="file">
+                            <span style="display: none;" id="taxes_department_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                        <?php else: ?>
+                            <input id="taxes_department" accept=".pdf" name="taxes_department" class="pdf-file max-ten" type="file">
+                            <span class="button"><?php echo $this->__('Upload document')?></span>
+                            <!--<span class="error"></span>-->
+                        <?php endif; ?>
+                        </span>
+                    </div>
+
+                    <div class="form_field">
+                        <span class="label"><?php echo $this->__('Article association registry number')?>:</span>
+                    <span class="file-wrapper">
+                    <?php if(isset($customerFiles["association_registry"])):?>
+                        <?php if($customerFiles["association_registry"]["approve"] == 1):?>
+                            <span id="association_registry_file" class="file-holder"><?php echo substr($this->getCustomer()->getAssociationRegistry(),strrpos($this->getCustomer()->getAssociationRegistry(),"/")+1); ?></span>
+                            <span class="success"></span>
+                        <?php else: ?>
+                            <input id="association_registry" accept=".pdf" name="association_registry" class="pdf-file association-registry" type="file">
+                            <?php if(isset($customerFiles["association_registry"]["comment"]) && $customerFiles["association_registry"]["show_comment"] == 1):?>
+                                <div class="validation-advice comment"><?php echo $customerFiles["association_registry"]["comment"];?></div>
+                            <?php endif;?>
+                            <?php if(!$this->getCustomer()->getAssociationRegistry()):?>
+                                <span id="association_registry_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                            <?php else: ?>
+                                <span id="association_registry_file" class="file-holder"><?php echo substr($this->getCustomer()->getAssociationRegistry(),strrpos($this->getCustomer()->getAssociationRegistry(),"/")+1); ?></span>
+                                <span class="edit"></span>
+                            <?php endif;?>
+                            <span class="error"></span>
+                        <?php endif;?>
+                    <?php elseif($this->getCustomer()->getAssociationRegistry()): ?>
+                        <span id="association_registry_file" class="file-holder"><?php echo substr($this->getCustomer()->getAssociationRegistry(),strrpos($this->getCustomer()->getAssociationRegistry(),"/")+1); ?></span>
+                        <span sel="association_registry" class="delete"></span>
+                        <span class="edit"></span>
+                        <input id="association_registry" accept=".pdf" name="association_registry" class="pdf-file association-registry" type="file">
+                        <span style="display: none;" id="association_registry_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php else: ?>
+                        <input id="association_registry" accept=".pdf" name="association_registry" class="pdf-file association-registry" type="file">
+                        <span class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php endif;?>
+                    </span>
+                    </div>
+                    <div class="form_field">
+                        <span class="label"><?php echo $this->__('Article association registration before PRPC')?>:</span>
+                    <span class="file-wrapper">
+                    <?php if(isset($customerFiles["association_prpc"])):?>
+                        <?php if($customerFiles["association_prpc"]["approve"] == 1):?>
+                            <span id="association_prpc_file" class="file-holder"><?php echo substr($this->getCustomer()->getAssociationPrpc(),strrpos($this->getCustomer()->getAssociationPrpc(),"/")+1); ?></span>
+                            <span class="success"></span>
+                        <?php else: ?>
+                            <input id="association_prpc" accept=".pdf" name="association_prpc" class="pdf-file max-ten" type="file">
+                            <?php if(isset($customerFiles["association_prpc"]["comment"]) && $customerFiles["association_prpc"]["show_comment"] == 1):?>
+                                <div class="validation-advice comment"><?php echo $customerFiles["association_prpc"]["comment"];?></div>
+                            <?php endif;?>
+                            <?php if(!$this->getCustomer()->getAssociationPrpc()):?>
+                                <span id="association_prpc_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                            <?php else: ?>
+                                <span id="association_prpc_file" class="file-holder"><?php echo substr($this->getCustomer()->getAssociationPrpc(),strrpos($this->getCustomer()->getAssociationPrpc(),"/")+1); ?></span>
+                                <span class="edit"></span>
+                            <?php endif;?>
+                            <span class="error"></span>
+                        <?php endif;?>
+                    <?php elseif($this->getCustomer()->getAssociationPrpc()): ?>
+                        <span id="association_prpc_file" class="file-holder"><?php echo substr($this->getCustomer()->getAssociationPrpc(),strrpos($this->getCustomer()->getAssociationPrpc(),"/")+1); ?></span>
+                        <span sel="association_prpc" class="delete"></span>
+                        <span class="edit"></span>
+                        <input id="association_prpc" accept=".pdf" name="association_prpc" class="pdf-file max-ten" type="file">
+                        <span style="display: none;" id="association_prpc_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php else: ?>
+                        <input id="association_prpc" accept=".pdf" name="association_prpc" class="pdf-file max-ten" type="file">
+                        <span class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php endif;?>
+                    </span>
+                    </div>
+                    <?php
+                    $a =$this->getCustomer()->getAssociationNumberMod();
+                    $b =$this->getCustomer()->getAssociationNumberModBefore();
+
+                    if((isset($a) && !empty($a))
+                    || (isset($b) && !empty($b))):?>
+                    <div class="form_field">
+                        <input name="check" id="checkbox"
+                        <?php if((isset($a) && !empty($a))
+                            || (isset($b) && !empty($b))
+                            || ($this->getCustomer()->getAssocModRegistry() || $this->getCustomer()->getModificationAssociPrpc())): ?>
+                            checked="checked"
+                        <?php endif;?> value="" type="checkbox">
+                        <label for="checkbox" class="showForm"><span class="checkSpan"></span><?php echo $this->__('Article association modifications?')?></label>
+                    </div>
+                    <div  id="checkbox_block_one" <?php if((isset($a) && !empty($a))
+                        || (isset($b) && !empty($b))
+                        || ($this->getCustomer()->getAssocModRegistry() || $this->getCustomer()->getModificationAssociPrpc())): ?>
+                        style="display: block;"
+                        <?php else: ?> style="display: none;"
+                        <?php endif;?> class="hidden">
+
+                        <div class="documents">
+                            <?php if(isset($a) && !empty($a)):?>
+                            <div class="form_field">
+                                <span class="label"><?php echo $this->__('Article association modification registry')?>:</span>
+                        <span class="file-wrapper">
+                    <?php if(isset($customerFiles["assoc_mod_registry"])):?>
+                        <?php if($customerFiles["assoc_mod_registry"]["approve"] == 1):?>
+                            <span id="assoc_mod_registry_file" class="file-holder"><?php echo substr($this->getCustomer()->getAssocModRegistry(),strrpos($this->getCustomer()->getAssocModRegistry(),"/")+1); ?></span>
+                            <span class="success"></span>
+                        <?php else: ?>
+                            <input id="assoc_mod_registry" accept=".pdf" name="assoc_mod_registry" class="pdf-file max-ten" type="file">
+                            <?php if(isset($customerFiles["assoc_mod_registry"]["comment"]) && $customerFiles["assoc_mod_registry"]["show_comment"] == 1):?>
+                                <div class="validation-advice comment"><?php echo $customerFiles["assoc_mod_registry"]["comment"];?></div>
+                            <?php endif;?>
+                            <?php if(!$this->getCustomer()->getAssocModRegistry()):?>
+                                <span id="assoc_mod_registry_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                            <?php else: ?>
+                                <span id="assoc_mod_registry_file" class="file-holder"><?php echo substr($this->getCustomer()->getAssocModRegistry(),strrpos($this->getCustomer()->getAssocModRegistry(),"/")+1); ?></span>
+                                <span class="edit"></span>
+                            <?php endif;?>
+                            <span class="error"></span>
+                        <?php endif;?>
+                    <?php elseif($this->getCustomer()->getAssocModRegistry()): ?>
+                        <span id="assoc_mod_registry_file" class="file-holder"><?php echo substr($this->getCustomer()->getAssocModRegistry(),strrpos($this->getCustomer()->getAssocModRegistry(),"/")+1); ?></span>
+                        <span sel="assoc_mod_registry" class="delete"></span>
+                        <span class="edit"></span>
+                        <input id="assoc_mod_registry" accept=".pdf" name="assoc_mod_registry" class="pdf-file max-ten" type="file">
+                        <span style="display: none;" id="assoc_mod_registry_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php else: ?>
+                        <input id="assoc_mod_registry" accept=".pdf" name="assoc_mod_registry" class="pdf-file max-ten" type="file">
+                        <span class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php endif;?>
+                        </span>
+                            </div>
+
+                            <?php endif;?>
+
+                            <?php if(isset($b) && !empty($b)):?>
+                            <div class="form_field">
+                                <span class="label"><?php echo $this->__('Modification to Article association registration before PRPC')?>:</span>
+                        <span class="file-wrapper">
+                    <?php if(isset($customerFiles["modification_associ_prpc"])):?>
+                        <?php if($customerFiles["modification_associ_prpc"]["approve"] == 1):?>
+                            <span id="modification_associ_prpcy_file" class="file-holder"><?php echo substr($this->getCustomer()->getModificationAssociPrpc(),strrpos($this->getCustomer()->getModificationAssociPrpc(),"/")+1); ?></span>
+                            <span class="success"></span>
+                        <?php else: ?>
+                            <input id="modification_associ_prpc" accept=".pdf" name="modification_associ_prpc" class="pdf-file max-ten" type="file">
+                            <?php if(isset($customerFiles["modification_associ_prpc"]["comment"]) && $customerFiles["modification_associ_prpc"]["show_comment"] == 1):?>
+                                <div class="validation-advice comment"><?php echo $customerFiles["modification_associ_prpc"]["comment"];?></div>
+                            <?php endif;?>
+                            <?php if(!$this->getCustomer()->getModificationAssociPrpc()):?>
+                                <span id="modification_associ_prpc_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                            <?php else: ?>
+                                <span id="modification_associ_prpc_file" class="file-holder"><?php echo substr($this->getCustomer()->getModificationAssociPrpc(),strrpos($this->getCustomer()->getModificationAssociPrpc(),"/")+1); ?></span>
+                                <span class="edit"></span>
+                            <?php endif;?>
+                            <span class="error"></span>
+                        <?php endif;?>
+                    <?php elseif($this->getCustomer()->getModificationAssociPrpc()): ?>
+                        <span id="modification_associ_prpc_file"  class="file-holder"><?php echo substr($this->getCustomer()->getModificationAssociPrpc(),strrpos($this->getCustomer()->getModificationAssociPrpc(),"/")+1); ?></span>
+                        <span sel="modification_associ_prpc" class="delete"></span>
+                        <span class="edit"></span>
+                        <input id="modification_associ_prpc" accept=".pdf" name="modification_associ_prpc" class="pdf-file max-ten" type="file">
+                        <span style="display: none;" id="modification_associ_prpc_botton"  class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php else: ?>
+                        <input id="modification_associ_prpc" accept=".pdf" name="modification_associ_prpc" class="pdf-file max-ten" type="file">
+                        <span class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php endif;?>
+                        </span>
+                            </div>
+                            <?php endif;?>
+                        </div>
+                    </div>
+                    <?php endif;?>
+
+                <?php endif;?>
+            </div>
+            <div class="subtitle"><?php echo $this->__('Facilities')?></div>
+            <hr>
+            <div class="documents">
+                <div class="form_field">
+                    <span class="label"><?php echo $this->__('Proof of address')?>:</span>
+                    <span class="file-wrapper">
+                    <?php if(isset($customerFiles["proof_address"])):?>
+                        <?php if($customerFiles["proof_address"]["approve"] == 1):?>
+                            <span id="proof_address_file" class="file-holder"><?php echo substr($this->getCustomer()->getProofAddress(),strrpos($this->getCustomer()->getProofAddress(),"/")+1); ?></span>
+                            <span class="success"></span>
+                        <?php else: ?>
+                            <input id="proof_address" accept=".pdf" name="proof_address" class="pdf-file max-ten" type="file">
+                            <?php if(isset($customerFiles["proof_address"]["comment"]) && $customerFiles["proof_address"]["show_comment"] == 1):?>
+                                <div class="validation-advice comment"><?php echo $customerFiles["proof_address"]["comment"];?></div>
+                            <?php endif;?>
+                            <?php if(!$this->getCustomer()->getProofAddress()):?>
+                                <span id="proof_address_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                            <?php else: ?>
+                                <span id="proof_address_file" class="file-holder"><?php echo substr($this->getCustomer()->getProofAddress(),strrpos($this->getCustomer()->getProofAddress(),"/")+1); ?></span>
+                                <span class="edit"></span>
+                            <?php endif;?>
+                            <span class="error"></span>
+                        <?php endif;?>
+                    <?php elseif($this->getCustomer()->getProofAddress()): ?>
+                        <span id="proof_address_file" class="file-holder"><?php echo substr($this->getCustomer()->getProofAddress(),strrpos($this->getCustomer()->getProofAddress(),"/")+1); ?></span>
+                        <span sel="proof_address" class="delete"></span>
+                        <span class="edit"></span>
+                        <input id="proof_address" accept=".pdf" name="proof_address" class="pdf-file max-ten" type="file">
+                        <span style="display: none;" id="proof_address_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php else: ?>
+                        <input id="proof_address" accept=".pdf" name="proof_address" class="pdf-file max-ten" type="file">
+                        <span class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php endif;?>
+                    </span>
+                </div>
+            </div>
+            <div class="subtitle"><?php echo $this->__('Financial')?></div>
+            <hr>
+            <div class="documents">
+                <div class="form_field">
+                    <span class="label"><?php echo $this->__('Financial statements of the last three years')?>:</span>
+                    <span class="file-wrapper">
+                    <?php if(isset($customerFiles["financial_years"])):?>
+                        <?php if($customerFiles["financial_years"]["approve"] == 1):?>
+                            <span id="financial_years_file" class="file-holder"><?php echo substr($this->getCustomer()->getFinancialYears(),strrpos($this->getCustomer()->getFinancialYears(),"/")+1); ?></span>
+                            <span class="success"></span>
+                        <?php else: ?>
+                            <input id="financial_years" accept=".pdf" name="financial_years" class="pdf-file max-ten" type="file">
+                            <?php if(isset($customerFiles["financial_years"]["comment"]) && $customerFiles["financial_years"]["show_comment"] == 1):?>
+                                <div class="validation-advice comment"><?php echo $customerFiles["financial_years"]["comment"];?></div>
+                            <?php endif;?>
+                            <?php if(!$this->getCustomer()->getFinancialYears()):?>
+                                <span id="financial_years_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                            <?php else: ?>
+                                <span id="financial_years_file" class="file-holder"><?php echo substr($this->getCustomer()->getFinancialYears(),strrpos($this->getCustomer()->getFinancialYears(),"/")+1); ?></span>
+                                <span class="edit"></span>
+                            <?php endif;?>
+                            <span class="error"></span>
+                        <?php endif;?>
+                    <?php elseif($this->getCustomer()->getFinancialYears()): ?>
+                        <span id="financial_years_file" class="file-holder"><?php echo substr($this->getCustomer()->getFinancialYears(),strrpos($this->getCustomer()->getFinancialYears(),"/")+1); ?></span>
+                        <span sel="financial_years" class="delete"></span>
+                        <span class="edit"></span>
+                        <input id="financial_years" accept=".pdf" name="financial_years"  class="pdf-file max-ten" type="file">
+                        <span style="display: none;" id="financial_years_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php else: ?>
+                        <input id="financial_years" accept=".pdf" name="financial_years"  class="pdf-file max-ten" type="file">
+                        <span class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php endif;?>
+                    </span>
+                </div>
+                <div class="form_field">
+                    <span class="label"><?php echo $this->__('Last 3 bank statements')?>:</span>
+                    <span class="file-wrapper">
+                    <?php if(isset($customerFiles["last_bank_statements"])):?>
+                        <?php if($customerFiles["last_bank_statements"]["approve"] == 1):?>
+                            <span id="last_bank_statements_file" class="file-holder"><?php echo substr($this->getCustomer()->getLastBankStatements(),strrpos($this->getCustomer()->getLastBankStatements(),"/")+1); ?></span>
+                            <span class="success"></span>
+                        <?php else: ?>
+                            <input id="last_bank_statements" accept=".pdf" name="last_bank_statements" class="pdf-file max-ten" type="file">
+                            <?php if(isset($customerFiles["last_bank_statements"]["comment"]) && $customerFiles["last_bank_statements"]["show_comment"] == 1):?>
+                                <div class="validation-advice comment"><?php echo $customerFiles["last_bank_statements"]["comment"];?></div>
+                            <?php endif;?>
+                            <?php if(!$this->getCustomer()->getLastBankStatements()):?>
+                                <span id="last_bank_statements_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                            <?php else: ?>
+                                <span id="last_bank_statements_file" class="file-holder"><?php echo substr($this->getCustomer()->getLastBankStatements(),strrpos($this->getCustomer()->getLastBankStatements(),"/")+1); ?></span>
+                                <span class="edit"></span>
+                            <?php endif;?>
+                            <span class="error"></span>
+                        <?php endif;?>
+                    <?php elseif($this->getCustomer()->getLastBankStatements()): ?>
+                        <span id="last_bank_statements_file" class="file-holder"><?php echo substr($this->getCustomer()->getLastBankStatements(),strrpos($this->getCustomer()->getLastBankStatements(),"/")+1); ?></span>
+                        <span sel="last_bank_statements" class="delete"></span>
+                        <span class="edit"></span>
+                        <input id="last_bank_statements" accept=".pdf" name="last_bank_statements" class="pdf-file max-ten" type="file">
+                        <span style="display: none;" id="last_bank_statements_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php else: ?>
+                        <input id="last_bank_statements" accept=".pdf" name="last_bank_statements" class="pdf-file max-ten" type="file">
+                        <span class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php endif;?>
+                    </span>
+                </div>
+                <div class="form_field">
+                    <span class="label"><?php echo $this->__('Last year taxes statement')?>:</span>
+                    <span class="file-wrapper">
+                    <?php if(isset($customerFiles["last_year_statement"])):?>
+                        <?php if($customerFiles["last_year_statement"]["approve"] == 1):?>
+                            <span id="last_year_statement_file" class="file-holder"><?php echo substr($this->getCustomer()->getLastYearStatement(),strrpos($this->getCustomer()->getLastYearStatement(),"/")+1); ?></span>
+                            <span class="success"></span>
+                        <?php else: ?>
+                            <input id="last_year_statement" accept=".pdf" name="last_year_statement" class="pdf-file max-ten" type="file">
+                            <?php if(isset($customerFiles["last_year_statement"]["comment"]) && $customerFiles["last_year_statement"]["show_comment"] == 1):?>
+                                <div class="validation-advice comment"><?php echo $customerFiles["last_year_statement"]["comment"];?></div>
+                            <?php endif;?>
+                            <?php if(!$this->getCustomer()->getLastYearStatement()):?>
+                                <span id="last_year_statement_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                            <?php else: ?>
+                                <span id="last_year_statement_file" class="file-holder"><?php echo substr($this->getCustomer()->getLastYearStatement(),strrpos($this->getCustomer()->getLastYearStatement(),"/")+1); ?></span>
+                                <span class="edit"></span>
+                            <?php endif;?>
+                            <span class="error"></span>
+                        <?php endif;?>
+                    <?php elseif($this->getCustomer()->getLastYearStatement()): ?>
+                        <span id="last_year_statement_file" class="file-holder"><?php echo substr($this->getCustomer()->getLastYearStatement(),strrpos($this->getCustomer()->getLastYearStatement(),"/")+1); ?></span>
+                        <span sel="last_year_statement" class="delete"></span>
+                        <span class="edit"></span>
+                        <input id="last_year_statement" accept=".pdf" name="last_year_statement" class="pdf-file max-ten" type="file">
+                        <span style="display: none;" id="last_year_statement_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php else: ?>
+                        <input id="last_year_statement" accept=".pdf" name="last_year_statement" class="pdf-file max-ten" type="file">
+                        <span class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php endif;?>
+                    </span>
+                </div>
+            </div>
+            <div class="subtitle"><?php echo $this->__('Licenses and permits')?></div>
+            <hr>
+            <div class="documents">
+                <div class="form_field">
+                    <span class="label"><?php echo $this->__('Operation statement before COFEPRIS')?>:</span>
+                    <span class="file-wrapper">
+                    <?php if(isset($customerFiles["operation_statement_cofepr"])):?>
+                        <?php if($customerFiles["operation_statement_cofepr"]["approve"] == 1):?>
+                            <span id="operation_statement_cofepr_file" class="file-holder"><?php echo substr($this->getCustomer()->getOperationStatementCofepr(),strrpos($this->getCustomer()->getOperationStatementCofepr(),"/")+1); ?></span>
+                            <span class="success"></span>
+                        <?php else: ?>
+                            <input id="operation_statement_cofepr" accept=".pdf" name="operation_statement_cofepr" class="pdf-file max-ten" type="file">
+                            <?php if(isset($customerFiles["operation_statement_cofepr"]["comment"]) && $customerFiles["operation_statement_cofepr"]["show_comment"] == 1):?>
+                                <div class="validation-advice comment"><?php echo $customerFiles["operation_statement_cofepr"]["comment"];?></div>
+                            <?php endif;?>
+                            <?php if(!$this->getCustomer()->getOperationStatementCofepr()):?>
+                                <span id="operation_statement_cofepr_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                            <?php else: ?>
+                                <span id="operation_statement_cofepr_file" class="file-holder"><?php echo substr($this->getCustomer()->getOperationStatementCofepr(),strrpos($this->getCustomer()->getOperationStatementCofepr(),"/")+1); ?></span>
+                                <span class="edit"></span>
+                            <?php endif;?>
+                            <span class="error"></span>
+                        <?php endif;?>
+                    <?php elseif($this->getCustomer()->getOperationStatementCofepr()): ?>
+                        <span id="operation_statement_cofepr_file" class="file-holder"><?php echo substr($this->getCustomer()->getOperationStatementCofepr(),strrpos($this->getCustomer()->getOperationStatementCofepr(),"/")+1); ?></span>
+                        <span sel="operation_statement_cofepr" class="delete"></span>
+                        <span class="edit"></span>
+                        <input id="operation_statement_cofepr" accept=".pdf" name="operation_statement_cofepr" class="pdf-file max-ten" type="file">
+                        <span style="display: none;" id="operation_statement_cofepr_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php else: ?>
+                        <input id="operation_statement_cofepr" accept=".pdf" name="operation_statement_cofepr" class="pdf-file max-ten" type="file">
+                        <span class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php endif;?>
+                    </span>
+                </div>
+                <div class="form_field">
+                    <span class="label"><?php echo $this->__('ID of the Responsible health professional before COFEPRIS')?>:</span>
+                    <span class="file-wrapper">
+                    <?php if(isset($customerFiles["professional_before_cofep"])):?>
+                        <?php if($customerFiles["professional_before_cofep"]["approve"] == 1):?>
+                            <span id="professional_before_cofep_file" class="file-holder"><?php echo substr($this->getCustomer()->getProfessionalBeforeCofep(),strrpos($this->getCustomer()->getProfessionalBeforeCofep(),"/")+1); ?></span>
+                            <span class="success"></span>
+                        <?php else: ?>
+                            <input id="professional_before_cofep" accept=".pdf" name="professional_before_cofep" class="pdf-file max-ten" type="file">
+                            <?php if(isset($customerFiles["professional_before_cofep"]["comment"]) && $customerFiles["professional_before_cofep"]["show_comment"] == 1):?>
+                                <div class="validation-advice comment"><?php echo $customerFiles["professional_before_cofep"]["comment"];?></div>
+                            <?php endif;?>
+                            <?php if(!$this->getCustomer()->getProfessionalBeforeCofep()):?>
+                                <span id="professional_before_cofep_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                            <?php else: ?>
+                                <span id="professional_before_cofep_file" class="file-holder"><?php echo substr($this->getCustomer()->getProfessionalBeforeCofep(),strrpos($this->getCustomer()->getProfessionalBeforeCofep(),"/")+1); ?></span>
+                                <span class="edit"></span>
+                            <?php endif;?>
+                            <span class="error"></span>
+                        <?php endif;?>
+                    <?php elseif($this->getCustomer()->getProfessionalBeforeCofep()): ?>
+                        <span id="professional_before_cofep_file" class="file-holder"><?php echo substr($this->getCustomer()->getProfessionalBeforeCofep(),strrpos($this->getCustomer()->getProfessionalBeforeCofep(),"/")+1); ?></span>
+                        <span sel="professional_before_cofep" class="delete"></span>
+                        <span class="edit"></span>
+                        <input id="professional_before_cofep" accept=".pdf" name="professional_before_cofep"  class="pdf-file max-ten" type="file">
+                        <span style="display: none;" id="professional_before_cofep_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php else: ?>
+                        <input id="professional_before_cofep" accept=".pdf" name="professional_before_cofep"  class="pdf-file max-ten" type="file">
+                        <span class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php endif;?>
+                    </span>
+                </div>
+                <div class="form_field">
+                    <span class="label"><?php echo $this->__('Professional license of the health professional')?>:</span>
+                    <span class="file-wrapper">
+                    <?php if(isset($customerFiles["license_health_professional"])):?>
+                        <?php if($customerFiles["license_health_professional"]["approve"] == 1):?>
+                            <span id="license_health_professional_file" class="file-holder"><?php echo substr($this->getCustomer()->getLicenseHealthProfessional(),strrpos($this->getCustomer()->getLicenseHealthProfessional(),"/")+1); ?></span>
+                            <span class="success"></span>
+                        <?php else: ?>
+                            <input id="license_health_professional" accept=".pdf" name="license_health_professional" class="pdf-file max-ten" type="file">
+                            <?php if(isset($customerFiles["license_health_professional"]["comment"]) && $customerFiles["license_health_professional"]["show_comment"] == 1):?>
+                                <div class="validation-advice comment"><?php echo $customerFiles["license_health_professional"]["comment"];?></div>
+                            <?php endif;?>
+                            <?php if(!$this->getCustomer()->getLicenseHealthProfessional()):?>
+                                <span id="license_health_professional_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                            <?php else: ?>
+                                <span id="license_health_professional_file" class="file-holder"><?php echo substr($this->getCustomer()->getLicenseHealthProfessional(),strrpos($this->getCustomer()->getLicenseHealthProfessional(),"/")+1); ?></span>
+                                <span class="edit"></span>
+                            <?php endif;?>
+                            <span class="error"></span>
+                        <?php endif;?>
+                    <?php elseif($this->getCustomer()->getLicenseHealthProfessional()): ?>
+                        <span id="license_health_professional_file"  class="file-holder"><?php echo substr($this->getCustomer()->getLicenseHealthProfessional(),strrpos($this->getCustomer()->getLicenseHealthProfessional(),"/")+1); ?></span>
+                        <span sel="license_health_professional" class="delete"></span>
+                        <span class="edit"></span>
+                        <input id="license_health_professional" accept=".pdf" name="license_health_professional" class="pdf-file max-ten" type="file">
+                        <span style="display: none;" id="license_health_professional_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php else: ?>
+                        <input id="license_health_professional" accept=".pdf" name="license_health_professional" class="pdf-file max-ten" type="file">
+                        <span class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php endif;?>
+                    </span>
+                </div>
+                <div class="form_field">
+                    <span class="label"><?php echo $this->__('Statement of Responsible health professional before COFEPRIS')?>:</span>
+                    <span class="file-wrapper">
+                    <?php if(isset($customerFiles["professional_before_cofepr"])):?>
+                        <?php if($customerFiles["professional_before_cofepr"]["approve"] == 1):?>
+                            <span id="professional_before_cofepr_file" class="file-holder"><?php echo substr($this->getCustomer()->getProfessionalBeforeCofepr(),strrpos($this->getCustomer()->getProfessionalBeforeCofepr(),"/")+1); ?></span>
+                            <span class="success"></span>
+                        <?php else: ?>
+                            <input id="professional_before_cofepr" accept=".pdf" name="professional_before_cofepr" class="pdf-file max-ten" type="file">
+                            <?php if(isset($customerFiles["professional_before_cofepr"]["comment"]) && $customerFiles["professional_before_cofepr"]["show_comment"] == 1):?>
+                                <div class="validation-advice comment"><?php echo $customerFiles["professional_before_cofepr"]["comment"];?></div>
+                            <?php endif;?>
+                            <?php if(!$this->getCustomer()->getProfessionalBeforeCofepr()):?>
+                                <span id="professional_before_cofepr_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                            <?php else: ?>
+                                <span id="professional_before_cofepr_file" class="file-holder"><?php echo substr($this->getCustomer()->getProfessionalBeforeCofepr(),strrpos($this->getCustomer()->getProfessionalBeforeCofepr(),"/")+1); ?></span>
+                                <span class="edit"></span>
+                            <?php endif;?>
+                            <span class="error"></span>
+                        <?php endif;?>
+                    <?php elseif($this->getCustomer()->getProfessionalBeforeCofepr()): ?>
+                        <span id="professional_before_cofepr_file" class="file-holder"><?php echo substr($this->getCustomer()->getProfessionalBeforeCofepr(),strrpos($this->getCustomer()->getProfessionalBeforeCofepr(),"/")+1); ?></span>
+                        <span sel="professional_before_cofepr" class="delete"></span>
+                        <span class="edit"></span>
+                        <input id="professional_before_cofepr" accept=".pdf" name="professional_before_cofepr" class="pdf-file max-ten" type="file">
+                        <span style="display: none;" id="professional_before_cofepr_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php else: ?>
+                        <input id="professional_before_cofepr" accept=".pdf" name="professional_before_cofepr" class="pdf-file max-ten" type="file">
+                        <span class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php endif;?>
+                    </span>
+                </div>
+                <div class="form_field">
+                    <span class="label"><?php echo $this->__('Certificates of good manufacturing practices')?>:</span>
+                    <span class="file-wrapper">
+                    <?php if(isset($customerFiles["good_man_practices"])):?>
+                        <?php if($customerFiles["good_man_practices"]["approve"] == 1):?>
+                            <span id="good_man_practices_file" class="file-holder"><?php echo substr($this->getCustomer()->getGoodManPractices(),strrpos($this->getCustomer()->getGoodManPractices(),"/")+1); ?></span>
+                            <span class="success"></span>
+                        <?php else: ?>
+                            <input id="good_man_practices" accept=".pdf" name="good_man_practices" class="pdf-file max-ten" type="file">
+                            <?php if(isset($customerFiles["good_man_practices"]["comment"]) && $customerFiles["good_man_practices"]["show_comment"] == 1):?>
+                                <div class="validation-advice comment"><?php echo $customerFiles["good_man_practices"]["comment"];?></div>
+                            <?php endif;?>
+                            <?php if(!$this->getCustomer()->getGoodManPractices()):?>
+                                <span id="good_man_practices_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                            <?php else: ?>
+                                <span id="good_man_practices_file" class="file-holder"><?php echo substr($this->getCustomer()->getGoodManPractices(),strrpos($this->getCustomer()->getGoodManPractices(),"/")+1); ?></span>
+                                <span class="edit"></span>
+                            <?php endif;?>
+                            <span class="error"></span>
+                        <?php endif;?>
+                    <?php elseif($this->getCustomer()->getGoodManPractices()): ?>
+                        <span id="good_man_practices_file" class="file-holder"><?php echo substr($this->getCustomer()->getGoodManPractices(),strrpos($this->getCustomer()->getGoodManPractices(),"/")+1); ?></span>
+                        <span sel="good_man_practices" class="delete"></span>
+                        <span class="edit"></span>
+                        <input id="good_man_practices" accept=".pdf" name="good_man_practices" class="pdf-file max-ten" type="file">
+                        <span style="display: none;" id="good_man_practices_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php else: ?>
+                        <input id="good_man_practices" accept=".pdf" name="good_man_practices" class="pdf-file max-ten" type="file">
+                        <span class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php endif;?>
+                    </span>
+                </div>
+                <div class="form_field">
+                    <span class="label"><?php echo $this->__('Certificates of good practices')?>:</span>
+                    <span class="file-wrapper">
+                    <?php if(isset($customerFiles["statement_before_cofepris"])):?>
+                        <?php if($customerFiles["statement_before_cofepris"]["approve"] == 1):?>
+                            <span id="statement_before_cofepris_file" class="file-holder"><?php echo substr($this->getCustomer()->getStatementBeforeCofepris(),strrpos($this->getCustomer()->getStatementBeforeCofepris(),"/")+1); ?></span>
+                            <span class="success"></span>
+                        <?php else: ?>
+                            <input id="statement_before_cofepris" accept=".pdf" name="statement_before_cofepris" class="pdf-file max-ten" type="file">
+                            <?php if(isset($customerFiles["statement_before_cofepris"]["comment"]) && $customerFiles["statement_before_cofepris"]["show_comment"] == 1):?>
+                                <div class="validation-advice comment"><?php echo $customerFiles["statement_before_cofepris"]["comment"];?></div>
+                            <?php endif;?>
+                            <?php if(!$this->getCustomer()->getStatementBeforeCofepris()):?>
+                                <span id="statement_before_cofepris_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                            <?php else: ?>
+                                <span id="statement_before_cofepris_file" class="file-holder"><?php echo substr($this->getCustomer()->getStatementBeforeCofepris(),strrpos($this->getCustomer()->getStatementBeforeCofepris(),"/")+1); ?></span>
+                                <span class="edit"></span>
+                            <?php endif;?>
+                            <span class="error"></span>
+                        <?php endif;?>
+                    <?php elseif($this->getCustomer()->getStatementBeforeCofepris()): ?>
+                        <span id="statement_before_cofepris_file" class="file-holder"><?php echo substr($this->getCustomer()->getStatementBeforeCofepris(),strrpos($this->getCustomer()->getStatementBeforeCofepris(),"/")+1); ?></span>
+                        <span sel="statement_before_cofepris" class="delete"></span>
+                        <span class="edit"></span>
+                        <input id="statement_before_cofepris" accept=".pdf" name="statement_before_cofepris" class="pdf-file max-ten" type="file">
+                        <span style="display: none;" id="statement_before_cofepris_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php else: ?>
+                        <input id="statement_before_cofepris" accept=".pdf" name="statement_before_cofepris" class="pdf-file max-ten" type="file">
+                        <span class="button"><?php echo $this->__('Upload document')?></span>
+                    <?php endif;?>
+                    </span>
+                </div>
+            </div>
+
+            <?php
+            $z = $this->getCustomer()->getHealthLicenseNumber();
+
+
+            if(isset($z) && !empty($z)):?>
+            <div class="form_field">
+                <input name="check" id="checkbox2" <?php if((isset($z) && !empty($z)) || ($this->getCustomer()->getHealthCertificateDocument())): ?> checked="checked" <?php endif;?>  type="checkbox">
+                <label for="checkbox2" class="showForm"><span class="checkSpan"></span><?php echo $this->__('Manages controlled substances')?></label>
+            </div>
+            <div id="checkbox_block_two"  <?php if((isset($z) && !empty($z)) || ($this->getCustomer()->getHealthCertificateDocument())): ?> style="display: block;" <?php else: ?> style="display: none;" <?php endif;?>   class="hidden">
+                <div class="documents">
+                    <div class="form_field">
+                        <span class="label"><?php echo $this->__('Health license certificate document (Just in case that manages controlled substances)')?>:</span>
+                        <span class="file-wrapper">
+                    <?php if(isset($customerFiles["health_certificate_document"])):?>
+                        <?php if($customerFiles["health_certificate_document"]["approve"] == 1):?>
+                            <span id="health_certificate_document_file" class="file-holder"><?php echo substr($this->getCustomer()->getHealthCertificateDocument(),strrpos($this->getCustomer()->getHealthCertificateDocument(),"/")+1); ?></span>
+                            <span class="success"></span>
+                        <?php else: ?>
+                            <input id="health_certificate_document" accept=".pdf" name="health_certificate_document" class="pdf-file max-ten" type="file">
+                            <?php if(isset($customerFiles["health_certificate_document"]["comment"]) && $customerFiles["health_certificate_document"]["show_comment"] == 1):?>
+                                <div class="validation-advice comment"><?php echo $customerFiles["health_certificate_document"]["comment"];?></div>
+                            <?php endif;?>
+                            <?php if(!$this->getCustomer()->getHealthCertificateDocument()):?>
+                                <span id="health_certificate_document_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                            <?php else: ?>
+                                <span id="health_certificate_document_file" class="file-holder"><?php echo substr($this->getCustomer()->getHealthCertificateDocument(),strrpos($this->getCustomer()->getHealthCertificateDocument(),"/")+1); ?></span>
+                                <span class="edit"></span>
+                            <?php endif;?>
+                            <span class="error"></span>
+                        <?php endif;?>
+                    <?php elseif($this->getCustomer()->getHealthCertificateDocument()): ?>
+                            <span id="health_certificate_document_file" class="file-holder"><?php echo substr($this->getCustomer()->getHealthCertificateDocument(),strrpos($this->getCustomer()->getHealthCertificateDocument(),"/")+1); ?></span>
+                            <span sel="health_certificate_document" class="delete"></span>
+                        <span class="edit"></span>
+                            <input id="health_certificate_document" accept=".pdf" name="health_certificate_document" class="pdf-file max-ten" type="file">
+                            <span style="display: none;" id="health_certificate_document_botton" class="button"><?php echo $this->__('Upload document')?></span>
+                        <?php else: ?>
+                            <input id="health_certificate_document" accept=".pdf" name="health_certificate_document" class="pdf-file max-ten" type="file">
+                            <span class="button"><?php echo $this->__('Upload document')?></span>
+                        <?php endif;?>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <?php endif;?>
+
+
+            <?php if($this->getCustomer()->getRegistrationStatus()>Lomedic_Registration_Model_System_Config_Source_Status::CORRECTION && $this->getCustomer()->getRegistrationStatus()!=Lomedic_Registration_Model_System_Config_Source_Status::CLOSED):?>
+                <p style="color: darkgreen; font-size: 17px; margin-top: 30px;"><?php echo $this->__('Your files have been validated')?></p>
+            <?php else:?>
+                <?php if($this->getCustomer()->getRegistrationStatus()!=Lomedic_Registration_Model_System_Config_Source_Status::CLOSED):?>
+                    <div class="button"><input value="<?php echo $this->__('Save and continue')?>" type="button" onclick="saveAndContinue()" ></div>
+                <?php else: ?>
+                    <p style="color: red; font-size: 17px; margin-top: 30px;"><?php echo $this->__('Process is closed! If you have solved the impediments and inconveniences detected, please contact you personal assistant to reopen the process.'); ?></p>
+                <?php endif;?>
+            <?php endif; ?>
+        </form>
+        <script type="text/javascript">
+            var form_changed = 0;
+            
+            $j(".pdf-file").on("change",function(){
+                $j(this).parents(".file-wrapper").find(".comment").remove();
+
+                var key = $j(this).attr("id");
+                form_changed = 1;
+                $j.ajax({
+                    type: "POST",
+                    url: "<?php echo $this->getUrl('customer/account/step3DeleteComment'); ?>",
+                    dataType: "json",
+                    data: {id:key},
+                    success: function(result){
+                        //alert("ss");
+                    },
+                    error: function () {
+
+                    }
+                });
+            });
+
+            $j(".validation-advice").on( "mouseenter", function() {
+                $j(this).css("white-space", "normal");
+                $j( this ).css("overflow", "visible");
+                $j( this ).css("z-index", "111111111");
+                $j( this ).css("height", "auto");
+                console.log(1);
+            }).on( "mouseleave", function() {
+                    var styles = {
+                        "white-space" : "nowrap",
+                        "overflow": "hidden",
+                        "height": "25px",
+                        "z-index": "1"
+                    };
+                $j( this ).css( styles );
+                });
+
+            var dataForm = new VarienForm('step3', true);
+
+            function saveAndContinue() {
+                form_changed = 0;
+                dataForm.submit();
+            }
+
+            Validation.add('pdf-file','Please select .pdf file',function(v, elm){
+                if (!Validation.get('IsEmpty').test(v)) {
+                    var fname = elm.value;
+                    var re = /(\.pdf)$/i;
+                    if(!re.exec(fname)) {
+                        return false;
+                    }
+                }
+                return true;
+            });
+
+            Validation.add('max-ten','<?php echo $this->__('Please select files less than 10Mb');?>',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 10*1024*1024){
+                    return false;
+                }
+                return true;
+            });
+
+            Validation.add('association-registry','<?php echo $this->__('Please select files less than 40Mb');?>',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 40*1024*1024){
+                    return false;
+                }
+                return true;
+            });
+
+            /*
+
+            Validation.add('taxes-department','Please select files less than 5Mb',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 5*1024*1024){
+                    return false;
+                }
+                return true;
+            });
+
+            Validation.add('association-prpc','Please select files less than 3Mb',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 3*1024*1024){
+                    return false;
+                }
+                return true;
+            });
+
+            Validation.add('assoc-mod-registry','Please select files less than 15Mb',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 15*1024*1024){
+                    return false;
+                }
+                return true;
+            });
+
+            Validation.add('modification-associ-prpc','Please select files less than 3Mb',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 3*1024*1024){
+                    return false;
+                }
+                return true;
+            });
+
+            Validation.add('proof-address','Please select files less than 500Kb',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 500*1024){
+                    return false;
+                }
+                return true;
+            });
+
+            Validation.add('financial-years','Please select files less than 3Mb',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 3*1024*1024){
+                    return false;
+                }
+                return true;
+            });
+
+            Validation.add('last-bank-statements','Please select files less than 3Mb',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 3*1024*1024){
+                    return false;
+                }
+                return true;
+            });
+
+            Validation.add('last-year-statement','Please select files less than 5Mb',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 5*1024*1024){
+                    return false;
+                }
+                return true;
+            });
+
+            Validation.add('operation-statement-cofepr','Please select files less than 5Mb',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 5*1024*1024){
+                    return false;
+                }
+                return true;
+            });
+
+            Validation.add('professional-before-cofep','Please select files less than 3Mb',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 3*1024*1024){
+                    return false;
+                }
+                return true;
+            });
+
+            Validation.add('license-health-professional','Please select files less than 3Mb',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 3*1024*1024){
+                    return false;
+                }
+                return true;
+            });
+
+            Validation.add('professional-before-cofepr','Please select files less than 5Mb',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 5*1024*1024){
+                    return false;
+                }
+                return true;
+            });
+
+            Validation.add('statement-before-cofepris','Please select files less than 3Mb',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 3*1024*1024){
+                    return false;
+                }
+                return true;
+            });
+
+            Validation.add('good-man-practices','Please select files less than 3Mb',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 3*1024*1024){
+                    return false;
+                }
+                return true;
+            });
+
+            Validation.add('health-certificate-document','Please select files less than 3Mb',function(v, elm){
+                if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 3*1024*1024){
+                    return false;
+                }
+                return true;
+            });
+            */
+
+            $j(".delete").on("click",function(){
+
+                var key = $j(this).attr("sel");
+                $j(this).hide();
+                $j("#"+key+"_file").hide();
+                $j("#"+key+"_botton").show();
+                $j("#"+key).show();
+
+                $j.ajax({
+                    type: "POST",
+                    url: "<?php echo $this->getUrl('customer/account/step3DeleteFile'); ?>",
+                    dataType: "json",
+                    data: {id:key},
+                    success: function(result){
+                        //alert("ss");
+                    },
+                    error: function () {
+
+                    }
+                });
+            });
+
+            var msgUpload = "<?php echo $this->__('Upload document')?>";
+
+            $j("#checkbox2").on("click",function(){
+                if ($j(this).prop("checked") == false) {
+                    var parent = $j("#checkbox_block_two");
+                    /*
+                    parent.find(".delete").hide();
+                    parent.find(".file-holder").remove();
+                    parent.find(".pdf-file").show();
+                    parent.find(".button").show();
+                    parent.find(".edit").removeClass('edit').addClass("button").html(msgUpload).before('<span class="file-holder"></span>');;
+                    parent.find(".pdf-file").val("");
+                    */
+
+                    parent.find("input").each(function(){
+
+                        var parentItem = $j(this).parents(".form_field");
+
+                        var error =  parentItem.find("error").length;
+                        var success =  parentItem.find("success").length;
+
+                        if(error != 1 && success != 1){
+
+                            parentItem.find(".delete").hide();
+                            parentItem.find(".file-holder").remove();
+                            parentItem.find(".pdf-file").show();
+                            parentItem.find(".button").show();
+                            parentItem.find(".edit").removeClass('edit').addClass("button").html(msgUpload).before('<span class="file-holder"></span>');;
+                            parentItem.find(".pdf-file").val("");
+
+                            $j.ajax({
+                                type: "POST",
+                                url: "<?php echo $this->getUrl('customer/account/step3DeleteFile'); ?>",
+                                dataType: "json",
+                                data: {id:$j(this).attr("id")},
+                                success: function(result){
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+
+            $j("#checkbox").on("click",function(){
+                if ($j(this).prop("checked") == false) {
+                    var parent = $j("#checkbox_block_one");
+                     /*
+                    parent.find(".delete").hide();
+                    parent.find(".file-holder").remove();
+                    parent.find(".pdf-file").val("");
+                    parent.find(".pdf-file").show();
+                    parent.find(".button").show();
+                    parent.find(".edit").removeClass('edit').addClass("button").html(msgUpload).before('<span class="file-holder"></span>');
+                    */
+
+                    parent.find("input").each(function(){
+                        var parentItem = $j(this).parents(".form_field");
+
+                        var error =  parentItem.find("error").length;
+                        var success =  parentItem.find("success").length;
+
+                        if(error != 1 && success != 1){
+                            parentItem.find(".delete").hide();
+                            parentItem.find(".file-holder").remove();
+                            parentItem.find(".pdf-file").show();
+                            parentItem.find(".button").show();
+                            parentItem.find(".edit").removeClass('edit').addClass("button").html(msgUpload).before('<span class="file-holder"></span>');;
+                            parentItem.find(".pdf-file").val("");
+
+                            $j.ajax({
+                                type: "POST",
+                                url: "<?php echo $this->getUrl('customer/account/step3DeleteFile'); ?>",
+                                dataType: "json",
+                                data: {id:$j(this).attr("id")},
+                                success: function(result){
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+
+    $j(window).bind('beforeunload', function(){
+        if(form_changed == 1) {
+            return '<?php echo $this->__('Would you like to save uploaded files?')?>';
+        }
+    });
+        </script>
+    </div>
+</div>

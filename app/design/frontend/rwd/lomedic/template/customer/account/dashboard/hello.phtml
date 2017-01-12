@@ -1,0 +1,4 @@
+<?php $user = Mage::getSingleton('customer/session')->getCustomer(); ?>
+<div class="welcome-msg">
+    <p class="hello"><?php echo $this->__('Hello, %s, %s!', $this->escapeHtml($user->getFirstname()), $this->escapeHtml($user->getCompany())); ?></p>
+</div>

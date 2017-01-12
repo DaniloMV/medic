@@ -1,0 +1,268 @@
+<?php
+
+/**
+ * Copyright (c) 2015, Мedic Joint.
+ * Developed by Softeq Development Corp. for Lomedic S.A..
+ */
+class Lomedic_BuyerOrders_Block_Order_History extends Mage_Sales_Block_Order_History
+{
+    /**
+     * Allowed order statuses
+     *
+     * @var array
+     */
+    protected $_allowedStatuses = array(
+        'canceled',
+        'complete',
+        'payment_review',
+        'pending',
+        'pending_payment',
+        'processing'
+    );
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->setTemplate('sales/order/history.phtml');
+
+        $orders = Mage::getResourceModel('sales/order_collection')
+            ->addFieldToSelect('*')
+          //  ->addAttributeToSelect('seller_name')
+            ->addFieldToFilter('customer_id', Mage::getSingleton('customer/session')->getCustomer()->getId())
+            ->addFieldToFilter('state', array('in' => Mage::getSingleton('sales/order_config')->getVisibleOnFrontStates()))
+            ->setOrder('created_at', 'desc')
+        ;
+
+        $orders = $this->_filterCollection($orders);
+        $this->setOrders($orders);
+
+        Mage::app()->getFrontController()
+            ->getAction()
+            ->getLayout()
+            ->getBlock('root')
+            ->setHeaderTitle(Mage::helper('sales')->__('My Orders'));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function _prepareLayout()
+    {
+        Mage_Core_Block_Template::_prepareLayout();
+
+        $this->getOrders()->load();
+        return $this;
+    }
+
+    /**
+     * Get active payment methods
+     *
+     * @return array
+     */
+    public function getPaymentMethods()
+    {
+        $payments = Mage::getSingleton('payment/config')->getActiveMethods();
+        $methods  = array();
+
+        foreach ($payments as $paymentCode => $paymentModel) {
+            $paymentTitle          = Mage::getStoreConfig('payment/' . $paymentCode . '/title');
+            $methods[$paymentCode] = array(
+                'name' => $paymentTitle,
+                'id'   => $paymentCode,
+            );
+        }
+
+        return $methods;
+    }
+
+    /**
+     * Get sales statuses
+     *
+     * @return array
+     */
+    public function getStatuses()
+    {
+        $statusesData = Mage::getModel('sales/order_status')->getResourceCollection()->getData();
+        $statuses     = array();
+
+        foreach ($statusesData as $status) {
+            if (!in_array($status['status'], $this->getAllowedStatuses())) {
+                continue;
+            }
+
+            $statuses[] = array(
+                'id'   => $status['status'],
+                'name' => $status['label']
+            );
+        }
+
+        return $statuses;
+    }
+
+    /**
+     * Get allowed statuses
+     *
+     * @return array
+     */
+    public function getAllowedStatuses()
+    {
+        return $this->_allowedStatuses;
+    }
+
+    /**
+     * Get sellers list
+     *
+     * @param  Mage_Sales_Model_Resource_Order_Collection $orders
+     * @return array
+     */
+    public function getSellers($orders = false)
+    {
+        $customers = array();
+        $orders = Mage::getResourceModel('sales/order_collection')
+            ->addFieldToSelect('*')
+            ->addFieldToFilter('customer_id', Mage::getSingleton('customer/session')->getCustomer()->getId())
+            ->addFieldToFilter('state', array('in' => Mage::getSingleton('sales/order_config')->getVisibleOnFrontStates()));
+        
+        foreach ($orders as $order) {
+            $seller      = $this->getSeller($order);
+            $customers[] = array(
+                'id'   => $order->getSellerName(),
+                'name' => $order->getSellerName()
+            );
+        }
+
+        return array_unique($customers, SORT_REGULAR);
+    }
+
+    /**
+     * Get seller from order
+     *
+     * @param  Mage_Sales_Model_Order
+     * @return Mage_Model_Customer_Customer
+     */
+    public function getSeller($order)
+    {
+//        echo "<pre>"; print_r($order->getData()); exit;
+//        $orderItem   = array_shift($order->getAllVisibleItems());
+//        $productData = Mage::getModel('marketplace/product')->getCollection()
+//            ->addFieldToFilter('mageproductid', array($orderItem->getProductId()))
+//            ->getFirstItem();
+//
+//        $customer = Mage::getModel('customer/customer')->load($productData->getUserid());
+//        return $customer;
+    }
+
+    /**
+     * Filter orders collection
+     *
+     * @param  Mage_Sales_Model_Resource_Order_Collection $collection
+     * @return Mage_Sales_Model_Resource_Order_Collection
+     */
+    protected function _filterCollection($collection)
+    {
+        // Id filter
+        if ($filterOrderId  = $this->getRequest()->getParam('s')) {
+            $collection->addFieldToFilter('increment_id', array('like' => "%$filterOrderId%"));
+        }
+
+        // Date filter
+        $filterDataFrom = $this->getRequest()->getParam('from_date');
+        $filterDataTo   = $this->getRequest()->getParam('to_date');
+
+        if ($filterDataTo) {
+            $toDate = date_create($filterDataTo);
+            $to     = date_format($toDate, 'Y-m-d 23:59:59');
+        }
+
+        if ($filterDataFrom) {
+            $fromDate = date_create($filterDataFrom);
+            $from     = date_format($fromDate, 'Y-m-d H:i:s');
+        }
+
+        $collection->addFieldToFilter('created_at', array(
+            'datetime' => true,
+            'from'     => $from,
+            'to'       => $to
+        ));
+
+        
+
+        $filterPriceFrom = (float) $this->getRequest()->getParam('from_price');
+        $filterPriceTo   = (float) $this->getRequest()->getParam('to_price');
+        $filterPayment   = $this->getRequest()->getParam('payment');
+        $filterSeller    = $this->getRequest()->getParam('seller');
+        $filterStatus    = $this->getRequest()->getParam('status');
+        
+        // Seller filter
+         if ($filterSeller) {
+             $collection->addFieldToFilter('seller_name', array('eq'=>$filterSeller));
+        }
+        if ($filterPriceFrom || $filterPriceTo || $filterPayment || $filterSeller || $filterStatus) {
+            $filteredByPrice   = array();
+            $filteredByPayment = array();
+            $filteredBySeller  = array();
+            $filteredByStatus  = array();
+
+            foreach ($collection as $order) {
+                $orderPrice   = $order->getGrandTotal();
+                $orderPayment = $order->getPayment()->getMethodInstance()->getCode();
+                $orderStatus  = $order->getStatus();
+//                $orderSeller  = $this->getSeller($order);
+
+                // Price filter
+                if ($filterPriceFrom && $filterPriceTo) {
+                    if ($filterPriceFrom <= $orderPrice && $filterPriceTo >= $orderPrice) {
+                        $filteredByPrice[] = $order->getId();
+                    }
+                } else {
+                    if (($filterPriceFrom && $filterPriceFrom <= $orderPrice) || ($filterPriceTo && $filterPriceTo >= $orderPrice)) {
+                        $filteredByPrice[] = $order->getId();
+                    }
+                }
+
+                // Payment filter
+                if ($filterPayment) {
+                    if ($filterPayment == $orderPayment) {
+                        $filteredByPayment[] = $order->getId();
+                    }
+                }
+
+                // Status filter
+                if ($filterStatus) {
+                    if ($filterStatus == $orderStatus) {
+                        $filteredByStatus[] = $order->getId();
+                    }
+                }
+            }
+
+            $this->_applyFilter($collection, $filterPriceFrom || $filterPriceTo, $filteredByPrice)
+                ->_applyFilter($collection, $filterPayment, $filteredByPayment)
+                ->_applyFilter($collection, $filterStatus, $filteredByStatus);
+        }
+
+        $collection->clear();
+
+        return $collection;
+    }
+
+    /**
+     * Apply filter
+     *
+     * @param  Mage_Sales_Model_Resource_Order_Collection $collection
+     * @param  bool $filter Apply filter?
+     * @param  array $rules
+     * @return Lomedic_BuyerOrders_Block_Order_History
+     */
+    protected function _applyFilter(&$collection, $filter, array $rules)
+    {
+        if ($filter) {
+            if (count($rules)) {
+                $collection->addFieldToFilter('entity_id', array('in' => $rules));
+            } else {
+                $collection->addFieldToFilter('entity_id', array('in' => array(0)));
+            }
+        }
+
+        return $this;
+    }
+}

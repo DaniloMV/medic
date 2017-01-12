@@ -1,0 +1,1232 @@
+/* Globals */
+
+.wunderadmin :-moz-placeholder  { opacity: 1; }
+.wunderadmin ::-moz-placeholder { opacity: 1; }
+
+.wunderadmin .middle            { background-image: none; margin-top: 0; margin-left: 300px; padding-left: 40px; padding-bottom: 30px; }
+
+.wunderadmin input.input-text,
+.wunderadmin .field-100,
+.wunderadmin textarea,
+.wunderadmin select
+                                {
+                                    border: 2px solid;
+                                    background-image: none;
+                                    font-size: 1.05em;
+                                    -webkit-border-radius: 0;
+                                    -moz-border-radius: 0;
+                                    border-radius: 0;
+                                }
+.wunderadmin .form-list td.value input.input-text,
+.wunderadmin .form-list td.value textarea
+                                { width: 246px; }
+.wunderadmin .form-list td.value select
+                                { float: left; }
+.wunderadmin textarea           {
+                                    padding: 6px 15px;
+                                }
+.wunderadmin input.input-text   {
+                                    height: 39px;
+                                    line-height: 39px;
+                                    padding: 0 15px;
+                                }
+
+.wunderadmin label              { font-size: 1.05em; }
+
+.wunderadmin select             {
+                                    display: block;
+                                    height: 41px;
+                                    line-height: 1.42857;
+                                    padding: 6px 15px;
+                                }
+.wunderadmin select[multiple]   { height: auto; padding: 0; }
+
+.wunderadmin input[type=checkbox]
+                                { display: none; }
+.wunderadmin input[type=checkbox] + span.wa_checkbox_helper:before
+                                {
+                                    font-family: 'FontAwesome';
+                                    display: inline-block;
+                                    content: "\f00c";
+                                    font-size: 0.95em;
+                                    line-height: 16px;
+                                    width: 16px;
+                                    text-align: center;
+                                    display: inline-block;
+                                    border:2px solid;
+                                    cursor: pointer;
+                                    -webkit-transition: all 0.3s ease-out;
+                                    -moz-transition: all 0.3s ease-out;
+                                    -o-transition: all 0.3s ease-out;
+                                    transition: all 0.3s ease-out;
+                                    margin: 1px;
+                                }
+.wunderadmin .field-100			{
+                                    -webkit-border-radius: 0;
+                                    -moz-border-radius: 0;
+                                    border-radius: 0;
+                                }
+.wunderadmin .grid input[type=checkbox] + span.wa_checkbox_helper:before
+                                { margin: 8px 0; }
+.wunderadmin input[type=checkbox]:checked + span.wa_checkbox_helper:before
+                                {
+                                    border:2px solid;
+                                }
+.wunderadmin input[type=checkbox]:disabled + span.wa_checkbox_helper:before
+                                {
+                                    border:2px solid;
+                                }
+.wunderadmin input[type=checkbox]:checked:disabled + span.wa_checkbox_helper:before
+                                {
+                                    border:2px solid;
+                                }
+
+.wunderadmin .separator,
+.wunderadmin .pipe              { font-size: 1.7em; }
+
+/* Header */
+
+.wunderadmin .logo              { height: auto; margin: 25px 30px 25px 30px; max-width: 240px; }
+.wunderadmin .header .header-top > a
+								{ float: left; width: 300px; }
+.wunderadmin .header            { margin-bottom: 0; }
+.wunderadmin .header-top        { border: 0; }
+
+.wunderadmin .header-right fieldset input.input-text
+                                {
+                                    border: none;
+                                    font-size: 1.05em;
+                                    padding: 0 20px 0 55px;
+                                    height: 40px;
+                                    line-height: 40px;
+                                }
+.wunderadmin .header-right fieldset
+                                { position: relative; float: left; margin-left: 30px; }
+.wunderadmin .header-right fieldset:before
+                                {
+                                    position:absolute;
+                                    font-family: 'FontAwesome';
+                                    top:0;
+                                    left: 31px;
+                                    content: "\f002";
+                                    font-size: 1.4em;
+                                    line-height: 40px;
+                                }
+.wunderadmin #global_search_indicator
+                                { position: absolute; left: 20px; top: 10px; }
+.wunderadmin .header-right      { padding-top: 25px;  }
+.wunderadmin .header-right .super
+                                { font-size: 0.95em; height:40px; line-height: 32px; margin-left: 115px; text-transform: uppercase; }
+.wunderadmin .header-right .super a
+                                { text-decoration: none;  }
+.wunderadmin .header-right .super .fa
+                                { margin-right: 14px; font-size: 1.4em; }
+.wunderadmin .go-try            {
+                                    border: 0;
+                                    padding: 0 20px;
+                                    line-height: 34px;
+                                    font-weight: bold;
+                                    height: 34px;
+                                    display: block;
+                                    float: right;
+                                    margin-left: 40px;
+                                }
+.wunderadmin .header-right .super .separator
+                                { padding: 0 20px; }
+
+.wunderadmin #page-help-link    {
+									clear: both;
+                                    border: 0;
+                                    position: relative;
+                                    line-height: 45px;
+                                    padding: 0 26px 0 60px;
+                                    font-size: 1.05em;
+                                    display: block;
+                                    margin: 20px 0 20px 27px;
+									float: left;
+									font-weight: bold;
+                                }
+.wunderadmin #page-help-link:after
+                                {
+                                    position:absolute;
+                                    font-family: 'FontAwesome';
+                                    top:0;
+                                    left: 14px;
+                                    content: "\f1cd";
+									border-right: 1px solid;
+									font-size: 1.4em;
+									padding-right: 14px;
+                                }
+
+.wunderadmin .content-header-floating .content-header
+								{ padding-bottom: 0; }
+.wunderadmin .content-header-floating h3
+                                { margin-top: 7px !important; margin-bottom: 10px !important; padding-bottom: 0; }
+.wunderadmin .content-header-floating button
+                                { margin-top: 10px; }
+
+/* Menu */
+
+.wunderadmin .nav-bar           { border: 0; padding: 0; width: 300px; overflow: hidden; position: absolute; text-transform: uppercase; z-index: 1; }
+.wunderadmin #nav               { padding-top: 25px; width: 300px; }
+.wunderadmin #nav a             {
+                                    line-height: 49px;
+                                    font-size: 1.05em;
+                                    padding: 0 20px 0 27px;
+                                    -webkit-transition: all 0.3s ease-out;
+                                    -moz-transition: all 0.3s ease-out;
+                                    -o-transition: all 0.3s ease-out;
+                                    transition: all 0.3s ease-out;
+									float: none;
+                                }
+.wunderadmin #nav li            {
+                                    -webkit-transition: all 0.3s ease-out;
+                                    -moz-transition: all 0.3s ease-out;
+                                    -o-transition: all 0.3s ease-out;
+                                    transition: all 0.3s ease-out;
+                                }
+.wunderadmin #nav a:hover       { line-height: 49px; }
+.wunderadmin #nav > li          { background: none; border-bottom: 1px solid; clear: both; width: 300px; }
+.wunderadmin #nav li.active     { margin: 0; background: none; }
+.wunderadmin #nav li ul li span
+                                { border: 0; }
+.wunderadmin #nav li.active ul a span
+                                { border-bottom: 0;  margin-bottom: 0; }
+.wunderadmin #nav ul            { top: 51px; width: 300px; border: 0; padding: 0; position: inherit; left: 0; top: 0; }
+.wunderadmin #nav ul li         { background-image: none; width: 300px; padding: 0; }
+.wunderadmin #nav ul li a       { font-size: 1.05em; border-top: 1px solid; padding: 16px 22px 16px 27px;  }
+.wunderadmin #nav ul ul li:first-child > a
+                                { border-top-width: 1px;  }
+.wunderadmin #nav ul span,
+.wunderadmin #nav ul li.last li span
+                                { background: none; line-height: 1.05em; padding: 0; }
+.wunderadmin #nav ul li.last    { background-image: none; border-bottom: none; padding-bottom: 0; }
+
+.wunderadmin #nav ul ul         { top: 0; background-image: none; }
+.wunderadmin #nav ul ul ul      { top: 0; }
+.wunderadmin #nav li.over ul    { left:0; }
+.wunderadmin #nav li.over ul ul { left:0; }
+.wunderadmin #nav li.over ul li.over ul
+                                { left:0; }
+
+.wunderadmin #nav ul ul ul      { left:0; }
+.wunderadmin #nav li.over ul li.over ul ul
+                                { left:0;}
+.wunderadmin #nav li.over ul li.over ul li.over ul
+                                { left:0; }
+
+.wunderadmin #nav li.parent a	{ position: relative; }
+.wunderadmin #nav ul li.parent a,
+.wunderadmin #nav ul li.parent li.parent a
+                                { background-image: none; }
+.wunderadmin #nav li.parent > a:before,
+.wunderadmin #nav ul li.parent > a:before,
+.wunderadmin #nav ul li.parent > li.parent a:before
+                                {
+                                    position:absolute;
+                                    font-family: 'FontAwesome';
+                                    top:0;
+                                    right: 20px;
+                                    content: "\f077";
+                                }
+.wunderadmin #nav li.parent > a.collapsed:before,
+.wunderadmin #nav ul li.parent > a.collapsed:before,
+.wunderadmin #nav ul li.parent > li.parent a.collapsed:before
+                                {
+                                    content: "\f078";
+                                }
+
+.wunderadmin #nav li.parent > ul > li > a
+								{ padding-left: 47px; font-size: 0.95em; }
+.wunderadmin #nav li.parent > ul > li > a:after
+								{
+                                    position:absolute;
+                                    font-family: 'FontAwesome';
+                                    top: -2px;
+                                    left: 27px;
+                                    content: "\f111";
+									font-size: 0.4em;
+								}
+.wunderadmin #nav li.parent ul li a:before
+								{  top: -2px; }
+.wunderadmin #nav ul li.parent > ul > li > a
+								{ padding-left: 67px; }
+.wunderadmin #nav ul li.parent > ul > li > a:after
+								{ left: 47px; }
+.wunderadmin #nav ul ul li.parent > ul > li > a
+								{ padding-left: 87px; }
+.wunderadmin #nav ul ul li.parent > ul > li > a:after
+								{ left: 67px; }
+
+.wunderadmin #wa_toggle_navigation
+								{ text-decoration: none; font-size: 16px; position: absolute; left: 0; top: 2px; }
+.wunderadmin .nav-bar,
+.wunderadmin #nav,
+.wunderadmin #nav > li,
+.wunderadmin .wa_notifications_wrap,
+.wunderadmin .middle,
+.wunderadmin .footer
+								{
+                                    -webkit-transition: all 0.3s ease-out;
+                                    -moz-transition: all 0.3s ease-out;
+                                    -o-transition: all 0.3s ease-out;
+                                    transition: all 0.3s ease-out;
+								}
+.wunderadmin.wa_navigation_collapsed .nav-bar,
+.wunderadmin.wa_navigation_collapsed .nav-bar #nav,
+.wunderadmin.wa_navigation_collapsed .nav-bar #nav > li
+								{ width: 10px;  }
+.wunderadmin.wa_navigation_collapsed .nav-bar:hover,
+.wunderadmin.wa_navigation_collapsed .nav-bar:hover #nav,
+.wunderadmin.wa_navigation_collapsed .nav-bar:hover #nav > li
+								{ width: 300px; }
+.wunderadmin.wa_navigation_collapsed .wa_notifications_wrap,
+.wunderadmin.wa_navigation_collapsed .middle,
+.wunderadmin.wa_navigation_collapsed .footer
+								{ margin-left: 10px; }
+
+/* Notifications */
+
+.wunderadmin .wa_notifications_wrap
+								{ margin-left: 300px; overflow: auto; }
+.wunderadmin .wa_notifications_wrap.first
+								{ padding-top: 25px; }
+.wunderadmin .wa_notifications_wrap .notification-global
+								{ margin-left: 40px; }
+.wunderadmin .critical          { font-weight: bold; }
+.wunderadmin .notification-global .f-right a
+                                {
+                                    float: right;
+                                    text-decoration: none;
+                                    line-height: 37px;
+                                    height: 37px;
+                                    padding: 0 17px;
+                                    position: relative;
+                                    margin: -11px 0 -11px 40px;
+                                    -webkit-transition: all 0.3s ease-out;
+                                    -moz-transition: all 0.3s ease-out;
+                                    -o-transition: all 0.3s ease-out;
+                                    transition: all 0.3s ease-out;
+                                }
+.wunderadmin .notification-global .f-right a:after
+                                {
+                                    position:absolute;
+                                    font-family: 'FontAwesome';
+                                    top:0;
+                                    right: 13px;
+                                    font-size: 0.95em;
+                                    content: "\f054";
+                                }
+
+.wunderadmin .notification-global
+                                {
+                                    border: 2px solid;
+                                    padding: 15px 5px 14px 57px;
+                                    font-size: 1.05em;
+                                    margin:0 27px 5px 27px;
+                                    position: relative;
+                                    background-image: none;
+									margin-left: 300px;
+                                }
+.wunderadmin .notification-global:before
+                                {
+                                    position:absolute;
+                                    font-family: 'FontAwesome';
+                                    top: 15px;
+                                    left: 20px;
+                                    content: "\f071";
+                                    font-size: 1.4em;
+                                }
+.wunderadmin .notification-global-notice:before
+                                {
+                                    content: "\f05a";
+                                }
+
+.wunderadmin .error-msg,
+.wunderadmin .notice-msg,
+.wunderadmin .success-msg       { background-image: none !important; position: relative; border-width: 2px !important; font-size: 1.05em !important; padding: 15px 5px 14px 57px !important; margin: 2px 0 !important; }
+.wunderadmin .error-msg:before,
+.wunderadmin .notice-msg:before,
+.wunderadmin .success-msg:before
+                                {
+                                    position:absolute;
+                                    font-family: 'FontAwesome';
+                                    top: 15px;
+                                    left: 20px;
+                                    font-size: 1.4em;
+                                }
+.wunderadmin .error-msg:before  { content: "\f071"; }
+.wunderadmin .notice-msg:before { content: "\f05a"; }
+.wunderadmin .success-msg:before
+                                { content: "\f058"; }
+.wunderadmin .messages li       { min-height: 0 !important; }
+.wunderadmin ul.messages        { margin-bottom: 30px !important; }
+
+/* Footer */
+
+.wunderadmin .footer            { border-top: 4px solid; margin-top: 0; padding: 30px; font-size: 1.05em; margin-left: 300px; }
+.wunderadmin .bug-report .locale_select
+                                { display: block; float: left; line-height: 31px; margin-top: 16px; }
+.wunderadmin .bug-report .locale_select select
+                                { float: right; height: 31px; margin-left: 10px; }
+.wunderadmin .legality a        { display: block; margin-bottom: 10px; }
+
+/* Login and forgot password pages */
+
+.wunderadmin .login-form        { border: 2px solid; padding: 40px 40px; }
+.wunderadmin .wa_login_wrap		{ position: relative; }
+.wunderadmin .login-container   { width: 637px; padding-left: 38px; }
+.wunderadmin .login-form h2     { font-weight: bold; font-size: 1.8em; text-align: left; margin-left: 17px; }
+.wunderadmin .login-box .bottom,
+.wunderadmin .login-form label
+                                { display: none; }
+.wunderadmin .login-form .input-left
+								{ clear: left; }
+.wunderadmin .login-form .form-buttons
+                                { position: absolute; right: 0; top: 0; margin-top: 10px;}
+.wunderadmin .login-form .input-box input.input-text
+                                { font-size: 1.05em; padding: 18px 16px; width: 232px; margin-top: 10px; height: 1.05em; line-height: 1.05em; }
+.wunderadmin .login-form #login	{ margin-top: 20px; }
+.wunderadmin .login-form #email	{ margin-bottom: 51px; }
+#page-login.wunderadmin .form-button,
+#page-login.wunderadmin .form-buttons .forgot-password
+                                { float: left; width: 266px; height: 51px; text-transform: uppercase; font-size: 1.45em; font-weight: bold; }
+#page-login.wunderadmin .form-buttons .forgot-password span
+								{ width: 248px; }
+
+.wunderadmin .login-container .legal
+                                { border: 2px solid; border-top: 0; font-size: 1.05em; padding: 20px 30px; }
+.wunderadmin .form-buttons a    { font-size: 1.2em; line-height: 47px; margin-top: 20px; clear: both; width: 100%; text-align: center; }
+.wunderadmin .form-buttons a:after
+								{ content: " "; clear: both; }
+.wunderadmin .login-form ul.messages
+                                { margin-bottom: 10px !important; }
+
+/* Layout */
+
+.wunderadmin .content-header h3 { font-size: 1.4em; text-transform: uppercase; margin-bottom: 0; }
+.wunderadmin .side-col h3.head-categories
+                                { padding-left: 0; margin-top: 0; float: left; line-height: 37px; }
+.wunderadmin .head-categories   { padding-left: 30px; position: relative; background-image: none; margin-top: 0; }
+
+.wunderadmin .columns           { background-image: none; }
+.wunderadmin div.side-col       { width: 348px; margin-right: -388px; padding-right: 40px; }
+.wunderadmin div.main-col       { border-left: 3px solid; margin-left: 388px; }
+
+.wunderadmin.adminhtml-system-config-edit div.main-col
+                                { border: 0; padding-left: 0; }
+
+.wunderadmin .content-header br { display: none; }
+.wunderadmin .content-header    { margin-right: 0; border-bottom: 0; margin-bottom: 0; padding-bottom: 30px; }
+.wunderadmin .side-col .content-header
+								{ padding-bottom: 0; }
+
+/* Buttons */
+
+.wunderadmin button,
+.wunderadmin .form-button       {
+                                    border: 0;
+                                    font-weight: normal;
+                                    font-size: 1.05em;
+                                    line-height: 31px;
+                                    padding:0 10px;
+                                    -webkit-transition: all 0.3s ease-out;
+                                    -moz-transition: all 0.3s ease-out;
+                                    -o-transition: all 0.3s ease-out;
+                                    transition: all 0.3s ease-out;
+                                }
+.wunderadmin .value button      { margin: 2px 90px 0 0; }
+.wunderadmin .value .buttons-set button
+								{ margin: 0 5px 0 0; }
+
+.wunderadmin button.fail:hover,
+.wunderadmin button.cancel:hover,
+.wunderadmin button.delete:hover
+                                { background-image: none; }
+
+.wunderadmin .side-col button,
+.wunderadmin .side-col .content-header button,
+.wunderadmin .side-col .form-button
+                                { border: 3px solid; float: right; margin-top: 0; margin-right: 0; margin-left: 5px; width: 37px; }
+.wunderadmin .side-col button:first-child
+                                { margin-left: 0; }
+
+.wunderadmin .side-col #order-sidebar button
+                                { border: inherit; width: inherit; }
+
+.wunderadmin button span        { background-image:none; position: relative; float: left; height: 31px; line-height: 31px; }
+.wunderadmin button span:before {
+									clear: both;
+                                    position:absolute;
+                                    font-family: 'FontAwesome';
+                                    top: 0;
+                                    left: 0;
+                                    font-size: 1.4em;
+									width: 31px;
+									height: 31px;
+									line-height: 31px;
+                                    -webkit-transition: all 0.3s ease-out;
+                                    -moz-transition: all 0.3s ease-out;
+                                    -o-transition: all 0.3s ease-out;
+                                    transition: all 0.3s ease-out;
+								}
+.wunderadmin .buttons-set button span:before {
+                                    left: 0;
+                                }
+.wunderadmin button span span:before
+                                { content: "" !important; display: none; }
+
+.wunderadmin button.add span:before { content: "\f055"; }
+.wunderadmin button.AddSelectedBtn span:before { content: "\f055"; }
+.wunderadmin button.save span:before { content: "\f058" }
+.wunderadmin button.SavePackagesBtn span:before { content: "\f058" }
+.wunderadmin button.reset span:before { content: "\f021" }
+.wunderadmin button.cancel_button span:before { content: "\f00d" }
+.wunderadmin button.get_more span:before { content: "\f08e" }
+.wunderadmin button.add-widget span:before { content: "\f085" }
+.wunderadmin button.add-variable span:before { content: "\f121" }
+.wunderadmin button.add-image span:before { content: "\f03e" }
+.wunderadmin button.show-hide span:before { content: "\f06e" }
+.wunderadmin button.email span:before { content: "\f1d9" }
+.wunderadmin button.export_button span:before { content: "\f019" }
+.wunderadmin button.import span:before { content: "\f093" }
+.wunderadmin button.btn-wysiwyg span:before { content: "\f044" }
+.wunderadmin button.delete span:before { content: "\f00d" }
+.wunderadmin button.flush span:before { content: "\f1b8" }
+.wunderadmin button.flush_storage span:before { content: "\f1b8" }
+.wunderadmin button.order_credit_memo span:before { content: "\f044" }
+.wunderadmin button.order_reorder span:before { content: "\f01e" }
+.wunderadmin button.order_unhold span:before { content: "\f04b" }
+.wunderadmin button.order_hold span:before { content: "\f04c" }
+.wunderadmin button.order_invoice span:before { content: "\f003" }
+.wunderadmin button.order_ship span:before { content: "\f0d1" }
+.wunderadmin button.button_select span:before { content: "\f0a6" }
+.wunderadmin button.button_config span:before { content: "\f013" }
+.wunderadmin button.backup_system span:before { content: "\f013" }
+.wunderadmin button.backup_media span:before { content: "\f03e" }
+.wunderadmin button.backup_database span:before { content: "\f1c0" }
+.wunderadmin button.button_preview span:before { content: "\f002" }
+.wunderadmin button.button_plain_text span:before { content: "\f0f6" }
+.wunderadmin button.button_html span:before { content: "\f1c9" }
+.wunderadmin button.button_edit span:before { content: "\f040" }
+.wunderadmin button.back span:before { content: "\f060" }
+.wunderadmin button.search span:before { content: "\f002" }
+.wunderadmin button.button_assign span:before { content: "\f0c1" }
+.wunderadmin button.button_label span:before { content: "\f02c" }
+.wunderadmin button.button_print span:before { content: "\f02f" }
+
+.wunderadmin button.delete,
+.wunderadmin button.save,
+.wunderadmin button.SavePackagesBtn,
+.wunderadmin button.reset,
+.wunderadmin button.cancel_button,
+.wunderadmin button.get_more,
+.wunderadmin button.add-widget,
+.wunderadmin button.add-variable,
+.wunderadmin button.add-image,
+.wunderadmin button.show-hide,
+.wunderadmin button.email,
+.wunderadmin button.export_button,
+.wunderadmin button.import,
+.wunderadmin button.btn-wysiwyg,
+.wunderadmin button.back,
+.wunderadmin button.search,
+.wunderadmin button.order_credit_memo,
+.wunderadmin button.order_reorder,
+.wunderadmin button.order_unhold,
+.wunderadmin button.order_hold,
+.wunderadmin button.order_invoice,
+.wunderadmin button.order_ship,
+.wunderadmin button.button_select,
+.wunderadmin button.button_config,
+.wunderadmin button.backup_system,
+.wunderadmin button.backup_media,
+.wunderadmin button.backup_database,
+.wunderadmin button.button_preview,
+.wunderadmin button.button_plain_text,
+.wunderadmin button.button_html,
+.wunderadmin button.button_edit,
+.wunderadmin button.button_assign,
+.wunderadmin button.button_label,
+.wunderadmin button.button_print,
+.wunderadmin button.AddSelectedBtn,
+.wunderadmin button.add         { padding-left: 0; }
+
+.wunderadmin button.cancel span,
+.wunderadmin button.delete span,
+.wunderadmin button.save span,
+.wunderadmin button.SavePackagesBtn span,
+.wunderadmin button.reset span,
+.wunderadmin button.cancel_button span,
+.wunderadmin button.get_more span,
+.wunderadmin button.add-widget span,
+.wunderadmin button.add-variable span,
+.wunderadmin button.add-image span,
+.wunderadmin button.show-hide span,
+.wunderadmin button.email span,
+.wunderadmin button.export_button span,
+.wunderadmin button.import span,
+.wunderadmin button.btn-wysiwyg span,
+.wunderadmin button.add span,
+.wunderadmin button.AddSelectedBtn span,
+.wunderadmin button.back span,
+.wunderadmin button.search span,
+.wunderadmin button.order_credit_memo span,
+.wunderadmin button.order_reorder span,
+.wunderadmin button.order_unhold span,
+.wunderadmin button.order_hold span,
+.wunderadmin button.order_invoice span,
+.wunderadmin button.order_ship span,
+.wunderadmin button.button_select span,
+.wunderadmin button.button_config span,
+.wunderadmin button.backup_system span,
+.wunderadmin button.backup_media span,
+.wunderadmin button.backup_database span,
+.wunderadmin button.button_preview span,
+.wunderadmin button.button_plain_text span,
+.wunderadmin button.button_html span,
+.wunderadmin button.button_edit span,
+.wunderadmin button.add-image span,
+.wunderadmin button.add-widget span,
+.wunderadmin button.button_assign span,
+.wunderadmin button.button_label span,
+.wunderadmin button.button_print span,
+.wunderadmin .side-col #order-sidebar button span
+                                { padding-left:41px; }
+
+.wunderadmin .side-col button span
+								{ padding-left: 10px; }
+
+.wunderadmin .content-buttons button,
+.wunderadmin .content-header button,
+.wunderadmin .filter-actions button
+                                { margin-left: 10px; }
+
+.wunderadmin .entry-edit .form-buttons
+                                { line-height: 43px; }
+.wunderadmin .entry-edit-head .form-buttons
+								{ padding-top: 7px; }
+.wunderadmin .massaction button	{ float: left; margin-top: 7px; }
+
+.wunderadmin #group_price_container td.last,
+.wunderadmin #tier_price_container td.last
+								{ min-width: 100px; }
+.wunderadmin button.delete.icon-btn
+								{ width: auto !important; }
+.wunderadmin button.delete.icon-btn span
+								{ text-indent: 0; width: auto; }
+.wunderadmin .sub-btn-set       { overflow: auto; padding: 3px 5px; background-image: none; border-right-width: 0; }
+.wunderadmin button.add.disabled span
+                                { background-image: none; }
+.wunderadmin .AddPackageBtn,
+.wunderadmin .AddSelectedBtn
+                                { margin: 10px 10px 0 0; }
+
+/* Elements */
+
+.wunderadmin .switcher          { border: 1px solid; padding: 20px 19px; overflow: hidden; }
+.wunderadmin .side-col .switcher
+                                { padding-right: 58px; margin-right: 0; margin-top: 0; }
+.wunderadmin .switcher label    { font-weight: normal; font-size: 1.2em; margin-bottom: 0; float: left; line-height: 41px; margin-right: 20px; }
+.wunderadmin .side-col .switcher label
+                                { float: none; line-height: normal; margin-right: 0; margin-bottom: 20px; font-weight: normal; }
+.wunderadmin .switcher select   { width: 270px; float: left; }
+.wunderadmin .side-col .switcher select
+                                { width: 100%; }
+
+.wunderadmin .switcher .link-store-scope,
+.wunderadmin .link-store-scope
+                                { position: relative; width: 20px; height:30px; margin: 0 -40px 0 20px; background-image: none;  }
+.wunderadmin #grop_fields .link-store-scope
+								{ margin-left: 14px; }
+.wunderadmin #product_info_tabs_websites_content #grop_fields .link-store-scope,
+.wunderadmin #order-store-selector .link-store-scope,
+.wunderadmin #rule_store_labels_fieldset .link-store-scope
+								{ margin-right: 10px; }
+.wunderadmin .switcher .link-store-scope:before,
+.wunderadmin .link-store-scope:before
+                                {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    font-family: 'FontAwesome';
+                                    content: "\f059";
+                                    font-size: 20px;
+                                    text-indent: 0;
+                                    line-height: 41px;
+                                }
+.wunderadmin .form-list td.value .link-store-scope
+                                { margin: -10px 0 0 10px; }
+.wunderadmin .switcher p a      { font-size: 1.05em; display: block; margin-left: 17px; padding-top: 15px; clear: both; }
+
+.wunderadmin .tree-actions      { text-align: left; margin: 30px 0 30px 20px; }
+.wunderadmin .tree-actions a:first-child
+								{ margin-right: 20px; }
+.wunderadmin .tree-actions a    { position: relative; font-size: 0.95em; text-decoration: none; padding: 0 24px 0 55px; text-transform: uppercase; line-height: 31px; float: left; }
+.wunderadmin .tree-actions a:before
+                                {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    font-family: 'FontAwesome';
+                                    content: "\f067";
+                                    font-size: 1.4em;
+                                    line-height: 31px;
+									width: 31px;
+									text-align: center;
+                                }
+.wunderadmin .tree-actions a:first-child:before
+                                {
+                                    content: "\f068";
+                                }
+.wunderadmin .tree-actions .separator
+                                { display: none; }
+
+/* Tree */
+
+.wunderadmin .categories-side-col .tree-holder
+                                { margin-left: 20px; margin-right: 0; clear: both; padding-top: 30px; }
+
+.wunderadmin .x-tree-node a span,
+.wunderadmin .x-dd-drag-ghost a span
+                                { font-size: 1.05em; }
+
+.wunderadmin .x-tree-node .x-tree-selected a span
+                                { background: none; font-weight: bold; }
+
+.wunderadmin .x-tree-lines .x-tree-elbow-line,
+.wunderadmin .x-tree-lines .x-tree-elbow,
+.wunderadmin .x-tree-lines .x-tree-elbow-end,
+.wunderadmin .x-tree-node-expanded .x-tree-node-icon,
+.wunderadmin .x-tree-node-collapsed .x-tree-node-icon
+                                { background: none; }
+.wunderadmin .x-tree-node-collapsed .x-tree-node-icon,
+.wunderadmin .x-tree-node-expanded .x-tree-node-icon,
+.wunderadmin .x-tree-node-leaf .x-tree-node-icon
+                                { width: 7px; }
+.wunderadmin .x-tree-node-loading .x-tree-node-icon
+                                { width: 16px; background-repeat: no-repeat; }
+.wunderadmin .x-tree-node-leaf .x-tree-node-icon
+                                { background-image: url('../../images/modern/tree_icons/node.png'); background-position: -6px 0; }
+.wunderadmin .x-tree-lines .x-tree-elbow-end-minus,
+.wunderadmin .x-tree-lines .x-tree-elbow-minus
+                                { background-image: url('../../images/modern/tree_icons/minus.png'); }
+.wunderadmin .x-tree-lines .x-tree-elbow-plus,
+.wunderadmin .x-tree-lines .x-tree-elbow-end-plus
+                                { background-image: url('../../images/modern/tree_icons/plus.png'); }
+
+/* Tabs */
+
+.wunderadmin ul.tabs-horiz      { background-image: none; padding-left: 0; padding-top: 0; margin: 0 0 20px; border-bottom: 2px solid; }
+.wunderadmin ul.tabs-horiz li a { font-size: 1.05em; padding: 20px 20px; border: 0; border-bottom: 2px solid; margin: 0 0 -2px 0; text-transform: uppercase; }
+.wunderadmin ul.tabs-horiz li   { margin: 0; }
+.wunderadmin ul.tabs-horiz li a.active
+                                { font-weight: bold; }
+
+/* Forms */
+
+.wunderadmin .entry-edit .entry-edit-head h4
+                                { font-weight: bold; font-size: 1.05em; line-height: 47px; text-transform: uppercase; }
+.wunderadmin dl.accordion dt,
+.wunderadmin .entry-edit .entry-edit-head
+                                { padding: 16px 20px; }
+.wunderadmin .box,
+.wunderadmin .entry-edit fieldset,
+.wunderadmin .entry-edit .fieldset
+                                { border: none; padding-left: 20px; padding-right: 0; }
+
+.wunderadmin .form-list tr td.scope-label span
+                                {
+                                    border: 3px solid;
+                                    line-height: 35px;
+                                    padding: 0 15px;
+                                    display: block;
+                                    margin-left: 18px;
+                                    -webkit-transition: all 0.3s ease-out;
+                                    -moz-transition: all 0.3s ease-out;
+                                    -o-transition: all 0.3s ease-out;
+                                    transition: all 0.3s ease-out;
+                                }
+.wunderadmin .form-list tr td.scope-label span span
+                                {
+                                    border: 0;
+                                    line-height: 41px;
+                                    padding: 0 5px;
+                                    display: block;
+                                    margin: -3px 0;
+                                    -webkit-border-radius: 0;
+                                    -moz-border-radius: 0;
+                                    border-radius: 0;
+                                }
+.wunderadmin .form-list tr td.scope-label
+                                { background: url('../../images/modern/scope_dots.png') no-repeat 0 24px !important; }
+
+.wunderadmin .form-list tr:hover > td.scope-label > span
+                                { border: 3px solid; line-height: 35px; padding: 0 15px; display: block; margin-left: 18px; }
+.wunderadmin .form-list tr:hover > td.scope-label > span > span
+                                {
+                                    border: 0;
+                                    line-height: 41px;
+                                    padding: 0 5px;
+                                    display: block;
+                                    margin: -3px 0;
+                                    -webkit-border-radius: 0;
+                                    -moz-border-radius: 0;
+                                    border-radius: 0;
+                                }
+.wunderadmin .form-list tr:hover > td.scope-label
+                                { background: url('../../images/modern/scope_dots_active.png') no-repeat 0 24px !important; }
+
+.wunderadmin .fieldset-wide .form-list td.value input.input-text,
+.wunderadmin .fieldset-wide .form-list td.value textarea
+                                { width: 90% !important; }
+.wunderadmin .fieldset-wide .form-list td.value td.cell-label input.input-text
+                                { width: 80% !important; }
+.wunderadmin .fieldset-wide .form-list td.value td.cell-position input.input-text
+                                { width: 40% !important; }
+.wunderadmin .form-list td.label label
+                                { margin-top: 12px; }
+.wunderadmin #_newsletterbase_fieldset .form-list td.label label,
+.wunderadmin #product_info_tabs_super_settings_content .form-list td.label label
+                                { margin-top: 2px; }
+.wunderadmin .entry-edit fieldset > span.field-row > label,
+.wunderadmin .form-list td.label + td.value > strong,
+.wunderadmin .form-list td.label + td.value > a,
+.wunderadmin .form-list td.label + td.value > span:not(.no-display):not(.delete-image):not(.next-toselect)
+                                { display: inline-block; padding-top: 12px; }
+.wunderadmin .form-list td.label + td.value > span#detailed_rating,
+.wunderadmin .form-list td.label + td.value > span.wa_calendar_icon
+                                { padding-top: 0 !important; }
+.wunderadmin .form-list td.label + td.value > span.delete-image
+                                { padding-top: 5px; }
+.wunderadmin .form-list td.label + td.value > span.delete-image .wa_checkbox_wrapper + label
+                                { padding-top: 0; }
+.wunderadmin .form-list td.label + td.value > span.delete-image + p.note
+                                { clear: both; }
+.wunderadmin .form-list td.label + td.value > label.wa_checkbox_wrapper
+                                { display: inline-block; padding-top: 10px; }
+.wunderadmin .form-list td.label + td.value > label.wa_checkbox_wrapper + label
+                                { padding-top: 10px; }
+.wunderadmin .super-attributes li.attribute-value .attribute-value-label-container,
+.wunderadmin .block_template_container
+                                { line-height: 41px; }
+.wunderadmin .super-attributes li.attribute-value .attribute-values-container
+                                { line-height: 0; margin-left: 2px; }
+.wunderadmin .custom-options .option-header .input-text
+                                { width: 50% }
+.wunderadmin .custom-options .option-header .select
+                                { width: 95% }
+.wunderadmin .custom-options .option-box .border input.input-text
+                                { width: 50% !important; }
+.wunderadmin .form-list td		{ vertical-align: middle; padding-right: 10px; }
+.wunderadmin form .form-list td	{ vertical-align: top; padding-right: inherit; }
+.wunderadmin .columns #poll_form .form-list td.value
+                                { width: 313px; }
+.wunderadmin .tier .data col    { width: auto; }
+.wunderadmin .entry-edit .order-address input.input-text,
+.wunderadmin .entry-edit .order-address .textarea
+                                { width: 80% !important; }
+.wunderadmin .giftmessage-order-create .entire-order,
+.wunderadmin .giftmessage-order-create .each-order-item
+								{ height: 300px; }
+.wunderadmin #order-comment textarea
+                                { width: 95% !important; }
+.wunderadmin #order-coupons .content
+								{ margin-top: 10px; }
+.wunderadmin #order-coupons .input-text
+								{ margin-top: -20px; }
+.wunderadmin #period_date_from,
+.wunderadmin #period_date_to    { padding-right: 30px; }
+.wunderadmin .actions .filter .f-left
+                                { position: relative; }
+.wunderadmin .actions .filter .f-left > div
+                                { width: 120px; }
+.wunderadmin .actions .filter .f-left button
+                                { position: absolute; left: 90px; top: 24px; }
+.wunderadmin .actions .a-right select
+                                { display: inline-block; }
+.wunderadmin .actions .a-right button
+                                { vertical-align: middle; }
+.wunderadmin #row_reports_dashboard_ytd_start select
+                                { float: none !important; display: inline-block; }
+.wunderadmin select[type=time],
+.wunderadmin #row_reports_dashboard_ytd_start select:last-child,
+.wunderadmin select#reports_dashboard_mtd_start
+                                { width: 60px !important; padding-left: 10px; padding-right: 10px; float: none !important; display: inline-block; }
+.wunderadmin select.select-date { float: none !important; display: inline-block; }
+.wunderadmin #moneybookers_multifuncbutton span
+                                { margin-top: 0 !important; line-height: 30px; }
+.wunderadmin #design_tabs_general_content .form-list td.value .link-store-scope
+                                { margin-top: 0; }
+.wunderadmin #export_filter_form .grid td input.input-text
+								{ width: 47%; }
+.wunderadmin #export_filter_form .grid select.select-export-filter,
+.wunderadmin #export_filter_form .grid select.multiselect-export-filter
+								{ width: 295px; }
+.wunderadmin #export_filter_form .grid td input.input-text-range-date
+                                { width: 15% !important; }
+.wunderadmin #export_filter_form .grid td .wa_calendar_icon
+                                { margin-right: 20px; }
+.wunderadmin #export_filter_form .grid td .wa_calendar_icon:last-child
+                                { margin-right: 0; }
+.wunderadmin #creditmemo_item_container .order-totals table td.label
+                                { vertical-align: middle; }
+.wunderadmin #history_form textarea
+                                { width: 92% !important; }
+.wunderadmin .columns #_accountbase_fieldset .form-list td.value
+                                { width: 350px; }
+.wunderadmin .columns .form-list td.value .wa_checkbox_wrapper,
+.wunderadmin .entry-edit fieldset:not(#role_resources) .f-left .wa_checkbox_wrapper
+                                { display: block; clear:both; float: left; }
+.wunderadmin .columns .form-list td.value .wa_checkbox_wrapper + label,
+.wunderadmin .entry-edit fieldset:not(#role_resources) .f-left .wa_checkbox_wrapper + label
+                                { display: block; float: left; padding: 12px 0 0 3px; line-height: 22px; }
+.wunderadmin .form-list td.use-default
+                                { padding-top: 14px !important; }
+.wunderadmin .columns .form-list td.value.use-default .wa_checkbox_wrapper + label,
+.wunderadmin .columns #_accountpassword_fieldset .form-list td.value .wa_checkbox_wrapper,
+.wunderadmin .columns #_accountpassword_fieldset .form-list td.value .wa_checkbox_wrapper + label
+                                { padding-top: 0; }
+.wunderadmin .entry-edit fieldset:not(#role_resources) .f-left .wa_checkbox_wrapper,
+.wunderadmin .entry-edit fieldset:not(#role_resources) .f-left .wa_checkbox_wrapper + label
+                                { padding-top: 0; padding-bottom: 3px; }
+
+/* Configuration Tabs */
+
+.wunderadmin .side-col h3       { font-size: 1.4em; font-weight: bold; text-transform: uppercase; margin-bottom: 30px; padding-left: 0; margin-top: 30px; }
+
+.wunderadmin ul.tabs,
+.wunderadmin ul.tabs a
+                                { background: none; font-size: 1.05em; }
+.wunderadmin ul.config-tabs dt  { border: 0; font-size: 1em; padding: 20px; position: relative; text-transform: uppercase; cursor: pointer; }
+.wunderadmin ul.config-tabs dt:after
+                                {
+                                    position: absolute;
+                                    top: 20px;
+                                    right: 20px;
+                                    font-family: 'FontAwesome';
+                                    content: "\f077";
+                                    font-size: 1.3em;
+                                }
+.wunderadmin ul.config-tabs dt.collapsed
+                                { border-bottom: 1px solid; }
+.wunderadmin ul.config-tabs dt.collapsed:after
+                                {
+                                    content: "\f078";
+                                }
+
+.wunderadmin ul.tabs a.active   { border: 0; }
+.wunderadmin ul.tabs span       { border: 0; border-bottom: 1px solid; padding: 15px 20px; font-size: 0.95em; }
+.wunderadmin ul.tabs .active span
+                                { background: none; font-weight: bold; }
+.wunderadmin ul.tabs a.active span,
+.wunderadmin ul.tabs a.active:hover span
+                                { font-weight: bold; }
+
+.wunderadmin ul.config-tabs dl 	{ margin-bottom: 5px; }
+
+/* System configuration forms */
+
+.wunderadmin .content-header h3 { padding-left: 0; position: relative; background-image: none; margin-top: 0; line-height: 37px; }
+
+.wunderadmin .entry-edit .entry-edit-head strong,
+.wunderadmin .entry-edit .entry-edit-head a
+                                { font-size: 1.05em; }
+.wunderadmin dl.accordion dt,
+.wunderadmin .entry-edit .entry-edit-head
+                                { height: 49px; padding: 0 0 0 20px; line-height: 49px;  }
+.wunderadmin dl.accordion dt a,
+.wunderadmin .entry-edit .entry-edit-head a
+                                { line-height: 47px; background-image: none; text-transform: uppercase; font-size: 1em; }
+.wunderadmin dl.accordion dt.open a,
+.wunderadmin div.collapseable a.open
+                                { background-image: none; }
+.wunderadmin .section-config    { position: relative; }
+.wunderadmin .section-config:not(.with-button):after
+                                {
+                                    position: absolute;
+                                    top: 0;
+                                    right: 0;
+                                    font-family: 'FontAwesome';
+                                    content: "\f078";
+                                    font-size: 1.3em;
+                                    line-height: 47px;
+                                    width: 47px;
+                                    height: 47px;
+                                    text-align: center;
+                                }
+.wunderadmin .section-config:not(.with-button).active:after
+                                {
+                                    content: "\f077";
+                                }
+.wunderadmin dl.accordion dt a  { position: relative; }
+.wunderadmin dl.accordion dt a:after
+                                {
+                                    position: absolute;
+                                    top: 0;
+                                    right: 0;
+                                    font-family: 'FontAwesome';
+                                    content: "\f078";
+                                    font-size: 1.3em;
+                                    line-height: 47px;
+                                    width: 47px;
+                                    height: 47px;
+                                    text-align: center;
+                                }
+.wunderadmin dl.accordion dt.open a:after
+                                {
+                                    content: "\f077";
+                                }
+.wunderadmin .entry-edit .section-config fieldset
+                                { border: 0; }
+.wunderadmin .config-heading .button span
+                                {
+                                    font-size: inherit;
+                                    font-weight: inherit;
+                                    text-shadow: none;
+                                    line-height: 25px;
+									width: 100%;
+                                }
+.wunderadmin .with-button.active:after
+                                { display: none; }
+.wunderadmin .section-config.complex table.form-list
+                                { width: auto !important; }
+.wunderadmin .config-heading    { margin-top: 0; }
+.wunderadmin .section-config .config-advanced > .entry-edit-head a.open,
+.wunderadmin .section-config .config-advanced > .entry-edit-head a
+                                { width: 100%; }
+.wunderadmin .section-config .config-advanced > .entry-edit-head a:after
+                                { background-image: none; }
+.wunderadmin .section-config .section-config > .entry-edit-head
+								{ border: 0; margin-top: 1px; }
+
+/* Grid Pager */
+
+.wunderadmin .pager             { font-size: 0.95emem; padding-left: 20px; line-height: 1.8em; vertical-align: middle; }
+.wunderadmin .export            { font-size: 1.05em; line-height: 2.3em; }
+.wunderadmin .export img        { display: none; }
+.wunderadmin .export .export_button
+								{ float:  right; margin-left: 4px; }
+
+.wunderadmin .pager a .arrow    { margin: 0 0 0 10px; }
+.wunderadmin .pager .arrow      { margin: 0 0 0 10px; }
+.wunderadmin .pager input.page + .arrow,
+.wunderadmin .pager input.page + a
+                                { margin: 0 10px 0 0; }
+.wunderadmin .pager input.page + a .arrow
+                                { margin: 0; }
+
+.wunderadmin .pager input.page  {
+                                    height: 23px;
+                                    line-height: 23px;
+                                    width: 29px !important;
+                                    padding: 0 5px;
+                                    text-align: center;
+                                    -webkit-border-radius: 0;
+                                    -moz-border-radius: 0;
+                                    border-radius: 0;
+                                }
+.wunderadmin .pager select,
+.wunderadmin .export select     { height: 27px; width: 55px; display: inline; padding: 0; }
+.wunderadmin .link-feed         { background-image: none; position: relative; }
+.wunderadmin .link-feed:before  {
+                                    position:absolute;
+                                    font-family: 'FontAwesome';
+                                    top: -2px;
+                                    left: 0;
+                                    content: "\f143";
+                                    font-size: 1.2em;
+                                }
+.wunderadmin table.actions      { margin: 20px 0; }
+.wunderadmin table.actions td   { vertical-align: middle; }
+
+/* Grid Massactions */
+
+.wunderadmin .massaction        { border: 2px solid; height: 42px; line-height: 42px; margin: 0 0 1px 0; }
+.wunderadmin .massaction a      { font-size: 0.95em; border-right: 2px solid; height: 43px; line-height: 43px; float: left; padding: 0 24px; text-transform: uppercase; }
+.wunderadmin .massaction strong
+                                { margin-left: 24px; }
+.wunderadmin .massaction .separator
+                                { display: none; }
+.wunderadmin .massaction td     { padding: 0; border: 0; }
+.wunderadmin .massaction td:first-child
+								{ min-width: 590px; }
+.wunderadmin .massaction .entry-edit fieldset
+                                { border: 0; }
+.wunderadmin .massaction .entry-edit .field-row label
+                                { font-weight: bold; }
+.wunderadmin .massaction .entry-edit fieldset select
+                                { width: 271px; height: 30px; margin-left: 15px; }
+
+/* Grid Headings */
+
+.wunderadmin .grid table        { border: 0; }
+.wunderadmin .wa_blank_line td  { height: 1px; border:0; line-height: 1px !important; font-size: 1px; margin:0; padding: 0 !important;  }
+.wunderadmin .grid tr.headings  { font-size: 0.95em; }
+.wunderadmin .grid tr.headings th
+                                { border: 1px solid; height: 45px; border-left: 1px solid; }
+.wunderadmin .grid tr.headings th:first-child
+                                { border-left: 1px solid; }
+.wunderadmin .grid tr.headings th a
+                                { line-height: 42px; }
+.wunderadmin .grid tr.headings th a:hover
+                                { text-decoration: none; }
+.wunderadmin .grid tr.headings th a.sort-arrow-desc,
+.wunderadmin .grid tr.headings th a.sort-arrow-asc
+                                { border: 1px solid; height: 25px; line-height: 25px; padding: 0; margin-top: 10px; }
+.wunderadmin .grid tr.headings th a.sort-arrow-desc span,
+.wunderadmin .grid tr.headings th a.sort-arrow-asc span
+                                { line-height: 20px; }
+.wunderadmin .grid tr.headings th a span
+                                { line-height: 37px; text-transform: uppercase; font-size: 0.95em; font-weight: normal; }
+.wunderadmin .grid tr.headings th.no-link span
+                                { text-transform: uppercase; font-size: 0.95em; font-weight: normal; }
+.wunderadmin .grid tr.headings th,
+.wunderadmin .grid tr.headings th span
+                                { line-height: 45px; }
+.wunderadmin .grid tr.headings th a.sort-arrow-desc span.sort-title,
+.wunderadmin .grid tr.headings th a.sort-arrow-asc span.sort-title
+                                { background: none; position: relative; padding-right: 22px; }
+.wunderadmin .grid tr.headings th a.sort-arrow-desc span.sort-title:after,
+.wunderadmin .grid tr.headings th a.sort-arrow-asc span.sort-title:after
+                                {
+                                    position:absolute;
+                                    font-family: 'FontAwesome';
+                                    top: 0;
+                                    right: 10px;
+                                    font-size: 1.05em;
+                                    line-height: 25px;
+                                }
+.wunderadmin .grid tr.headings th a.sort-arrow-desc span.sort-title:after
+                                { content: "\f175"; }
+.wunderadmin .grid tr.headings th a.sort-arrow-asc span.sort-title:after
+                                { content: "\f176"; }
+
+/* Grid Filters */
+
+.wunderadmin .grid tr.filter th { font-size: 0.95em; border-top-width: 1px; }
+.wunderadmin .grid tr.filter th:first-child
+                                { border-left: 1px solid; }
+.wunderadmin .grid tr.filter th:last-child
+                                { border-right: 1px solid; }
+.wunderadmin .grid tr.filter select
+                                { height: 27px; padding: 0 3px; }
+.wunderadmin .grid tr.filter input.input-text
+                                { height: 21px; line-height: 21px; }
+.wunderadmin .grid tr.filter .field-100 input.input-text
+                                { height: 17px; line-height: 17px; }
+.wunderadmin .grid tr.filter .range input
+                                { width: 44px !important; padding: 0 5px; }
+
+/* Grid Data */
+
+.wunderadmin .grid table td     { font-size: 0.95em; vertical-align: middle; }
+.wunderadmin .grid table td:first-child
+                                { border-left-width: 1px; }
+.wunderadmin .grid table td.last
+                                { border-right: 1px solid; }
+.wunderadmin .grid td input.input-text
+                                { width: 33%; }
+.wunderadmin .price-excl-tax    { display: inline-block; }
+.wunderadmin .grid table tbody:last-child td
+                                { border-bottom: 1px solid; }
+
+/* Popups */
+
+.wunderadmin .popup-window .middle
+								{ margin-left: 0; padding: 10px 0; }
+.wunderadmin .popup-window .tree-actions
+								{ margin-left: 0; padding-bottom: 20px; margin-top: 9px; }
+.wunderadmin .popup-window .tree-actions a
+								{ padding: 0 15px 0 45px; }
+.wunderadmin .popup-window .tree-actions a:first-child
+								{ margin-right: 10px; }
+.wunderadmin .magento_title     { font-size: 1.3em; font-weight: bold; padding: 16px 20px; }
+.wunderadmin .magento_close     { background-image: none; }
+.wunderadmin .magento_close:after
+                                {
+                                    position:absolute;
+                                    font-family: 'FontAwesome';
+                                    top: 16px;
+                                    right: 16px;
+                                    font-size: 1.3em;
+                                    content: "\f00d";
+                                }
+.wunderadmin .package_items th.last
+                                { width: 170px; }
+.wunderadmin .packaging-window .package-options .options-units-weight
+                                { width: 70px; }
+
+/* Other */
+
+.wunderadmin #history_comment   { width: 94% !important; }
+
+.wunderadmin ul.tabs a.error span.error,
+.wunderadmin ul.tabs a.changed span.changed,
+.wunderadmin ul.tabs span.changed,
+.wunderadmin ul.tabs span.error
+                                { border: 0; background-image: none !important; }
+.wunderadmin ul.tabs a.error span.error,
+.wunderadmin ul.tabs a.changed span.changed
+                                { position: relative; padding: 0 0 0 5px; }
+.wunderadmin ul.tabs a.error span.error:after
+                                {
+                                    position:absolute;
+                                    font-family: 'FontAwesome';
+                                    top: 0;
+                                    right: 0;
+                                    font-size: 1.2em;
+                                    content: "\f071";
+                                    font-style: normal;
+                                }
+.wunderadmin ul.tabs a.changed span.changed:after
+                                {
+                                    position:absolute;
+                                    font-family: 'FontAwesome';
+                                    top: 0;
+                                    right: 0;
+                                    font-size: 1.2em;
+                                    content: "\f0c7";
+                                    font-style: normal;
+                                }
+.wunderadmin #catalog-wysiwyg-editor .textarea
+                                { padding: 6px 15px; width: 902px !important; }
+.wunderadmin #browser_window div.side-col
+                                { width: 288px; margin-right: -308px; padding-right: 20px; }
+.wunderadmin #browser_window div.main-col
+                                { border: 0; margin-left: 308px; }
+
+.wunderadmin .entry-edit .entry-edit-head .tools
+                                { line-height: 42px; padding-right: 20px; }
+.wunderadmin .columns .form-list td.value .next-toselect input.input-text
+                                { width: 195px !important; }
+.wunderadmin .entry-edit .form-buttons,
+.wunderadmin .entry-edit-head .right button
+                                { margin-right: 20px; }
+.wunderadmin .entry-edit-head .right button
+								{ margin-top: 10px; }
+
+.wunderadmin .wa_calendar_icon  {
+                                    font-family: 'FontAwesome';
+                                    font-size: 1.2em;
+                                    font-style: normal;
+                                    line-height: 39px;
+                                    margin-left: -30px;
+                                    cursor: pointer;
+                                }
+.wunderadmin .grid tr.filter .date  .wa_calendar_icon
+                                { line-height: inherit; margin-left: 0; }
+.tipsy-inner					{ border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0; }
+
+.wunderadmin .wrapper           { min-width: 1300px; }
+
+.wunderadmin .entry-edit .field-row label.wa_checkbox_wrapper
+								{ float: none; width: inherit; }
+
+@media screen and (max-width: 1497px) {
+.wunderadmin .header-right .super
+                                { margin-left: 20px; }
+.wunderadmin .header-right fieldset input.input-text
+								{ width: 120px; }
+}
+

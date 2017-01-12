@@ -1,0 +1,14 @@
+
+<td><?php echo $this->getProduct()->getBatchNumber()?></td>
+<td><a href="<?php echo $this->getProductUrl() ?>"><?php echo $this->escapeHtml($this->getProductName()) ?></a></td>
+<td><?php list($d,$t) = explode(' ',$this->getProduct()->getExpirationDate()); echo $d; ?></td>
+<td><?php echo $this->getGovernmentValueById($this->getProduct()->getQty())->getQty()?></td>
+<td>
+    <?php 
+	$presentation = $this->getGovernmentValueById($this->getProduct()->getPresentation())->getPresentation();
+	echo Mage::helper('buyercheckout')->cutString($presentation,25);
+	?>
+</td>
+<?php if ($addtInfoBlock = $this->getProductAdditionalInformationBlock()):?>
+    <?php echo $addtInfoBlock->setItem($this->getItem())->toHtml() ?>
+<?php endif;?>

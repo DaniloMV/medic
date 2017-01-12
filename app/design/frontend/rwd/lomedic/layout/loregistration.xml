@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name='head'>
+            <action method="addItem"><type>skin_js</type><name>js/ie10-viewport-bug-workaround.js</name><params/><if>gt IE 6</if></action>
+           
+            <action method="addItem"><type>skin_js</type><name>js/jquery.datetimepicker.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/jquery.fancybox.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/jquery.mCustomScrollbar.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/base.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/main.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/select2.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/jquery.datetimepicker.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/jquery.bxslider.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/ie.css</name><params/><if>gt IE 6</if></action>
+         </reference>
+         <reference name='jsfooter'>
+            <action method="addItem"><type>skin_js</type><name>js/plugins.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/select2.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/jquery.fancybox.pack.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/jPages.min.js</name></action>
+             <action method="addItem"><type>skin_js</type><name>js/jquery.bxslider.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/jquery.mousewheel.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/jquery.mCustomScrollbar.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/scripts.js</name></action>
+         </reference>
+    </default>
+    <customer_account_create>
+        <reference name='head'>
+            <action method="addJs"><script>inputmask.min.js</script></action>
+            <action method="addJs"><script>jquery.inputmask.min.js</script></action>
+            <block type='core/template' name='jsheader' template='registration/jsheader.phtml'/>
+        </reference>
+        <reference name="customer_form_register">
+            <action method="setTemplate"><template>registration/register.phtml</template></action>
+        </reference>
+    </customer_account_create>
+    <customer_account_login>
+        <reference name="content">
+            <remove name='customer_form_login'/>
+            <block type="customer/form_login" name="customer_form_login1" template="registration/login.phtml">
+                <block type="captcha/captcha" name="captcha">
+                    <reference name="head">
+                        <action method="addJs"><file>mage/captcha.js</file></action>
+                    </reference>
+                    <action method="setFormId"><formId>user_login</formId></action>
+                    <action method="setImgWidth"><width>230</width></action>
+                    <action method="setImgHeight"><width>50</width></action>
+                </block>
+            </block>
+        </reference>
+    </customer_account_login>
+
+    <customer_account_step1>
+        <reference name='root'>
+             <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name='head'>
+            <action method="addJs"><script>inputmask.min.js</script></action>
+            <action method="addJs"><script>jquery.inputmask.min.js</script></action>
+            <block type='core/template' name='jsheader' template='registration/jsheader.phtml'/>
+        </reference>
+        
+        <reference name="content">
+            <block type="loregistration/form_step1" name="step1" template="registration/step1.phtml" />
+        </reference>
+    </customer_account_step1>
+    
+    <customer_account_step2>
+        <reference name='root'>
+             <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name='head'>
+            <block type='core/template' name='jsheader' template='registration/jsheader.phtml'/>
+        </reference>
+        <reference name="content">
+            <block type="loregistration/form_step2" name="step2" template="registration/step2.phtml" />
+        </reference>
+    </customer_account_step2>
+
+    <customer_account_step3>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="loregistration/form_step3" name="step3" template="registration/step3.phtml"/>
+        </reference>
+    </customer_account_step3>
+
+    <customer_account_step4>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="loregistration/form_step4" name="step4" template="registration/step4.phtml"/>
+        </reference>
+    </customer_account_step4>
+
+    <customer_account_step5>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="loregistration/form_step5" name="step5" template="registration/step5.phtml"/>
+        </reference>
+    </customer_account_step5>
+</layout>

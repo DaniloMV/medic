@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <loregistration_adminhtml_visits_index>
+        <reference name="content">
+            <block type="loregistration/adminhtml_visits" name="loregistration" />
+        </reference>
+    </loregistration_adminhtml_visits_index>
+    <loregistration_adminhtml_companies_index>
+        <reference name="content">
+            <block type="loregistration/adminhtml_companies" name="loregistration" />
+        </reference>
+    </loregistration_adminhtml_companies_index>
+</layout>

@@ -1,0 +1,58 @@
+<div>
+    <?php echo $this->getGridHtml();?>
+</div>
+
+<div id="pop-del" style="display: none; background: #fff; padding: 30px; border: 1px solid grey; width: 200px; height: 100px; position: absolute; left: 50%; top: 50%; margin-left: -100px; margin-top: -50px;">
+    <p><?php echo Mage::helper('loregistration')->__('Are you sure you want to delete the company?'); ?></p>
+    <div class="button m5" style="float: left; margin-right: 30px;">
+        <a style="cursor: pointer;" id="comp-del-up" url=""><?php echo Mage::helper('loregistration')->__('Yes'); ?></a>
+    </div>
+    <div class="button m5">
+        <a style="cursor: pointer;" id="close" url=""><?php echo Mage::helper('loregistration')->__('No'); ?></a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $j(".comp-block").on("click",function(){
+        $j("#loading-mask").show();
+        var url = $j(this).attr("url");
+        $j.ajax({
+            url: url,
+            type: 'GET',
+            data: {},
+            success: function(data) {
+                if(data != '0'){
+                    $j("#companiesGrid").html(data);
+                }
+                $j("#loading-mask").hide();
+            }
+        });
+    });
+
+    $j(".comp-del").on("click",function(){
+        var url = $j(this).attr("url");
+        $j("#comp-del-up").attr("url",url);
+        $j("#pop-del").show();
+    });
+
+    $j("#close").on("click",function(){
+        $j("#pop-del").hide();
+    });
+
+    $j("#comp-del-up").on("click",function(){
+        var url = $j(this).attr("url");
+        $j("#pop-del").hide();
+        $j("#loading-mask").show();
+        $j.ajax({
+            url: url,
+            type: 'GET',
+            data: {},
+            success: function(data) {
+                if(data != '0'){
+                    $j("#companiesGrid").html(data);
+                }
+                $j("#loading-mask").hide();
+            }
+        });
+    });
+</script>

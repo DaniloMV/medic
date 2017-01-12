@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<!--[if IE 6]>         <html class="no-js ie ie6 lte-ie6 lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js ie ie7 lte-ie7 lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js ie ie8 lte-ie8 lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie ie9 lte-ie9 lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<!--[if lte IE 8]>
+			<meta http-equiv="refresh" content="0;url=http://browsehappy.com">
+		<![endif]-->
+		
+		<!-- if we need ie8, put this on conditional comment for ie8 -->
+		<!-- <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> -->
+		
+
+		<!--[if IE]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+			<link rel="stylesheet" href="css/ie.css" />
+		<![endif]-->
+		
+
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/select2.css">
+		<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">		
+		<link rel="stylesheet" href="css/jquery.datetimepicker.css">
+		<meta name="title" content="" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+		<!-- <script src="js/modernizr-2.6.2.min.js"></script> -->
+
+		<!--[if IE]>
+			<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js">IE7_PNG_SUFFIX=".png";</script>
+			<link rel="stylesheet" href="css/ie.css" />
+		<![endif]-->
+		<!--[if gte IE 9]>
+			<style type="text/css">
+				.gradient {
+					filter: none !important;
+				}
+			</style>
+		<![endif]-->
+		<title>Medic Joint</title>
+	</head>
+	<body>
+		<div id="wrapper" class="clearfix">
+			<div class="wrapSlider">
+				<header id="header" class="adminHeader"> 
+					<a href="index.html"><img class="logo" src="img/logo.png" alt="" /></a>
+					<ul class="topMenu">
+						<li><a href="#">Configuración de perfil</a></li>
+						<li><a href="seller-catalog.html">Catalogo de productos</a></li>
+						<li class="active"><a href="#">Lotes y precios</a></li>
+						<li><a href="#">Ordenes</a></li>
+						<li><a href="#">Subastas y ofertas especiales</a>
+							<ul class="submenu">
+								<li><a href="#">Lorem ipsum dolor</a></li>
+								<li><a href="#">Lorem ipsum dolor</a></li>
+							</ul>				
+						</li>
+					</ul>					
+					<div class="user clearfix">						
+						<div class="user_img"><img src="img/user.jpg" /></div>
+						<div class="user_off"><a href="#">Cerrar sesión</a></div>
+					</div>					
+				</header>
+			</div>				
+			<div id="body" class="adminBody">
+				<div class="text">
+					<div class="form clearfix mt20">
+						<div class="form_field fll mr20">
+							<span class="label lh40"><span>*</span>Seleccione un producto:</span>
+						</div>	
+						<div class="half lessHalf">
+							<div class="clearfix">
+								<div class="half">
+									<div class="form_field">
+										<select class="niceSelect">
+											<option>productos-1</option>
+											<option>productos-2</option>
+											<option>productos-3</option>
+										</select>
+									</div>
+								</div>
+								<div class="half">
+									<div class="form_field">
+										<select class="niceSelect">
+											<option>Status-1</option>
+											<option>Status-2</option>
+											<option>Status-3</option>
+										</select>
+									</div>
+								</div>
+							</div>									
+						</div>	
+						<div class="button flr showAll"><input type="button" value="Agregar lote"></div>
+					</div>
+					<div class="managerCalendarTbl mb40">
+					
+						<div class="scroll" style="height: 412px;">
+						<table class="table">	
+						<thead>
+							<tr>
+								<th width="4%">Lote</th>
+								<th width="11%">Fecha de caducidad</th>
+								<th width="11%">Cantidad de cajas unitarias</th>
+								<th width="11%">Precio</th>
+								<th width="11%">Nombre</th>
+								<th width="11%">Número de registro sanitario</th>
+								<th width="11%">No. de solicitud de registro sanitario</th>
+								<th width="11%">Descripción</th>
+								<th width="11%">Presentación</th>							
+								<th width="8%">Cantidad</th>
+							</tr>	
+						</thead>	
+						<tbody>
+							<tr>
+								<td width="4%">555</td>
+								<td width="11%">15/07/2015</td>
+								<td width="11%">500</td>
+								<td width="11%">10$</td>
+								<td width="11%">Ácido acetilsalicílico</td>
+								<td width="11%">1554D2004SSA</td>
+								<td width="11%">12345</td>
+								<td width="11%">Tableta</td>
+								<td width="11%">500 mg</td>
+								<td width="8%">20 tabletas</td>							
+							</tr>
+							<tr>
+								<td>555</td>
+								<td>15/07/2015</td>
+								<td>500</td>
+								<td>10$</td>
+								<td>Ácido acetilsalicílico</td>
+								<td>1554D2004SSA</td>
+								<td>12345</td>
+								<td>Tableta</td>
+								<td>500 mg</td>
+								<td>20 tabletas</td>						
+							</tr>
+							<tr>
+								<td>555</td>
+								<td>15/07/2015</td>
+								<td>500</td>
+								<td>10$</td>
+								<td>Ácido acetilsalicílico</td>
+								<td>1554D2004SSA</td>
+								<td>12345</td>
+								<td>Tableta</td>
+								<td>500 mg</td>
+								<td>20 tabletas</td>						
+							</tr>
+							<tr>
+								<td>555</td>
+								<td>15/07/2015</td>
+								<td>500</td>
+								<td>10$</td>
+								<td>Ácido acetilsalicílico</td>
+								<td>1554D2004SSA</td>
+								<td>12345</td>
+								<td>Tableta</td>
+								<td>500 mg</td>
+								<td>20 tabletas</td>						
+							</tr>
+							<tr>
+								<td>555</td>
+								<td>15/07/2015</td>
+								<td>500</td>
+								<td>10$</td>
+								<td>Ácido acetilsalicílico</td>
+								<td>1554D2004SSA</td>
+								<td>12345</td>
+								<td>Tableta</td>
+								<td>500 mg</td>
+								<td>20 tabletas</td>						
+							</tr>
+							<tr>
+								<td>555</td>
+								<td>15/07/2015</td>
+								<td>500</td>
+								<td>10$</td>
+								<td>Ácido acetilsalicílico</td>
+								<td>1554D2004SSA</td>
+								<td>12345</td>
+								<td>Tableta</td>
+								<td>500 mg</td>
+								<td>20 tabletas</td>						
+							</tr>
+							<tr>
+								<td>555</td>
+								<td>15/07/2015</td>
+								<td>500</td>
+								<td>10$</td>
+								<td>Ácido acetilsalicílico</td>
+								<td>1554D2004SSA</td>
+								<td>12345</td>
+								<td>Tableta</td>
+								<td>500 mg</td>
+								<td>20 tabletas</td>						
+							</tr>
+							<tr>
+								<td>555</td>
+								<td>15/07/2015</td>
+								<td>500</td>
+								<td>10$</td>
+								<td>Ácido acetilsalicílico</td>
+								<td>1554D2004SSA</td>
+								<td>12345</td>
+								<td>Tableta</td>
+								<td>500 mg</td>
+								<td>20 tabletas</td>						
+							</tr>
+							<tr>
+								<td>555</td>
+								<td>15/07/2015</td>
+								<td>500</td>
+								<td>10$</td>
+								<td>Ácido acetilsalicílico</td>
+								<td>1554D2004SSA</td>
+								<td>12345</td>
+								<td>Tableta</td>
+								<td>500 mg</td>
+								<td>20 tabletas</td>						
+							</tr>							
+						</tbody>
+						</table>
+						</div>					
+					</div>
+				<div class="hidden">	
+					<div class="form registration">
+					<form action="#">
+						<div class="clearfix">
+							<div class="half">
+								<div class="form_field"><span class="label"><span>*</span>Lote (No):</span></div>
+								<div class="form_field"><input type="text"></div>
+								<div class="form_field"><span class="label"><span>*</span>Fecha de caducidad:</span></div>
+								<div class="form_field calendar_def"><input type="text" class="datepicker"></div>
+								<div class="form_field"><span class="label">&nbsp;</span></div>
+								<div class="clearfix">
+									<div class="form_field fll"><span class="label lh40"><span>*</span>Certificado analítico:</span></div>		
+									<div class="button button-s flr"><input type="button" value="Cargar documento"></div>	
+								</div>
+								<div class="form_field validate">Hubo un error al cargar el documento,por favor inténtelo nuevamente.</div>
+							</div>
+							<div class="half">
+								<div class="form_field"><span class="label"><span>*</span>Cantidad de cajas unitarias:</span></div>
+								<div class="form_field"><input type="text"></div>
+								<div class="form_field"><span class="label">&nbsp;</span></div>
+								<div class="form_field one_line">
+									<span class="label">
+										<input type="checkbox" value="" id="checkbox" name="check">
+										<label for="checkbox" class="showFormTransparent"><span class="checkSpan"></span>Para su venta al sector gobierno</label>
+									</span>	
+									<input type="text" placeholder="Precio" class="transparent">
+								</div>
+								<div class="form_field"><span class="label">&nbsp;</span></div>
+								<div class="form_field one_line">
+									<span class="label">
+										<input type="checkbox" value="" id="checkbox2" name="check">
+										<label for="checkbox2" class="showFormTransparent"><span class="checkSpan"></span>Para su venta al sector privado</label>
+									</span>	
+									<input type="text" placeholder="Precio" class="transparent">
+								</div>								
+							</div>						
+						</div>					
+
+						<div class="clearfix js_wrap_half">
+							<div class="half js_half">
+								<div class="form_field"><span class="label"><span>*</span>¿Donde se almacenará el lote?:</span></div>
+								<div class="clearfix">
+									<div class="half form_field radio">
+										<input type="radio" value="" id="roundedOne1" name="radio" class="addFotoForm">
+										<label for="roundedOne1" class="mt0 mb0">Su propio almacén</label>
+									</div>
+									<div class="half form_field radio">
+										<input type="radio" value="" id="roundedOne2" name="radio" class="openSelectField">
+										<label for="roundedOne2" class="mt0 mb0">Almacén de MedicJoint</label>
+									</div>
+								</div>	
+							</div>
+							<div class="half hidden">
+								<div class="form_field"><span class="label"><span>*</span>Unidad de envío:</span></div>
+								<div class="form_field">
+									<select class="niceSelect">
+										<option>Caja unitario</option>
+										<option>Caja secundaria</option>
+										<option>Pallet</option>
+									</select>								
+								</div>							
+							</div>						
+						</div>				
+						
+						<div class="hidden">
+							<div class="subtitle blue">Foto y características</div>
+							<hr />
+							<p class="big">Recuerde proporcionar información fidedigna. Así mismo, es importante que cuide la imagen de su producto ya que es un factor de elección de los clientes. Si la información abajo proporcionada no coincide con la del producto se podrán generar cargos por devoluciones o costos extra de envío resultado de un mal cálculo del peso volumétrico. </p>
+							
+							<div class="addFotos">
+								<div class="addFotos_main">
+									<img src="img/addFotos.png" alt="Foto comercial" title="Foto comercial">
+									<span class="addFotos_link">
+										<input type="file" name="file" />
+										<span class="addFotos_link_name">Añada la foto</span>
+									</span>
+								</div>
+								<div class="addFotos_small">
+									<img src="img/addFotos.png" alt="De arriba" title="De arriba">
+									<span class="addFotos_link">
+										<input type="file" name="file" />
+										<span class="addFotos_link_name">Añada la foto</span>
+									</span>
+								</div>			
+								<div class="addFotos_small">
+									<img src="img/addFotos.png" alt="De abajo" title="De abajo">
+									<span class="addFotos_link">
+										<input type="file" name="file" />
+										<span class="addFotos_link_name">Añada la foto</span>
+									</span>
+								</div>	
+								<div class="addFotos_small">
+									<img src="img/addFotos.png" alt="Izquierda" title="Izquierda">
+									<span class="addFotos_link">
+										<input type="file" name="file" />
+										<span class="addFotos_link_name">Añada la foto</span>
+									</span>
+								</div>	
+								<div class="addFotos_small">
+									<img src="img/addFotos.png" alt="Derecha" title="Derecha">
+									<span class="addFotos_link">
+										<input type="file" name="file" />
+										<span class="addFotos_link_name">Añada la foto</span>
+									</span>
+								</div>	
+								<div class="addFotos_small">
+									<img src="img/addFotos.png" alt="Frente" alt="title">
+									<span class="addFotos_link">
+										<input type="file" name="file" />
+										<span class="addFotos_link_name">Añada la foto</span>
+									</span>
+								</div>	
+								<div class="addFotos_small">
+									<img src="img/addFotos.png" alt="Trasera" alt="title">
+									<span class="addFotos_link">
+										<input type="file" name="file" />
+										<span class="addFotos_link_name">Añada la foto</span>
+									</span>
+								</div>							
+							</div>
+					
+							<div class="form registration">
+								<div class="clearfix">
+									<div class="half">
+										<div class="form_field"><span class="label"><span>*</span>Largo:</span></div>
+										<div class="form_field"><input type="text"></div>
+										<div class="form_field"><span class="label"><span>*</span>Ancho:</span></div>
+										<div class="form_field"><input type="text"></div>
+										
+									</div>
+									<div class="half">
+										<div class="form_field"><span class="label"><span>*</span>Altura:</span></div>
+										<div class="form_field"><input type="text"></div>
+										<div class="form_field"><span class="label"><span>*</span>Peso:</span></div>
+										<div class="form_field"><input type="text"></div>
+									</div>						
+								</div>	
+							</div>
+						</div>	
+						<div class="button tac"><input type="button" value="Salvar lote"></div>	
+					</form>					
+					</div>					
+				</div>	
+				</div>
+			</div>
+
+		</div>
+		<footer id="footer" class="adminFooter">
+			<div class="copyright">&copy 2015 <a href="#">Aviso de privacidad</a></div>
+		</footer>
+		
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="js/ie10-viewport-bug-workaround.js"></script>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+		<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/select2.min.js"></script>
+		<script src="js/jquery.datetimepicker.js"></script>
+		<script src="js/jquery.mCustomScrollbar.js"></script>			
+		<script src="js/scripts.js"></script>
+	
+		
+	</body>
+</html>

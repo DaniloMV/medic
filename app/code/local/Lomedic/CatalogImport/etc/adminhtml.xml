@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/**
+ * Copyright (c) 2015, Мedic Joint.
+ * Developed by Softeq Development Corp. for Lomedic S.A..
+ */
+ -->
+<config>
+    <menu>
+        <loimport module="loimport" translate="title">
+            <title>Government Catalog</title>
+            <sort_order>100</sort_order>
+            <children>
+                <import module="loimport" translate="title">
+                    <title>Import</title>
+                    <sort_order>1</sort_order>
+                    <action>loimport/import</action>
+                </import>
+                <export module="loimport" translate="title">
+                    <title>Export</title>
+                    <sort_order>1</sort_order>
+                    <action>loimport/export</action>
+                </export>
+            </children>
+        </loimport>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <loimport translate="title" module="loimport">
+                        <title>Government Catalog</title>
+                        <sort_order>-100</sort_order>
+                        <children>
+                            <import translate="title">
+                                <title>Import</title>
+                                <sort_order>1</sort_order>
+                            </import>
+                            <export translate="title">
+                                <title>Export</title>
+                                <sort_order>1</sort_order>
+                            </export>
+                        </children>
+                    </loimport>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

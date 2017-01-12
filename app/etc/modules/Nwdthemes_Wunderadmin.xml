@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Nwdthemes_Wunderadmin>
+            <active>true</active>
+            <codePool>community</codePool>
+	        <depends>
+		        <Nwdthemes_All/>
+	        </depends>
+        </Nwdthemes_Wunderadmin>
+    </modules>
+</config>

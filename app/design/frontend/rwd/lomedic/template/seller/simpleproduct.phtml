@@ -1,0 +1,584 @@
+<?php
+$isPartner= Mage::getModel('marketplace/userprofile')->isPartner();
+$helper=Mage::helper('marketplace');
+$customerid=Mage::getSingleton('customer/session')->getCustomerId();
+
+
+$regHelper =  Mage::helper('loregistration');
+
+$arrRim = $regHelper->getClassificationArr();
+
+if($isPartner==1){?>
+
+    <?php
+    $collection = Mage::getModel('sales/order')->getCollection();
+    $categories = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*')->addIsActiveFilter();
+    $allcatid = array();
+    $k=0;
+    foreach ($categories as $c) {
+        $allcatid[$k] = $c->getId();
+        $k++;
+    }
+    $finalcat=array_shift($allcatid);
+    $partner=Mage::getModel('marketplace/userprofile')->getPartnerProfileById($customerid);
+    ?>
+    <style>
+        .label{
+            font-size: 16px;
+        }
+    </style>
+    <form action="<?php echo $this->getUrl('seller/marketplaceaccount/simpleproduct') ?>" enctype="multipart/form-data" method="post" id="form-customer-product-new">
+
+    <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+    <input type="hidden" name="attribute_set_id" id="attribute_set_id" value="<?php echo $this->getRequest()->getParam('set')!=''? $this->getRequest()->getParam('set'):4;  ?>" />
+    <input type="hidden" name="type_id" id="producttype" value="<?php echo $this->getRequest()->getParam('type')?>" />
+    <input type="hidden"  name="wstoreids" id="wstoreids" value="<?php echo Mage::app()->getStore()->getStoreId(); ?>" title="wstoreids" class="" />
+
+    <div class="text">
+    <h1 class="tac mt30"><?php echo $helper->__('New product'); ?></h1>
+    <p class="tac"><?php echo $helper->__('The information you provide must match with that stated in the Health Ministry registration of the medicine added.'); ?></p>
+
+    <div class="form registration">
+    <form action="#">
+        <div class="subtitle"><?php echo $helper->__('General information of the product'); ?></div>
+        <hr>
+        <div class="clearfix">
+            <div class="half">
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Commercial name'); ?>:</span></div>
+                <div class="form_field"><input class="required-entry input-text max-length" name="name" id="name" type="text"></div>
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Classification according with article 226 General Health Law'); ?>:</span></div>
+                <div class="form_field">
+                    <div class="input-box">
+                        <select class="validate-select"  name="classification_according" data-placeholder="<?php echo $helper->__('Please Select')?>">
+                            <option value=""></option>
+                            <?php foreach($arrRim as $k => $val):?>
+                                <option value="<?php echo $k;?>"><?php echo $val;?></option>
+                            <?php endforeach;?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form_field" style="margin-top: 15px;"><span class="label"><span>*</span><?php echo $helper->__('Date of creation'); ?>:</span></div>
+                <div class="form_field calendar_def"><input name="special_from_date" id="special_from_date" class="required-entry input-text datepicker" type="text"></div>
+
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Order number'); ?>:</span></div>
+                <div class="form_field"><input class="required-entry max-length" name="order_number" type="text"></div>
+
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Registration holder'); ?>:</span></div>
+                <div class="form_field"><input class="required-entry max-length" name="registration_holder" type="text"></div>
+            </div>
+            <div class="half">
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Bar code number'); ?>:</span></div>
+                <div class="form_field"><input class="required-entry validate-digits max-length" name="bar_code_number" type="text"></div>
+                <!--
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Number of Health Ministry registration'); ?>:</span></div>
+                <div class="form_field"><input placeholder="111A2015SSA" class="required-entry max-length mask" name="number_of_health" maxlength="11" type="text"></div>
+                -->
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Expiration date'); ?>:</span></div>
+                <div class="form_field calendar_def"><input name="special_to_date" id="special_to_date" class="input-text required-entry datepicker" type="text"></div>
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Previous order number'); ?>:</span></div>
+                <div class="clearfix form_field_radio js_half">
+                    <div class="form_field radio openSelectField" checked="checked">
+                        <input type="radio" checked="checked" name="radio" id="roundedOne1" value="">
+                        <label class="mt0 mb0" for="roundedOne1"><?php echo $helper->__('Yes'); ?></label>
+                    </div>
+                    <div class="form_field radio closeSelectField">
+                        <input type="radio" name="radio" id="roundedOne2" value="">
+                        <label class="mt0 mb0" for="roundedOne2"><?php echo $helper->__('No'); ?></label>
+                    </div>
+                </div>
+                <div class="form_field hidden" style="display: block;"><input id="previous_order_number" class="required-entry max-length max-ten" name="previous_order_number" type="text"></div>
+            </div>
+        </div>
+        <!--
+        <div class="mb30">
+            <div class="documents mb20">
+                <div class="form_field wa">
+                    <span class="label wa mr20 pt5"><span>*</span><?php echo $helper->__('The drug registration'); ?>:</span>
+                                <span class="file-wrapper">
+                                    <span class="button"><?php echo $helper->__('Upload document'); ?></span>
+                                    <input type="file" class="required-file pdf-file max-ten" name="drug_registration">
+                                </span>
+                </div>
+            </div>
+        </div>
+        -->
+        <div class="clearfix">
+            <div class="subtitle"><?php echo $helper->__('Technical specifications of the product'); ?></div>
+        </div>
+        <hr>
+        <div class="clearfix js_reset_content hidden-2">
+            <div class="half">
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Basic frame ID'); ?>:</span></div>
+                <div class="form_field">
+                    <?php
+                    $_attribute_code = 'code';
+                    $attributeId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product',$_attribute_code);
+                    $attribute = Mage::getModel('catalog/resource_eav_attribute')->load($attributeId);
+                    $attributeOptionsCode = $attribute ->getSource()->getAllOptions();
+                    ?>
+                    <select class="niceSelectC validate-select product-catalog" sel="1" id="code" name="code" data-placeholder="<?php echo $helper->__('Please Select')?>">
+                        <option value=""></option>
+                        <?php
+                        foreach($attributeOptionsCode as $option){
+                            if(isset($option["value"]) && !empty($option["value"]) && isset($option["label"]) && !empty($option["label"])){
+                                ?>
+                                <option value="<?php echo $option["value"] ?>"><?php echo $option["label"]?></option>
+                            <?php }} ?>
+                    </select>
+                </div>
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Description'); ?>:</span></div>
+                <div class="form_field">
+                    <select disabled="disabled" id="description_a" name="description_a" class="niceSelectC validate-select product-catalog" sel="3" data-placeholder="<?php echo $helper->__('Please Select')?>">
+                    </select>
+                </div>
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Concentration/Quantity'); ?>:</span></div>
+                <div class="form_field">
+                    <select disabled="disabled" id="qty" name="qty" class="niceSelectC validate-select product-catalog" sel="5" data-placeholder="<?php echo $helper->__('Please Select')?>">
+                    </select>
+                </div>
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Level of atention'); ?>:</span></div>
+                <div class="form_field">
+                    <select disabled="disabled" id="level" name="level" class="niceSelectC validate-select product-catalog" sel="7" data-placeholder="<?php echo $helper->__('Please Select')?>">
+                    </select>
+                </div>
+            </div>
+            <div class="half">
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('General name'); ?>:</span></div>
+                <div class="form_field">
+
+                    <?php
+                    $_attribute_code = 'generic_name';
+                    $attributeId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product',$_attribute_code);
+                    $attribute = Mage::getModel('catalog/resource_eav_attribute')->load($attributeId);
+                    $attributeOptionsGenName = $attribute ->getSource()->getAllOptions();
+                    ?>
+                    <select id="generic_name" name="generic_name" class="niceSelectC  validate-select product-catalog" sel="2" data-placeholder="<?php echo $helper->__('Please Select')?>">
+                        <option value=""></option>
+                        <?php
+                        foreach($attributeOptionsGenName as $option){
+                            if(isset($option["value"]) && !empty($option["value"]) && isset($option["label"]) && !empty($option["label"])){
+                                ?>
+                                <option value="<?php echo $option["value"] ?>"><?php echo $option["label"]?></option>
+                            <?php }} ?>
+                    </select>
+                </div>
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Presentation'); ?>:</span></div>
+                <div class="form_field">
+                    <select disabled="disabled" id="presentation" name="presentation" class="niceSelectC validate-select product-catalog" sel="4" data-placeholder="<?php echo $helper->__('Please Select')?>">
+                    </select>
+                </div>
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Medical specialt'); ?>:</span></div>
+                <div class="form_field">
+                    <select disabled="disabled" id="category" name="category" class="niceSelectC validate-select product-catalog" sel="6" data-placeholder="<?php echo $helper->__('Please Select')?>">
+                    </select>
+                </div>
+                <div class="form_field">
+                    <div class="clearfix js_reset_btn" style="margin-top: 30px; font-size: 14px;">
+                        <p class="clear_button flr mt5 ml10"><a style="cursor: pointer;" id="reset" class="reset"><?php echo $helper->__('Empty fields'); ?></a></p>
+                    </div>
+                </div>
+            </div>
+            <div style="display: table;  margin-bottom: -33px;  position: relative; width: 100%; position: relative; z-index: 1;">
+                <p class="mt0"><?php echo $helper->__("If you cann't find the product in the catalogue, please click Add and fill in the fields. The product will be moderated by MJ specialist"); ?>.</p>
+            </div>
+        </div>
+
+        <input type="hidden" value="1" id="status" name="status">
+        <div class="clearfix hidden">
+            <div class="half">
+                <div class="form_field"><span class="label"><?php echo $helper->__('Basic frame ID'); ?>:</span></div>
+                <div class="form_field"><input id="code_n" name="code_n" class="product-catalog-hide" type="text"></div>
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Description'); ?>:</span></div>
+                <div class="form_field"><input id="description_a_n" name="description_a_n" class="product-catalog-hide" type="text"></div>
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Presentation'); ?>:</span></div>
+                <div class="form_field"><input id="presentation_n" name="presentation_n" class="product-catalog-hide" type="text"></div>
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Level of atention'); ?>:</span></div>
+                <div class="form_field"><input id="level_n" name="level_n" class="product-catalog-hide" type="text"></div>
+            </div>
+            <div class="half">
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('General name'); ?>:</span></div>
+                <div class="form_field"><input id="generic_name_n" name="generic_name_n" class="product-catalog-hide" type="text"></div>
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Concentration/Quantity'); ?>:</span></div>
+                <div class="form_field"><input id="qty_n" name="qty_n" class="product-catalog-hide" type="text"></div>
+                <div class="form_field"><span class="label"><span>*</span><?php echo $helper->__('Medical specialty'); ?>:</span></div>
+                <div class="form_field"><input id="category_n" name="category_n" class="product-catalog-hide" type="text"></div>
+            </div>
+            <div class="form_field">
+                <div class="js_reset_btn" style="margin-top: 30px; font-size: 14px;">
+                    <p class="clear_button flr mt5 ml10"><a style="cursor: pointer;" id="reset_two" class="reset"><?php echo $helper->__('Empty fields'); ?></a></p>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix mb30" style="position: relative; z-index: 1111;">
+            <div class="button flr ml10 showForm"><input id="add" type="button" value="<?php echo $helper->__('add'); ?>"></div>
+        </div>
+
+        <div class="subtitle"><?php echo $helper->__('Extra information'); ?></div>
+        <hr>
+        <div class="clearfix">
+            <div class="half">
+                <div class="form_field halfAndHalf">
+                    <span class="label tar"><span>*</span><?php echo $helper->__('Drug Manufacturer'); ?>:</span>
+                    <input class="required-entry validate-select max-length" name="drug_manufacturer" type="text">
+                </div>
+                <div class="form_field halfAndHalf">
+                    <span class="label tar"><span>*</span><?php echo $helper->__('Aconditioned by'); ?>:</span>
+                    <input type="text" class="required-entry max-length" name="aconditioned_by">
+                </div>
+            </div>
+            <div class="half">
+                <!--
+                <div class="form_field halfAndHalf">
+                    <span class="label tar"><span>*</span><?php echo $helper->__('Medicine Manufacturer laboratory'); ?>:</span>
+                    <input type="text" class="required-entry max-length" name="medicine_manufacturer">
+                </div>
+                -->
+                <div class="form_field halfAndHalf">
+                    <span class="label tar"><span>*</span><?php echo $helper->__('Distributed by'); ?>:</span>
+                    <input type="text" class="required-entry max-length" name="distributed_by">
+                </div>
+            </div>
+        </div>
+        <div class="button tac"><input  type="button" onclick="saveAndContinue()"  value="<?php echo $helper->__('Save'); ?>"></div>
+    </form>
+    </div>
+    </div>
+    </form>
+
+    <script src="<?php echo Mage::getBaseUrl('skin').'frontend/rwd/lomedic/js/jquery.mask.min.js'?>" type="text/javascript"></script>
+
+
+    <script>
+
+    var selectCode = "<option value=''></option>";
+
+    var add = "<?php echo $helper->__('add'); ?>";
+    var cancel = "<?php echo $helper->__('cancel'); ?>";
+
+    <?php foreach($attributeOptionsCode as $option){
+        if(isset($option["value"]) && !empty($option["value"]) && isset($option["label"]) && !empty($option["label"])){
+
+    $order   = array("\r\n", "\n", "\r");
+    $replace = ' ';
+
+    $mess = str_replace($order, $replace, $option["label"]);
+    $val = str_replace($order, $replace, $option["value"]);
+
+            ?>
+    selectCode +='<option value="<?php echo $val; ?>"><?php echo $mess;?></option>';
+    <?php }} ?>
+
+    var selectGenName = "<option value=''></option>";
+
+    <?php foreach($attributeOptionsGenName as $option){
+        if(isset($option["value"]) && !empty($option["value"]) && isset($option["label"]) && !empty($option["label"])){
+
+    $order   = array("\r\n", "\n", "\r");
+    $replace = ' ';
+
+    $mess = str_replace($order, $replace, $option["label"]);
+    $val = str_replace($order, $replace, $option["value"]);
+    ?>
+    selectGenName +='<option value="<?php echo $val; ?>"><?php echo $mess;?></option>';
+    <?php }} ?>
+
+    $j("#roundedOne1").on("click",function(){
+        if($j(this).prop("checked")){
+            $j("#previous_order_number").addClass("required-entry");
+            $j("#previous_order_number").addClass("max-length");
+            $j("#previous_order_number").addClass("max-ten");
+        }else{
+            $j("#previous_order_number").removeClass("required-entry");
+            $j("#previous_order_number").removeClass("max-length");
+            $j("#previous_order_number").removeClass("max-ten");
+        }
+    });
+
+    $j("#add").on("click",function(){
+        //setTimeout(function(){
+        var elem = $j(".hidden").last();
+
+        if (elem.css('display') !== 'none') {
+            $j("#status").val(1);
+            $j(".product-catalog").addClass("validate-select");
+            $j(".product-catalog-hide").removeClass("required-entry").removeClass("max-length").removeClass("max-ten");
+            $j(".hidden-2").show();
+            cleanCategories();
+            elem.hide();
+            $j(this).val(add);
+        } else {
+            cleanCategoriesHidden();
+            $j("#status").val(2);
+            $j(".product-catalog").removeClass("validate-select");
+            $j(".product-catalog-hide").addClass("required-entry").addClass("max-length").addClass("max-ten");
+            $j(".product-catalog-hide").first().removeClass("required-entry").removeClass("max-length").removeClass("max-ten");
+            $j(".hidden-2").hide();
+            elem.show();
+            $j(this).val(cancel);
+        }
+        //},300);
+    });
+
+    function cleanCategoriesHidden(){
+        $j("input#code_n").val("");
+        $j("input#generic_name_n").val("");
+        $j("input#description_a_n").val("");
+        $j("input#qty_n").val("");
+        $j("input#presentation_n").val("");
+        $j("input#category_n").val("");
+        $j("input#level_n").val("");
+    }
+
+    function cleanCategories(name){
+
+        $j("[name="+name+"]").removeAttr("disabled");
+
+        if(name != 'code'){
+            $j("select#code").html(selectCode);
+            $j("select#code").select2({
+                minimumResultsForSearch: 5
+            });
+        }
+
+        if(name != 'generic_name') {
+            $j("select#generic_name").html(selectGenName);
+            $j("select#generic_name").select2({
+                minimumResultsForSearch: 5
+            });
+        }
+
+        if(name != 'description_a') {
+            $j("select#description_a").html("");
+            $j("select#description_a").select2({
+                minimumResultsForSearch: 5
+            });
+        }
+
+        if(name != 'qty') {
+            $j("select#qty").html("");
+            $j("select#qty").select2({
+                minimumResultsForSearch: 5
+            });
+        }
+
+        if(name != 'presentation') {
+            $j("select#presentation").html("");
+            $j("select#presentation").select2({
+                minimumResultsForSearch: 5
+            });
+        }
+
+        if(name != 'category') {
+            $j("select#category").html("");
+            $j("select#category").select2({
+                minimumResultsForSearch: 5
+            });
+        }
+
+        if(name != 'level') {
+            $j("select#level").html("");
+            $j("select#level").select2({
+                minimumResultsForSearch: 5
+            });
+        }
+
+        for(var t = 3; t<=lenArrCodes;t++){
+            $j("[sel=" + t + "]").attr("disabled","disabled");
+        }
+    }
+
+    $j("#reset").on("click",function(){
+        cleanCategories();
+    });
+
+    $j("#reset_two").on("click",function(){
+        cleanCategoriesHidden();
+    });
+
+    jQuery('.datepicker').datetimepicker({
+        timepicker:false,
+        format:'Y-m-d'
+    });
+
+    $j.jMaskGlobals = {
+        maskElements: 'input,td,span,div',
+        dataMaskAttr: '*[data-mask]',
+        dataMask: true,
+        watchInterval: 300,
+        watchInputs: true,
+        watchDataMask: true,
+        byPassKeys: [9, 16, 17, 18, 36, 37, 38, 39, 40, 91],
+        translation: {
+            '0': {pattern: /\d/},
+            '9': {pattern: /\d/, optional: true},
+            '#': {pattern: /\d/, recursive: true},
+            'C': {pattern: /[a-zA-Z0-9]/},
+            'B': {pattern: /[a-zA-Z]/}
+        }
+    };
+    $j('.mask').mask('000B0000SSA', {clearIfNotMatch: true});
+
+    $j('.mask').on("keyup",function(e){
+        if(e.keyCode == 8 && $j(this).val().length >= 9){
+            $j(this).val($j(this).val().substring(0,8));
+        }
+    });
+
+    var dataForm = new VarienForm('form-customer-product-new', true);
+
+    function saveAndContinue() {
+        $j(".prod-err").hide();
+        var count = 0;
+        $j("select.validate-select").each(function(v,el){
+            var val = $j(el).val();
+
+            if(val == "" || val == undefined){
+                $j(el).before('<div style="" class="validation-advice prod-err">Please select an option.</div>');
+                count++;
+            }
+        });
+
+        if(count == 0){
+            dataForm.submit();
+        }
+    }
+
+    Validation.add('max-length','Number of characters should not exceed 250 units',function(v) {
+        if(v.length > 255){
+            return false;
+        }else{
+            return true;
+        }
+    });
+
+    Validation.add('pdf-file','Please select .pdf file',function(v, elm){
+        if (!Validation.get('IsEmpty').test(v)) {
+            var fname = elm.value;
+            var re = /(\.pdf)$/i;
+            if(!re.exec(fname)) {
+                return false;
+            }
+        }
+        return true;
+    });
+
+    Validation.add('max-ten','Please select files less than 10Mb',function(v, elm){
+        if(elm != undefined && elm.files && elm.files[0] && elm.files[0].size > 10*1024*1024){
+            return false;
+        }
+        return true;
+    });
+
+
+    var arrCodes = ['code',
+        'generic_name',
+        'description_a',
+        'presentation',
+        'qty',
+        'category',
+        'level'];
+
+
+    var lenArrCodes = arrCodes.length;
+
+    $j(".product-catalog").on("change",function(){
+
+        var id = $j(this).attr("sel");
+        var name = $j(this).attr("name");
+
+        if($j(this).val() && $j(this).val() != '0' && $j(this).val() != ''){
+
+            $j("#product_loading").show();
+            $j(".niceSelectC").attr("disabled","disabled");
+
+            var arr={};
+            for(var i = 1;i<=id; i++){
+                if($j(this).val() && $j(this).val() != '0' && $j(this).val() != '') {
+                    arr[$j("[sel=" + i + "]").attr("name")] = $j("[sel=" + i + "] option:selected").text();
+                }
+            }
+
+            $j.ajax({
+                url: '<?php echo $this->getUrl('customer/account/product/') ?>',
+                data: {data:arr,id:id},
+                dataType: 'json',
+                type: 'POST',
+                success: function(data) {
+                    //cleanCategories(name);
+
+                    $j(".niceSelectC").removeAttr("disabled");
+                    for(var j in data){
+                        if(data[j]){
+                            var leng = data[j].length;
+                            if(leng > 1){
+                                var str = '<option selected="selected" value=""></option>';
+                            }else{
+                                var str = "";
+                            }
+                            for(var n = 0; n<leng;n++){
+                                if(n == 0){
+                                    if(leng == 1){
+                                        str += '<option selected="selected"  value="'+data[j][n]['value']+'">'+data[j][n]['name']+'</option>';
+                                    }else{
+                                        str += '<option value="'+data[j][n]['value']+'">'+data[j][n]['name']+'</option>';
+                                    }
+                                }else{
+                                    str += '<option value="'+data[j][n]['value']+'">'+data[j][n]['name']+'</option>';
+                                }
+                            }
+                            //$j("[name="+ j+"]").removeAttr("disabled");
+                            $j("[name="+ j+"]").html(str);
+                            $j("[name="+ j+"]").select2({
+                                minimumResultsForSearch: 5
+                            });
+
+                            if(id == 2 && data['code'].length > 1){
+                                for(var t = 3; t<=lenArrCodes;t++){
+                                    $j("[sel=" + t + "]").html("");
+                                    $j("[sel=" + t + "]").select2({
+                                        minimumResultsForSearch: 5
+                                    });
+                                    $j("[sel=" + t + "]").attr("disabled","disabled");
+                                }
+                                break;
+                            }
+
+                            var tmpKey = 0;
+
+                            for(var m in arrCodes){
+                                if(j == arrCodes[m]){
+                                    tmpKey = m;
+                                    break;
+                                }
+                            }
+
+                            var ddd = parseInt(id)+1;
+
+                            if(id != 1 && tmpKey == ddd && data[j].length > 1){
+                                for(var k = ddd+1; k<=lenArrCodes;k++){
+                                    $j("[sel=" + k + "]").html("");
+                                    $j("[sel=" + k + "]").select2({
+                                        minimumResultsForSearch: 5
+                                    });
+                                    $j("[sel=" + k + "]").attr("disabled","disabled");
+                                }
+                                break;
+                            }
+                        }
+                    }
+                    $j("#product_loading").hide();
+                },
+                error: function() {
+                    $j("#product_loading").hide();
+                    $j(".niceSelectC").removeAttr("disabled");
+                    //$('#info').html('<p>An error has occurred</p>');
+                }
+            });
+        }
+    });
+
+    </script>
+<?php }else{
+    echo "<h2 class='wk_new_msg'>".$helper->__("To BECOME SELLER PLEASE CONTACT TO ADMIN.")."</h2>";
+}?>

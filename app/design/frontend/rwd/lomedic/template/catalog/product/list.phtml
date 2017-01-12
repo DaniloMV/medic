@@ -1,0 +1,249 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+/* @var $this Mage_Catalog_Block_Product_List */
+?>
+<?php
+    //$productList_block  = Mage::app()->getLayout()->createBlock('catalog/product_list');
+
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+    $customerGroup = Mage::getSingleton('customer/session')->getCustomerGroupId();
+?>
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+<div class="category-products">
+    <?php echo $this->getToolbarHtml() ?>
+    <?php // List mode ?>
+    <?php $_iterator = 0; ?>
+    <ol class="products-list itemContainer" id="products-list">
+    <?php foreach ($_productCollection as $_product):
+//echo $_product->getProductUrl(); //echo "<pre>"; print_r($_product->getData()); exit;
+    //print_r($_product);
+?>
+        <?php $_product->setPrice($_product->getCustomerPrice()); ?>
+        <li class="productItem item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+
+
+            <div class="productItem_bpart">
+                <div class="productItem_name">
+                    <a href="<?php echo $_product->getProductUrl() ?>" onmouseover="divimagen<?php echo $_product->getName().$_iterator;?>.style.display='';"
+                    onmouseout="divimagen<?php echo $_product->getName().$_iterator;?>.style.display='none';"
+                    ><!--onmouseover="divimagen<?php echo $_product->getName().$_iterator;?>.style.display='';"
+                    onmouseout="divimagen<?php echo $_product->getName().$_iterator;?>.style.display='none';"-->
+                        <?php echo $_product->getName();?>
+                    </a>
+                </div>
+                <table class="productItem_values">
+                    <tbody>
+                        <tr>
+                            <td class="bold"><?php echo $this->__("General name"); ?>:</td>
+                            <td>
+                                <?php
+                                $attribute = Mage::getModel('loseller/goverment_catalog')->load($_product->getGenericName());
+                                echo $attribute->getGenericName();
+                                ?>
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <td class="bold"><?php echo $this->__("Description"); ?>:</td>
+                            <td>
+                                <?php
+                                $attribute= Mage::getModel('loseller/goverment_catalog')->load($_product->getDescriptionA());
+                                echo $attribute->getDescription();
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bold" ><?php echo $this->__("Presentation"); ?>:</td>
+                            <td colspan="2">
+                                <?php
+                                $attribute= Mage::getModel('loseller/goverment_catalog')->load($_product->getPresentation());
+                                echo $attribute->getPresentation();
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bold"><?php echo $this->__("Medical specialty"); ?>:</td>
+                            <td style="white-space: pre-line;">
+                                <?php
+                                $attribute= Mage::getModel('loseller/goverment_catalog')->load($_product->getCategory());
+                                echo $attribute->getCategory();
+                                ?>
+                            </td>
+
+
+                            <td class="bold"><?php echo $this->__("Basic frame ID"); ?>:</td>
+                            <td>
+                                <?php
+                                $attribute= Mage::getModel('loseller/goverment_catalog')->load($_product->getCode());
+                                echo $attribute->getCode();
+                                ?>
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <td class="bold"><?php echo $this->__("Concentration/Quantity"); ?>:</td>
+                            <td>
+                                <?php
+                                $attribute= Mage::getModel('loseller/goverment_catalog')->load($_product->getQty());
+                                echo $attribute->getQty();
+                                ?>
+                            </td>
+
+
+                            <td class="bold"><?php echo $this->__("Expiration date"); ?>:</td>
+                            <td>
+                                <?php
+                                list($date,$time) = explode(' ',$_product->getExpirationDate());
+                                echo $date;
+                                ?>
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <td class="bold" style="white-space: pre-line;"><?php echo $this->__("Medicine Manufacturer laboratory"); ?>:</td>
+                            <td>
+                                <?php
+                                echo $_product->getMedicineManufacturer();
+                                ?>
+                            </td>
+
+
+                            <td class="bold"><?php echo $this->__("Available quantity"); ?>:</td>
+                            <td>
+                                <?php
+                                echo round($_product->getStockQty());
+                                ?>
+                            </td>
+
+
+                        </tr>
+                        <!--
+                        <tr>
+                            <td class="bold"><?php echo $this->__("Medical specialty"); ?>:</td>
+                            <td>
+                                <?php
+                                $attribute= Mage::getModel('loseller/goverment_catalog')->load($_product->getCategory());
+                                echo $attribute->getCategory();
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bold"><?php echo $this->__("Basic frame ID"); ?>:</td>
+                            <td>
+                                <?php
+                                $attribute= Mage::getModel('loseller/goverment_catalog')->load($_product->getCode());
+                                echo $attribute->getCode();
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bold"><?php echo $this->__("Expiration date"); ?>:</td>
+                            <td>
+                                <?php
+                                list($date,$time) = explode(' ',$_product->getExpirationDate());
+                                echo $date;
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bold"><?php echo $this->__("Available quantity"); ?>:</td>
+                            <td>
+                                <?php
+                                echo round($_product->getStockQty());
+                                ?>
+                            </td>
+                        </tr>-->
+                    </tbody>
+                </table>
+            </div>
+            <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+                <div class="productItem_spart" style="width:21%">
+                    <div class="product-secondary">
+                        <?php if(in_array($customerGroup,array(Mage::getStoreConfig('softeq/loregistration/privatebuyer'),Mage::getStoreConfig('softeq/loregistration/govbuyer')))): ?>
+                        <?php echo $this->getPriceHtml($_product, true) ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class="product-secondary form">
+                            <?php if($_product->getHideAddToCart()): ?>
+                            <p class="action button" style="margin: 0px">
+                                <input type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')" value="<?php echo $this->__('Add to Cart') ?>"/>
+                            </p>
+                            <?php endif;?>
+                            <?php /*
+                            <p class="action button" style="margin: 0px">
+                                <input type="button" title="<?php echo $this->__('Buy now') ?>" class="button btn-cart" onclick="setLocation('<?php echo Mage::helper('locatalog/cart')->getAddToCartUrl($_product) ?>')" value="<?php echo $this->__('Buy now') ?>"/>
+                            </p>
+                            */ ?>
+                        <?php if($_product->getStockItem()->getIsInStock()): ?>
+                        <?php else: ?>
+                            <p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <div class="productItem_mpart" style="display: none;" id="divimagen<?php echo $_product->getName().$_iterator;?>"><!--style="display: none;"-->
+                <div class="productItem_img">
+                    <a href="<?php echo $_product->getProductUrl() ?>">
+                        <img src="<?php echo Mage::helper('catalog/image')->init($_product,'small_image');?>" class="image" />
+                    </a>
+                </div>
+            </div>
+        </li>
+    <?php endforeach; ?>
+    </ol>
+    <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+
+
+    <div class="toolbar-bottom">
+        <?php echo $this->getToolbarHtml() ?>
+    </div>
+</div>
+<?php endif; ?>
+<?php
+// Provides a block where additional page components may be attached, primarily good for in-page JavaScript
+if ($this->getChild('after')) {
+    $_afterChildren = $this->getChild('after')->getSortedChildren();
+    foreach ($_afterChildren as $_afterChildName) {
+        $_afterChild = $this->getChild('after')->getChild($_afterChildName);
+        //set product collection on after blocks
+        $_afterChild->setProductCollection($_productCollection);
+        echo $_afterChild->toHtml();
+    }
+}
+?>

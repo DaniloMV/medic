@@ -1,0 +1,9 @@
+<?php
+
+class Lomedic_Registration_Model_UserCompanyPrivileges extends Mage_Core_Model_Abstract
+{
+    public function _construct()
+    {
+        $this->_init('loregistration/userCompanyPrivileges');
+    }
+}

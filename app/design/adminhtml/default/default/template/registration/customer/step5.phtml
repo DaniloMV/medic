@@ -1,0 +1,234 @@
+<div class="" id="step5_div">
+    <div class="subtitle"><?php echo $this->__('Contract')?></div>
+    <p id="contract" class="file-wrapper"></p> 
+    <div class="subtitle"><?php echo $this->__('Message to recruter')?></div>
+    <p id="approve_message"></p>
+</div>
+<?php
+    $customer = Mage::registry('current_customer');
+
+    $session = Mage::getSingleton('admin/session');
+    $user = Mage::getModel('admin/user')->load($session->getUser()->getUserId());
+    $data = $user->getRole()->getData();
+    $role = $data["role_name"];
+
+    $mess_approved = Mage::helper('customer')->__("A client is approved.");
+    $mess_not_approved = Mage::helper('customer')->__("A client wasn't approved.");
+    $mess_wait = Mage::helper('customer')->__("Customer is to check with the manager, please wait.");
+    $mess = $customer->getApproveMessage();
+
+    $order = array("\r\n", "\n", "\r");
+    $replace = '<br />';
+
+    if ($mess) {
+        $mess = str_replace($order, $replace, $mess);
+    } else {
+        $mess = Mage::helper('customer')->__("No comments");
+    }
+
+    $mess_at_recruter = Mage::helper('customer')->__("No comments");
+    if ($customer->getVisitMessageToManager()) {
+        $mess_at_recruter = $customer->getVisitMessageToManager();
+
+        if ($mess_at_recruter) {
+            $mess_at_recruter = str_replace($order, $replace, $mess_at_recruter);
+        } else {
+            $mess_at_recruter = Mage::helper('customer')->__("No comments");
+        }
+    }
+
+    $preapprove = 0;
+
+    if ($customer->getRegistrationStatus() == Lomedic_Registration_Model_System_Config_Source_Status::PREAPPROVED) {
+        $preapprove = 1;
+    }
+
+    $approve = 0;
+
+    if ($customer->getRegistrationStatus() == Lomedic_Registration_Model_System_Config_Source_Status::APPROVED) {
+        $approve = 1;
+    }
+
+    $completed = 0;
+
+    if ($customer->getRegistrationStatus() == Lomedic_Registration_Model_System_Config_Source_Status::COMPLETED) {
+        $completed = 1;
+    }
+
+    $not_approve = 0;
+
+    if ($customer->getRegistrationStatus() == Lomedic_Registration_Model_System_Config_Source_Status::NOT_APPROVED) {
+        $not_approve = 1;
+    }
+
+    $closed_ss = 0;
+
+    if ($customer->getRegistrationStatus() == Lomedic_Registration_Model_System_Config_Source_Status::CLOSED) {
+        $closed_ss = 1;
+    }
+
+    $restart_s = 0;
+
+    if ($customer->getRegistrationStatus() == Lomedic_Registration_Model_System_Config_Source_Status::RESTART) {
+        $restart_s = 1;
+    }
+
+    $recruter = Mage::helper('loregistration')->getManagerType() == Mage::getStoreConfig('softeq/managers/manager') ? 0 : 1;
+?>
+
+<script>
+
+    var restart_s   = "<?php echo $restart_s; ?>";
+    var completed   = "<?php echo $completed; ?>";
+    var approve     = "<?php echo $approve; ?>";
+    var not_approve = "<?php echo $not_approve; ?>";
+    var closed_d    = "<?php echo $closed_ss; ?>";
+    var role        = "<?php echo $role; ?>";
+    var recruter    = "<?php echo $recruter; ?>";
+    var preapprove  = "<?php echo $preapprove; ?>";
+
+    $j("#_accountcontract").parents("tr").hide();
+
+    if(recruter == "0"){
+        if(approve == "1"){
+            $j("#_accountapprove_message").parents("tr").hide();
+            $j("#comm_rec").hide();
+        }else{
+            $j("#_accountcontract").parents("tr").hide();
+            $j("#_accountapprove_message").parents("tr").show();
+        }
+
+        if(completed == "1"){
+            $j("#_accountcontract").parents("tr").show();
+            $j("#_accountapprove_message").parents("tr").hide();
+            $j("#comm_rec").hide();
+        }
+
+
+        $j(document).on("change","#_accountregistration_status",function(){
+
+            var val_pre_approve = $j(this).find("option:selected").val();
+
+            if(val_pre_approve == "<?php echo Lomedic_Registration_Model_System_Config_Source_Status::APPROVED; ?>"){
+
+                $j("#_accountcontract").parents("tr").hide();
+                $j("#_accountapprove_message").parents("tr").hide();
+                $j("#comm_rec").hide();
+            }else{
+                $j("#_accountcontract").parents("tr").hide();
+                $j("#_accountapprove_message").parents("tr").show();
+                $j("#comm_rec").show();
+            }
+
+            if(val_pre_approve == "<?php echo Lomedic_Registration_Model_System_Config_Source_Status::CLOSED; ?>"){
+                $j("#_accountapprove_message").parents("tr").hide();
+                $j("#comm_rec").hide();
+            }
+
+            if(val_pre_approve == "<?php echo Lomedic_Registration_Model_System_Config_Source_Status::NOT_APPROVED; ?>"){
+                $j("#comm_rec").hide();
+            }
+
+            if(val_pre_approve == "<?php echo Lomedic_Registration_Model_System_Config_Source_Status::RESTART; ?>"){
+                $j("#_accountapprove_message").parents("tr").hide();
+                $j("#comm_rec").hide();
+            }
+
+            if(val_pre_approve == "<?php echo Lomedic_Registration_Model_System_Config_Source_Status::COMPLETED; ?>"){
+                $j("#_accountcontract").parents("tr").show();
+                $j("#_accountapprove_message").parents("tr").hide();
+                $j("#comm_rec").hide();
+            }
+
+            if(val_pre_approve == "<?php echo Lomedic_Registration_Model_System_Config_Source_Status::PREAPPROVED; ?>"){
+                $j("#_accountapprove_message").parents("tr").hide();
+                $j("#comm_rec").hide();
+            }
+        });
+
+        $j(".delete-file").css("margin-right","30px");
+        $j(".delete-file").css("float","left");
+        $j(".delete-file").parents(".value").css("width","550px");
+
+        $j("#_accountcontract").parents("tbody").append("<tr id=\"comm_rec\"><td class=\"label\"><?php echo Mage::helper('customer')->__("Comment by recruiter");?></td><td class=\"value\"><?php echo $mess_at_recruter; ?></td></tr>");
+
+
+        if(closed_d == "1" || restart_s == "1"){
+            $j("#_accountapprove_message").parents("tr").hide();
+            $j("#comm_rec").hide();
+        }else{
+            $j("#comm_rec").show();
+        }
+
+        if(not_approve == "1"){
+            $j("#comm_rec").hide();
+        }
+
+        if(preapprove == 1){
+            $j("#comm_rec").hide();
+            $j("#_accountapprove_message").parents("tr").hide();
+        }
+
+        if(approve == "1"){
+            $j("#comm_rec").hide();
+        }
+        if(completed == "1"){
+            $j("#comm_rec").hide();
+        }
+
+    }else{
+        $j("#_accountcontract").hide();
+        $j(".delete-file").hide();
+
+        if(approve == "1"){
+            $j("#_accountcontract").parents("tbody").append("<tr><td class=\"label\"><?php echo Mage::helper('customer')->__("Comment"); ?></td><td class=\"value\"><?php echo $mess_approved; ?></td></tr>");
+        }else if(completed == "1"){
+            $j("#_accountcontract").parents("tr").show();
+            $j("#_accountcontract").parents("tbody").append("<tr><td class=\"label\"><?php echo Mage::helper('customer')->__("Comment"); ?></td><td class=\"value\"><?php echo Mage::helper('customer')->__("Client registration is completed"); ?></td></tr>");
+        }else{
+            if(approve == "1" || not_approve == "1" || closed_d == "1" || completed == "1"){
+                $j("#_accountcontract").parents("tbody").append("<tr id=\"comm_rec\"><td class=\"label\"><?php echo Mage::helper('customer')->__("Comments from manager"); ?></td><td class=\"value\"><?php echo $mess; ?></td></tr>");
+            }
+        }
+
+        if(not_approve == "1"){
+            $j("#_accountcontract").parents("tbody").append("<p><?php echo $mess_not_approved; ?></p>");
+        }
+    }
+
+
+    jQuery( document ).ready(function() {
+        jQuery('#step5_div p').each(function(){
+            jQuery(this).append(jQuery('#_account'+jQuery(this).attr('id')).parent().html());
+        });
+        jQuery('#customer_info_tabs_step5_content #_accountbase_fieldset').remove();
+        jQuery('#_accountcontract').after('<label for="_accountcontract" class="button"><?php echo $this->__("upload document")?></label>');
+        
+        var SITE = SITE || {};
+        SITE.fileInputs = function() {
+            var $this = jQuery(this),
+                $val = $this.val(),
+                valArray = $val.split('\\'),
+                newVal = valArray[valArray.length-1],
+                $button = $this.siblings('.button'),
+                $fakeFile = $this.siblings('.file-holder');
+            if(newVal !== '') {
+                $button.text('');
+                $button.removeClass('button').removeClass('active').addClass('edit');
+                if($fakeFile.length === 0) {
+                    $button.before('<label for="'+ jQuery($button).attr('for') +'" class="file-holder">' + newVal + '</label>');
+                } else {
+                    $fakeFile.text(newVal);
+                }
+            }
+        };
+
+        jQuery('.file-wrapper input[type=file]').bind('change focus click', SITE.fileInputs);
+        jQuery('.file-wrapper input[type=file]').hover(function() {
+            jQuery(this).next(".button").addClass('active');
+        },function(){
+            jQuery(this).next(".button").removeClass('active');
+        });
+
+    });
+</script>

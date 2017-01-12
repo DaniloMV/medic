@@ -1,0 +1,67 @@
+<?php
+/**
+ * 
+ */
+if(Mage::helper('loregistration')->getManagerType()==Mage::getStoreConfig('softeq/managers/manager') || Mage::helper('loregistration')->getHeadAdminType()):
+
+?>
+
+<div class="half managerCalendarForm">
+    <ul class="messageList">
+        <?php if($this->getNewRegistration()): ?>
+            <li class=""><a href="<?php echo $this->getNewRegistration()->getUrl()?>" class="registr-ic"><?php echo $this->__('%s waiting for recruiter assignment.',$this->getNewRegistration()->getCount())?></a></li>
+        <?php endif; ?>
+        <?php if($this->getStandByProcess()): ?>
+            <li class=""><a href="<?php echo $this->getStandByProcess()->getUrl()?>" class="arrest-ic"><?php echo $this->__('%s stand-by process. Please check it!',$this->getStandByProcess()->getCount())?></a></li>
+        <?php endif; ?>
+        <?php if($this->getAppointmentProcess()): ?>
+            <li class=""><a href="<?php echo $this->getAppointmentProcess()->getUrl()?>" class="del-ic"><?php echo $this->__('%s visit is appointed. Please check!',$this->getAppointmentProcess()->getCount())?></a></li>
+        <?php endif; ?>
+    </ul>
+</div>
+<div class="half managerCalendarForm">
+    <ul class="messageList">
+        <?php if($this->getNeedApprove()): ?>
+            <li class=""><a href="<?php echo $this->getNeedApprove()->getUrl()?>" class="approve-ic"><?php echo $this->__('%s prospects were pre-approved by the recruiter. Waiting for approval!',$this->getNeedApprove()->getCount())?></a></li>
+        <?php endif; ?>
+        <?php if($this->getNeedSign()): ?>
+            <li class=""><a href="<?php echo $this->getNeedSign()->getUrl()?>" class="sign-ic"><?php echo $this->__('%s contracts should be signed and uploaded to the system.',$this->getNeedSign()->getCount())?></a></li>
+        <?php endif; ?>
+        <?php if($this->getNeedClose()): ?>
+            <li class=""><a href="<?php echo $this->getNeedClose()->getUrl()?>" class="close-ic"><?php echo $this->__('%s process was closed by the recruiter. Waiting for confirmation!',$this->getNeedClose()->getCount())?></a></li>
+        <?php endif; ?>
+    </ul>
+</div>
+<?php else: ?>
+<div class="half managerCalendarForm">
+    <ul class="messageList">
+        <?php if($this->getNewRecruiterRegistration()): ?>
+            <li class=""><a href="<?php echo $this->getNewRecruiterRegistration()->getUrl()?>" class="registr-ic"><?php echo $this->__('%s new process. Please check!',$this->getNewRecruiterRegistration()->getCount())?></a></li>
+        <?php endif; ?>
+        <?php if($this->getStandByRecruiterProcess()): ?>
+            <li class=""><a href="<?php echo $this->getStandByRecruiterProcess()->getUrl()?>" class="arrest-ic"><?php echo $this->__('%s stand-by process. Please check it!',$this->getStandByRecruiterProcess()->getCount())?></a></li>
+        <?php endif; ?>
+        <?php if($this->getPreregistrationCompleatedRecruiterProcess()): ?>
+            <li class=""><a href="<?php echo $this->getPreregistrationCompleatedRecruiterProcess()->getUrl()?>" class="del-ic"><?php echo $this->__('%s Pre-registration form is completed. Please check!',$this->getPreregistrationCompleatedRecruiterProcess()->getCount())?></a></li>
+        <?php endif; ?>
+        <?php if($this->getValidationRecruiterProcess()): ?>
+            <li class=""><a href="<?php echo $this->getValidationRecruiterProcess()->getUrl()?>" class="del-ic"><?php echo $this->__('%s Documentation completed. Waiting for approval.',$this->getValidationRecruiterProcess()->getCount())?></a></li>
+        <?php endif; ?>
+    </ul>
+</div>
+<div class="half managerCalendarForm">
+    <ul class="messageList">
+        <?php if($this->getAppointmentRecruiterProcess()): ?>
+            <li class=""><a href="<?php echo $this->getAppointmentRecruiterProcess()->getUrl()?>" class="sign-ic"><?php echo $this->__('%s prospect is waiting for visit appointment.',$this->getAppointmentRecruiterProcess()->getCount())?></a></li>
+        <?php endif; ?>
+        <?php if($this->getPreapprovalRecruiterProcess()): ?>
+            <li class=""><a href="<?php echo $this->getPreapprovalRecruiterProcess()->getUrl()?>" class="close-ic"><?php echo $this->__('%s prospect waiting for pre-approval.',$this->getPreapprovalRecruiterProcess()->getCount())?></a></li>
+        <?php endif; ?>
+        <?php if($this->getNotApprove()): ?>
+            <li class=""><a href="<?php echo $this->getNotApprove()->getUrl()?>" class="close-ic"><?php echo $this->__('%s process wasn\'t approved by the manager. Please check!',$this->getNotApprove()->getCount())?></a></li>
+        <?php endif; ?>
+    </ul>
+</div>
+<?php endif; ?>
+<div class="clearfix"></div>
+<?php echo $this->getRegistrationsGrid() ?>

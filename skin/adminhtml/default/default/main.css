@@ -1,0 +1,2201 @@
+@charset 'UTF-8';
+#_accountcontract {
+    display:none;
+}
+.tac {
+    clear:both;
+}
+.w500 {
+    width:500px;
+}
+#address_field select,#address_field textarea, #visit_message textarea {
+    width:90%;
+}
+#address_field textarea {
+    min-height: 100px;
+}
+#comment_text textarea,#approve_message textarea {
+    min-height: 100px;
+    width:80%;
+}
+#approve_message textarea {
+    min-height: 100px;
+    width:500px;
+}
+#address_form_container .form-list td.value {
+    width: 400px;
+}
+#address_form_container .form-list td.value input {
+    width: 273px;
+}
+#address_form_container .form-list td.value img {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+#step4_div .form .comment {
+    width: 100%;
+}
+#step4_div .subtitleGrey {
+    margin-top: 0px;
+}
+#step3_div .form_field .label {
+    width: 40%;
+}
+#label_status select {
+    width: auto; 
+    height: 32px;
+    margin-bottom:5px;
+    display:inline;
+    margin-left: 30px;
+}
+#step3_div .file-wrapper .button {
+    width: 155px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+#step3_div .file-wrapper input {
+    width: auto;
+    height: auto;
+}
+#step3_div .file-wrapper .comment-text {
+    opacity: 1;
+    position: relative;
+}
+#step3_div .file-wrapper .approve-file input {
+    opacity: 1;
+    position: relative;
+    top: 9px;
+}
+
+#step3_div .file-wrapper .approve-file label {
+    margin: 5px 0;
+}
+
+#step5_div .file-wrapper {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+}
+#step5_div .file-wrapper label {
+    cursor: pointer;
+}
+#step5_div .file-wrapper .button,#step5_div .file-wrapper .download-file,#step3_div .file-wrapper .download-file {
+    background: #31ade3 none repeat scroll 0 0;
+    border: 1px solid #31ade3;
+    border-radius: 3px;
+    color: #fff;
+    font: 1.167em "Myriad-Bold";
+    margin-right: 10px;
+    padding: 5px 40px;
+    text-transform: uppercase;
+    vertical-align: top;
+}
+/*#step3_div .file-wrapper .edit {
+    background: url("images/lomedic/edit.png") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    height: 20px;
+    line-height: 38px;
+    margin-left: 7px;
+    width: 13px;
+}*/
+
+#step5_div .file-wrapper .download-file a:first-child,#step3_div .file-wrapper .download-file a:first-child {
+    display: none;
+}
+#step5_div .file-wrapper .download-file a,#step3_div .file-wrapper .download-file a {
+    color: white;
+}
+
+#step5_div .file-wrapper .file-holder{
+    font: 1em "Courier";
+}
+#step3_div .file-wrapper .file-holder{
+    padding-left:0px;
+    display: inline-block;
+    margin: 0;
+    width: 120px;
+    overflow: hidden;
+}
+#step5_div .file-wrapper .edit,#step3_div .file-wrapper .edit {
+    background: url("images/lomedic/edit.png") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    height: 20px;
+    line-height: 38px;
+    width: 13px;
+    margin: 0 0 0 7px;
+}
+/* ==========================================================================
+   Default settings
+   ========================================================================== */
+@font-face {
+  font-family: 'Courier';
+  src: url("font/cour.eot");
+  /* IE9 Compat Modes */
+  src: url("font/cour.eot?#iefix") format("embedded-opentype"), url("font/cour.woff") format("woff"), url("cour.ttf") format("truetype");
+  /* Safari, Android, iOS */
+}   
+@font-face {
+  font-family: 'Myriad-Bold';
+  src: url("font/MyriadPro-Bold_Condensed.eot");
+  /* IE9 Compat Modes */
+  src: url("font/MyriadPro-Bold_Condensed.eot?#iefix") format("embedded-opentype"), url("font/MyriadPro-Bold_Condensed.woff") format("woff"), url("MyriadPro-Bold_Condensed.ttf") format("truetype");
+  /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: 'Proximanova-Bold';
+  src: url("font/PROXIMANOVA-BOLD.eot");
+  /* IE9 Compat Modes */
+  src: url("font/PROXIMANOVA-BOLD.eot?#iefix") format("embedded-opentype"), url("font/PROXIMANOVA-BOLD.woff") format("woff"), url("PROXIMANOVA-BOLD.ttf") format("truetype");
+  /* Safari, Android, iOS */
+}   
+html, input, select, textarea, button {
+	font:12px/1.428 Arial, "Geneva CY", sans-serif;
+	color:#222;
+}
+html,body {
+	height: 100%;
+        overflow-x: hidden;
+}
+a, a:active, a:focus{
+  color: #31ade3;
+  text-decoration: none;
+}
+a:hover
+{
+  color: #005580;
+  text-decoration: underline;
+}
+a:visited {
+	
+}
+/*a:link {-webkit-tap-highlight-color: #fcd700;} */
+
+::-moz-selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+::selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+p{
+	font: 1.25em 'Courier';
+	margin: 15px 0;
+}
+input[placeholder]          {text-overflow:ellipsis;}
+input::-webkit-input-placeholder     {text-overflow:ellipsis;} 
+input::-moz-placeholder      {text-overflow:ellipsis;} 
+input:-ms-input-placeholder {text-overflow:ellipsis;}  
+/* ==========================================================================
+   can be useful
+   ========================================================================== */
+/*
+-webkit-overflow-scrolling: touch;//для мобильных устройств, скролл в блоке проходит лучше и не дергается вся страница
+
+*/
+
+
+/* ==========================================================================
+   Site Styles
+   ========================================================================== */
+h1{
+    color: #31ade3;
+    font: 4em "Proximanova-Bold";
+    letter-spacing: 3px;
+    margin: 20px 0;
+    text-transform: uppercase;
+} 
+h2{
+    color: #31ade3;
+    font: 3em "Proximanova-Bold";
+    letter-spacing: 1px;
+    margin: 15px 0;
+    text-transform: uppercase;
+} 
+h3{
+    color: #31ade3;
+    font: 2em "Proximanova-Bold";
+    margin: 15px 0;
+    text-transform: uppercase;
+} 
+#wrapper {
+	min-width: 980px;
+	max-width: 1440px;
+	min-height: 100%;
+	margin: 0 auto;
+}
+.wrapSlider{
+    position: relative;
+}
+#header {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+    height: 100px;
+    position: absolute;
+    width: 100%;
+    z-index: 5;
+}
+#header .logo{
+    float: left;
+    margin: 15px 2%;
+}
+#header ul:after {
+    display: block;
+    content: ' ';
+    clear: both;
+    float: none;
+}
+#header ul.topMenu{
+    display: table;
+    height: 100%;
+    left: 48%;
+    margin-left: -25%;
+    position: absolute;
+    text-align: center;
+    width: 60%;
+}
+.adminHeader ul.topMenu{
+    width: 50%!important;
+}
+#header ul.topMenu > li {
+    display: table-cell;
+	vertical-align: middle;
+    position: relative;
+	font: 1.2em 'Myriad-Bold';
+	text-transform: uppercase;
+}
+#header ul.topMenu > li > a {
+    color: #666666;
+    display: block;
+    height: 60px;
+    padding-top: 40px;
+    text-decoration: none;
+}
+.adminHeader ul.topMenu > li > a {
+    padding-left: 15px!important;
+    padding-right: 15px!important;
+}
+#header ul.topMenu > li > a:hover,  #header ul.topMenu > li.active > a{
+    color: #31ade3;
+}
+#header ul.topMenu > li:hover:after, #header ul.topMenu > li.active:after{
+    background-color: #31ade3;
+    bottom: 0;
+}
+#header ul.topMenu > li:after {
+    background-color: rgba(0, 0, 0, 0);
+    bottom: 0;
+    content: "";
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transition: all 200ms ease 0s;
+    width: 100%;
+}
+#header ul.submenu {
+    display: none;
+    position: absolute;
+    width: 280px;
+    top: 100px;
+    left: 0;
+    background-color: white;
+	box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2);
+    text-align: left;	
+	z-index: 3;
+}
+#header ul.submenu > li {
+    display: block;
+	border-bottom: 1px solid #eee;	
+	font-family: 'Lato', sans-serif;
+	text-transform: none;
+}
+#header ul.submenu li:last-child{
+	border-bottom: none;
+}
+#header ul.submenu > li > a {
+    display: block;
+    padding: 10px;
+    color: #333333;
+    background-color: white;
+    text-decoration: none;
+	padding-left: 25px;	
+}
+
+#header ul.submenu > li > a:hover {
+    background-color: #eee;
+}
+#header ul.topMenu > li:hover > ul.submenu {
+    display: block;
+}
+#header .signIn{
+    background: none repeat scroll 0 0 #31ade3;
+    border-radius: 3px;
+    color: #fff;
+    float: right;
+    font: 1.2em "Myriad-Bold";
+    margin: 15px 2%;
+    text-transform: uppercase;
+}
+#header .signIn a{
+    color: #fff;
+    text-decoration: none;
+	display: block;
+    padding: 20px 15px 25px;
+	position: relative;
+}
+#header .signIn a:after{
+	border-color: #ffffff transparent transparent transparent;
+    border-style: solid;
+    border-width: 6px 6px 0 6px;
+    bottom: 12px;
+    content: "";
+    height: 0;
+    left: 50%;
+    margin-left: -6px;
+    position: absolute;
+    width: 0;
+}
+#header .signIn a.open:after{
+    border-color: transparent transparent #ffffff;
+    border-style: solid;
+    border-width: 0 6px 6px;
+    bottom: 12px;
+    content: "";
+    height: 0;
+    left: 50%;
+    margin-left: -6px;
+    position: absolute;
+    width: 0;
+}
+#header .signInForm {
+    display: none;
+    background: none repeat scroll 0 0 #666666;
+    height: 80px;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+}
+#header .signInForm .signInFormWrap{
+    margin: 0 auto;
+    width: 940px;
+}
+#header .signInForm .signInFormWrap .signInForm_links{
+    float: left;
+}
+#header .signInForm .signInFormWrap .signInForm_links li{
+    display: inline-block;
+    line-height: 80px;
+    margin-right: 15px;
+}
+#header .signInForm .signInFormWrap .signInForm_links li a{
+    color: #999999;
+    text-transform: uppercase;
+    font: 1.25em "Myriad-Bold";
+    text-decoration: underline;
+}
+#header .signInForm .signInFormWrap .signInForm_links li a:hover{
+    text-decoration: none;
+    color: #eee;	
+}
+#header .signInForm .signInFormWrap form{
+    float: left;
+}
+#header .signInForm .signInFormWrap input{
+    font: 1.167em/33px "Courier";
+    width: 280px;
+    border: none;
+    border-radius: 3px;	
+    padding: 0 10px;	
+    height:30px;
+}
+#header .signInForm .signInFormWrap div{
+    float: left;
+    line-height: 80px;	
+	margin-right: 15px;
+}
+#header .signInForm .signInFormWrap .button{
+    margin-right: 0;
+}
+#header .signInForm .signInFormWrap .button input{
+    background: none repeat scroll 0 0 #31ade3;
+    border-radius: 3px;
+    color: #fff;
+    padding: 0 30px;
+    text-transform: uppercase;
+    font: 1.25em/33px "Myriad-Bold";
+	border: none;
+}
+button {
+    background: none repeat scroll 0 0 #31ade3;
+    border-radius: 3px;
+    color: #fff;
+    padding: 0 30px;
+    text-transform: uppercase;
+    font: 1.25em/33px "Myriad-Bold";
+	border: none;
+}
+.adminHeader{
+    background: none repeat scroll 0 0 #fff !important;
+    position: relative !important;
+	margin-bottom: 16px;
+}
+.adminHeader:after{
+    background: none repeat scroll 0 0 #eee;
+    box-shadow: 0 0 2px 0 #c1c1c1 inset;
+    content: "";
+    height: 16px;
+    left: 0;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+}
+.adminHeader .signInForm{
+	top: 116px!important;
+}
+.adminFooter{
+	margin-top: -70px!important;
+	height: 95px!important;
+}
+.adminBody{
+	padding-bottom: 95px!important;
+}
+#footer {
+	min-width: 980px;
+	height: 130px;
+	margin-top: -100px;
+	background: #666666;
+    position: relative;	
+}
+#footer .copyright{
+    bottom: 20px;
+    color: #999;
+    font: 1.167em 'Lato', sans-serif;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+#footer .copyright a{
+    color: #999;
+	margin-left: 10px;
+}
+#footer .copyright a:hover{
+    color: #eee;
+}
+#footer .social{
+    bottom: 70px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+#footer .social li{
+    display: inline-block;
+    margin: 0 20px;
+    text-align: center;
+    vertical-align: top;
+}
+#footer .social li a{
+    background: url("images/lomedic/social.png") no-repeat scroll left top transparent;
+    display: block;
+    height: 22px;
+}
+#footer .social li.facebook a{
+    background-position: -26px 0;
+	width: 20px;
+}
+#footer .social li.facebook:hover a{
+    background-position: 0 0;
+}
+#footer .social li.instagram a{
+	width: 23px;
+    background-position: -84px 0;	
+}
+#footer .social li.instagram:hover a{
+    background-position: -58px 0;
+}
+#footer .social li.twitter a{
+	width: 27px;
+    background-position: -147px 0;
+}
+#footer .social li.twitter:hover a{
+    background-position: -121px 0;
+}
+#footer .social li.youtube a{ 
+	width: 23px;
+    background-position: -212px 0;
+}
+#footer .social li.youtube:hover a{ 
+   background-position: -186px 0;
+}
+#footer .social li.google a{
+	width: 23px;
+    background-position: -277px 0;
+}
+#footer .social li.google:hover a{
+    background-position: -251px 0;
+}
+#body {
+	padding-bottom: 150px;
+	position: relative;
+}
+.text{
+	padding: 10px 5%;
+}
+.info_blockTbl{
+    display: table;
+	margin: 20px 0;
+}
+.info_blockTbl .info_block_title{
+    color: #31ade3;
+    display: table-cell;
+    font: 5.25em "Proximanova-Bold";
+    letter-spacing: 8px;
+    padding-right: 30px;
+    text-transform: uppercase;
+    vertical-align: top;
+}
+.info_blockTbl .info_block_text{
+    display: table-cell;
+    vertical-align: top;
+}
+.info_blockTbl .info_block_text p:first-child{
+	margin-top: 0;
+}
+.info_block{
+	margin: 20px 0;
+}
+.info_block .info_block_left{
+    float: left;
+	width: 49%;
+    margin-right: 2%;
+    margin-bottom: 15px;	
+}
+.info_block .info_block_title{
+    color: #31ade3;
+    font: 5.25em "Proximanova-Bold";
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+.info_block .info_block_text p:first-child{
+	margin-top: 0;
+}
+
+.title{
+    background: none repeat scroll 0 0 #31ade3;
+    color: #fff;
+    font: 3em "Proximanova-Bold";
+    margin: 15px 0;
+    padding: 7px;
+    text-align: center;
+    text-transform: uppercase;	
+    letter-spacing: 3px;	
+}
+.subtitle{
+	color: #666666;
+	font: 1.5em 'Myriad-Bold';
+    text-transform: uppercase;	
+}
+.servicesBlocks{
+    padding: 15px 0;
+    text-align: center;
+}
+.servicesBlocks .servicesBlocks_item{
+    border: 1px solid #31ade3;
+    display: inline-block;
+    height: 232px;
+    margin-right: 4%;
+    vertical-align: top;
+    width: 15%;
+    text-align: center;	
+}
+.servicesBlocks .servicesBlocks_item:last-child{
+    margin-right: 0;
+}
+.servicesBlocks .servicesBlocks_item a{
+    display: block;
+    height: 100%;
+    position: relative;
+	font: 1.5em 'Myriad-Bold';
+	text-transform: uppercase;
+	color: #31ade3;
+}
+.servicesBlocks .servicesBlocks_item a:hover{
+	color: #fff;
+}
+.servicesBlocks .servicesBlocks_item a span{
+    display: block;
+    padding: 0 5%;
+    position: absolute;
+    top: 175px;
+    width: 90%;
+}
+.servicesBlocks .products{
+	background: url("images/lomedic/products.png") no-repeat scroll center 35px transparent;
+}
+.servicesBlocks .statistics{
+	background: url("images/lomedic/statistics.png") no-repeat scroll center 35px transparent;
+}
+.servicesBlocks .prices{
+	background: url("images/lomedic/prices.png") no-repeat scroll center 35px transparent;
+}
+.servicesBlocks .offer{
+	background: url("images/lomedic/offer.png") no-repeat scroll center 35px transparent;
+}
+.servicesBlocks .delivery{
+	background: url("images/lomedic/delivery.png") no-repeat scroll center 35px transparent;
+}
+.servicesBlocks .products:hover{
+	background: url("images/lomedic/products-act.png") no-repeat scroll center 35px #31ade3;
+}
+.servicesBlocks .statistics:hover{
+	background: url("images/lomedic/statistics-act.png") no-repeat scroll center 35px #31ade3;
+}
+.servicesBlocks .prices:hover{
+	background: url("images/lomedic/prices-act.png") no-repeat scroll center 35px #31ade3;
+}
+.servicesBlocks .offer:hover{
+	background: url("images/lomedic/offer-act.png") no-repeat scroll center 35px #31ade3;
+}
+.servicesBlocks .delivery:hover{
+	background: url("images/lomedic/delivery-act.png") no-repeat scroll center 35px #31ade3;
+}
+hr{
+    background: url("images/lomedic/hr.png") no-repeat scroll center center transparent;
+    border: 0 none;
+    height: 1px;
+	margin: 25px auto;
+}
+.more{
+    display: none;
+}
+.breadcrumbs{
+    margin: 10px 0 20px;
+}
+.breadcrumbs li{
+    display: inline-block;
+    font: 1.3em "Courier";
+    margin-right: 20px;
+    position: relative;
+}
+.breadcrumbs li:after{
+    border-color: transparent transparent transparent #31aee3;
+    border-style: solid;
+    border-width: 6px 0 6px 6px;
+    content: "";
+    height: 0;
+    margin-top: -6px;
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    width: 0;
+}
+.button a{
+    background: none repeat scroll 0 0 #31ade3;
+    border-radius: 3px;
+    color: #fff;
+    padding: 10px 60px;
+    text-transform: uppercase;
+    font: 2em "Myriad-Bold";
+	text-decoration: none;
+}
+.button .down {
+	position: relative;
+}
+.button .down:after{
+    background: url("images/lomedic/updown.png") no-repeat scroll left bottom transparent;
+    content: "";
+    height: 10px;
+    margin-top: -5px;
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    width: 11px;
+}
+.button.active .down:after{
+    background: url("images/lomedic/updown.png") no-repeat scroll left top transparent;
+}
+.border{
+    border: 1px solid #31ade3 !important;
+}
+.clients_list {
+    display: table;
+    padding: 20px 0;
+    width: 100%;
+}
+.clients_list li {
+    display: table-cell;
+    text-indent: -9000px;
+}
+.clients_list li a{
+    background: url(images/lomedic/companies.jpg) no-repeat top left;
+	display: table-cell;
+}
+.clients_list .clients-1 a{ 
+	background-position: 0 0!important;     
+	height: 110px;
+	width: 230px;
+} 
+.clients_list .clients-1 a:hover{ 
+	background-position: 0 -103px!important; 
+	height: 110px;
+	width: 230px;
+} 
+.clients_list .clients-2 a{ 
+	background-position: -250px 0 !important; 
+	width: 185px; 
+	height: 100px; 
+} 
+.clients_list .clients-2 a:hover{ 
+	background-position: -250px -103px!important; 
+	width: 185px; 
+	height: 100px; 
+} 
+.clients_list .clients-3 a{ 
+	background-position: -455px 0!important; 
+	width: 155px; 
+	height: 100px; 
+} 
+.clients_list .clients-3 a:hover{
+	background-position: -455px -103px!important; 
+	width: 155px; 
+	height: 100px; 
+}
+.newsBlock{
+    margin: 40px auto 20px;
+    width: 83%;
+}
+.newsBlock_item{
+    border: 1px solid #31ade3;
+    float: left;
+    margin-bottom: 15px;
+    margin-right: 1%;
+    width: 32%;
+}
+.newsBlock_item:nth-child(3n){
+    margin-right: 0;
+}
+.newsBlock_item_title{
+    color: #666666;
+    font: 1.67em "Myriad-Bold";
+    padding: 15px;
+    text-transform: uppercase;
+	text-align: center;	
+}
+.newsBlock_item_data{
+    background: #31ade3;
+	color: #fff;
+	font: 1.167em "Courier";
+	text-align: left;
+	padding: 2px 10px;
+}
+.newsBlock_item_img{
+	text-align: center;
+}
+.newsBlock_item_text{
+    border-bottom: 1px solid #999999;
+    color: #666666;
+    font: 1.25em "Courier";
+    margin: 15px 20px 0;
+    padding-bottom: 20px;
+    text-align: left;
+}
+.newsBlock_item_bottom{
+    padding: 15px 20px;
+}
+.newsBlock_item_more {
+    background: none repeat scroll 0 0 #31ade3;
+    border: 1px solid #31ade3;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    font: 1.5em/40px "Myriad-Bold";
+    padding: 0 7%;
+    text-transform: uppercase;
+}
+.newsBlock_item_more:hover{
+    background: #fff;
+	color: #31ade3;
+	text-decoration: none;
+}
+.newsBlock_item_share{
+    float: right;
+	font: 1.2em/40px 'Courier';
+	text-transform: uppercase;
+}
+.newsBlock_item_share a{
+    background: url("images/lomedic/share.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 40px;
+    margin-left: 8px;
+    width: 40px;
+}
+.newsBlock_item_share a:hover{
+    background: url("images/lomedic/share.png") no-repeat scroll left -40px transparent;
+}
+.contactsBlock .contactsBlock_img{
+    float: left;
+	width: 49%;
+    margin-right: 2%;
+    margin-bottom: 10px;	
+}
+.contactsBlock .contactsBlock_text p:first-child{
+	margin-top: 0;
+}
+.contactsBlock .contactsBlock_text .phone{
+    background: url("images/lomedic/phone.png") no-repeat scroll left center transparent;
+    font: 2em "Courier";
+    padding-left: 45px;
+}
+.contactsBlock .contactsBlock_text .email{
+    background: url("images/lomedic/email.png") no-repeat scroll 3px center transparent;
+    font: 1.5em "Courier";
+    padding-left: 47px;
+}
+.contactsBlock .contactsBlock_text .email a{
+	text-decoration: underline;
+}
+.contactsBlock .contactsBlock_text .email a:hover{
+	text-decoration: none;
+}
+.contactsBlock .contactsBlock_text .address{
+    background: url("images/lomedic/address.png") no-repeat scroll 8px center transparent;
+    font: 1.5em "Courier";
+    padding-left: 45px;
+}
+.contactsBlock .contactsBlock_text > div{
+	margin-bottom: 20px;
+}
+.contactsBlock .contactsBlock_text > div:first-child{
+	margin-top: 50px;
+}
+.supportForm{
+	width: 70%;
+	margin: 0 auto;
+}
+.supportForm .supportForm_field{
+    font: 1.5em "Courier";
+    margin-bottom: 15px;
+    position: relative;
+}
+.supportForm .supportForm_field .label{
+    left: 0;
+    width: 25%;
+    position: absolute;
+}
+.supportForm .supportForm_field .label span{
+    color: #31ade3;
+    font-size: 1.3em;
+    margin: 0 5px 0 0;
+}
+.supportForm .supportForm_field input[type="text"]{
+    font: 0.8em 'Courier';
+    height: 40px;
+    margin-left: 25%;
+    width: 75%;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	background: #f6f6f6;
+	padding: 0 10px;
+}
+.supportForm .supportForm_field input[type="text"]:focus{
+    background: #fff;
+    border: 1px solid #31ade3;
+}
+.supportForm .supportForm_field textarea{
+    background: none repeat scroll 0 0 #f6f6f6;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    font: 0.8em "Courier";
+    width: 100%;	
+	height: 85px;
+	padding: 10px 15px;
+}
+.supportForm .supportForm_field textarea:focus{
+    background: #fff;
+    border: 1px solid #31ade3;
+}  
+.supportForm .button{
+	text-align: right;
+}
+.supportForm .button input[type="button"]{
+    background: none repeat scroll 0 0 #31ade3;
+    border: 1px solid #31ade3;
+    border-radius: 3px;
+    color: #fff;
+    font: 1.67em/40px "Myriad-Bold";
+    padding: 0 40px;
+    text-transform: uppercase;
+}
+.supportForm .button input[type="button"]:hover{
+    background: none repeat scroll 0 0 #fff;
+    color: #31ade3;	
+}
+.supportForm .validate_pad{
+	margin-left: 25%;
+}
+.supportForm .supportForm_field textarea.validate, .supportForm .supportForm_field input.validate{
+    border: 1px solid #ff6633;
+	background: #fff8f6;
+}
+.supportForm .supportForm_field textarea.validate:focus{
+    background: #fff;
+    border: 1px solid #31ade3;
+} 
+.questions{
+    margin: 20px 0;
+}
+.questions p{
+	font: 1.67em 'Myriad-Bold';
+	color: #666666;
+	cursor: pointer;
+}
+.questions p span{
+    background: url("images/lomedic/arrow.png") no-repeat scroll right top transparent;
+    height: 26px;
+    padding: 1px 0 1px 40px;
+    width: 26px;
+}
+.questions.active p span{
+    background: url("images/lomedic/arrow-open.png") no-repeat scroll right top transparent;
+}
+.questions .answer{
+    background: none repeat scroll 0 0 #f4f4f4;
+    border-radius: 3px;
+    display: none;
+    font: 1.25em courier;
+    margin-left: 50px;
+    padding: 15px;
+}
+.news_content .news_content_title{
+    margin-bottom: 25px;
+    min-height: 96px;
+    padding-left: 140px;
+    position: relative;
+}
+.news_content .news_content_data{
+    background-color: #f6f6f6;
+    color: #999;
+    font-size: 30px;
+    left: 0;
+    padding: 13px 12px 8px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    font-family: 'Myriad-Bold';
+	border-radius: 3px;
+}
+.news_content .news_content_data p{
+    font-size: 16px;
+    margin-bottom: 0;
+    margin-top: -5px;
+}
+.news_content .news_content_text_img{
+    float: left;
+    margin-bottom: 10px;
+    margin-right: 2%;
+    width: 49%;
+}
+.news_content .news_content_text p:first-child{
+	margin-top: 0;
+}
+.news_content .news_content_text_share{
+    display: inline-block;	
+    font: 1.2em/40px "Courier";
+    text-transform: uppercase;
+}
+.news_content .news_content_text_share a{
+    background: url("images/lomedic/share.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 40px;
+    margin-left: 8px;
+    width: 40px;
+}
+.news_content .news_content_text_share a:hover{
+    background: url("images/lomedic/share.png") no-repeat scroll left -40px transparent;
+}
+.news_content .news_content_text_back{
+    background: none repeat scroll 0 0 #31ade3;
+    border: 1px solid #31ade3;
+    border-radius: 3px;
+    color: #fff;
+    float: right;
+    font: 1.5em/40px "Myriad-Bold";
+    padding: 0 30px;
+    text-transform: uppercase;
+}
+.news_content .news_content_text_back:hover{
+    background: #fff;
+	color: #31ade3;
+	text-decoration: none;
+}
+.list{
+	font: 1.25em 'Courier';
+}
+.list li{
+    padding-left: 15px;
+    position: relative;
+}
+.list li:before{
+    border-color: transparent transparent transparent #31aee3;
+    border-style: solid;
+    border-width: 6px 0 6px 6px;
+    content: "";
+    height: 0;
+    left: 0;
+    position: absolute;
+    top: 2px;
+    width: 0;
+}
+.validate{
+    background: url("images/lomedic/validate.png") no-repeat scroll 0 0 transparent;
+    color: #ff6633;
+	padding: 5px 0 5px 40px;
+}
+.form_field{
+    margin-bottom: 15px;
+    position: relative;
+    font: 1.5em "Courier";
+}
+
+.form_field .halfAndHalf .rightpart{
+    margin-left: 51%;
+    width: 49%;
+    position: relative;
+}
+.form_field .halfAndHalf .leftpart{
+    left: 0;
+    position: absolute;
+    width: 49%;
+}
+
+.form_field select{   
+    font: 0.8em 'Courier';
+    height: 40px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    background: #f6f6f6;
+    padding: 0 10px;
+    width:612px;
+}
+.form_field .w40 {
+    width:266px !important;
+}
+
+.form_field input[type="text"], .form_field input[type="email"], .form_field input[type="password"] {
+    font: 0.8em 'Courier';
+    height: 40px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    background: #f6f6f6;
+    padding: 0 10px;
+    width:590px;
+}
+
+.form_field input[type="text"]:focus, .form_field input[type="email"]:focus {
+    background: #fff;
+    border: 1px solid #31ade3;
+}
+.form_field textarea:focus{
+    background: #fff;
+    border: 1px solid #31ade3;
+} 
+.form_field input[type="checkbox"]{
+	display: none;
+}
+.form_field label {
+    display: block;
+    margin: 25px 0;
+    padding-left: 30px;
+}
+.form_field label span.checkSpan {
+	cursor: pointer;
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	top: -1px;
+	background: #fff;
+	left: 0px;
+	border: 1px solid #31ade3;
+	border-radius: 3px;	
+}
+.form_field label span.checkSpan:after {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	opacity: 0;
+	content: '';
+	position: absolute;
+	width: 9px;
+	height: 4px;
+	background: transparent;
+	top: 5px;
+	left: 4px;
+	border: 2px solid #31ade3;
+	border-top: none;
+	border-right: none;
+
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+.form_field input[type=checkbox]:checked + label span.checkSpan:after {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	opacity: 1;
+}
+.form_field textarea{
+    background: none repeat scroll 0 0 #f6f6f6;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    font: 0.8em "Courier";
+	padding: 10px 15px;
+	width: 100%;
+}
+.form_field textarea.validate, .form_field input.validate{
+    border: 1px solid #ff6633;
+	background: #fff8f6;
+}
+.button input[type="button"], .button  input[type="submit"]{
+    background: none repeat scroll 0 0 #31ade3;
+    border: 1px solid #31ade3;
+    border-radius: 3px;
+    color: #fff;
+    font: 1.67em/40px "Myriad-Bold";
+    padding: 0 40px;
+    text-transform: uppercase;
+}
+.button-s input[type="button"]{
+    padding: 0 10px;
+}
+.button input[type="button"]:hover, .button  input[type="submit"]:hover{
+    background: none repeat scroll 0 0 #fff;
+    color: #31ade3;	
+}
+.form_field .label span{
+    color: #31ade3;
+    margin: 0 5px 0 0;
+}
+.subtitle{
+    color: #31ade3;
+    font: 1.67em Myriad-Bold;
+    text-transform: uppercase;
+}
+.subtitleGrey{
+    color: #666666;
+    font: 1.67em Myriad-Bold;
+    text-transform: uppercase;	
+	margin: 15px 0;
+}
+.subtitleGrey span{
+    color: #31ade3;
+    margin-right: 5px;
+}
+.halfAndHalf .button input[type="button"]{
+	font-size: 1.1em;
+	min-width: 230px;
+}
+ .validate-center{
+    margin: 15px auto 25px;
+    width: 500px;
+}
+.form_field_add a{
+    background: url("images/lomedic/add.png") no-repeat scroll 0 0 transparent;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    width: 40px;
+}
+.subtitleGrey.form_field_add .new_input{
+    background: none repeat scroll 0 0 #fff;
+    margin-left: 50%;
+    width: 50%;
+}
+.hidden, .hidden{
+	display: none;
+}
+.transparent{
+	opacity: 0;
+	transition: 0.5s;
+}
+.visible{
+	opacity: 1;
+	transition: 0.5s;
+}
+.addForm{
+    line-height: 40px;
+}
+.addForm a{
+    background: url("images/lomedic/add.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 40px;
+    margin-right: 15px;
+    width: 40px;
+}
+.comment{
+    display: table;
+    font: 1.3em Courier;
+    margin-bottom: 15px;
+}
+.comment .comment_date{
+    display: table-cell;
+    padding-right: 25px;
+}
+.comment .comment_text{
+    display: table-cell;
+}
+.form_link{
+    margin: 20px 0;
+}
+.form_link li{
+    display: inline-block;
+    font: 1.67em Myriad-Bold;
+    margin-right: 160px;
+    text-transform: uppercase;
+}
+.form_link li a{
+    background: url("images/lomedic/right.png") no-repeat scroll right center transparent;
+    padding-right: 15px;
+    text-decoration: underline;
+}
+.form_link li a:hover{
+	text-decoration: none;
+}
+.approve{
+    background: url("images/lomedic/approve.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    font: 1.67em/32px Myriad-Bold;
+    padding-left: 40px;
+    text-transform: uppercase;
+	margin: 15px 0;
+}
+.approve a{
+	text-decoration: underline;
+	background: url("images/lomedic/right.png") no-repeat scroll right center transparent;
+    padding-right: 15px;	
+}
+.approve a:hover{
+	text-decoration: none;
+}
+.approve_list{
+    font: 1.5em Courier;
+	color: #33cc66;
+}
+.approve_list li{
+    margin-bottom: 10px;
+    margin-left: 45px;
+    padding-left: 40px;
+    position: relative;
+}
+.approve_list li:after{
+	content: '';
+	position: absolute;
+	width: 15px;
+    height: 8px;
+    margin-top: -11px;
+	background: transparent;
+	top: 50%;
+    left: 0;
+	border: 4px solid #33cc66;
+	border-top: none;
+	border-right: none;
+
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+.download{
+	font-size: 1.67em;
+}
+.download a{
+    background: url("images/lomedic/download.png") no-repeat scroll right center transparent;
+    padding-right: 25px;
+	text-decoration: underline;
+}
+.download a:hover{
+	text-decoration: none;
+}
+.calendar, .hours{
+	float: left;
+	margin-right: 40px;
+	position: relative;
+}
+.calendar input, .hours input{
+	width: 270px;
+}
+.calendar:after{
+    /*background: url("images/lomedic/calendar.png") no-repeat scroll 0 0 transparent;*/
+    content: "";
+    height: 40px;
+    position: absolute;
+    right: 0;
+    width: 40px;
+}
+.calendar_def:hover:after{
+    background: url("images/lomedic/calendar-h.png") no-repeat scroll 0 0 transparent;
+}	
+
+.calendar_def:after{
+    background: url("images/lomedic/calendar.png") no-repeat scroll 0 0 transparent;
+    content: "";
+    height: 40px;
+    position: absolute;
+    right: 0;
+    width: 40px;
+}
+.calendar_def:hover:after{
+    background: url("images/lomedic/calendar-h.png") no-repeat scroll 0 0 transparent;
+}
+
+.signInRegForm{
+    margin: 20px auto;
+    width: 80%;
+}
+.signInRegForm .form_field .label{
+    width: 20%;
+	position: absolute;
+}
+.signInRegForm .form_field input{
+    width: 80%;
+	margin-left: 20%;
+}
+.signInRegForm .validate_pad{
+	margin-left: 20%;	
+}
+.signInRegForm .button{
+	text-align: right;
+}
+.signInRegForm .capcha_field{
+    height: 70px;
+    margin-top: 50px;
+}
+.signInRegForm .capcha_field .reload{
+    background: url("images/lomedic/reload.png") no-repeat scroll 0 0 transparent;
+    height: 38px;
+    left: calc(25% + 170px);
+    margin-top: 10px;
+    position: absolute;
+    width: 38px;
+}
+.signInRegForm .capcha_field .password{
+    position: absolute;
+    right: 0;
+    top: -30px;
+}
+.signInRegForm .capcha_field .password a{
+    font: 1.1em Myriad-Bold;
+    text-decoration: underline;
+	text-transform: uppercase;
+}
+.signInRegForm .capcha_field .password a:hover{
+    text-decoration: none;
+}
+.signInRegForm .capcha_field .capcha{
+    border: 1px solid #31ade3;
+    left: 20%;
+    position: absolute;
+}
+.signInRegForm .capcha_field .label{
+    margin-top: 10px;
+}
+.signInRegForm .capcha_field input{
+    margin-left: 50%;
+    width: 50%;
+    margin-top: 10px;	
+}
+.signInRegForm .capcha_field .validate_capcha{
+    left: 20%;
+    position: absolute;
+    top: 80px;
+    width: 350px;
+}
+.registration .form_field{
+    margin-bottom: 10px;
+}
+.registration .form_field input{
+    margin-bottom: 15px;
+    width: 100%;
+}
+.registration .form_field textarea{
+    margin: 15px 0;
+    width: 100%;
+}
+.registration .form_field_add .new_input{
+    background: none repeat scroll 0 0 #fff;
+    margin-left: 10%;
+    width: 90%;
+}
+.half{
+    float: left;
+    margin-right: 2%;
+    width: 49%;
+	margin-bottom: 20px;
+}
+.lessHalf{
+    width: 45%;
+}
+.half:nth-child(2){
+    margin-right: 0;
+}
+.half3{
+    width: 35%;
+}
+.half3:nth-child(2){
+    width: 63%;
+}
+.half3 .form_field{
+	font-weight: bold;
+	color: #666;	
+}
+.half .half{
+    margin-bottom: 0;
+    margin-right: 4%;
+    width: 48%;
+}
+.half .half:nth-child(2){
+    margin-right: 0;
+}
+
+.halfAndHalf .rightpart{
+    margin-left: 51%;
+    width: 49%;
+	position: relative;	
+}
+.halfAndHalf .leftpart{
+    left: 0;
+    position: absolute;
+    width: 49%;
+}
+
+.registerSteps{
+	margin: 20px 0 40px;
+}
+.registerSteps li{
+    border-bottom: 8px solid #e1e1e1;
+    color: #999999;
+    display: inline-block;
+    font: 1.5em Myriad-Bold;
+    height: 40px;
+    padding: 15px 0 0;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    width: 19.5%;
+}
+.registerSteps li a:hover{
+	text-decoration: none;
+}
+.registerSteps li:after{
+    background: none repeat scroll 0 0 #fff;
+    border: 2px solid #e1e1e1;
+    border-radius: 50%;
+    bottom: -24px;
+    content: "";
+    height: 40px;
+    position: absolute;
+    right: -20px;
+    width: 40px;
+    z-index: 2;
+}
+.registerSteps li.active, .registerSteps li.filled{
+    border-bottom: 8px solid #31ade3;
+}
+.registerSteps li.filled:after{
+    background: none repeat scroll 0 0 #31ade3;
+	border: 1px solid #31ade3;
+}
+
+.registerSteps li.filled:before{
+    background: none repeat scroll 0 0 #fff;
+    border-radius: 50%;
+    bottom: -11px;
+    content: "";
+    height: 15px;
+    position: absolute;
+    right: -7px;
+    width: 15px;
+    z-index: 3;	
+}
+.registerSteps li.active:after{
+    border: 1px solid #31ade3;
+    background: none repeat scroll 0 0 #fff;	
+}
+.registerSteps li.active:before{
+    background: none repeat scroll 0 0 #31ade3;
+    border-radius: 50%;
+    bottom: -11px;
+    content: "";
+    height: 15px;
+    position: absolute;
+    right: -7px;
+    width: 15px;
+    z-index: 3;	
+}
+
+.registerSteps li.filled:hover:after, .registerSteps li.active:hover:after{	
+    background: none repeat scroll 0 0 #ff6633;
+	border: 1px solid #ff6633;	
+}
+.registerSteps li.filled:hover:before, .registerSteps li.active:hover:before{
+    background: none repeat scroll 0 0 #fff;
+    border-radius: 50%;
+    bottom: -11px;
+    content: "";
+    height: 15px;
+    position: absolute;
+    right: -7px;
+    width: 15px;
+    z-index: 3;	
+}
+.registerSteps li.filled:hover, .registerSteps li.active:hover{
+    border-bottom: 8px solid #ff6633;
+}
+.registerSteps li a:hover{
+   color: #ff6633;
+}
+.registerSteps li a{
+    display: block;
+    height: 100%;
+}
+
+#header .user{
+    color: #31ade3;
+    float: right;
+    font: 1.5em Myriad-Bold;
+    margin: 15px 5%;
+    text-transform: uppercase;
+	line-height: 71px;
+}
+#header .user .user_name{
+	float: left;
+}
+#header .user .user_img{
+    float: left;
+    margin: 0 20px;
+	position: relative;
+}
+#header .user .user_img img{
+    border: 3px solid #31ade3;
+    border-radius: 50%;
+}
+#header .user .user_img  i:after{
+    background: none repeat scroll 0 0 #ff6633;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 16px;
+    height: 22px;
+    line-height: 22px;
+    position: absolute;
+    right: -7px;
+    text-align: center;
+    top: 0;
+    width: 22px;
+    content: attr(count);
+}
+#header .user .user_off{
+	float: left;
+	position: relative;
+}
+#header .user .user_off a{
+	text-decoration: underline;
+}
+#header .user .user_off a:hover{
+	text-decoration: none;
+}
+#header .user .user_off:after {
+	content: '';
+	position: absolute;
+	width: 10px;
+    height: 5px;
+    margin-top: -8px;
+	background: transparent;
+	top: 50%;
+    right: -20px;
+	border: 2px solid #31ade3;
+	border-top: none;
+	border-right: none;
+
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+#header .back{
+    font: 1.5em Myriad-Bold;
+    margin-right: -150px;
+    margin-top: -11px;
+    position: absolute;
+    right: 65%;
+    text-transform: uppercase;
+    top: 50%;
+}
+#header .back a{
+	text-decoration: none;
+}
+#header .back a:hover{
+	text-decoration: underline;
+}
+#header .back:after{
+    background: url("images/lomedic/back.png") no-repeat scroll 0 0 transparent;
+    content: "";
+    height: 17px;
+    position: absolute;
+    right: -30px;
+    width: 20px;
+}
+
+.table{
+    border: 1px solid #31ade3;
+    font: 1.3em 'Courier';
+}
+
+.table tr:hover{
+	background: #c2e6f5;
+}
+.table td{
+	vertical-align: top;
+	padding: 15px;
+    border-right: 1px solid #ccc;	
+}
+.table td:last-child{
+    border-right: none;
+}
+.table th{
+	background: #31ade3;
+	color: #fff;
+	font: 1.4em 'Myriad-Bold';
+	padding: 10px;
+}
+.table .sort{
+	position: relative;
+}
+.table .sort .up{
+    background: url("images/lomedic/arrows.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 8px;
+    margin-left: 15px;
+    position: absolute;
+    top: 0;
+    width: 8px;
+	cursor: pointer;
+}
+.table .sort .down{
+    background: url("images/lomedic/arrows.png") no-repeat scroll 0 bottom rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 8px;
+    margin-left: 15px;
+    position: absolute;
+    top: 10px;
+    width: 8px;
+	cursor: pointer;	
+}
+
+table.scroll tbody {
+    height: 100px;
+    overflow: scroll;
+}
+
+.backlink{
+    background: url("images/lomedic/right-fff.png") no-repeat scroll right center transparent;
+    color: #fff;
+    display: block;
+    float: right;
+    font: 1.33em/40px Myriad-Bold;
+    padding-right: 15px;
+    text-transform: uppercase;
+}
+.backlink:hover{
+    color: #fff;
+}
+.managerCalendarForm .blueLine .menu{
+    display: inline-block;
+    margin: 0;
+    width: 570px;
+	position: relative;	
+}
+.managerCalendarForm{
+	margin-bottom: 30px;
+}
+.managerCalendarForm .blueLine{
+    background: none repeat scroll 0 0 #31ade3;
+    margin: 40px 0 20px;
+    padding: 10px;
+}
+.managerCalendarForm .blueLine .search{
+    display: inline-block;
+    margin: 0;
+    width: 570px;
+	position: relative;	
+}
+.managerCalendarForm .blueLine .search input{
+    width: 100%;
+}
+.managerCalendarForm .blueLine .search span{
+    background: url("images/lomedic/search.png") no-repeat scroll 0 0 transparent;
+    height: 15px;
+    margin-top: -7px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: 15px;	
+	cursor: pointer;
+}
+.managerCalendarForm .form_field_select input[type="text"]:focus {
+    background: transparent;
+    border: none;
+}
+.managerCalendarForm .form_field_select .niceSelect{
+	font-size: 0.85em;
+}
+.managerCalendarForm .sorting .form_field_select .niceSelect{
+    width: 580px; 
+}
+.managerCalendarForm .sorting .form_field{
+	display: inline-block;
+	margin-right: 40px;
+}
+.managerCalendarForm .sorting .form_field:last-child{
+	margin-right: 0;
+}
+.managerCalendarForm  .form_field label{
+    font-size: 0.8em;
+    line-height: 18px;
+    margin: 0;
+}
+.managerCalendarForm .sorting .calendar{
+	float: none;
+	display: inline-block;	
+}
+.managerCalendarForm .sorting .calendar:last-child{
+	margin-right: 0;
+}
+.managerCalendarForm .sorting .calendar:first-child:before{
+    content: "-";
+    position: absolute;
+    right: -30px;
+    top: 10px;
+}
+.managerCalendarForm .sorting .calendar input{
+	width: 242px;
+}
+.managerCalendarForm .clear_button a{
+    background: url("images/lomedic/cancel.png") no-repeat scroll left center transparent;
+    padding-left: 25px;
+	text-decoration: underline;
+}
+.managerCalendarForm .refresh_button a{
+    background: url("images/lomedic/refresh.png") no-repeat scroll left center transparent;
+    padding-left: 25px;
+	text-decoration: underline;
+}
+.managerCalendarForm .clear_button a:hover, .managerCalendarForm .refresh_button a:hover{
+	text-decoration: none;
+}
+.managerCalendarForm .messageList{
+
+}
+.managerCalendarForm .messageList li{
+    display: table;
+    font: 1.25em Myriad-Bold;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+.managerCalendarForm .messageList li a{
+    display: table-cell;
+    padding-left: 40px;
+    position: relative;
+    text-decoration: underline;
+    vertical-align: middle;
+}
+.managerCalendarForm .messageList li a:hover{
+	text-decoration: none;
+}
+.managerCalendarForm .messageList li a:before, .managerCalendarForm .messageList li:hover a:before, .managerCalendarForm .messageList li.active a:before{
+    content: "";
+    height: 35px;
+    left: 0;
+    margin-top: -17px;
+    position: absolute;
+    top: 50%;
+    width: 35px;
+}
+.managerCalendarForm .messageList li .registr-ic:before{
+    background: url("images/lomedic/icons.png") no-repeat scroll 0 0 transparent;
+}
+.managerCalendarForm .messageList li .arrest-ic:before{
+    background: url("images/lomedic/icons.png") no-repeat scroll 0 -40px transparent;
+}
+.managerCalendarForm .messageList li .del-ic:before{
+    background: url("images/lomedic/icons.png") no-repeat scroll 0 -80px transparent;
+}
+.managerCalendarForm .messageList li .approve-ic:before{
+    background: url("images/lomedic/icons.png") no-repeat scroll 0 -127px transparent;
+}
+.managerCalendarForm .messageList li .sign-ic:before{
+    background: url("images/lomedic/icons.png") no-repeat scroll 0 -179px transparent;
+}
+.managerCalendarForm .messageList li .close-ic:before{
+    background: url("images/lomedic/icons.png") no-repeat scroll 0 -217px transparent;
+}
+
+.managerCalendarForm .messageList li:hover .registr-ic:before, .managerCalendarForm .messageList li.active .registr-ic:before{
+    background: url("images/lomedic/icons.png") no-repeat scroll -35px 0 transparent;
+}
+.managerCalendarForm .messageList li:hover .arrest-ic:before, .managerCalendarForm .messageList li.active .arrest-ic:before{
+    background: url("images/lomedic/icons.png") no-repeat scroll -35px -40px transparent;
+}
+.managerCalendarForm .messageList li:hover .del-ic:before, .managerCalendarForm .messageList li.active .del-ic:before{
+    background: url("images/lomedic/icons.png") no-repeat scroll -35px -80px transparent;
+}
+.managerCalendarForm .messageList li:hover .approve-ic:before, .managerCalendarForm .messageList li.active .approve-ic:before{
+    background: url("images/lomedic/icons.png") no-repeat scroll -35px -127px transparent;
+}
+.managerCalendarForm .messageList li:hover .sign-ic:before, .managerCalendarForm .messageList li.active .sign-ic:before{
+    background: url("images/lomedic/icons.png") no-repeat scroll -35px -179px transparent;
+}
+.managerCalendarForm .messageList li:hover .close-ic:before, .managerCalendarForm .messageList li.active .close-ic:before{
+    background: url("images/lomedic/icons.png") no-repeat scroll -35px -217px transparent;
+}
+
+.managerCalendarTbl .table{
+	font-size: 1.08em;
+	border-bottom: none;
+}
+.managerCalendarTbl .table .info{
+    background: url("images/lomedic/info.png") no-repeat scroll left bottom transparent;
+    display: block;
+    height: 20px;
+    width: 20px;
+}
+.managerCalendarTbl .table .info:hover{
+    background: url("images/lomedic/info.png") no-repeat scroll left top transparent;
+}
+
+
+#fancy{
+	width: 450px;	
+}
+#fancy .logo{
+    display: block;
+    margin: 15px auto;
+}
+#fancy .popup_form{
+	padding: 15px 45px;
+}
+#fancy .popup_form input[type="email"]{
+	width: 100%;
+}
+#fancy .popup_form_result{
+	display: none;
+    font-size: 1.5em;
+    padding: 15px 45px;	
+}
+
+.wrap_count{
+	position: relative;
+}
+.wrap_count .count{
+    background: none repeat scroll 0 0 #ff6633;
+    border-radius: 50%;
+    color: #fff;
+    font-family: Myriad-Bold;
+    font-size: 15px;
+    height: 25px;
+    line-height: 25px;
+    position: absolute;
+    right: -35px;
+    text-align: center;
+    top: -2px;
+    width: 25px;
+}
+.form_field_edit{
+    display: inline-block;
+    padding-right: 20px;
+	font-weight: normal!important;
+}
+.form_field_edit:after{
+    background: url("images/lomedic/edit.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    content: "";
+    height: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 13px;
+}
+.form_field_edit:hover{
+	cursor: pointer;
+}
+.form_field_edit:focus{
+	background: #eee;
+    display: block;	
+	border-radius: 3px;
+	padding: 5px;
+}
+.form_field_edit:focus:after{
+	background: none;
+}
+
+.documents .form_field{
+    display: table;
+	width: 100%;
+}
+.documents .form_field .label{
+    display: table-cell;
+    margin-right: 20px;
+    width: 50%;
+}
+
+.documents .form_field .file-wrapper {
+    cursor: pointer;
+    display: table-cell;
+    position: relative;
+    vertical-align: top;
+}
+.documents .form_field .file-wrapper input {
+    cursor: pointer;
+    height: 100%;
+    opacity: 0.01;
+    position: absolute;
+    top: 0;
+    width: 100%;
+	filter: alpha(opacity=1);
+	-moz-opacity: 0.01;
+
+}
+    
+/*.documents .form_field .file-wrapper input[type="radio"], .documents .form_field .file-wrapper input[type="checkbox"] {
+    margin-right: 3px;
+    vertical-align: baseline;
+}
+.documents .form_field .file-wrapper input[type="checkbox"], .documents .form_field .file-wrapper input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+}*/
+
+.documents .form_field .file-wrapper .button {
+    background: none repeat scroll 0 0 #31ade3;
+    border: 1px solid #31ade3;
+    border-radius: 3px;
+    color: #fff;
+    font: 1.167em "Myriad-Bold";
+    margin-right: 10px;
+    padding: 5px 40px;
+    text-transform: uppercase;
+    vertical-align: top;	
+} 
+.documents .form_field .file-wrapper .active{
+    background: none repeat scroll 0 0 #fff;
+    color: #31ade3;	
+}
+.documents .form_field .file-wrapper .file-holder{
+    font: 1em "Courier";
+}
+.documents .form_field .file-wrapper .edit {
+    background: url("images/lomedic/edit.png") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    height: 20px;
+    line-height: 38px;
+    margin-left: 7px;
+    width: 13px;
+}
+.documents .form_field .file-wrapper .error {
+    background: url("images/lomedic/error.gif") no-repeat scroll 0 0 transparent;
+    height: 24px;
+    left: -35px;
+    position: absolute;
+    width: 24px;
+}
+.documents .form_field .file-wrapper .success {
+    background: url("images/lomedic/success.gif") no-repeat scroll 0 0 transparent;
+    height: 24px;
+    left: -35px;
+    position: absolute;
+    width: 24px;
+}
+.one_line{
+    padding-left: 300px;
+}
+.one_line .label{
+    left: 0;
+    position: absolute;
+}
+.one_line label{
+	margin: 0;
+    width: 250px;	
+}
+.one_line label span.checkSpan{
+	top: 7px;
+}
+.addFotos{
+	margin-bottom: 50px;
+}
+.addFotos > div{
+	margin-right: 1.3%;
+	vertical-align: top;
+	display: inline-block;	
+}
+.addFotos > div:last-child{
+	margin-right: 0;
+}
+.addFotos .addFotos_main{
+	width: 24%;
+}
+.addFotos .addFotos_small{
+	width: 11%;
+}
+.addFotos .addFotos_link {
+    cursor: pointer;
+    display: block;
+    margin-top: 15px;
+    position: relative;
+}
+.addFotos .addFotos_link input {
+    cursor: pointer;
+    height: 100%;
+    opacity: 0.01;
+    position: absolute;
+    top: 0;
+    width: 100%;
+	filter: alpha(opacity=1);
+	-moz-opacity: 0.01;
+
+}
+.addFotos .addFotos_link .addFotos_link_name {
+    background: url("images/lomedic/add-s.png") no-repeat scroll 0 0 transparent;
+    color: #31ade3;
+    font: 1.33em "Courier";
+    margin-right: 10px;
+    padding: 0 0 0 27px;
+	text-decoration: underline;	
+	line-height: 19px;
+	display: block;
+} 
+.addFotos .addFotos_small .addFotos_link .addFotos_link_name {
+	font-size: 1em;
+}
+
+.radio{}
+.radio input{
+    margin: 0;
+    position: absolute;
+    top: 4px;
+    width: auto;
+}
+
+.clearfix {
+    clear: both;
+}
+
+
+
+
+
+.lh40{
+	line-height: 40px;
+}
+.w50{
+	width: 50%;
+}
+
+.visit{
+	display: table;
+}
+.visit .visit_cell{
+	display: table-cell;
+	vertical-align: top;
+}
+.visit .visit_cell:first-child{
+	padding-right: 30px;
+}
+
+#header-fixed { 
+    position: fixed; 
+    top: 0px; display:none;
+    background-color:white;
+}
+
+@media screen and (max-width: 1200px) {
+	.signInRegForm{
+		width: 100%;
+	}
+}
+@media screen and (max-width: 1100px) {
+	.registerSteps li{
+		font-size:1.35em;
+	}
+}
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* ==========================================================================
+   Styles
+   ========================================================================== */
+.btn {
+	
+}
+.btn:hover, .btn:focus {
+	
+}
+.btn:active, .btnActive {
+	
+}
+input[type="text"],input[type="password"],input[type="search"],input[type="email"],input[type="url"],input[type="tel"],input[type="time"],input[type="month"],input[type="week"] {
+
+}
+textarea {
+
+}
+.valid {
+	
+}
+.invalid {
+	
+}
+select {
+
+}
+select.valid {
+
+}
+select.invalid {
+
+}
+
+
+
+
+@-ms-viewport {
+  width: device-width;
+}
+
+.m5 a {
+    background: #31ade3 none repeat scroll 0 0;
+    border-radius: 3px;
+    color: #fff !important;
+    font: 1em "Myriad-Bold" !important;
+    padding: 5px 10px !important;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.saveandinform {
+    float:right;
+    font-size: 0.90em;
+    background-color: #37ab3e !important;
+}
+.saveandinform:hover {
+    background-color: #45bc4e !important;
+}

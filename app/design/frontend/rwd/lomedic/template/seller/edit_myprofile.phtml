@@ -1,0 +1,87 @@
+<?php
+$customer = Mage::getSingleton('customer/session')->getCustomer();
+$isPartner= Mage::getModel('marketplace/userprofile')->isPartner();
+$helper = Mage::helper('marketplace');
+$user_company = Mage::getSingleton('customer/session')->getUserCompany();
+if($isPartner==1){?>
+    <div class="text">
+        <h1 class="tac mt30"><?php echo $this->__('Settings') ?></h1>
+
+        <div class="box-account box-info">
+            <?php
+            if($user_company):
+                $aaa = Mage::getModel('loregistration/usersCompany')->load($user_company);
+                ?>
+                <div>
+                    <?php echo $this->escapeHtml($aaa->getName());?>
+                </div>
+                <div>
+                    <?php echo $this->escapeHtml($customer->getCompany());?>
+                </div>
+                <div>
+                    <?php echo $this->escapeHtml($aaa->getEmail());?>
+                </div>
+            <?php else:?>
+
+                <div class="col2-set">
+                    <div class="col-1">
+                        <div class="box">
+                            <!--
+                            <div class="box-title">
+                                <a href="<?php echo $this->getUrl('customer/account/edit') ?>"><?php echo $this->__('Edit') ?></a>
+                            </div>
+                            -->
+                            <div class="box-content">
+                                <p>
+                                    <?php echo $this->escapeHtml($customer->getFirstname()) ?><br />
+                                    <?php echo $this->escapeHtml($customer->getCompany()) ?><br />
+                                    <?php echo $this->escapeHtml($customer->getEmail()) ?><br />
+                                    <!--
+                                    <a href="<?php echo $this->getUrl("customer/account/edit/changepass/".$customer->getId()."/"); ?>"><?php echo $this->__('Change Password') ?></a>
+                                    -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif;?>
+        </div>
+    </div>
+<?php 
+}else{
+?>
+<div class="text">
+    <h1 class="tac mt30"><?php echo $this->__('Settings') ?></h1>
+    <div class="box-account box-info">
+    <?php
+    if($user_company):
+        $aaa = Mage::getModel('loregistration/usersCompany')->load($user_company);
+        ?>
+        <div>
+            <?php echo $this->escapeHtml($aaa->getName());?>
+        </div>
+        <div>
+            <?php echo $this->escapeHtml($customer->getCompany());?>
+        </div>
+        <div>
+            <?php echo $this->escapeHtml($aaa->getEmail());?>
+        </div>
+    <?php else:?>
+        <div class="col2-set">
+            <div class="col-1">
+                <div class="box">
+                    <div class="box-content">
+                        <p>
+                            <?php echo $this->escapeHtml($customer->getFirstname()) ?><br />
+                            <?php echo $this->escapeHtml($customer->getCompany()) ?><br />
+                            <?php echo $this->escapeHtml($customer->getEmail()) ?><br />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif;?>
+    </div>
+</div>
+<?php } ?>

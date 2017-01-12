@@ -1,0 +1,239 @@
+/**
+ * BxSlider v4.1.2 - Fully loaded, responsive content slider
+ * http://bxslider.com
+ *
+ * Written by: Steven Wanderski, 2014
+ * http://stevenwanderski.com
+ * (while drinking Belgian ales and listening to jazz)
+ *
+ * CEO and founder of bxCreative, LTD
+ * http://bxcreative.com
+ */
+
+
+/** RESET AND LAYOUT
+===================================*/
+
+.bx-wrapper {
+	position: relative;
+	margin: 0 auto 20px;
+	padding: 0;
+	*zoom: 1;
+}
+
+.bx-wrapper img {
+	max-width: 100%;
+	display: block;
+}
+
+/** THEME
+===================================*/
+
+.bx-wrapper .bx-viewport {
+	background: #fff;
+	
+	/*fix other elements on the page moving (on Chrome)*/
+	-webkit-transform: translatez(0);
+	-moz-transform: translatez(0);
+    	-ms-transform: translatez(0);
+    	-o-transform: translatez(0);
+    	transform: translatez(0);
+}
+
+.bx-wrapper .bx-pager,
+.bx-wrapper .bx-controls-auto {
+	position: absolute;
+	bottom: -30px;
+	width: 100%;
+}
+
+/* LOADER */
+
+.bx-wrapper .bx-loading {
+	min-height: 50px;
+	background: url(../img/bx_loader.gif) center center no-repeat #fff;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2000;
+}
+
+/* PAGER */
+
+.bx-wrapper .bx-pager {
+	font-size: .85em;
+    bottom: 40px;
+    color: #666;
+    font-family: Arial;
+    font-size: 0;
+    font-weight: bold;
+    position: absolute;
+    right: 115px;
+    text-align: right;
+}
+
+.bx-wrapper .bx-pager .bx-pager-item,
+.bx-wrapper .bx-controls-auto .bx-controls-auto-item {
+	display: inline-block;
+	width: 20px;
+	*zoom: 1;
+	*display: inline;
+}
+
+.bx-wrapper .bx-pager.bx-default-pager a {
+	background: #666;
+	text-indent: -9999px;
+	display: block;
+	width: 8px;
+	height: 8px;
+	margin: 0 5px;
+	outline: 0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;	
+}
+
+.bx-wrapper .bx-pager.bx-default-pager a:hover,
+.bx-wrapper .bx-pager.bx-default-pager a.active {
+	background: #31ade3;	
+	border: 1px solid #31ade3;
+}
+
+/* DIRECTION CONTROLS (NEXT / PREV) */
+
+.bx-wrapper .bx-prev {
+	left: 10px;
+	background: url(../img/slider-controls.png) no-repeat 0 -44px;
+}
+
+.bx-wrapper .bx-next {
+	right: 10px;
+	background: url(../img/slider-controls.png) no-repeat 0 0;
+}
+
+.bx-wrapper .bx-prev:hover {
+	xbackground-position: 0 0;
+}
+
+.bx-wrapper .bx-next:hover {
+	xbackground-position: -43px 0;
+}
+
+.bx-wrapper .bx-controls-direction a {
+	position: absolute;
+	top: 50%;
+	xmargin-top: -16px;
+	outline: 0;
+	width: 44px;
+	height: 44px;
+	text-indent: -9999px;
+	z-index: 9999;
+}
+
+.bx-wrapper .bx-controls-direction a.disabled {
+	display: none;
+}
+
+/* AUTO CONTROLS (START / STOP) */
+
+.bx-wrapper .bx-controls-auto {
+	text-align: center;
+}
+
+.bx-wrapper .bx-controls-auto .bx-start {
+	display: block;
+	text-indent: -9999px;
+	width: 10px;
+	height: 11px;
+	outline: 0;
+	background: url(../img/controls.png) -86px -11px no-repeat;
+	margin: 0 3px;
+}
+
+.bx-wrapper .bx-controls-auto .bx-start:hover,
+.bx-wrapper .bx-controls-auto .bx-start.active {
+	background-position: -86px 0;
+}
+
+.bx-wrapper .bx-controls-auto .bx-stop {
+	display: block;
+	text-indent: -9999px;
+	width: 9px;
+	height: 11px;
+	outline: 0;
+	background: url(../img/controls.png) -86px -44px no-repeat;
+	margin: 0 3px;
+}
+
+.bx-wrapper .bx-controls-auto .bx-stop:hover,
+.bx-wrapper .bx-controls-auto .bx-stop.active {
+	background-position: -86px -33px;
+}
+
+/* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
+
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
+	text-align: left;
+	width: 80%;
+}
+
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto {
+	right: 0;
+	width: 35px;
+}
+
+/* IMAGE CAPTIONS */
+
+.bx-wrapper .bx-caption {
+    position: absolute;
+    right: 10%;
+    bottom: 125px;
+    width: 45%;
+}
+.bx-wrapper .bx-caption span {
+    color: #666;
+    display: block;
+    font-family: "Courier";
+    font-size: 1.25em;
+    padding: 10px 0;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);	
+}
+.bx-wrapper .bx-caption span  span{
+	font: 4.8em 'Proximanova-Bold';
+	color: #31ade3;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+.bx-wrapper .bx-caption span  span span { 
+	color: #fff;
+	margin-bottom: 0;	
+	font: 1em 'Proximanova-Bold';	
+}
+@media screen and (max-width: 1440px) {
+	.bx-wrapper .bx-caption {
+		right: 7%;
+		bottom: 110px;
+	}
+	.bx-wrapper .bx-caption span  span{
+		font: 4em 'Proximanova-Bold';
+	}
+}
+@media screen and (max-width: 1200px) {
+	.bx-wrapper .bx-caption {
+		right: 5%;
+		bottom: 65px;
+	}
+	.bx-wrapper .bx-caption span  span{
+		margin-bottom: 10px;
+	}	
+}
+@media screen and (max-width: 1024px) {
+	.bx-wrapper .bx-caption {
+		bottom: 50px;
+	}
+	.bx-wrapper .bx-caption span  span{
+		font: 3.5em 'Proximanova-Bold';
+	}	
+}

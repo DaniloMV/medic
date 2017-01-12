@@ -1,0 +1,175 @@
+<?php
+$zip = Mage::getModel('loregistration/zip')
+    ->getCollection()
+    ->addFieldToSelect('state')
+    ->addFieldToSelect('zip_code');
+$zip->getSelect()->group('state');
+?>
+<div class="clearfix" id="step2_div">
+    <div class="subtitle"><?php echo $this->__("Administrative")?></div>
+    <hr />
+    <div class="form_field halfAndHalf">
+        <div class="rightpart label 1_label_account_type"><?php echo $this->__("Name")?>:</div>
+        <div class="rightpart label 2_label_account_type" style='display:none;'><?php echo $this->__("Company name")?>:</div>
+    </div>
+    <div class="form_field halfAndHalf" style='height: 40px;'>
+        <select name="account[account_type]" id="account_type" class="" title="" >
+            <option value="1"><?php echo $this->__("Natural person")?></option>
+            <option value="2" ><?php echo $this->__("Legal person")?></option>
+        </select>								
+        <input type="text" id='real_name' name='account[real_name]' style='position: relative; top: -40px;' class="rightpart" value=''/>
+    </div>
+    <div class="form_field halfAndHalf 2_label_account_type" style='margin-top: 40px;'>
+        <span class="label tar leftpart"><?php echo $this->__("Article association registry number")?>:</span>
+        <input type="text" class="rightpart" name='account[association_number]' id='association_number' value=''>
+    </div>
+    <div class="form_field halfAndHalf 2_label_account_type">
+        <span class="label tar leftpart"><?php echo $this->__("Article association registration number before Public Registry of property and commerce (PRPC)")?>:</span>
+        <input type="text" class="rightpart" name='account[association_number_before]' id="association_number_before" value=''>
+    </div>
+    <div class="clearfix"></div>
+    <div class="2_label_account_type">
+        <div class="form_field halfAndHalf">
+            <div class="rightpart">
+                <input type="checkbox" name="account[is_association_number_modified]" id="is_association_number_mod" value="" >
+                <label for="is_association_number_mod"><span class="checkSpan"></span><?php echo $this->__("Article association modifications?")?></label>
+            </div>
+        </div>											
+        <div class="form_field halfAndHalf is_association_number_mod">
+            <span class="label tar leftpart"><?php echo $this->__("Article association registry modification number")?>:</span>
+            <input type="text" class="rightpart" id='association_number_mod' name='account[association_number_mod]' value=''>
+        </div>
+        <div class="form_field halfAndHalf is_association_number_mod">
+            <span class="label tar leftpart"><?php echo $this->__("Article association modification registration number before PRPC")?>:</span>
+            <input type="text" class="rightpart" id='association_number_mod_before' name='account[association_number_mod_before]' value=''>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <p class="tac"><?php echo $this->__("The information requested hereafter is very important for us. With it, we can guarantee that all our members and partners are reliable and serious companies. In addition, it allows us to have a deeper understanding of your business and goals. Thus, we will be able to offer a solution special designed to fit your needs.")?></p>
+    <div class="subtitle"><?php echo $this->__("Financial")?></div>
+    <hr />
+    <div class="form_field halfAndHalf">
+        <span class="label tar leftpart"><?php echo $this->__("Amount of equity for the previous year")?>:</span>
+        <input type="text" class="rightpart" id="year_amount" name="account[year_amount]" value=''/>
+    </div>
+    <div class="subtitle">Infrastructure</div>
+    <hr />
+    <div class="form_field halfAndHalf">
+        <span class="label tar leftpart"><?php echo $this->__("Quantity of employees of the company")?>:</span>
+        <input type="text" class="rightpart" id="employees_qty" name='account[employees_qty]' value=''/>
+    </div>							
+    <div class="form_field halfAndHalf">
+        <span class="label tar leftpart"><?php echo $this->__("Quantity of computer equipment")?>:</span>
+        <input type="text" class="rightpart" id="computer_qty" name='account[computer_qty]' value=''>
+    </div>	
+    <div class="form_field halfAndHalf">
+        <span class="label tar leftpart"><?php echo $this->__("Office area")?>:</span>
+        <input type="text" class="rightpart" id="office_area" name='account[office_area]' value=''>
+    </div>	
+    <div class="form_field halfAndHalf">
+        <span class="label tar leftpart"><?php echo $this->__("Warehouse area")?>:</span>
+        <input type="text" class="rightpart" id="warehouse_area" name='account[warehouse_area]' value=''>
+    </div>	
+    <div class="form_field halfAndHalf">
+        <span class="label tar leftpart"><?php echo $this->__("Quantity of vehicles of the company")?>:</span>
+        <input type="text" class="rightpart" id="vehicles_qty" name='account[vehicles_qty]' value=''>
+    </div>								
+
+    <div class="subtitle"><?php echo $this->__("Administrative")?>Licenses and permits</div>
+    <hr />
+    <div class="form_field halfAndHalf">
+        <span class="label tar leftpart"><?php echo $this->__("Operation statement before COFEPRIS")?>:</span>
+        <input type="text" class="rightpart" id="operation_statment" name='account[operation_statment]' value=''>
+    </div>
+    <div class="form_field halfAndHalf">
+        <span class="label tar leftpart"><?php echo $this->__("Responsible health professional before COFEPRIS")?>:</span>
+        <input type="text" class="rightpart" id="resp_health_professional" name='account[resp_health_professional]' value=''>
+    </div>			
+    <div class="form_field halfAndHalf">
+        <span class="label tar leftpart"><?php echo $this->__("Professional license number of the health professional")?>:</span>
+        <input type="text" class="rightpart" id="resp_health_prof_license_num" name='account[resp_health_prof_license_num]' value=''>
+    </div>	
+
+    <div class="form_field halfAndHalf">
+        <div class="rightpart">
+            <input type="checkbox" name="account[handle_controlled_medicines_or_products_of_biological_origin]" id="handle_controlled_medicines_or_products_of_biological_origin" value="" >
+            <label class="label" for="handle_controlled_medicines_or_products_of_biological_origin"><span class="checkSpan"></span><?php echo $this->__("Handle controlled medicines or products of biological origin")?></label>
+        </div>
+    </div>			
+    <div class="clearfix"></div>
+    <div class="clearfix form_field halfAndHalf handle_controlled_medicines_or_products_of_biological_origin">
+        <span class="label tar leftpart"><?php echo $this->__("Health license certificate number")?>:</span>
+        <input type="text" class="rightpart" id='health_license_number' name='account[health_license_number]' value=''>
+    </div>			
+</div>
+<script type="text/javascript">
+    jQuery( document ).ready(function() {
+            jQuery('#step2_div input,#step2_div select').each(function(){
+            jQuery(this).val(jQuery('#_account'+jQuery(this).attr('id')).val());
+        });
+        
+        accountType(jQuery('#account_type').val());
+        
+        if(jQuery('#association_number_mod').val() || jQuery('#association_number_mod_before').val()) {
+            jQuery('#is_association_number_mod').prop('checked', true);
+        }
+        
+        if(jQuery('#health_license_number').val()) {
+            jQuery('#handle_controlled_medicines_or_products_of_biological_origin').prop('checked', true);
+        }
+
+    
+    jQuery('#account_type').on("change", function () { 
+        var result = jQuery(this).val();
+        accountType(result);
+    });
+
+    jQuery('#is_association_number_mod').on('change',function() {
+        var result = jQuery('#is_association_number_mod:checked').length;
+        associationNumberMod(result);
+    })
+    
+    associationNumberMod(jQuery('#is_association_number_mod:checked').length);
+   
+    jQuery('#handle_controlled_medicines_or_products_of_biological_origin').on('change',function() {
+        var result = jQuery('#handle_controlled_medicines_or_products_of_biological_origin:checked').length;
+        handleControlledMedicinesOrProductsOfBiologicalOrigin(result);
+    })
+    
+    handleControlledMedicinesOrProductsOfBiologicalOrigin(jQuery('#handle_controlled_medicines_or_products_of_biological_origin:checked').length);
+    
+    });
+    
+    function handleControlledMedicinesOrProductsOfBiologicalOrigin(value) {
+        if(value>0) {
+            jQuery('.handle_controlled_medicines_or_products_of_biological_origin').show(500);
+            jQuery('#handle_controlled_medicines_or_products_of_biological_origin').val(true);
+            jQuery('.health_certificate_document').show();
+        } else {
+            jQuery('.handle_controlled_medicines_or_products_of_biological_origin').hide(500);
+            jQuery('#handle_controlled_medicines_or_products_of_biological_origin').val(false);
+            jQuery('.health_certificate_document').hide();
+        }
+    }
+    
+    function associationNumberMod(value) {
+         if(value>0) {
+            jQuery('.is_association_number_mod').show(500);
+            jQuery('#is_association_number_mod').val(true);
+        } else {
+            jQuery('.is_association_number_mod').hide(500);
+            jQuery('#is_association_number_mod').val(false);
+        }
+    }
+
+    function accountType(value) {
+        if(value!='1') {
+            jQuery('.1_label_account_type').hide(500);
+            jQuery('.2_label_account_type').show(500);
+        } else {
+            jQuery('.1_label_account_type').show(500);
+            jQuery('.2_label_account_type').hide(500);
+        }
+    }
+
+</script>

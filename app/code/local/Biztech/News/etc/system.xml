@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <tabs>
+        <biztech translate="label" module="news">
+            <label>Biztech Extensions</label>
+            <sort_order>400</sort_order>
+        </biztech>
+    </tabs>
+    <sections>
+        <news translate="label" module="news">
+            <label>News</label>
+            <tab>biztech</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <news_general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Select Yes to enable this feature.</comment>
+                        </enabled>
+                        <news_list_page_layout translate="label">
+                            <label>Page Layout for list page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Biztech_News_Block_Adminhtml_Model_System_Config_Source_PageLayout</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Choose page layout for news list page.</comment>
+                        </news_list_page_layout>
+                        <news_detail_page_layout translate="label">
+                            <label>Page Layout for detail page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Biztech_News_Block_Adminhtml_Model_System_Config_Source_PageLayout</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Choose page layout for news detail page.</comment>
+                        </news_detail_page_layout>
+                        <news_show_toplink translate="label">
+                            <label>Show link in Top-links</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </news_show_toplink>
+                        <news_show_left_column translate="label">
+                            <label>Show News in Left Column</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </news_show_left_column>
+                        
+                        <news_show_right_column translate="label">
+                            <label>Show News in Right Column</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </news_show_right_column>
+                        <no_of_news_column translate="label">
+                            <label>News count in column</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                             <comment>No. of news shows in column</comment>
+                        </no_of_news_column>
+                    </fields>
+                </news_general>
+            </groups>
+        </news>
+    </sections>
+</config>

@@ -1,0 +1,38 @@
+<?php $rec_name = $this->getRecruter()?$this->getRecruter()->getName():"Not assigned"; ?>
+<div class="text">
+    <h1 class="tac mt30"><?php echo $this->__('Status of the process of registration')?></h1>
+    <div class="subtitle tac"><?php echo $this->__("Your personal recruiter is: %s %s",$this->getRecruter()?$this->getRecruter()->getName():"Not assigned",$this->getRecruter()?$this->getRecruter()->getEmail():"")?></div>
+    <p>
+        <?php echo $this->__("In this step we will provide the contract and ask you to sign it. Your personal assistant '".$rec_name."' will contact you to arrange the signing mechanisms that best fits your needs. If you have any question, contact us through our online chat or write to us  through technical support section.");?>
+    </p>
+    <p class="tac"><a href="<?php echo $this->getSupportUrl()?>"><?php echo $this->__('Support')?></a></p>
+    <ul class="registerSteps">
+        <li class="filled"><a href="<?php echo $this->getUrl('*/*/step1')?>"><?php echo $this->__('Registration request')?></a></li>
+        <li class="filled"><?php if($this->getPage2Url()):?>
+                <a href="<?php echo $this->getPage2Url()?>"><?php echo $this->__('Pre-registration form')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Pre-registration form')?>
+            <?php endif;?>
+        </li>
+        <li class="filled">
+            <?php if($this->getPage3Url()):?>
+                <a href="<?php echo $this->getPage3Url()?>"><?php echo $this->__('Documentation')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Documentation')?>
+            <?php endif;?>
+        </li>
+        <li class="filled">
+            <?php if($this->getPage4Url()):?>
+                <a href="<?php echo $this->getPage4Url()?>"><?php echo $this->__('Visit\Validation')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Visit\Validation')?>
+            <?php endif;?>
+        </li>
+        <li class="active"><?php if($this->getPage5Url()):?>
+                <a href="<?php echo $this->getPage5Url()?>"><?php echo $this->__('Contract')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Contract')?>
+            <?php endif;?>
+        </li>
+    </ul>
+</div>

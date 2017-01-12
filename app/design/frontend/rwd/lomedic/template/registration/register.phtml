@@ -1,0 +1,251 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Create account form template
+ *
+ * @see app/design/frontend/base/default/template/customer/form/register.phtml
+ */
+/** @var $this Mage_Customer_Block_Form_Register */
+?>
+<div class="text">
+
+    <?php echo $this->getChildHtml('form_fields_before')?>
+    <?php echo $this->getMessagesBlock()->toHtml() ?>
+    <p class="tac"><?php echo $this->__('Please fill in the form.')?></p>
+
+    <div class="form registration">
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate" class="" enctype="multipart/form-data">
+        <div class="fieldset">
+            <div class="subtitle"><?php echo $this->__('General information')?></div>
+            <hr />
+            <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+            <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+            <input type="hidden" name="create_address" value="1"/>
+            <input type="hidden" name="default_billing" value="1"/>
+            <input type="hidden" name="default_shipping" value="1"/>
+            <input type="hidden" name="registration_status" value="<?php echo Lomedic_Registration_Model_System_Config_Source_Status::NEW_REQUEST_FOR_REGISTRATION; ?>" />
+            <input type="hidden" name="city" value="City" />
+             <div class="clearfix">
+                <div class="half">
+                    <div class="form_field">
+                        <span class="label" for="company"><span>*</span><?php echo $this->__('Name or Company Name') ?></span>
+                    </div>
+                    <div class="form_field">
+                        <input tabindex="1" type="text" name="company" id="company" value="<?php echo $this->escapeHtml($this->getFormData()->getCompany()) ?>" title="<?php echo $this->__('Company') ?>" require="require" />
+                    </div>
+                    <div class="form_field">
+                        <span class='label' for="firstname"><span>*</span><?php echo $this->__('Contact name') ?></label></span>
+                    </div>        
+                    <div class="form_field">
+                        <input tabindex="3" type="text" id="firstname" name="firstname" value="<?php echo $this->escapeHtml($this->getFormData()->getFirstname()) ?>" title="<?php echo $this->__('Contact name') ?>" maxlength="255" require="require" />
+                    </div>
+                    <div class="form_field">
+                        <span class="label" for="telephone"><?php echo $this->__('Contact phone number') ?></span>
+                    </div>
+                    <div class="form_field">
+                        <input tabindex="5" type="tel" name="telephone" id="telephone" value="<?php echo $this->escapeHtml($this->getFormData()->getTelephone()) ?>" title="<?php echo $this->__('Contact phone number') ?>" class="input-text" />
+                    </div>
+                    <div class="form_field">
+                    </div>
+                    <?php echo $this->getActivityHtmlSelect('tabindex="7"') ?>
+                    <div class="form_field">
+                        <span class="label" for="password"><span>*</span><?php echo $this->__('Password') ?></span>
+                    </div>
+                    <div class="form_field">
+                        <input tabindex="9" type="password" name="password" id="password" title="<?php echo $this->__('Password') ?>" require="require" class="validate-admin-password-up validate-both-passwords" />
+                    </div>
+                </div>
+                <div class="half">
+                    <div class="form_field">
+                        <span class='label' for="taxvat"><span>*</span><?php echo $this->__('Social security number (Tax ID)') ?></label></span>
+                    </div>        
+                    <div class="form_field">
+                        <input tabindex="2" type="text" class="mask" id="taxvat" placeholder="AAA123456@@@ or AAAA123456@@@" name="taxvat" value="<?php echo $this->escapeHtml($this->getFormData()->getTaxvat()) ?>" title="<?php echo $this->__('Social security number (Tax ID)') ?>" maxlength="255" require="require" />
+                    </div>
+
+                    <div class="form_field">
+                        <span class="label" for="email_address"><span>*</span><?php echo $this->__('Contact e-mail') ?></span>
+                    </div>
+                    <div class="form_field">
+                        <input tabindex="4" require="require" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Contact e-mail') ?>" class="input-text validate-email" />
+                    </div>
+                    <div class="form_field">
+                        <span class="label" for="telephone_alternate" class="transparent"><?php echo $this->__('Alternative phone number') ?></span>
+                    </div>
+                    <div class="form_field form_field_add">
+                        <a class="add" href="#"></a>
+                        <input tabindex="6" type="tel" class="transparent new_input" name="telephone_alternate" id="telephone_alternate" value="<?php echo $this->escapeHtml($this->getFormData()->getTelephoneAlternate()) ?>" title="<?php echo $this->__('Alternative phone number') ?>">
+                    </div>
+                    <div class="form_field">
+                    </div>
+                    <?php echo $this->getSectorHtmlSelect('tabindex="8"'); ?>
+                    <div class="form_field">
+                        <span class="label" for="confirmation"><span>*</span><?php echo $this->__('Confirm Password') ?></span>
+                    </div>
+                    <div class="form_field">
+                        <input tabindex="10" type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" require="require" class="validate-both-passwords" />
+                    </div>
+                </div>
+             </div>
+           
+            <div class="subtitle padding-top"><?php echo $this->__('Main address')?></div>
+            <hr />
+            <div class="clearfix">
+                <div class="half">
+                    <div class="form_field"><span for="country" class="label"><span>*</span><?php echo $this->__('Country') ?></span></div>
+                    <div class="form_field">
+                        <select tabindex="11" title="Country" class="validate-select" id="country" name="country_id">
+                            <option value="MX">Mexico</option>
+                        </select>
+                        <?php //echo $this->getCountryHtmlSelect() ?>
+                    </div>
+                    <div class="form_field"><span for="municipality" class="label"><span>*</span><?php echo $this->__('Municipality') ?></span></div>
+                    <div class="form_field"><input tabindex="13" type="text" name="municipality" value="<?php echo $this->escapeHtml($this->getFormData()->getMunicipality()) ?>" title="<?php echo $this->__('Municipality') ?>" id="municipality" class="input-text " /></div>
+                    <div class="form_field"><span for="colonia" class="label"><span>*</span><?php echo $this->__('Cologne') ?></span></div>
+                    <div class="form_field"><input tabindex="15" type="text" name="colonia" value="<?php echo $this->escapeHtml($this->getFormData()->getColonia()) ?>" title="<?php echo $this->__('Cologne') ?>" id="colonia" class="input-text" /></div>
+
+                    <div class="clearfix">
+                        <div class="half">
+                            <div class="form_field"><span for="street_number" class="label"><?php echo $this->__('Street Number') ?></span></div>
+                            <div class="form_field"  style=""><input tabindex="17" type="text" name="street_number" value="<?php echo $this->escapeHtml($this->getFormData()->getStreetNumber()) ?>" title="<?php echo $this->__('Street Number') ?>" id="street_number" class="input-text " /></div>
+                        </div>
+                        <div class="half">
+                            <div class="form_field"><span for="appartment_number" class="label"><?php echo $this->__('Apartment number') ?></span></div>
+                            <div class="form_field"  style=""><input tabindex="18" type="text" name="apartment_number" value="<?php echo $this->escapeHtml($this->getFormData()->getApartmentNumber()) ?>" title="<?php echo $this->__('Apartment number') ?>" id="appartment_number" class="input-text " /></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="half">
+                    <?php echo $this->getState('tabindex="12"',$this->escapeHtml($this->getFormData()->getRegion())) ?>
+                    
+                    <div class="form_field"><span for="city" class="label"><?php echo $this->__('City/Location') ?></span></div>
+                    <div class="form_field" style=""><input tabindex="14" type="text" name="city" value="<?php echo $this->escapeHtml($this->getFormData()->getCity()) ?>" title="<?php echo $this->__('City') ?>" id="city" class="input-text" /></div>
+                    <div class="form_field" style="margin-bottom: 0px;">
+                        <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+                        <span class="label" for="street_1" class="label"><span>*</span><?php echo $this->__('Street') ?></span>
+                    </div>
+                    <div class="form_field"><input tabindex="16" require="require" type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getFormData()->getStreet(0)) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" class="input-text" /></div>
+               
+                    <div id="zip">
+                        <?php echo $this->getZipCode('tabindex="19"',$this->escapeHtml($this->getFormData()->getPostcode())); ?>
+                    </div>
+                </div>	
+            </div>
+            <div class="subtitle padding-top"><?php echo $this->__('Comments')?></div>
+            <hr />
+            <div class="form_field"><textarea tabindex="20" name="comments" placeholder="<?php echo $this->__('Your message...')?>"><?php echo $this->escapeHtml($this->getFormData()->getComments()) ?></textarea></div>
+            <div class="form_field validate validate-center"><?php echo $this->__('Please fill in all the fields marked with *!')?></div>
+            <div class="buttons-set">
+                <div class="button tar">
+                    <input tabindex="21" type="submit" title="<?php echo $this->__('Register') ?>" value="<?php echo $this->__('Register') ?>"/>
+                </div>
+            </div>
+    </form>
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+        //This checks if a specific attribute is supported
+  
+        var dataForm = new VarienForm('form-validate', true);
+        $j('#form-validate').submit(function(event) {
+            var hasErrors = false;
+           
+//            if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+                //If require attribute is not supported or browser is Safari (Safari thinks that it has this attribute, but it does not work), then check all fields that has require attribute
+                $j("#form-validate [require]:visible, #form-validate select[require]").each(function(index) {
+                    if (!$j(this).val()) {
+                        $j(this).addClass('error-input');
+                         //If at least one require value is empty, then ask to fill all require fields.
+                        hasErrors = true;
+                    } else {
+                        if($j(this).hasClass('error-input')) {
+                            $j(this).removeClass('error-input');
+                        }
+                    }
+                });
+                if(hasErrors) {
+                    event.preventDefault();
+                    return false;
+                }
+//            }
+            $j("#form-validate [require]:visible").each(function(index) {
+                if($j(this).hasClass('error-input')) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+            
+        });
+        
+        var mess = "<?php echo $this->__('For safety, we ask you to create a password with length bigger than 7 and to include at least one capital letter, one lower case letter, and one number.');?>";
+
+        Validation.add('validate-admin-password-up',mess,function(v, elm){
+            var pass=v.strip();
+            if (0 == pass.length) {
+                return true;
+            }
+
+            if (!(/[a-z]/g.test(v)) || !(/[0-9]/.test(v)) || !(/[A-Z]/g.test(v))) {
+                return false;
+            }
+            return !(pass.length < 7);
+        });
+
+        $j('.mask').inputmask({mask:"a{3,4}9{6}*{3}",placeholder: ""});
+        
+        function checkTaxId() {
+            var el = $j('#taxvat');
+            if($j(el).val().length<1) return true;
+            
+            if($j(el).hasClass('error-input')) {
+                $j(el).removeClass('error-input');
+            }
+            if($j(el).val().length<12) {
+                $j(el).addClass('error-input');
+                return false;
+            }
+            if($j(el).val().substring(3,4).replace(/\D/g, '').length>0 && $j(el).val().length!=12) {
+                $j(el).addClass('error-input');
+                return false;
+            }
+            if($j(el).val().substring(3,4).replace(/\D/g, '').length==0 && $j(el).val().length!=13) {
+                $j(el).addClass('error-input');
+                return false;
+            }
+        }
+        $j('#taxvat').blur(function(){
+            checkTaxId();
+        });
+        checkTaxId();
+
+changeForm('form-validate');
+    //]]>
+    </script>
+</div>
+</div>
+</div>

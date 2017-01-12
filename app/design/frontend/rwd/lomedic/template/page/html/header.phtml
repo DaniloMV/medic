@@ -1,0 +1,327 @@
+<?php
+/**
+ * Magento
+ * @var Mage_Page_Block_Html_Header $this
+ */
+$sessionCustomer = Mage::getSingleton("customer/session");
+$customer = Mage::getSingleton('customer/session')->getCustomer();
+$is_seller = false;
+$is_buyer = false;
+$user_company = Mage::getSingleton('customer/session')->getUserCompany();
+
+if($sessionCustomer->isLoggedIn() && $customer->getRegistrationStatus()==Lomedic_Registration_Model_System_Config_Source_Status::COMPLETED) {
+    if(in_array(Mage::getSingleton('customer/session')->getCustomerGroupId(),array(Mage::getStoreConfig('softeq/loregistration/privateseller'),Mage::getStoreConfig('softeq/loregistration/govseller')))) {
+        $is_seller = true;
+    } else {
+        $is_buyer = true;
+    }
+}
+    $magentoCurrentUrl = Mage::helper('core/url')->getCurrentUrl();
+
+    if($customer->getId() && $customer->getRegistrationStatus() == Lomedic_Registration_Model_System_Config_Source_Status::COMPLETED){
+        $partner = Mage::getModel('marketplace/userprofile')->isPartner(Mage::getSingleton('customer/session')->getCustomerId());
+        $allow_pro_type=Mage::getStoreConfig('marketplace/marketplace_options/allow_for_seller');
+    }
+
+?>
+<div class="wrapSlider">
+    <header id="header" class="page-header adminHeader">
+        <div class="page-header-container">
+            <a class="logo" href="<?php echo $this->getUrl('') ?>">
+                <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="large" />
+                <!--<img src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="small" />-->
+            </a>
+
+            <?php // In order for the language switcher to display next to logo on smaller viewports, it will be moved here.
+            // See app.js for details ?>
+            <div class="store-language-container"></div>
+            <!-- Skip Links -->
+            <div class="skip-links">
+                <!--
+                <a href="#header-nav" class="skip-link skip-nav">
+                    <span class="icon"></span>
+                    <span class="label"><?php //echo $this->__('Menu'); ?></span>
+                </a>
+                -->
+
+                <div class="account-cart-wrapper">
+                    <?php if (!$sessionCustomer->isLoggedIn()): ?>
+                        <div class="signIn">
+                            <a href="#"><?php echo $this->__('Log In')?></a>
+                        </div>
+                        <div class="signInForm clearfix">
+                            <div class="signInFormWrap">
+                                <ul class="signInForm_links">
+                                    <li><a href="<?php echo $this->getUrl('customer/account/create'); ?>"><?php echo $this->__('Register')?></a></li>
+                                    <li><a class="fancybox" href="#fancy"><?php echo $this->__('Forgot your password')?></a></li>
+                                </ul>
+                                <form action="<?php echo Mage::helper('customer')->getLoginPostUrl()?>" method="post">
+                                    <?php echo $this->getBlockHtml('formkey'); ?>
+                                    <input type="hidden" name="no-captcha" value="true"/>
+                                    <div><input type="text" placeholder="<?php echo $this->__('Enter Email Address')?>" value="" name="login[username]" id="name" required="required"></div>
+                                    <div><input type="password" placeholder="<?php echo $this->__('Password')?>" value="" name="login[password]" id="password" required="required"></div>
+                                    <div class="button"><input type="submit" value="<?php echo $this->__('Login')?>"></div>
+                                </form>
+                            </div>
+                        </div>
+                        <div style="display:none" id="fancy">
+                            <img class="logo" src="<?php echo $this->getLogoSrc() ?>" alt="" />
+                            <div class="popup_form form">
+                                <form method="post" action="<?php echo $this->getUrl('customer/account/forgotpasswordpost')?>" id="forgotpass_form">
+                                    <div class="form_field"><span class="label"><span>*</span><?php echo $this->__('E-mail')?>:</span></div>
+                                    <div class="form_field"><input type="email" id="forgotpass_form_email" required="required"></div>
+                                    <div class="tac button"><input id="forgotpass_form_button" type="submit" value="<?php echo $this->__('Restore password')?>"></div>
+                                    <div id="forgot_password_success" style="color: #008000; font-size: 16px; margin-top: 20px;"></div>
+                                    <div id="forgot_password_error" style="color: red; font-size: 16px; margin-top: 20px;"></div>
+                                </form>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <div class="user clearfix">
+                            <!--                 Cart -->
+                            <?php if($is_buyer):?>
+                            <div class="header-minicart">
+                                <?php echo $this->getChildHtml('minicart_head'); ?>
+                            </div>
+                            <?php endif;?>
+                            <div class="user_img"><img src="<?php echo $this->getSkinUrl('images/user.jpg')?>" /></div>
+                            <div class="user_name">
+                                <a class="list_links" href="#">
+                                    <?php
+                                    if($user_company){
+                                        $aaa = Mage::getModel('loregistration/usersCompany')->load($user_company);
+                                        echo $this->escapeHtml($aaa->getName());
+                                    }else{
+                                        echo $this->escapeHtml($sessionCustomer->getCustomer()->getFirstname());
+                                    }
+                                    ?>
+                                </a>
+                            </div>
+
+                            <!-- <div class="user_off"><a href="<?php echo $this->getUrl('customer/account/logout'); ?>"><?php echo $this->__('Log out'); ?></a></div> -->
+                        </div>
+                    <?php endif; ?>
+
+                    <div class="acount_links">
+                        <ul>
+                    <?php if(Mage::getSingleton('customer/session')->getUserCompany()):?>
+                        <?php if(Mage::getSingleton('customer/session')->getManageProfileSettings() || !in_array($sessionCustomer->getCustomerGroupId(),array(Mage::getStoreConfig('softeq/loregistration/privateseller'),Mage::getStoreConfig('softeq/loregistration/govseller')))):?>
+                            <li>
+                                <?php
+                                        if($sessionCustomer->getCustomer()->getRegistrationStatus() == Lomedic_Registration_Model_System_Config_Source_Status::COMPLETED){?>
+                                            <a href="<?php echo $this->getUrl('marketplace/marketplaceaccount/editprofile');?>">
+                                   <?php echo $this->__('Profile/Setting');
+                                        }else{ ?>
+                                            <a href="<?php echo $this->getUrl('customer/account');?>">
+                                   <?php echo $this->__('My registration');
+                                        } ?>
+                                    </a>
+                            </li>
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <li>
+                                <?php
+                                        if($sessionCustomer->getCustomer()->getRegistrationStatus() == Lomedic_Registration_Model_System_Config_Source_Status::COMPLETED){?>
+                                            <a href="<?php echo $this->getUrl('marketplace/marketplaceaccount/editprofile');?>">
+                                   <?php echo $this->__('Profile/Setting');
+                                        }else{ ?>
+                                            <a href="<?php echo $this->getUrl('customer/account');?>">
+                                   <?php echo $this->__('My registration');
+                                        } ?>
+                                    </a>
+                            </li>
+                        <?php endif; ?>
+                            <li>
+                                <a href="<?php echo $this->getUrl('customer/account/logout') ?>"><?php echo $this->__('Log out')?></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Navigation -->
+
+            <div id="header-nav" class="skip-content">
+                <?php //echo $this->getChildHtml('topMenu') ?>
+            </div>
+
+            <!-- Account -->
+
+            <div id="header-account" class="skip-content">
+                <?php  //echo $this->getChildHtml('topLinks') ?>
+
+
+
+                <ul class="topMenu">
+                <?php if($is_seller): ?>
+                    <li  <?php echo strpos($magentoCurrentUrl,'marketplace/marketplaceaccount/mydashboard')? "class=active":"";?>>
+                        <?php if(strpos($magentoCurrentUrl,'marketplace/marketplaceaccount/mydashboard')){ ?>
+                            <a href="<?php echo $this->__('Dashboard') ?>">
+                                <?php echo $this->__('Dashboard') ?>
+                            </a>
+                        <?php }
+                        else{ ?>
+                            <a href="<?php echo $this->getUrl('marketplace/marketplaceaccount/mydashboard'); ?>">
+                                <?php echo $this->__('Dashboard') ?>
+                            </a>
+                        <?php } ?>
+                    </li>
+
+                    <li <?php echo strpos($magentoCurrentUrl,'catalog.html')? "class=active":"";?>>
+                        <a href="#">
+                             <?php echo $this->__('Products') ?>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="<?php echo $this->getUrl('catalog.html'); ?>"><?php echo $this->__("Catalog")?></a></li>
+                            <li><a href="#"><?php echo $this->__("Special offers & Auctions")?></a></li>
+                            <li><a href="#"><?php echo $this->__("Statistics")?></a></li>
+                            <!--<li><a href="#">...</a></li>-->
+                        </ul>
+                    </li>
+                    <?php if(Mage::getSingleton('customer/session')->getUserCompany()):?>
+                        <?php if(Mage::getSingleton('customer/session')->getManageProducts()):?>
+                            <li <?php echo strpos($magentoCurrentUrl,'marketplace/marketplaceaccount/myproductslist/') ? "class=active":"";?>>
+                                <a href="<?php echo $this->getUrl('marketplace/marketplaceaccount/myproductslist/'); ?>">
+                                    <?php echo $this->__('My products') ?>
+                                </a>
+                            </li>
+                        <?php endif;?>
+                    <?php else:?>
+                            <li <?php echo strpos($magentoCurrentUrl,'marketplace/marketplaceaccount/myproductslist/') ? "class=active":"";?>>
+                                <a href="<?php echo $this->getUrl('marketplace/marketplaceaccount/myproductslist/'); ?>">
+                                    <?php echo $this->__('My products') ?>
+                                </a>
+                            </li>
+                    <?php endif;?>
+                    <?php if(Mage::getSingleton('customer/session')->getUserCompany()):?>
+                        <?php if(Mage::getSingleton('customer/session')->getManageBatches()):?>
+
+                            <li  <?php echo strpos($magentoCurrentUrl,'batches')? "class=active":"";?>>
+                                <a href="<?php echo $this->getUrl('loseller/marketplaceaccount/batches'); ?>">
+                                    <?php echo $this->__('Batches') ?>
+                                </a>
+                            </li>
+                        <?php endif;?>
+                    <?php else: ?>
+                        <li  <?php echo strpos($magentoCurrentUrl,'batches')? "class=active":"";?>>
+                            <?php if(strpos($magentoCurrentUrl,'batches')){ ?>
+                            <a href="<?php echo $this->getUrl('loseller/marketplaceaccount/batches'); ?>">
+                                 <?php echo $this->__('Batches') ?>
+                            </a>
+                            <?php }
+                            else{ ?>
+                                <a href="<?php echo $this->getUrl('loseller/marketplaceaccount/batches'); ?>">
+                                    <?php echo $this->__('Batches') ?>
+                                </a>
+                            <?php } ?>
+                        </li>
+                    <?php endif;?>
+
+                    <?php if(Mage::getSingleton('customer/session')->getUserCompany()):?>
+                        <?php if(Mage::getSingleton('customer/session')->getManageSales()):?>
+                        <li class="last <?php echo strpos($magentoCurrentUrl,'myorderhistory')? "active":"";?>">
+                            <?php if(strpos($magentoCurrentUrl,'myorderhistory')){ ?>
+                                <a href="<?php echo $this->__('Sales') ?>">
+                                    <?php echo $this->__('Sales') ?>
+                                </a>
+                            <?php }
+                            else{ ?>
+                                <a href="<?php echo $this->getUrl('marketplace/marketplaceaccount/myorderhistory'); ?>">
+                                    <?php echo $this->__('Sales') ?>
+                                </a>
+                            <?php } ?>
+                        </li>
+                        <?php endif;?>
+                    <?php else: ?>
+                        <li class="last <?php echo strpos($magentoCurrentUrl,'myorderhistory')? "active":"";?>">
+                            <?php if(strpos($magentoCurrentUrl,'myorderhistory')){ ?>
+                                <a href="<?php echo $this->__('Sales') ?>">
+                                    <?php echo $this->__('Sales') ?>
+                                </a>
+                            <?php }
+                            else{ ?>
+                                <a href="<?php echo $this->getUrl('marketplace/marketplaceaccount/myorderhistory'); ?>">
+                                    <?php echo $this->__('Sales') ?>
+                                </a>
+                            <?php } ?>
+                        </li>
+                    <?php endif;?>
+                <?php elseif($is_buyer): ?>
+                    <li <?php echo strpos($magentoCurrentUrl,'customer/account')? "class=active":"";?>>
+                            <a href="<?php echo $this->getUrl('customer/account'); ?>">
+                                <?php echo $this->__('Dashboard') ?>
+                            </a>
+                    </li>
+                   <li <?php echo strpos($magentoCurrentUrl,'catalog.html')? "class=active":"";?>>
+                        <a href="#">
+                             <?php echo $this->__('Products') ?>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="<?php echo $this->getUrl('catalog.html'); ?>"><?php echo $this->__("Catalog")?></a></li>
+                            <li><a href="#"><?php echo $this->__("Special offers & Auctions")?></a></li>
+                            <li><a href="#"><?php echo $this->__("Statistics")?></a></li>
+                            <!--<li><a href="#">...</a></li>-->
+                        </ul>
+                    </li>
+                    <li <?php echo strpos($magentoCurrentUrl,'sales/order/history')? "class=active":"";?>>
+                            <a href="<?php echo $this->getUrl('sales/order/history'); ?>">
+                                <?php echo $this->__('Orders') ?>
+                            </a>
+                    </li>
+                <?php else:?>
+                    <li <?php echo ($magentoCurrentUrl==Mage::getBaseUrl())? "class=active":"";?>>
+                        <?php if($magentoCurrentUrl==Mage::getBaseUrl()){ ?>
+                            <a href="#">
+                                <?php echo $this->__('Home') ?>
+                            </a>
+                        <?php }
+                        else{ ?>
+                            <a href="<?php echo $this->getUrl(''); ?>">
+                                <?php echo $this->__('Home') ?>
+                            </a>
+                        <?php } ?>
+                    </li>
+                   <li <?php echo (strpos($magentoCurrentUrl,'catalog.html')||strpos($magentoCurrentUrl,'offers')|| strpos($magentoCurrentUrl,'statistics'))? "class=active":"";?>>
+                        <a href="#">
+                             <?php echo $this->__('Products') ?>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="<?php echo $this->getUrl('catalog.html'); ?>"><?php echo $this->__("Catalog")?></a></li>
+                            <li><a href="<?php echo $this->getUrl("offers");?>"><?php echo $this->__("Special offers & Auctions")?></a></li>
+                            <li><a href="<?php echo $this->getUrl("statistics");?>"><?php echo $this->__("Statistics")?></a></li>
+                            <!--<li><a href="#">...</a></li>-->
+                        </ul>
+                    </li>
+                    <?php endif;
+
+
+                    ?>
+                        <li <?php echo (strpos($magentoCurrentUrl,'about-us') || strpos($magentoCurrentUrl,'contact') || strpos($magentoCurrentUrl,'support'))? "class=active":"";?>>
+                        <a href="#">
+                             <?php echo $this->__('Company') ?>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="<?php echo $this->getUrl("about-us");?>"><?php echo $this->__('About Us'); ?></a></li>
+                            <li><a href="<?php echo $this->getUrl('registration/support'); ?>"><?php echo $this->__('Support'); ?></a></li>
+                        </ul>
+                    </li>
+                    <?php
+                    if ($sessionCustomer->isLoggedIn()):
+                    ?>
+                    <li <?php echo strpos($magentoCurrentUrl,'customform')? "class=active":"";?>>
+                        <?php if($magentoCurrentUrl==Mage::getBaseUrl()){ ?>
+                            <a href="<?php echo $this->getUrl("customform");?>"> Demanda de Producto</a>
+                            </a>
+                        <?php }
+                        else{ ?>
+                            <a href="<?php echo $this->getUrl("customform");?>"> Demanda de Producto</a>
+                        <?php }
+                    endif;?>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+</div>
+
+<?php echo $this->getChildHtml('topContainer'); ?>

@@ -1,0 +1,371 @@
+<style>
+    .left_column .button input {
+        font-size: 1.5em;
+        padding: 10px 40px;
+    }
+    .button input {
+        background: #31ade3 none repeat scroll 0 0;
+        border-radius: 3px;
+        color: #fff;
+        font: 2em "Myriad-Bold";
+        padding: 10px 60px;
+        text-decoration: none;
+        text-transform: uppercase;
+        border: none;
+    }
+</style>
+<?php
+
+$customer = Mage::getSingleton('customer/session')->getCustomerId();
+
+if($customer){
+    $partner = Mage::getModel('marketplace/userprofile')->isPartner(Mage::getSingleton('customer/session')->getCustomerId());
+    $magentoCurrentUrl = Mage::helper('core/url')->getCurrentUrl();
+    $helper=Mage::helper('marketplace');
+    $allow_pro_type=Mage::getStoreConfig('marketplace/marketplace_options/allow_for_seller');
+    ?>
+
+    <!--
+    <ul class="topMenu">
+            <li  <?php //echo strpos($magentoCurrentUrl,'marketplace/marketplaceaccount/editprofile')? "class=current":"";?>>
+                <?php //if(strpos($magentoCurrentUrl,'marketplace/marketplaceaccount/editprofile')){ ?>
+                    <?php //echo $helper->__('Profile Settings') ?>
+                <?php //}
+                //else{ ?>
+                    <a href="<?php //echo $this->getUrl('marketplace/marketplaceaccount/editprofile'); ?>">
+                        <?php //echo $helper->__('Profile Settings') ?>
+                    </a>
+                <?php //} ?>
+            </li>
+
+    </ul>
+    -->
+
+
+    <?php
+
+        $userId=Mage::getSingleton('customer/session')->getCustomer()->getId();
+        $collection = Mage::getModel('marketplace/product')->getCollection()->addFieldToFilter('userid',array('eq'=>$userId));
+        $products=array();
+        foreach($collection as $data){
+            array_push($products,$data->getMageproductid());
+        }
+
+        $collection = Mage::getModel('catalog/product')->getCollection()
+            ->addAttributeToSelect('*')
+            ->addFieldToFilter('entity_id',array('in'=>$products))
+            ->setOrder('entity_id','AESC');
+
+        $result = array();
+
+        foreach($collection as $coll){
+            $data = $coll->getData();
+            if(isset($data["category"]) && !empty($data["category"]) && isset($data["generic_name"]) && !empty($data["generic_name"])){
+                if(!array_key_exists($data["category"],$result)){
+                    $result[$data["category"]][] = $data["generic_name"];
+                }else{
+                    $result[$data["category"]][] = $data["generic_name"];
+                }
+            }
+        }
+
+        $collection= Mage::getModel('loseller/goverment_catalog')->getCollection();
+        $collection->addFieldToSelect('category');
+        //$collection->addFieldToSelect('entity_id');
+        $collection->addFieldToFilter('entity_id',array('eq'=>0));
+        $collection->getSelect()->group('category');
+
+        $resultArr = array();
+        foreach($result as $key => $res){
+            $collection= Mage::getModel('loseller/goverment_catalog')->load($key);
+            $data = $collection->getData();
+
+            $child = array();
+            foreach($res as $k => $v){
+                $colle = Mage::getModel('loseller/goverment_catalog')->load($v);
+                $dataChild = $colle->getData();
+                $child[] = array(
+                    "name" => $dataChild["generic_name"],
+                    "id" => $v,
+                );
+            }
+
+            $child = array_map("unserialize", array_unique(array_map("serialize", $child)));
+
+            $resultArr[] = array(
+                "name" => $data["category"],
+                "id" => $key,
+                "child" => $child
+            );
+        }
+    ?>
+
+    <?php if($partner && strpos($magentoCurrentUrl,'marketplace/marketplaceaccount/myproductslist') != false){ ?>
+
+    <div class="button mb20">
+        <form action="<?php echo $this->getUrl('seller/marketplaceaccount/new/'); ?>" method="get">
+            <input type="hidden" name="set" value="4">
+            <input type="hidden" name="type" value="simple">
+            <input type="submit" value="<?php echo $helper->__('Add new product') ?>">
+        </form>
+    </div>
+    <br>
+        <form id="filter_form" action="<?php echo $this->getUrl('marketplace/marketplaceaccount/myproductslist'); ?>" method="post">
+    <div class="subtitle"><?php echo $helper->__('Particularity') ?></div>
+    <ul class="leftMenu">
+
+        <?php foreach($resultArr as $key => $val):?>
+
+            <?php
+            $kkk = 0;
+            foreach($val["child"] as $chil){
+                if(array_key_exists($chil["id"],$_POST[$val["id"]])){
+                    $kkk = 1;
+                }
+            }
+            ?>
+            <li <?php if($kkk==1){?> class="active" <?php }?> >
+                <a style="cursor: pointer;"><?php echo $helper->__($val["name"]) ?></a>
+                <ul <?php if($kkk==1){?>class="not_hide"<?php }?> style="<?php if($kkk==1){?>display: block !important;<?php }else{?>display: none;<?php }?> overflow-y: auto;overflow-x:hidden; max-height: 250px;">
+                    <?php foreach($val["child"] as $option){ ?>
+                        <li>
+                            <div class="menuCheck">
+                                <input class="filter-check" type="checkbox" <?php if(isset($_POST[$val["id"]]) && !empty($_POST[$val["id"]]) && array_key_exists($option["id"],$_POST[$val["id"]])):?>checked="checked" <?php endif;?>  name="<?php echo $val["id"];?>[<?php echo $option["id"] ?>]" id="generic_name<?php echo $val["id"].$option["id"] ?>">
+                                <label for="generic_name<?php echo $val["id"].$option["id"] ?>"><span class="checkSpan"></span><?php echo $option["name"]?></label>
+                            </div>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </li>
+        <?php endforeach;?>
+
+        <!--
+        <li class="active">
+            <a href=""><?php echo $helper->__('Generic Name') ?></a>
+            <ul style="display: block; overflow-y: auto;overflow-x:hidden; max-height: 250px;">
+
+                <?php
+                $_attribute_code = 'generic_name';
+                $attributeId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product',$_attribute_code);
+                $attribute = Mage::getModel('catalog/resource_eav_attribute')->load($attributeId);
+                $attributeOptions = $attribute->getSource()->getAllOptions();
+
+                foreach($attributeOptions as $option){
+                    if(isset($option["value"]) && !empty($option["value"])){
+
+                        ?>
+                        <li>
+                            <div class="menuCheck">
+                                <input type="checkbox" <?php if(isset($_POST['generic_name']) && !empty($_POST['generic_name']) && isset($_POST['generic_name'][$option["value"]])  && $_POST['generic_name'][$option["value"]] == "on"):?>checked="checked" <?php endif;?>  name="generic_name[<?php echo $option["value"] ?>]" id="generic_name<?php echo $option["value"] ?>">
+                                <label for="generic_name<?php echo $option["value"] ?>"><span class="checkSpan"></span><?php echo $option["label"]?></label>
+                            </div>
+                        </li>
+                    <?php }} ?>
+            </ul>
+        </li>
+        <li class="">
+            <a href=""><?php echo $helper->__('Description Product Catalog') ?></a>
+            <ul style="display: none; overflow-y: auto;overflow-x:hidden; max-height: 250px;">
+
+                <?php
+                $_attribute_code = 'description_a';
+                $attributeId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product',$_attribute_code);
+                $attribute = Mage::getModel('catalog/resource_eav_attribute')->load($attributeId);
+                $attributeOptions = $attribute ->getSource()->getAllOptions();
+
+                foreach($attributeOptions as $option){
+                    if(isset($option["value"]) && !empty($option["value"])){
+                        ?>
+                        <li>
+                            <div class="menuCheck">
+                            <input type="checkbox" <?php if(isset($_POST['description_a']) && !empty($_POST['description_a']) && isset($_POST['description_a'][$option["value"]])  && $_POST['description_a'][$option["value"]] == "on"):?>checked="checked" <?php endif;?> name="description_a[<?php echo $option["value"] ?>]" id="description_a<?php echo $option["value"] ?>">
+                            <label for="description_a<?php echo $option["value"] ?>"><span class="checkSpan"></span><?php echo $option["label"]?></label>
+                            </div>
+                        </li>
+                    <?php }} ?>
+            </ul>
+        </li>
+        <li class="">
+            <a href=""><?php echo $helper->__('Category') ?></a>
+            <ul style="display: none; overflow-y: auto;overflow-x:hidden; max-height: 250px;">
+
+                <?php
+                $_attribute_code = 'category';
+                $attributeId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product',$_attribute_code);
+                $attribute = Mage::getModel('catalog/resource_eav_attribute')->load($attributeId);
+                $attributeOptions = $attribute ->getSource()->getAllOptions();
+
+                foreach($attributeOptions as $option){
+                    if(isset($option["value"]) && !empty($option["value"])){
+                        ?>
+                        <li>
+                            <div class="menuCheck">
+                            <input type="checkbox" <?php if(isset($_POST['category']) && !empty($_POST['category']) && isset($_POST['category'][$option["value"]])  && $_POST['category'][$option["value"]] == "on"):?>checked="checked" <?php endif;?> name="category[<?php echo $option["value"] ?>]" id="category<?php echo $option["value"] ?>">
+                            <label for="category<?php echo $option["value"] ?>"><span class="checkSpan"></span><?php echo $option["label"]?></label>
+                            </div>
+                        </li>
+                    <?php }} ?>
+            </ul>
+        </li>
+        <li class="">
+            <a href=""><?php echo $helper->__('Code') ?></a>
+            <ul style="display: none; overflow-y: auto;overflow-x:hidden; max-height: 250px;">
+
+                <?php
+                $_attribute_code = 'code';
+                $attributeId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product',$_attribute_code);
+                $attribute = Mage::getModel('catalog/resource_eav_attribute')->load($attributeId);
+                $attributeOptions = $attribute ->getSource()->getAllOptions();
+
+                foreach($attributeOptions as $option){
+                    if(isset($option["value"]) && !empty($option["value"])){
+                        ?>
+                        <li>
+                            <div class="menuCheck">
+                            <input type="checkbox" <?php if(isset($_POST['code']) && !empty($_POST['code']) && isset($_POST['code'][$option["value"]])  && $_POST['code'][$option["value"]] == "on"):?>checked="checked" <?php endif;?> name="code[<?php echo $option["value"] ?>]" id="code<?php echo $option["value"] ?>">
+                            <label for="code<?php echo $option["value"] ?>"><span class="checkSpan"></span><?php echo $option["label"]?></label>
+                            </div>
+                        </li>
+                    <?php }} ?>
+            </ul>
+        </li>
+
+
+
+        <li class="">
+            <a href=""><?php echo $helper->__('Qty') ?></a>
+            <ul style="display: none; overflow-y: auto;overflow-x:hidden; max-height: 250px;">
+
+                <?php
+                $_attribute_code = 'qty';
+                $attributeId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product',$_attribute_code);
+                $attribute = Mage::getModel('catalog/resource_eav_attribute')->load($attributeId);
+                $attributeOptions = $attribute ->getSource()->getAllOptions();
+
+                foreach($attributeOptions as $option){
+                    if(isset($option["value"]) && !empty($option["value"])){
+                        ?>
+                        <li>
+                            <div class="menuCheck">
+                            <input type="checkbox" <?php if(isset($_POST['qty']) && !empty($_POST['qty']) && isset($_POST['qty'][$option["value"]])  && $_POST['qty'][$option["value"]] == "on"):?>checked="checked" <?php endif;?> name="qty[<?php echo $option["value"] ?>]" id="qty<?php echo $option["value"] ?>">
+                            <label for="qty<?php echo $option["value"] ?>"><span class="checkSpan"></span><?php echo $option["label"]?></label>
+                            </div>
+                        </li>
+                    <?php }} ?>
+            </ul>
+        </li>
+        <li class="">
+            <a href=""><?php echo $helper->__('Presentation') ?></a>
+            <ul style="display: none; overflow-y: auto;overflow-x:hidden; max-height: 250px;">
+
+                <?php
+                $_attribute_code = 'presentation';
+                $attributeId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product',$_attribute_code);
+                $attribute = Mage::getModel('catalog/resource_eav_attribute')->load($attributeId);
+                $attributeOptions = $attribute ->getSource()->getAllOptions();
+
+                foreach($attributeOptions as $option){
+                    if(isset($option["value"]) && !empty($option["value"])){
+                        ?>
+                        <li>
+                            <div class="menuCheck">
+                            <input type="checkbox" <?php if(isset($_POST['presentation']) && !empty($_POST['presentation']) && isset($_POST['presentation'][$option["value"]])  && $_POST['presentation'][$option["value"]] == "on"):?>checked="checked" <?php endif;?> name="presentation[<?php echo $option["value"] ?>]" id="presentation<?php echo $option["value"] ?>">
+                            <label for="presentation<?php echo $option["value"] ?>"><span class="checkSpan"></span><?php echo $option["label"]?></label>
+                            </div>
+                        </li>
+                    <?php }} ?>
+            </ul>
+        </li>
+        <li class="">
+            <a href=""><?php echo $helper->__('Group Presentation') ?></a>
+            <ul style="display: none; overflow-y: auto;overflow-x:hidden; max-height: 250px;">
+
+                <?php
+                $_attribute_code = 'group_presentation';
+                $attributeId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product',$_attribute_code);
+                $attribute = Mage::getModel('catalog/resource_eav_attribute')->load($attributeId);
+                $attributeOptions = $attribute ->getSource()->getAllOptions();
+
+                foreach($attributeOptions as $option){
+                    if(isset($option["value"]) && !empty($option["value"])){
+                        ?>
+                        <li>
+                            <div class="menuCheck">
+                            <input type="checkbox" <?php if(isset($_POST['group_presentation']) && !empty($_POST['group_presentation']) && isset($_POST['group_presentation'][$option["value"]])  && $_POST['group_presentation'][$option["value"]] == "on"):?>checked="checked" <?php endif;?> name="group_presentation[<?php echo $option["value"] ?>]" id="group_presentation<?php echo $option["value"] ?>">
+                            <label for="group_presentation<?php echo $option["value"] ?>"><span class="checkSpan"></span><?php echo $option["label"]?></label>
+                            </div>
+                        </li>
+                    <?php }} ?>
+            </ul>
+        </li>
+        <li class="">
+            <a href=""><?php echo $helper->__('Level') ?></a>
+            <ul style="display: none; overflow-y: auto;overflow-x:hidden; max-height: 250px;">
+
+                <?php
+                $_attribute_code = 'level';
+                $attributeId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product',$_attribute_code);
+                $attribute = Mage::getModel('catalog/resource_eav_attribute')->load($attributeId);
+                $attributeOptions = $attribute ->getSource()->getAllOptions();
+
+                foreach($attributeOptions as $option){
+                    if(isset($option["value"]) && !empty($option["value"])){
+                        ?>
+                        <li>
+                            <div class="menuCheck">
+                            <input type="checkbox" <?php if(isset($_POST['level']) && !empty($_POST['level']) && isset($_POST['level'][$option["value"]])  && $_POST['level'][$option["value"]] == "on"):?>checked="checked" <?php endif;?> name="level[<?php echo $option["value"] ?>]" id="level<?php echo $option["value"] ?>">
+                            <label for="level<?php echo $option["value"] ?>"><span class="checkSpan"></span><?php echo $option["label"]?></label>
+                            </div>
+                        </li>
+                    <?php }} ?>
+            </ul>
+        </li>
+        -->
+    </ul>
+
+    <div class="menuCheck checkSpan">
+        <input <?php if(isset($_POST['public_sector']) && !empty($_POST['public_sector']) && $_POST['public_sector'] == "on"):?>checked="checked" <?php endif;?> id="checkbox" name="public_sector" type="checkbox">
+        <label for="checkbox"><span class="checkSpan"></span><?php echo $helper->__('Sale for government sector') ?></label>
+    </div>
+    <div class="menuCheck checkSpan">
+        <input <?php if(isset($_POST['private_sector']) && !empty($_POST['private_sector']) && $_POST['private_sector'] == "on"):?>checked="checked" <?php endif;?>  id="checkbox2" name="private_sector" type="checkbox">
+        <label for="checkbox2"><span class="checkSpan"></span><?php echo $helper->__('Sale for private sector') ?></label>
+    </div>
+    <div class="form">
+        <div class="search form_field">
+            <input placeholder="<?php echo $helper->__('Search...') ?>" id="search" name="search" type="text" value="<?php if(isset($_POST['search']) && !empty($_POST['search'])){ echo $_POST['search']; }?>"><span id="btn_search"></span>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="button mb20">
+        <a href="<?php echo $this->getUrl('marketplace/marketplaceaccount/myproductslist'); ?>">
+            <?php echo $helper->__('Clear all') ?>
+        </a>
+    </div>
+
+    <script>
+        $j('.filter-check').on("click",function(){
+            $j('#filter_form').submit();
+        });
+
+        $j("#btn_search").on("click",function(){
+            $j('#filter_form').submit();
+        });
+
+        $j('#search').keyup(function(e){
+            if(e.keyCode == 13){
+                $j('#filter_form').submit();
+            }
+        });
+
+        $j(".checkSpan").on("change",function(){
+            $j('#filter_form').submit();
+        });
+    </script>
+    </form>
+    <?php }?>
+
+
+<?php }?>

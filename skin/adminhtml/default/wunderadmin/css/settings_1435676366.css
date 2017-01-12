@@ -1,0 +1,447 @@
+
+/* Fonts */
+
+.wunderadmin,
+.wunderadmin .magento_title     { font-family: 'Open Sans'; }
+
+
+
+
+/* Global and Layout */
+
+.wunderadmin a                  { color: #1782CD; }
+.wunderadmin .entry-edit input[type=text],
+.wunderadmin .input-ele input[type=text],
+.wunderadmin .input-ele input[type=textbox],
+.wunderadmin input.input-text,
+.wunderadmin textarea,
+.wunderadmin select
+                                {
+                                    border-color: #DADADA;
+                                    background-color: #FFFFFF;
+                                    color: #585858;
+                                }
+.wunderadmin .field-100 input.input-text,
+.wunderadmin .field-100
+                                { border-color: #DADADA; }
+.wunderadmin ::-webkit-input-placeholder
+                                { color: #585858; }
+.wunderadmin :-moz-placeholder  { color: #585858; }
+.wunderadmin ::-moz-placeholder { color: #585858; }
+.wunderadmin :-ms-input-placeholder
+                                { color: #585858; }
+body.wunderadmin,
+#page-login.wunderadmin,
+.wunderadmin .middle            { background-color: #FFFFFF; color: #2E2E2E; }
+
+.wunderadmin .login-form h2     { color: #2E2E2E; }
+
+.wunderadmin input[type=checkbox] + span.wa_checkbox_helper:before
+                                {
+                                    color: #FFFFFF;
+                                    background: #FFFFFF;
+                                    border-color: #DADADA;
+                                }
+.wunderadmin input[type=checkbox]:checked + span.wa_checkbox_helper:before
+                                {
+                                    background: #1782CD;
+                                    border-color: #1782CD;
+                                }
+.wunderadmin input[type=checkbox]:disabled + span.wa_checkbox_helper:before
+                                {
+                                    color: #DADADA;
+                                    background: #DADADA;
+                                    border-color: #DADADA;
+                                }
+.wunderadmin input[type=checkbox]:checked:disabled + span.wa_checkbox_helper:before
+                                {
+                                    color: #FFFFFF;
+                                    background: #DADADA;
+                                    border-color: #DADADA;
+                                }
+.wunderadmin .separator,
+.wunderadmin .pipe              { color: #DADADA; }
+
+/* Header */
+
+.wunderadmin .header            { background: #EDEDED; }
+.wunderadmin .header .header-top > a
+                                { background: #EDEDED; }
+.wunderadmin .header-right fieldset input.input-text
+                                { color: #4E4E4E; }
+.wunderadmin .header-right fieldset:before
+                                { color: #A5A5A5; }
+.wunderadmin .header-right .super
+                                { color: #424242; }
+.wunderadmin .header-right .super a
+                                { color: #1782CD; }
+.wunderadmin .header-right .super .fa
+                                { color: #1782CD; }
+.wunderadmin .header-right .super a.go-try
+                                { border-color: #1782CD;  }
+.wunderadmin #page-help-link    {
+                                    color: #FFFFFF;
+                                    background: #45BC4E;
+                                    border-color: #45BC4E;
+                                }
+.wunderadmin .content-header h3 { color: #2E2E2E; }
+.wunderadmin .head-categories   { color: #2E2E2E !important; }
+.wunderadmin .head-categories:before
+                                {
+                                    color: #F77C16;
+                                }
+.wunderadmin div.main-col       { border-left-color: #F4F4F4; }
+
+/* Menu */
+
+.wunderadmin .nav-bar           { background: #FFFFFF; }
+.wunderadmin #nav a             { color: #424242; }
+.wunderadmin #nav > li:first-child
+                                { border-left-color: #FFFFFF; }
+.wunderadmin #nav > li          { border-right-color: #FFFFFF; }
+.wunderadmin #nav > li > a:hover,
+.wunderadmin #nav > li.over > a
+                                { background-color: #1782CD; color: #FFFFFF !important; }
+.wunderadmin #nav li.active     { background: #1782CD; }
+.wunderadmin #nav a.active      { color: #424242; padding: 0px; }
+.wunderadmin #nav ul li a       { background: #FFFFFF; border-bottom-color: #DEDEDE; }
+.wunderadmin #nav li.over a     { color: #1782CD; }
+.wunderadmin #nav li.over li a  { color: #424242; }
+.wunderadmin #nav ul li.parent li a
+                                { color: #424242; background: #FFFFFF; }
+.wunderadmin #nav ul li a:hover,
+.wunderadmin #nav ul li.parent li a:hover
+                                { background: #EDEDED; color: #1782CD; }
+
+/* Notifications */
+
+.wunderadmin .notification-global .label
+                                { color: #D04646; }
+.wunderadmin .notification-global .f-right a
+                                {
+                                    background: #1782CD;
+                                    color: #FFFFFF;
+                                }
+.wunderadmin .notification-global
+                                {
+                                    border-color: #EEE2BE;
+                                }
+.wunderadmin .notification-global:before
+                                {
+                                    color: #D04646;
+                                }
+.wunderadmin .notification-global-notice:before
+                                {
+                                    color: #F77C16;
+                                }
+.wunderadmin .error-msg:before  { color: #D04646; }
+.wunderadmin .notice-msg:before { color: #F77C16; }
+.wunderadmin .success-msg:before
+                                { color: #3D6611; }
+
+/* Footer */
+
+.wunderadmin .footer            {
+                                    background: #F4F4F4;
+                                    border-top-color: #ECECEC;
+                                    color: #595959;
+                                }
+
+/* Buttons */
+
+.wunderadmin button,
+.wunderadmin .form-button,
+.wunderadmin .side-col #order-sidebar button
+                                { background: #1782CD; color: #FFFFFF; }
+.wunderadmin button:hover,
+.wunderadmin .form-button:hover,
+.wunderadmin button.fail:hover,
+.wunderadmin button.cancel:hover,
+.wunderadmin button.delete:hover,
+.wunderadmin button.back:hover,
+.wunderadmin .notification-global a:hover,
+.wunderadmin .side-col #order-sidebar button:hover
+                                { background: #45BC4E; }
+.wunderadmin button.fail,
+.wunderadmin button.cancel,
+.wunderadmin button.delete      { background: #F4591C; }
+.wunderadmin button.back        { background: #666E73; }
+.wunderadmin .side-col button,
+.wunderadmin .side-col .content-header button,
+.wunderadmin .side-col .form-button
+                                { background: #FFFFFF; border-color: #F4F4F4; color: #686868; }
+.wunderadmin button span:before,
+.wunderadmin .side-col #order-sidebar button span:before
+                                {
+                                    color: #FFFFFF;
+                                }
+.wunderadmin .side-col button span:before
+                                { color: #686868; }
+
+/* Scope Switcher */
+
+.wunderadmin .switcher          { background: #FFFFFF; border-color: #ECECEC; }
+.wunderadmin .switcher .link-store-scope:before,
+.wunderadmin .link-store-scope:before
+                                {
+                                    color: #90B3D2;
+                                }
+
+/* Tree */
+
+.wunderadmin .tree-actions a:before
+                                {
+                                    color: #1782CD;
+                                }
+.wunderadmin .x-tree-node a span,
+.wunderadmin .x-dd-drag-ghost a span
+                                { color: #2E2E2E; }
+
+/* Tabs */
+
+.wunderadmin ul.tabs-horiz      { background-color: #FFFFFF; border-bottom-color: #DADADA; }
+.wunderadmin ul.tabs-horiz li a { color: #2E2E2E !important; background: #FFFFFF; border-color: #DADADA; border-bottom-color: #1782CD; }
+.wunderadmin ul.tabs-horiz li a.active
+                                {
+                                    border-color: #1782CD;
+                                    border-bottom-color: #FFFFFF;
+                                    color: #2E2E2E !important;
+                                    background: #FFFFFF;
+                                }
+.wunderadmin .wa_dashboard_wrap { border-color: #DADADA; }                                
+
+/* Forms */
+
+.wunderadmin dl.accordion dt,
+.wunderadmin .entry-edit .entry-edit-head
+                                { background-color: #FFFFFF;  }
+.wunderadmin .entry-edit .entry-edit-head h4,
+.wunderadmin .entry-edit .entry-edit-head strong,
+.wunderadmin .entry-edit .entry-edit-head a
+                                { color: #4B4B4B; }
+.wunderadmin label              { color: #6E6E6E; }
+.wunderadmin .box,
+.wunderadmin .entry-edit fieldset,
+.wunderadmin .entry-edit .fieldset,
+.wunderadmin .section-config .section-config > .config
+                                { border-color: #DADADA; background-color: #FFFFFF; }
+.wunderadmin .form-list tr td.scope-label span
+                                {
+                                    color: #797979;
+                                    border-color: #F1F1F1;
+                                }
+.wunderadmin .form-list tr td.scope-label span span,
+.wunderadmin .grid tbody
+                                { background-color: #FFFFFF; }
+.wunderadmin .form-list tr:hover > td.scope-label > span
+                                { color: #1782CD; border-color: #1782CD; }
+
+/* Configuration Tabs */
+
+.wunderadmin ul.config-tabs dt  { background: #FFFFFF; border-color: #ECECEC; border-bottom-color: #DADADA; color: #4B4B4B; }
+.wunderadmin ul.config-tabs dt:after
+                                {
+                                    color: #1782CD;
+                                }
+.wunderadmin ul.config-tabs dt.collapsed
+                                { border-bottom-color: #ECECEC; }
+.wunderadmin ul.config-tabs dt.collapsed:after
+                                {
+                                    color: #757575;
+                                }
+.wunderadmin ul.tabs span       { background: #FFFFFF; color: #6E6E6E; border-color: #ECECEC; border-bottom-color: #ECECEC; }
+.wunderadmin ul.tabs .active span,
+.wunderadmin ul.tabs .active:hover span
+                                { background: #FFFFFF; color: #1782CD; }
+
+/* System configuration forms */
+
+.wunderadmin .content-header h3,
+.wunderadmin .side-col h3,
+.wunderadmin .switcher label
+                                { color: #2E2E2E; }
+.wunderadmin .content-header h3:before
+                                {
+                                    color: #F77C16;
+                                }
+.wunderadmin .section-config:after
+                                {
+                                    color: #4B4B4B;
+                                    background: #FFFFFF;
+                                }
+.wunderadmin .section-config.active:after
+                                {
+                                    color: #1782CD;
+                                    background: #FFFFFF;
+                                }
+.wunderadmin dl.accordion dt a:after
+                                {
+                                    color: #4B4B4B;
+                                    background: #FFFFFF;
+                                }
+.wunderadmin dl.accordion dt.open a:after
+                                {
+                                    color: #1782CD;
+                                    background: #FFFFFF;
+                                }
+.wunderadmin .section-config .config-advanced > .entry-edit-head a
+                                { color: #4B4B4B !important; }
+.wunderadmin .section-config .config-advanced > .entry-edit-head a.open
+                                { color: #1782CD !important; }
+
+/* Grid Massactions */
+
+.wunderadmin .massaction        { background: #9B9B9B; border-color: #878787; color: #FFFFFF; }
+.wunderadmin .massaction a      { color: #FFFFFF; border-right-color: #878787; }
+.wunderadmin .massaction .entry-edit fieldset
+                                { background-color:#9B9B9B; }
+.wunderadmin .massaction .entry-edit .field-row label
+                                { color: #FFFFFF; }
+
+/* Grid Headings */
+
+.wunderadmin .grid tr.headings  { background: #FFF9E9; }
+.wunderadmin .grid tr.headings th
+                                { border-color: #EEE2BE; border-left-color: #FFF9E9; }
+.wunderadmin .grid tr.headings th:first-child
+                                { border-left-color: #EEE2BE; }
+.wunderadmin .grid tr.headings th a:hover
+                                { color: #585858;  }
+.wunderadmin .grid tr.headings th:hover
+                                { background: #F0EBDF; border-color: #FFFFFF; }
+.wunderadmin .grid tr.headings th a.sort-arrow-desc,
+.wunderadmin .grid tr.headings th a.sort-arrow-asc
+                                { background: #FFFFFF; border-color: #DADADA;  }
+.wunderadmin .grid tr.headings th a.sort-arrow-desc span.sort-title:after,
+.wunderadmin .grid tr.headings th a.sort-arrow-asc span.sort-title:after
+                                {
+                                    color: #BDBDBD;
+                                }
+
+/* Grid Filters */
+
+.wunderadmin .grid tr.filter    { background: #F4F4F4; }
+.wunderadmin .grid tr.filter th { border-color: #DADADA; }
+.wunderadmin .grid tr.filter th:first-child
+                                { border-left-color: #DADADA; }
+.wunderadmin .grid tr.filter th:last-child
+                                { border-right-color: #DADADA; }
+
+/* Grid Data */
+
+.wunderadmin .grid tr.even, .grid tr.even tr
+                                { background: #F7F7F7; }
+.wunderadmin .grid table td     { border-color: #DADADA; }
+.wunderadmin .grid table tbody:last-child td
+                                { border-bottom-color: #DADADA; }
+.wunderadmin .grid table td.last
+                                { border-right-color: #DADADA; }
+.wunderadmin .grid tr.on-mouse  { background: #FCF5DD; }
+
+/* Popups */
+
+.wunderadmin .dialog table.table_window
+                                { background: #FFFFFF;  }
+.wunderadmin .magento_title     { color: #2E2E2E; }
+.wunderadmin .magento_w,
+.wunderadmin .magento_e,
+.wunderadmin .magento_content,
+.wunderadmin .magento_content .middle
+                                { background: #FFFFFF; }
+.wunderadmin .magento_close:after
+                                {
+                                    color: #424242;
+                                }
+
+/* M2EPro */
+
+.wunderadmin button.button_link
+                                { background: #1782CD !important; color: #FFFFFF !important; }
+.wunderadmin button.button_link:hover
+                                { background: #45BC4E; }
+
+/* Other */
+
+.wunderadmin ul.tabs a.error span.error:after
+                                {
+                                    color: #F4591C;
+                                }
+.wunderadmin ul.tabs a.changed span.changed:after
+                                {
+                                    color: #90B3D2;
+                                }
+.wunderadmin .login-form        { background: #FFFFFF; border-color: #DADADA; }
+.wunderadmin .login-container .legal
+                                { background: #FFFFFF; border-color: #DADADA; color: #7B7B7B; }
+
+.wunderadmin .wa_calendar_icon  { color: #1782CD; }
+
+#loading-mask                   { color: #1782CD; }
+#loading-mask .loader           { background-color: #ECECEC; border-color: #45BC4E; color: #1782CD; }
+
+
+/* Clean Blue */
+
+.wunderadmin .header-right .super a.go-try
+                                {
+                                    border-color: none;
+                                    background: #1782CD;
+                                    color: #FFFFFF;
+                                }
+.wunderadmin .nav-bar           { border-bottom-color: #DEDEDE; }
+.wunderadmin #nav li.active     { background: none; }
+.wunderadmin #nav li span
+                                { border-bottom-color: #DEDEDE; }
+.wunderadmin #nav li.active a span
+                                { border-bottom-color: #1782CD; }
+.wunderadmin #nav ul li a       { border-color: #DEDEDE; }
+
+.wunderadmin.tipsy_help .tipsy-inner { background-color: #45BC4E; color: #FFFFFF; }
+.wunderadmin.tipsy_help .tipsy-arrow-n { border-bottom-color: #45BC4E; }
+.wunderadmin.tipsy_help .tipsy-arrow-s { border-top-color: #45BC4E; }
+.wunderadmin.tipsy_help .tipsy-arrow-e { border-left-color: #45BC4E; }
+.wunderadmin.tipsy_help .tipsy-arrow-w { border-right-color: #45BC4E; }
+
+.wunderadmin.tipsy_button .tipsy-inner { background-color: #1782CD; color: #FFFFFF; }
+.wunderadmin.tipsy_button .tipsy-arrow-n { border-bottom-color: #1782CD; }
+.wunderadmin.tipsy_button .tipsy-arrow-s { border-top-color: #1782CD; }
+.wunderadmin.tipsy_button .tipsy-arrow-e { border-left-color: #1782CD; }
+.wunderadmin.tipsy_button .tipsy-arrow-w { border-right-color: #1782CD; }
+
+.wunderadmin .side-col button:hover,
+.wunderadmin .side-col .content-header button:hover,
+.wunderadmin .side-col .form-button:hover
+                                {
+                                    background: #1782CD;
+                                    border-color: #1782CD;
+                                }
+.wunderadmin .side-col button:hover span:before
+                                { color: #FFFFFF; }
+
+.wunderadmin ul.tabs-horiz      { background-color: #FFFFFF; border-bottom-color: #DADADA; }
+.wunderadmin ul.tabs-horiz li a { color: #2E2E2E !important; background: #FFFFFF; border-color: none; border-bottom-color: #DADADA }
+.wunderadmin ul.tabs-horiz li a.active
+                                {
+                                    border-color: none;
+                                    color: #1782CD !important;
+                                    border-bottom-color: #1782CD;
+                                    background: #FFFFFF;
+                                }
+
+.wunderadmin ul.config-tabs dt  { color: #1782CD; border-bottom-color: #1782CD; }
+.wunderadmin ul.config-tabs dt.collapsed
+                                { color: #4B4B4B; }
+
+.wunderadmin dl.accordion dt a,
+.wunderadmin .entry-edit .entry-edit-head a
+                                { border-bottom-color: #DADADA; color: #4B4B4B; }
+.wunderadmin dl.accordion dt.open a,
+.wunderadmin div.collapseable a.open
+                                { border-bottom-color: #1782CD; color: #1782CD; }
+
+
+
+
+/* Custom CSS */
+
+

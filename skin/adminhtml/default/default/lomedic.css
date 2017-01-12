@@ -1,0 +1,214 @@
+#registrationGrid .grid {
+    max-height: 500px;
+    overflow-y: auto;
+}
+#registrationGrid {
+    min-height: 400px;
+}
+#registrationGrid input[type="text"],#registrationGrid select {
+    background: none repeat scroll 0 0 #f6f6f6;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    font: 1em "Courier";
+    height: 30px;
+    padding: 0 10px;
+}
+
+#registrationGrid .pager input[type="text"],#registrationGrid .pager select {
+   font: 1em "Courier" !important;
+}
+#registrationGrid .pager select {
+    width: auto !important;
+}
+#registrationGrid select {
+    height:35px;
+}
+.grid tr.filter {
+    background: url("images/filter_row_bg.gif") repeat-x scroll 0 0 #e3eff1;
+    cursor: default;
+}
+.range .label {
+    white-space: nowrap;
+    font: 0.8em "Myriad-Bold";
+}
+.grid tr.filter {
+    background: none repeat scroll 0 0 #31ade3;
+}
+.grid tr.headings {
+    background: none repeat scroll 0 0 #31ade3;
+}
+.grid tr.headings th {
+    border-style: none;
+    border-width: 0px;
+    background: none repeat scroll 0 0 #31ade3;
+    color: #fff;
+    font: 1.6em "Myriad-Bold";
+    padding: 10px;
+
+}
+.grid {
+    border: 1px solid #31ade3;
+    font: 1.3em "Courier";
+}
+.grid tr {
+    /*height: 45px;*/
+}
+.grid tr:hover {
+    background: none repeat scroll 0 0 #c2e6f5;
+}
+.grid td {
+    border-right: 1px solid #ccc;
+    padding: 5px;
+    vertical-align: top;
+    font:0.9em "Courier";
+}
+.grid td:last-child {
+    border-right: medium none;
+}
+.grid th {
+    background: none repeat scroll 0 0 #31ade3;
+    color: #fff;
+    font: 1.4em "Myriad-Bold";
+    padding: 10px;
+}
+.grid tr.even, .grid tr.even tr {
+    background: none repeat scroll 0 0 #FFF;
+}
+.grid tr.even:hover, .grid tr.even tr:hover{
+    background: none repeat scroll 0 0 #c2e6f5;
+}
+.grid tr.filter th {
+    border-style: none;
+    border-width: 0px;
+     color: #fff;
+}
+
+.grid tr.headings th a.sort-arrow-desc, .grid tr.headings th a.sort-arrow-asc,
+.grid tr.headings th span.sort-title {
+    background: none repeat scroll 0 0 #b3d4fc;
+    border: 0px;
+    background: none repeat scroll 0 0 #31ade3;
+    color: #fff;
+    text-align: center;
+}
+.grid tr.headings th a.sort-arrow-desc span.sort-title {
+    background: none;
+}
+.grid tr.headings th a.sort-arrow-asc span.sort-title {
+    background: none;
+}
+#registrationGrid button {
+    background: none repeat scroll 0 0 #31ade3;
+    border: medium none;
+    border-radius: 3px;
+    color: #fff;
+    font: 1.5em/33px "Myriad-Bold";
+    padding: 10px 30px;
+    text-transform: uppercase;
+}
+table.actions td {
+    vertical-align: bottom;
+}
+#customer_info_tabs_step3_content .value {
+    width:700px;
+}
+/*#customer_info_tabs_step3_content .approve-file {
+    margin-left: 30px;
+}*/
+.grid tr.headings th.no-link {
+    color: #FFF;
+}
+
+
+#customer_info_tabs_step3_content table tr {
+    border-bottom: 1px solid #000000;
+    height: 45px;
+}
+#customer_info_tabs_step3_content td.value {
+    width: 1000px;
+}
+#customer_info_tabs_step3_content input {
+    float: left;
+    margin-right: 7px;
+}
+#customer_info_tabs_step3_content .download-file {
+    left: 250px;
+    position: absolute;
+    top: 0;
+}
+#customer_info_tabs_step3_content .delete-file {
+    float: left;
+    margin-right: 35px;
+}
+#customer_info_tabs_step3_content .approve-file {
+    float: left;
+    margin-right: 35px;
+}
+#customer_info_tabs_step3_content .comment-text{
+    width: 200px;
+}
+
+
+.grid tr.filter .range input {
+    float: right;
+    margin-top: 0;
+    width: 65px !important;
+}
+.grid tr.filter .range .range-line {
+    margin-bottom: 3px;
+    width: 130px !important;
+}
+#step3 .validation-advice{
+    background: url("../img/validate.png") no-repeat white;
+    display: block;
+    height: 25px;
+    margin-left: 250px;
+    margin-top: 0;
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 345px;
+    z-index: 1;
+}
+.wunderadmin .grid tr.headings th a.sort-arrow-desc, .wunderadmin .grid tr.headings th a {
+    background: none;
+    border: 0px;
+}
+button.save span {
+    background-image: none;
+}
+.wunderadmin .grid tr.headings th:first-child {
+    border-left: 0 none !important;
+}
+.wunderadmin .grid tr.filter th:first-child {
+    border-left: 0 none !important;
+}
+.form-list td.label label {
+    font: 1.5em "Courier";
+}
+.form-list {
+    font: 1em "Courier";
+}
+div.calendar table {
+    border-collapse: separate;
+}
+div.calendar table td.button {
+    /*background: inherit;*/
+    color: inherit;
+    display: table-cell;
+    text-transform: none;
+}
+.calendar thead .title {
+    font-size: 12px;
+
+}
+.calendar table {
+    background-color: #FFF;
+}
+.calendar table td.button,.calendar table td.title{
+    background-color: #31ade3;
+}
+.calendar tfoot .ttip {
+    background: #31ade3 none repeat scroll 0 0;
+}

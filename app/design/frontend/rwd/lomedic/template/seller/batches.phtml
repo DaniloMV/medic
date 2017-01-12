@@ -1,0 +1,122 @@
+<?php 
+$isPartner= Mage::getModel('marketplace/userprofile')->isPartner();
+$helper=Mage::helper('marketplace');
+$customerid=Mage::getSingleton('customer/session')->getCustomerId();
+if($isPartner==1){?>
+    <?php
+    $collection = Mage::getModel('sales/order')->getCollection();
+    $categories = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('*')->addIsActiveFilter();
+    $allcatid = array();
+    $k=0;
+    foreach ($categories as $c) {
+       $allcatid[$k] = $c->getId();
+       $k++;
+    }
+    $finalcat=array_shift($allcatid);
+    $partner=Mage::getModel('marketplace/userprofile')->getPartnerProfileById($customerid);
+
+    ?>
+<form name="batches_grid" id="batches_grid" action="<?php echo $this->getUrl('marketplace/marketplaceaccount/new/')?>" method="GET">
+    <input type="hidden" name="set" value="<?php echo $this->getAttributeSetId()?>"/>
+    <input type="hidden" name="type" value="<?php echo Lomedic_SellerCatalog_Model_Product_Type::TYPE_BATCH_PRODUCT ?>"/>
+    <br>
+    <div class="form clearfix mt20">
+        <div class="form_field fll mr20">
+            <span class="label lh40"><span>*</span><?php echo $this->__('Select product');?>:</span>
+        </div>	
+      
+        <div class="half lessHalf" style="margin-bottom:0px">
+            <div class="clearfix">
+                <div class="half">
+                    <div class="form_field">
+                        <select name="search_name" id="search_name" class="" placeholder="<?php echo $this->__("Product")?>" onchange="filterBatchGrid(jQuery('#search_name').val())">
+                            <option value=""></option>
+                            <?php foreach(Mage::helper('loseller')->getProductList() as $_product):?>
+                                <option <?php echo (($this->getRequest()->getParam('search_name')==$_product->getId())? 'selected=selected':'')?> value="<?php echo $_product->getId()?>"><?php echo $_product->getName()?>(<?php echo $_product->getAttributeText('code')?>)</option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <span class="button reset" style="float:left;">
+                    <input type="button" onclick="resetGrid()" value="<?php echo $this->__('Reset')?>">
+                </span>
+            </div>	
+        </div>	
+        <div class="button flr showAll">
+            <input type="submit" value="<?php echo $this->__('Add a batch')?>">
+        </div>
+    </div>
+    <div id="batch-product-filter-grid">
+        <?php echo $this->getChildHtml('batch_product_grid'); ?>
+    </div>
+</form>
+    <script type="text/javascript">
+        //< ![CDATA[
+        //    var myForm= new VarienForm('batches_grid', true);
+        //]]>
+        var $wk_jq=jQuery.noConflict(); 
+        ///////////////////////////////////
+            ///* Validation */
+        function resetGrid() {
+            $wk_jq('#search_name').prop('selectedIndex',0); 
+            $wk_jq('#search_name').select2('val', ''); 
+            filterBatchGrid();
+        }
+
+        $wk_jq("#batches_grid").validate({
+            ignore: 'input[type=hidden]',
+            rules:
+            {
+                search_name: { required: true }
+            },
+            errorPlacement: function (error, element) {
+                $wk_jq('.validate').remove();
+                $wk_jq(element).parent().addClass('has-error');
+                $wk_jq(element).after( "<div class='form_field validate'><?php echo $this->__('Required field');?></div>" );
+            },
+            success: function (label, element) {
+                $wk_jq('.validate').remove();
+                $wk_jq(element).parent().removeClass('has-error');
+            },
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+
+        ///////////////////////////////////
+     
+        function filterBatchGrid(value) {
+             $wk_jq('.validate').remove();
+             $wk_jq('.select2-container').removeClass('error');
+             $wk_jq('#batch-product-filter-grid').html('<img style="margin: 0 auto; display: block;" id="loader-img" alt="" src="<?php echo $this->getSkinUrl('images/ajax_batch_loader.GIF') ?>" width="128" height="128" align="center" />');
+
+            $wk_jq.ajax({
+                url: "<?php echo $this->getUrl('loseller/marketplaceaccount/filterProductListAjax',array("_secure"=>true))?>",
+                global: false,
+                type: "POST",
+                data: ({search_name : value}),
+                dataType: "html",
+                success: function(msg){
+              //      alert(msg);
+                   $wk_jq('#batch-product-filter-grid').html(msg);
+                   $wk_jq("#searchbyname").select2({
+                       minimumResultsForSearch: -1
+                   });
+                   $wk_jq(".pager select").select2({
+                       minimumResultsForSearch: -1
+                   });
+                }
+            });
+            jQuery( document ).ajaxStart(function() {
+                jQuery( "#loading" ).show();
+            });
+        }
+    </script>
+    <style>
+        
+/* custom error class */
+.error a {
+    border: 2px solid red !important;
+}
+</style>
+<?php }?>

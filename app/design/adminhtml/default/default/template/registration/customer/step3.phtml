@@ -1,0 +1,192 @@
+<?php $customer = Mage::registry('current_customer');?>
+
+<div class="clearfix" id="step3_div">
+    <div class="subtitle"><?php echo $this->__("Administrative")?></div>
+    <hr>
+    <div class="documents">
+        <?php if($customer->getAccountType() == 1):?>
+            <div class="form_field">
+                <span class="label"><?php echo $this->__("ID for taxation purposes")?>:</span>
+                <span class="file-wrapper" id="taxation_purposes"></span>
+            </div>
+            <div class="form_field">
+                <span class="label"><?php echo $this->__('Subscription in taxes department')?>:</span>
+                <span class="file-wrapper" id="taxes_department"></span>
+            </div>
+            <div class="form_field">
+                <span class="label"><?php echo $this->__('Oficial ID (Voting card or Passport)')?>:</span>
+                <span class="file-wrapper" id="oficial_id"></span>
+            </div>
+            <div class="form_field">
+                <span class="label"><?php echo $this->__('Power of attorney of the legal representative')?>:</span>
+                <span class="file-wrapper" id="power_attorney"></span>
+            </div>
+        <?php else:?>
+            <div class="form_field">
+                <span class="label"><?php echo $this->__("ID for taxation purposes")?>:</span>
+                <span class="file-wrapper" id="taxation_purposes"></span>
+            </div>
+            <div class="form_field">
+                <span class="label"><?php echo $this->__('Subscription in taxes department')?>:</span>
+                <span class="file-wrapper" id="taxes_department"></span>
+            </div>
+            <div class="form_field">
+                <span class="label"><?php echo $this->__('Article association registry number')?>:</span>
+                <span class="file-wrapper" id="association_registry"></span>
+            </div>
+            <div class="form_field">
+                <span class="label"><?php echo $this->__('Article association registration before PRPC')?>:</span>
+                <span class="file-wrapper" id="association_prpc"></span>
+            </div>
+            <?php
+            $a =$customer->getAssociationNumberMod();
+            $b =$customer->getAssociationNumberModBefore();
+
+            if((isset($a) && !empty($a))
+                || (isset($b) && !empty($b))):?>
+                <div class="form_field">
+                    <label for="checkbox" class="showForm"><strong><?php echo $this->__('Article association modifications?')?></strong></label>
+                </div>
+                <div  id="checkbox_block_one" <?php if((isset($a) && !empty($a))
+                    || (isset($b) && !empty($b))
+                    || ($customer->getAssocModRegistry() || $customer->getModificationAssociPrpc())): ?>
+                    style="display: block;"
+                <?php else: ?> style="display: none;"
+                <?php endif;?> class="hidden">
+
+                    <div class="documents">
+                        <?php if(isset($a) && !empty($a)):?>
+                            <div class="form_field">
+                                <span class="label"><?php echo $this->__('Article association modification registry')?>:</span>
+                                <span class="file-wrapper" id="assoc_mod_registry"></span>
+                            </div>
+                        <?php endif;?>
+                        <?php if(isset($b) && !empty($b)):?>
+                            <div class="form_field">
+                                <span class="label"><?php echo $this->__('Modification to Article association registration before PRPC')?>:</span>
+                                <span class="file-wrapper" id="modification_associ_prpc"></span>
+                            </div>
+                        <?php endif;?>
+                    </div>
+                </div>
+            <?php endif;?>
+
+        <?php endif;?>
+    </div>
+    <div class="subtitle"><?php echo $this->__('Facilities')?></div>
+    <hr>
+    <div class="documents">
+        <div class="form_field">
+            <span class="label"><?php echo $this->__('Proof of address')?>:</span>
+            <span class="file-wrapper" id="proof_address"></span>
+        </div>
+    </div>
+    <div class="subtitle"><?php echo $this->__('Financial')?></div>
+    <hr>
+    <div class="documents">
+        <div class="form_field">
+            <span class="label"><?php echo $this->__('Financial statements of the last three years')?>:</span>
+            <span class="file-wrapper" id="financial_years"></span>
+        </div>
+        <div class="form_field">
+            <span class="label"><?php echo $this->__('Last 3 bank statements')?>:</span>
+            <span class="file-wrapper" id="last_bank_statements"></span>
+        </div>
+        <div class="form_field">
+            <span class="label"><?php echo $this->__('Last year taxes statement')?>:</span>
+            <span class="file-wrapper" id="last_year_statement"></span>
+        </div>
+    </div>
+    <div class="subtitle"><?php echo $this->__('Licenses and permits')?></div>
+    <hr>
+    <div class="documents">
+        <div class="form_field">
+            <span class="label"><?php echo $this->__('Operation statement before COFEPRIS')?>:</span>
+            <span class="file-wrapper" id="operation_statement_cofepr"></span>
+        </div>
+        <div class="form_field">
+            <span class="label"><?php echo $this->__('ID of the Responsible health professional before COFEPRIS')?>:</span>
+            <span class="file-wrapper" id="professional_before_cofep"></span>
+        </div>
+        <div class="form_field">
+            <span class="label"><?php echo $this->__('Professional license of the health professional')?>:</span>
+            <span class="file-wrapper" id="license_health_professional"></span>
+        </div>
+        <div class="form_field">
+            <span class="label"><?php echo $this->__('Statement of Responsible health professional before COFEPRIS')?>:</span>
+            <span class="file-wrapper" id="professional_before_cofepr"></span>
+        </div>
+        <div class="form_field">
+            <span class="label"><?php echo $this->__('Certificates of good manufacturing practices')?>:</span>
+            <span class="file-wrapper" id="good_man_practices"></span>
+        </div>
+        <div class="form_field">
+            <span class="label"><?php echo $this->__('Certificates of good practices')?>:</span>
+            <span class="file-wrapper" id="statement_before_cofepris"></span>
+        </div>
+    </div>
+
+    <?php
+    $z = $customer->getHealthLicenseNumber();
+    if(isset($z) && !empty($z)):?>
+        <div class="form_field">
+            <label for="checkbox2" class="showForm"><strong><?php echo $this->__('Manages controlled substances')?></strong></label>
+        </div>
+        <div id="checkbox_block_two"  <?php if((isset($z) && !empty($z)) || ($customer->getHealthCertificateDocument())): ?> style="display: block;" <?php else: ?> style="display: none;" <?php endif;?>   class="hidden">
+            <div class="documents">
+                <div class="form_field">
+                    <span class="label"><?php echo $this->__('Health license certificate document (Just in case that manages controlled substances)')?>:</span>
+                    <span class="file-wrapper" id="health_certificate_document"></span>
+                </div>
+            </div>
+        </div>
+    <?php endif;?>
+</div>
+<input type="hidden" id="count_files" name="approve[count_files]" value="0">
+<style>
+
+
+</style>
+<script type="text/javascript">
+    var countFilesUpprove = 0;
+    var countFiles = 0;
+
+    jQuery(document).on("click",".file-approve",function(){
+        countFilesUpprove = 0;
+        var attribute = jQuery(this).attr("sel");
+        var val = jQuery(this).val();
+        if(val == 0){
+            jQuery("#comment_"+attribute).show();
+        }else{
+            jQuery("#comment_"+attribute).hide();
+        }
+
+        jQuery('#step3_div input.file-approve[value=1]').each(function() {
+            if(jQuery(this).prop("checked")){
+                countFilesUpprove++;
+            }
+        });
+
+      //  console.log(countFilesUpprove,countFiles, jQuery('#step3_div input[type=file]'));
+
+        if(countFilesUpprove == countFiles){
+            jQuery("#count_files").val(1);
+        }
+    });
+    jQuery( document ).ready(function() {
+        if(jQuery('#health_license_number').val()) {
+            jQuery('.health_certificate_document').show();
+        }
+        jQuery('#step3_div span.file-wrapper').each(function(){
+            jQuery(this).html(jQuery('#_account'+jQuery(this).attr('id')).closest('.value').html());
+        });
+
+        jQuery('#customer_info_tabs_step3_content #_accountbase_fieldset').remove();
+
+        jQuery('#step3_div input[type=file]').each(function() {
+            jQuery(this).after('<label for="'+jQuery(this).attr('id')+'" class="button"><?php echo $this->__("upload document")?></label>');
+            countFiles++;
+        });
+        jQuery('.approvefile').before('<div></div>');
+    });
+</script>

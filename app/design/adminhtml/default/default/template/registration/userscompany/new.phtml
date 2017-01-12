@@ -1,0 +1,120 @@
+<?php
+$data = Mage::getSingleton('core/session')->getData();
+$data = $data["new_us"];
+$is_seller = $this->isSeller();
+?>
+<div>
+
+    <div class="content-header">
+        <h3 class="icon-head head-permissions-user"><?php echo Mage::helper('loregistration')->__('Add user company');?></h3>
+        <p class="form-buttons">
+            <button style="" onclick="setLocation('<?php echo $this->getUrl("adminhtml/usersCompany/index/",array("id"=>$this->getRequest()->getParam("id"))); ?>')" class="scalable back" type="button" title="Back"><span><span><span><?php echo Mage::helper('loregistration')->__('Back');?></span></span></span></button>
+            <button style="" onclick="setLocation(window.location.href)" class="scalable " type="button" title="Reset"><span><span><span><?php echo Mage::helper('loregistration')->__('Reset');?></span></span></span></button>
+            <button style="" onclick="submitFunc()" class="scalable save" type="button" title="Save User"><span><span><span><?php echo Mage::helper('loregistration')->__('Save User');?></span></span></span></button>
+        </p>
+    </div>
+
+<form id="new_user_company_form" name="new_user_company_form" method="get" enctype="multipart/form-data"  action="<?php echo $this->getUrl("adminhtml/usersCompany/newpost/",array("id"=>$this->getRequest()->getParam("id"))); ?>">
+
+
+    <input type="hidden" name="customer_id" value="<?php echo $this->getRequest()->getParam("id");?>">
+    <input type="hidden" name="is_active" value="1">
+    <div class="hor-scroll">
+        <table cellspacing="0" class="form-list">
+            <tbody>
+            <tr>
+                <td class="label"><label for="name"><?php echo Mage::helper('loregistration')->__('Name'); ?> <span class="required">*</span></label></td>
+                <td class="value">
+                    <input id="<?php echo rand();?>" type="text" class="required-entry input-text required-entry" value="<?php if(isset($data['name'])){ echo $data['name'];} ?>" name="name" id="name">
+                </td>
+            </tr>
+            <tr>
+                <td class="label"><label for="name"><?php echo Mage::helper('loregistration')->__('Surname'); ?> </label></td>
+                <td class="value">
+                    <input id="<?php echo rand();?>" type="text" class="input-text" value="<?php if(isset($data['sur_name'])){ echo $data['sur_name'];} ?>" name="sur_name" id="sur_name">
+                </td>
+            </tr>
+            <tr>
+                <td class="label"><label for="name"><?php echo Mage::helper('loregistration')->__('Email'); ?> <span class="required">*</span></label></td>
+                <td class="value">
+                    <input id="<?php echo rand();?>" type="text" class="required-entry input-text required-entry validate-email" value="<?php if(isset($data['email'])){ echo $data['email'];} ?>" name="email" id="email">
+                </td>
+            </tr>
+            <tr>
+                <td class="label"><label for="name"><?php echo Mage::helper('loregistration')->__('Generate Password'); ?></label></td>
+                <td class="value">
+                    <input id="<?php echo rand();?>" type="checkbox" checked="checked" style="margin-top: 17px;" class="auto" value="1" name="auto">
+                </td>
+            </tr>
+            <tr id="password-row" style="display: none;">
+                <td class="label"><label for="name"><?php echo Mage::helper('loregistration')->__('Password'); ?> <span class="required">*</span></label></td>
+                <td class="value">
+                    <input id="<?php echo rand();?>" type="password" class="validate-admin-password-up input-text password" value="" name="password">
+                </td>
+            </tr>
+            <tr id="password-row">
+                <td class="label"></td>
+                <td class="value">
+                    <br>
+                </td>
+                <td class="scope-label"></td>
+            </tr>
+            <?php if($is_seller): ?>
+                <tr>
+                    <td class="label"><label><?php echo Mage::helper('loregistration')->__('Privileges'); ?>:</label></td>
+                    <td class="value">
+                    </td>
+                </tr>
+                <?php
+                $collection = Mage::getModel('loregistration/userCompanyPrivileges')->getCollection();
+                foreach($collection as $coll):?>
+                    <tr>
+                        <?php if($coll->getName()=='Manage Products') $coll->setName('Manage Products1'); ?>
+
+                        <td class="label"><label for="name"><?php echo Mage::helper('loregistration')->__($coll->getName()); ?></label></td>
+                        <td class="value">
+                            <input id="<?php echo rand();?>" <?php if(isset($data["privilege"]) && array_search($coll->getPrivilegeId(),$data["privilege"])!==false){ echo 'checked="checked"';}?> type="checkbox" style="margin-top: 17px;" class="" value="<?php echo $coll->getPrivilegeId(); ?>" name="privilege[]">
+                        </td>
+                    </tr>
+                <?php endforeach;?>
+            <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+</form>
+</div>
+<script type="text/javascript" src="/js/varien/form.js"></script>
+<script>
+
+    $j(".auto").on("click",function(){
+        if($j(this).prop("checked")){
+            $j("#password-row").hide();
+            $j(".password").val("");
+            $j(".password").removeClass("required-entry");
+        }else{
+            $j("#password-row").show();
+            $j(".password").addClass("required-entry");
+        }
+    });
+
+    var dataForm = new VarienForm('new_user_company_form', true);
+
+    var mess = "<?php echo $this->__('For safety reasons, please, create password with more than 7 symbols. Use at least one upper case letter, one lower case letter, and one digit.');?>";
+
+    Validation.add('validate-admin-password-up',mess,function(v, elm){
+        var pass=v.strip();
+        if (0 == pass.length) {
+            return true;
+        }
+
+        if (!(/[a-z]/g.test(v)) || !(/[0-9]/.test(v)) || !(/[A-Z]/g.test(v))) {
+            return false;
+        }
+        return !(pass.length < 7);
+    });
+
+    function submitFunc(){
+        //$j("#new_user_company_form").submit();
+        dataForm.submit();
+    }
+</script>

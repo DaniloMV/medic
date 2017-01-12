@@ -1,0 +1,35 @@
+<?php if(Mage::getStoreConfig('news/news_general/enabled') == 1): ?>
+    <?php $news = $this->getNews();?>
+	<?php list($date,$time) = explode(' ',$news->getcreatedTime()); 
+		list($y,$m,$d) = explode('-',$date);
+	?>
+	<ul class="breadcrumbs">
+		<li><a href="<?php echo $this->getUrl('about-us');?>"><?php echo $this->__('About Us')?></a></li>
+		<li><?php echo $news['title'];?></li>
+	</ul>
+	<div class="news_content text info_block">
+		<div class="news_content_title">
+			<h1>
+				<?php echo $news['title'];?>
+			</h1>
+			<div class="news_content_data">
+				<?php echo $m;?>/<?php echo $d; ?>
+				<p><?php echo $y; ?></p>
+			</div>							
+		</div>
+		<div class="news_content_text">				
+			<?php echo $news['news_content'];?>
+			<hr class="clearfix mt30 mb30" />
+			<footer class="clearfix" style='text-align:right;'>	
+				<div class="news_content_text_share">
+					<div class="fb-like" data-href="<?php echo Mage::helper('core/url')->getCurrentUrl();?>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div>
+				</div>
+			</footer>							
+		</div>						
+	</div>
+<?php 
+else:
+	$url = Mage::getBaseUrl();
+	Mage::app()->getFrontController()->getResponse()->setRedirect('about-us');
+endif;
+?>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout version="1.0.0">
+
+	<adminhtml_wunderadmin_index>
+		<reference name="content">
+			<block type="wunderadmin/adminhtml_wunderadmin" name="wunderadmin" as="wunderadmin" />
+		</reference>
+	</adminhtml_wunderadmin_index>
+
+</layout>

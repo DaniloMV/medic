@@ -1,0 +1,234 @@
+<script type="text/javascript">
+    var defaultMunicipality = '';
+    var defaultColonia = '';
+    
+    function changeForm(form_id) {
+        var frm = jQuery('#'+form_id);
+        var elements = jQuery(frm).find('input,select');
+        elements.each(function(val,el) {
+            var value = el.id;
+            if(value=='state' || value=='state_other' || value=='state_billing') {
+                _select = jQuery('#'+value);
+                var value_suff= value.replace(/state/gi,'');
+                _select.change(function(){
+                    getMunicipality(frm.attr('id'),value_suff);
+                });
+            }
+            if(value=='municipality' || value=='municipality_other' || value=='municipality_billing') {
+                var _input = jQuery('#'+value);
+                var value_suff= value.replace(/municipality/gi,'');
+                if(_input.val()) {
+                   getMunicipality(frm.attr('id'),value_suff);
+                } else {
+                    _input.after("<select placeholder='<?php echo $this->__("Please select")?>' id='"+_input.attr('id')+"' class=' require-entry'  require=' require' name='"+_input.attr('name')+"'></select>").remove();
+                }
+            }
+            if(value=='colonia' || value=='colonia_other' || value=='colonia_billing') {
+                var _input = jQuery('#'+value);
+                var value_suff= value.replace(/colonia/gi,'');
+                if(_input.val()) {
+                    getColonia(frm.attr('id'),value_suff);
+                } else {
+                    _input.after("<select placeholder='<?php echo $this->__("Please select")?>' id='"+_input.attr('id')+"' class=' require-entry'  require=' require' name='"+_input.attr('name')+"'></select>").remove();
+                }
+            }
+            if(value=='postcode' || value=='postcode_other' || value=='postcode_billing') {
+                var _input = jQuery('#'+value); 
+                if(!_input.val()) {
+                    _input.after("<select placeholder='<?php echo $this->__("Please select")?>' id='"+_input.attr('id')+"' class=' require-entry'  require=' require' name='"+_input.attr('name')+"'></select>").remove();
+                } else {
+                    getPostcodes(frm.attr('id'),value_suff);
+                }
+            }
+        });
+    }
+
+    function getPostcodes(form_id,value_suff) {
+
+        var frm = jQuery('#'+form_id);
+        var _input = jQuery(frm).find('#'+'postcode'+value_suff);
+        var selectId = _input.attr('id');
+        _input.after("<select style='display:none'  require=' require' placeholder='<?php echo $this->__("Please select")?>' id='"+_input.attr('id')+"_new' class=' require-entry validate-zip' name='"+_input.attr('name')+"'></select>");
+        var _select = jQuery('#'+_input.attr('id')+"_new");
+        jQuery('#'+_input.attr('id')+'_loader').remove();
+        _select.after('<img id="'+_input.attr('id')+'_loader" class="ajax-loader-address" src="<?php echo $this->getSkinUrl('images/lomedic/ajax-loader.gif') ?>" />');
+
+        getAjaxPostcode(_select,_input,value_suff);
+
+        jQuery(_select).attr('id',selectId);
+        jQuery('#s2id_postcode'+value_suff).remove();
+        _input.remove();
+    }
+
+    function getAjaxPostcode(_select,_input,value_suff) {
+        var currentState = jQuery('#'+'state'+value_suff).val();
+        var currentMunicipality = defaultMunicipality ? defaultMunicipality : jQuery('#'+'municipality'+value_suff).val();
+        var currentColonia = defaultColonia ? defaultColonia : jQuery('#'+'colonia'+value_suff).val();
+        var data = [];
+        jQuery.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: "<?php echo $this->getUrl('*/*/postcodes')?>",
+            data: {
+                state: currentState,
+                zipcode: '',
+                municipality: currentMunicipality,
+                colonia: currentColonia,
+                },
+            success: function(data){
+				var selected = '';
+                data.each(function(value,key){
+                   jQuery(_select).append("<option value='"+value+"'>"+value+"</option>");
+				   if(data.length<2) {
+				    selected = value;
+			    }
+                });
+                var elId = jQuery(_select).attr('id');
+                if(_input) {
+					jQuery(_select).val(_input.val());
+				}
+				if(data.length<2 && selected) {
+					jQuery(_select).val(selected);
+				}
+                jQuery('#'+_select.attr('id')+'_loader').remove();
+                _select.show();
+                _select.select2();
+            }
+        });
+    }
+
+    function getMunicipality(form_id,value_suff) {
+        var frm = jQuery('#'+form_id);
+        var _input = jQuery(frm).find('#'+'municipality'+value_suff);
+        defaultMunicipality = _input.val();
+        var selectId = _input.attr('id');
+        _input.after("<select style='display:none'  require=' require' placeholder='<?php echo $this->__("Please select")?>' id='"+_input.attr('id')+"_new' class=' require-entry' name='"+_input.attr('name')+"'></select>");
+        var _select = jQuery('#'+_input.attr('id')+"_new");
+        jQuery('#'+_input.attr('id')+'_loader').remove();
+        _select.after('<img id="'+_input.attr('id')+'_loader" class="ajax-loader-address" src="<?php echo $this->getSkinUrl('images/lomedic/ajax-loader.gif') ?>" />');
+      if(jQuery(frm).find('#'+'state'+value_suff).val()) {
+            getAjaxMunicipality(_select,_input,value_suff);
+        } else {
+            jQuery('#'+_input.attr('id')+'_loader').remove();
+            jQuery(frm).find('#'+'colonia'+value_suff).html('');
+            jQuery(frm).find('#'+'postcode'+value_suff).html('');
+        }
+        jQuery(_select).val(_input.val());
+        jQuery(_select).attr('id',selectId);
+         _select.change(function(){
+            if(_select.val()) {
+                getColonia(frm.attr('id'),value_suff);
+            } else {
+                    jQuery(frm).find('#'+'colonia'+value_suff).html('');
+                    jQuery(frm).find('#'+'postcode'+value_suff).val('');
+                    jQuery(frm).find('#'+'postcode'+value_suff).html('');
+            }
+        });
+        _input.remove();
+        jQuery('#s2id_municipality'+value_suff).remove();
+    }
+
+    function getAjaxMunicipality(_select,_input,value_suff) {
+        var currentState = jQuery('#'+'state'+value_suff).val();
+        var data = [];
+        jQuery.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: "<?php echo $this->getUrl('*/*/municipality')?>",
+            data: {
+                state: currentState,
+                zipcode: '',
+                municipality: '',
+                colonia: '',
+                form_key: '<?php echo Mage::getSingleton('core/session')->getFormKey() ?>'
+                },
+            success: function(data){
+                 data.each(function(value,key){
+                   jQuery(_select).append("<option value='"+value+"'>"+value+"</option>");
+                });
+                var elId = jQuery(_select).attr('id');
+                if(_input) {
+                    _select.val(_input.val());
+                }
+                if(_select.val()) {
+                    getColonia(_select.closest('form').attr('id'),value_suff);
+                } else {
+                    jQuery('#'+'colonia'+value_suff).html('');
+                    jQuery('#s2id_colonia'+value_suff).remove();
+                    jQuery('#'+'colonia'+value_suff).select2();
+
+                    jQuery('#'+'postcode'+value_suff).html('');
+                    jQuery('#s2id_postcode'+value_suff).remove();
+                    jQuery('#'+'postcode'+value_suff).select2();
+                }
+                jQuery('#'+_select.attr('id')+'_loader').remove();
+                _select.show();
+                _select.select2();
+                defaultMunicipality = '';
+            }
+        });
+    }
+
+    function getColonia(form_id,value_suff) {
+
+        var frm = jQuery('#'+form_id);
+        var _input = jQuery(frm).find('#'+'colonia'+value_suff);
+        defaultColonia = _input.val();
+        var selectId = _input.attr('id');
+        _input.after("<select style='display:none'  require=' require' placeholder='<?php echo $this->__("Please select")?>' id='"+_input.attr('id')+"_new' class=' require-entry' name='"+_input.attr('name')+"'></select>");
+        var _select = jQuery('#'+_input.attr('id')+"_new");
+        jQuery('#'+_input.attr('id')+'_loader').remove();
+        _select.after('<img id="'+_input.attr('id')+'_loader" class="ajax-loader-address" src="<?php echo $this->getSkinUrl('images/lomedic/ajax-loader.gif') ?>" />');
+        getAjaxColonia(_select,_input,value_suff);
+
+        jQuery(_select).val(_input.val());
+        jQuery(_select).attr('id',selectId);
+         _select.change(function(){
+            if(_select.val()) {
+                getPostcodes(frm.attr('id'),value_suff);
+            } else {
+                jQuery(frm).find('#'+'postcode'+value_suff).val('');
+                jQuery(frm).find('#'+'postcode'+value_suff).html('');
+            }
+        });
+        _input.remove();
+        jQuery('#s2id_colonia'+value_suff).remove();
+    }
+
+    function getAjaxColonia(_select,_input,value_suff) {
+        var currentState = jQuery('#'+'state'+value_suff).val();
+        var currentMunicipality = defaultMunicipality ? defaultMunicipality : jQuery('#'+'municipality'+value_suff).val();
+        var data = []; 
+        jQuery.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: "<?php echo $this->getUrl('*/*/colonia')?>",
+            data: {
+                state: currentState,
+                zipcode: '',
+                municipality: currentMunicipality,
+                colonia: '',
+                },
+            success: function(data){
+                 data.each(function(value,key){
+                   jQuery(_select).append("<option value='"+value+"'>"+value+"</option>");
+                });
+                var elId = jQuery(_select).attr('id');
+                if(_input) {
+                    _select.val(_input.val());
+                }
+                if(_select.val()) {
+                    getPostcodes(_select.closest('form').attr('id'),value_suff);
+                } else {
+                    jQuery('#'+'postcode'+value_suff).html('');
+                    jQuery('#s2id_postcode'+value_suff).remove();
+                    jQuery('#'+'postcode'+value_suff).select2();
+                }
+                jQuery('#'+_select.attr('id')+'_loader').remove();
+				defaultColonia = '';
+                _select.show();
+                _select.select2();
+            }
+        });
+    }
+</script>

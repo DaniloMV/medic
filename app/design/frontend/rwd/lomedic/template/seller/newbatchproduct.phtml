@@ -1,0 +1,284 @@
+<?php 
+
+$isPartner= Mage::getModel('marketplace/userprofile')->isPartner();
+$helper=Mage::helper('marketplace');
+$customerid=Mage::getSingleton('customer/session')->getCustomerId();
+//echo "<pre>";
+//print_r($this->getParentProduct()->toArray());
+//echo "</pre>";
+if($isPartner==1){?>
+<div class="text">
+    <h1 class="tac mt30"><?php echo $helper->__('New batch'); ?></h1>
+    <p class="tac"><?php echo $helper->__('The information you provide must match with that stated in the Health Ministry registration of the medicine added.'); ?></p>
+
+</div>
+    <form action="<?php echo $this->getUrl('loseller/marketplaceaccount/batchproduct') ?>" enctype="multipart/form-data" method="post" id="form-customer-product-new">
+        <?php foreach ($this->getParentProduct()->getData() as $key=>$val): ?>
+            <?php if($key=='id' || $key=="entity_id") continue; ?>
+            <input type="hidden" value="<?php echo $val?>" name="<?php echo $key?>"/>
+        <?php endforeach; ?>
+        <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+        <input type="hidden" name="attribute_set_id" id="attribute_set_id" value="<?php echo $this->getRequest()->getParam('set')!=''? $this->getRequest()->getParam('set'):4;  ?>" />
+        <input type="hidden" name="type_id" id="producttype" value="<?php echo $this->getRequest()->getParam('type')?>" />
+        <input type="hidden"  name="wstoreids" id="wstoreids" value="<?php echo Mage::app()->getStore()->getStoreId(); ?>" title="wstoreids" class="" />
+        <input type="hidden" value="<?php echo $this->getParentProduct()->getVisibility()?>" name="visibility"/>
+        <input type="hidden" value="<?php echo $this->getParentProduct()->getTaxClassId()?>" name="tax_class_id"/>
+        <input type="hidden" value="<?php echo $this->getParentProduct()->getCategory()?>" name="category"/>
+        <input type="hidden" value="<?php echo $this->getParentProduct()->getCode()?>" name="code"/>
+        <input type="hidden" value="<?php echo $this->getParentProduct()->getQty()?>" name="qty"/>
+        <input type="hidden" value="<?php echo $this->getParentProduct()->getPresentation()?>" name="presentation"/>
+        <input type="hidden" value="<?php echo $this->getParentProduct()->getGroupPresentation()?>" name="group_presentation"/>
+        <input type="hidden" value="<?php echo $this->getParentProduct()->getLevel()?>" name="level"/>
+        <input type="hidden" value="<?php echo $this->getParentProduct()->getStatus()?>" name="status"/>
+        
+        <input type="hidden" value="1" name="website_ids[]"/>
+        <input type="hidden" value="<?php echo $this->getParentProduct()->getId()?>" name="batch_parent_product"/>
+        <input type="hidden" value="1" name="batch_warehouse"/>
+        <input type="hidden" value="1" name="stock_data[is_in_stock]"/>
+        <input type="hidden" value="1" name="is_salable"/>
+        <textarea name="description" class="input-text" style="display: none" id="" rows="1" cols="1" ><?php echo $this->getParentProduct()->getDescription()?></textarea>
+        <textarea name="short_description" id="" rows="1" style="display: none" cols="1" class="input-text" ><?php echo $this->getParentProduct()->getShortDescription()?></textarea>
+        <input type="hidden" class="" name="batch_seller" value="<?php echo $customerid?>"/>
+        <?php $sku = $this->getParentProduct()->getSku().'-'.$customerid."-".$this->getParentProduct()->getId()."-".time().'-'.rand(10,99); ?>
+        <input name="sku" id="sku" type="hidden" value="<?php echo $sku?>"/>
+        <input type="hidden" class="" name="name" id="name" value="<?php echo $this->getParentProduct()->getName()?>"/>
+
+        <div class="form registration">
+            <div class="clearfix">
+                <div class="half">
+                    <div class="form_field"><span class="label"><span>*</span><?php echo $this->__("Batch (No)")?>:</span></div>
+                    <div class="form_field"><input required="required" type="text" name='batch_number'></div>
+                    <div class="form_field"><span class="label"><span>*</span><?php echo $this->__("Expiration date")?>:</span></div>
+                    <div class="form_field calendar_def"><input required="required" type="text" name='expiration_date' id="calendar_batch" class="datepicker_batch"></div>
+                    <div class="form_field"><span class="label">&nbsp;</span></div>
+                    <div class="form clearfix">
+                        <div class="form_field fll"><span class="label lh40"><span>*</span><?php echo $this->__("Analytical certificate")?>:</span></div>		
+                        <div class=" documents flr">
+                            <div class="form_field">
+                                <span class="file-wrapper">
+                                    <input type="file" required="required" name='batch_certificate'>
+                                    <span class="button"><?php echo $this->__('Upload document')?></span>
+                                </span>
+                            </div>	
+                        </div>
+                    </div>
+                </div>
+                <div class="half">
+                    <div class="form_field"><span class="label"><span>*</span><?php echo $this->__("Quantity of primary boxes")?>:</span></div>
+                    <div class="form_field"><input required="required" type="text" name='stock_data[qty]'></div>
+                    <div class="form_field"><span class="label">&nbsp;</span></div>
+                    <div class="form_field one_line">
+                        <span class="label">
+                            <input type="checkbox" name="check" id="checkbox" value="">
+                            <label class="showFormTransparent" for="checkbox"><span class="checkSpan"></span><?php echo $this->__("Sale for private sector")?></label>
+                        </span>	
+                        <input type="text" class="price transparent validate-zero-or-greater" name='price[private]' placeholder="<?php echo $this->__("Price")?>" required="required">
+                    </div>
+                    <div class="form_field"><span class="label">&nbsp;</span></div>
+                    <div class="form_field one_line">
+                        <span class="label">
+                            <input type="checkbox" name="check" id="checkbox2" value="">
+                            <label class="showFormTransparent" for="checkbox2"><span class="checkSpan"></span><?php echo $this->__("Sale for government sector")?></label>
+                        </span>	
+                        <input type="text" class="price transparent validate-zero-or-greater" name="price[government]" placeholder="<?php echo $this->__("Price")?>">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden" style="display: block;">
+            <div class="subtitle blue"><?php echo $this->__('Foto and characteristics')?></div>
+            <hr>
+            <p class="big"><?php echo $this->__("Remember to provide trustworthy information. Also it's important to take care about images because it's one of the factors for client to choose a product. If information below doesn't coincide with real information about the product you can have extra taxes because of returns or extra payments for order delivery because of incorrect calculations.")?></p>
+
+            <div class="addFotos">
+                <div class="addFotos_main">
+                    <span class="del-img"></span>
+                    <img title="<?php echo $this->__('Commercial picture')?>" id='image_main' alt="<?php echo $this->__('Commercial picture')?>" src="<?php echo $this->getSkinUrl('img/addFotos.png')?>">
+                    <span class="addFotos_link">
+                        <input id="image_main" type="file" accept="image/*" name="image[1]" onchange='imagePreview($("image_main"),event)'>
+                        <input type="hidden" name="defaultimage" id="defaultimage" value="">
+                        <span class="addFotos_link_name"><?php echo $this->__('Commercial picture')?></span>
+                    </span>
+                </div>
+                <div class="addFotos_small">
+                    <span class="del-img"></span>
+                    <img title="<?php echo $this->__('Top picture')?>" id='image_top' alt="<?php echo $this->__('Top picture')?>" src="<?php echo $this->getSkinUrl('img/addFotos.png')?>">
+                    <span class="addFotos_link">
+                        <input type="file" accept="image/*" name="image[2]" onchange='imagePreview($("image_top"),event)'>
+                        <span class="addFotos_link_name"><?php echo $this->__('Top picture')?></span>
+                    </span>
+                </div>
+                <div class="addFotos_small">
+                    <span class="del-img"></span>
+                    <img title="<?php echo $this->__('Bottom picture')?>" id='image_bottom' alt="<?php echo $this->__('Bottom picture')?>" src="<?php echo $this->getSkinUrl('img/addFotos.png')?>">
+                    <span class="addFotos_link">
+                        <input type="file" accept="image/*" name="image[3]" onchange='imagePreview($("image_bottom"),event)'>
+                        <span class="addFotos_link_name"><?php echo $this->__('Bottom picture')?></span>
+                    </span>
+                </div>
+                <div class="addFotos_small">
+                    <span class="del-img"></span>
+                    <img title="<?php echo $this->__('Left picture')?>" id='image_left' alt="<?php echo $this->__('Left picture')?>" src="<?php echo $this->getSkinUrl('img/addFotos.png')?>">
+                    <span class="addFotos_link">
+                        <input type="file" accept="image/*" name="image[4]" onchange='imagePreview($("image_left"),event)'>
+                        <span class="addFotos_link_name"><?php echo $this->__('Left picture')?></span>
+                    </span>
+                </div>
+                <div class="addFotos_small">
+                    <span class="del-img"></span>
+                    <img title="<?php echo $this->__('Right picture')?>" id='image_right' alt="<?php echo $this->__('Right picture')?>" src="<?php echo $this->getSkinUrl('img/addFotos.png')?>">
+                    <span class="addFotos_link">
+                        <input type="file" accept="image/*" name="image[5]" onchange='imagePreview($("image_right"),event)'>
+                        <span class="addFotos_link_name"><?php echo $this->__('Right picture')?></span>
+                    </span>
+                </div>
+                <div class="addFotos_small">
+                    <span class="del-img"></span>
+                    <img alt="<?php echo $this->__('Front picture')?>" id='image_front' title="<?php echo $this->__('Front picture')?>" src="<?php echo $this->getSkinUrl('img/addFotos.png')?>">
+                    <span class="addFotos_link">
+                        <input type="file" accept="image/*" name="image[6]" onchange='imagePreview($("image_front"),event)'>
+                        <span class="addFotos_link_name"><?php echo $this->__('Front picture')?></span>
+                    </span>
+                </div>
+                <div class="addFotos_small">
+                    <span class="del-img"></span>
+                    <img alt="<?php echo $this->__('Back picture')?>" id='image_back' title="<?php echo $this->__('Back picture')?>" src="<?php echo $this->getSkinUrl('img/addFotos.png')?>">
+                    <span class="addFotos_link">
+                        <input type="file" accept="image/*" name="image[7]" onchange='imagePreview($("image_back"),event)'>
+                        <span class="addFotos_link_name"><?php echo $this->__('Back picture')?></span>
+                    </span>
+                </div>							
+            </div>
+
+            <div class="form registration">
+                <div class="clearfix">
+                    <div class="half">
+                        <div class="form_field"><span class="label"><span>*</span><?php echo $this->__('Length')?>:</span></div>
+                        <div class="form_field"><input required="required" type="text" name="batch_length"></div>
+                        <div class="form_field"><span class="label"><span>*</span><?php echo $this->__('Width')?>:</span></div>
+                        <div class="form_field"><input required="required" type="text" name="batch_width"></div>
+                    </div>
+                    <div class="half">
+                        <div class="form_field"><span class="label"><span>*</span><?php echo $this->__('Height')?>:</span></div>
+                        <div class="form_field"><input required="required" type="text" name="batch_height"></div>
+                        <div class="form_field"><span class="label"><span>*</span><?php echo $this->__('Weight')?><?php echo $this->__('(kg)')?>:</span></div>
+                        <div class="form_field"><input required="required" type="text" name="weight"></div>
+                    </div>						
+                </div>	
+            </div>
+        </div>
+
+        <div class="page-title button" style="text-align: center;">
+            <div class="form">
+                <div class="button">
+                    <input type="submit" class="mp_delete" value="<?php echo $this->__('Save batch')?>">
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript"> 
+    $j('#form-customer-product-new').submit(function() {
+        var hasErrors = false;
+        if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+            //If required attribute is not supported or browser is Safari (Safari thinks that it has this attribute, but it does not work), then check all fields that has required attribute
+            $j("#form-customer-product-new [required]").each(function(index) {
+                if (!$j(this).val()) {
+                    $j(this).addClass('error-input');
+                     //If at least one required value is empty, then ask to fill all required fields.
+                    hasErrors = true;
+                } else {
+                    if($j(this).hasClass('error-input')) {
+                        $j(this).removeClass('error-input');
+                    }
+                }
+            });
+            if(hasErrors) {
+                alert("<?php echo $this->__("Please fill in all the fields marked with *!")?>");
+                return false;
+            }
+        }
+    });
+
+
+    jQuery('.datepicker_batch').datetimepicker({
+            timepicker:false,
+            todayButton:false,
+            minDate : '0',
+            format:'d/m/Y'
+    });
+    jQuery('#form-customer-product-new').submit(function() {
+        jQuery(this).find("button[type='submit']").prop('disabled',true);
+    });
+    //<![CDATA[
+        var dataForm = new VarienForm('form-customer-product-new', true);
+    //]]>
+    var $wk_jq=jQuery.noConflict();
+    var i=2;
+    $wk_jq("#calendar_batch").datetimepicker({
+        timepicker:false,
+        format:'d/m/Y'
+    });
+
+    function imagePreview(image,event) {
+        var allowedExt = ['jpg','gif','jpeg','png'];
+        if($wk_jq(image).attr('id')=='image_main'){
+            $wk_jq('#defaultimage').val(event.target.files[0].name);
+        }
+        var filename = event.target.files[0].name;
+        var ext = filename.split('.').pop();
+        if($wk_jq.inArray(ext.toLowerCase(),allowedExt)<0) {
+            alert('<?php echo $this->__('Please select image')?>');
+            $wk_jq(event.target).val('');
+            return ;
+        }
+        image.src = URL.createObjectURL(event.target.files[0]);
+        $wk_jq(image.previous(".del-img")).show();
+    }
+
+    $wk_jq(".del-img").on("click",function(){
+        $wk_jq(this).next("img").attr("src", "<?php echo $this->getSkinUrl('img/addFotos.png')?>");
+        $wk_jq(this).next("img").next(".addFotos_link").find("input").val("");
+        $wk_jq(this).hide();
+    });
+ 
+    function filterBatchGrid(value) {
+        $wk_jq('#batch-product-filter-grid').html('<img style="margin: 0 auto; display: block;" id="loader-img" alt="" src="<?php echo $this->getSkinUrl('images/ajax_batch_loader.GIF') ?>" width="128" height="128" align="center" />');
+
+        $wk_jq.ajax({
+            url: "<?php echo $this->getUrl('loseller/marketplaceaccount/filterProductListAjax',array("_secure"=>true))?>",
+            global: false,
+            type: "POST",
+            data: ({search_name : value}),
+            dataType: "html",
+            success: function(msg){
+          //      alert(msg);
+               $wk_jq('#batch-product-filter-grid').html(msg);
+               $wk_jq("#search-by-name").select2({
+                   minimumResultsForSearch: -1
+               });
+            }
+        });
+        jQuery( document ).ajaxStart(function() {
+            jQuery( "#loading" ).show();
+          });
+    }
+    $wk_jq('#checkbox').change(addCheckinPrice);
+    $wk_jq('#checkbox2').change(addCheckinPrice);
+    
+    function addCheckinPrice() {
+        $wk_jq('.price').each(function(){
+            $wk_jq(this).prop('required',false);
+        })
+        $wk_jq('.price').each(function(){
+            if($wk_jq(this).hasClass('visible')) {
+                $wk_jq(this).prop('required',true);
+            }
+        });
+       if(!$wk_jq('.price').hasClass('visible')) {
+           $wk_jq('.price').first().prop('required',true);
+           $wk_jq('.price').first().val('');
+       }
+    }
+    </script>
+<?php }?>

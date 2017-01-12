@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--[if IE 6]>         <html class="no-js ie ie6 lte-ie6 lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js ie ie7 lte-ie7 lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js ie ie8 lte-ie8 lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie ie9 lte-ie9 lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<!--[if lte IE 8]>
+			<meta http-equiv="refresh" content="0;url=http://browsehappy.com">
+		<![endif]-->
+		
+		<!-- if we need ie8, put this on conditional comment for ie8 -->
+		<!-- <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> -->
+		
+
+		<!--[if IE]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+			<link rel="stylesheet" href="css/ie.css" />
+		<![endif]-->
+		
+
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/jquery.bxslider.css">
+		<link rel="stylesheet" href="css/select2.css">
+		<link rel="stylesheet" href="css/jquery.fancybox.css">
+		<meta name="title" content="" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+		<!-- <script src="js/modernizr-2.6.2.min.js"></script> -->
+
+		<!--[if IE]>
+			<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js">IE7_PNG_SUFFIX=".png";</script>
+			<link rel="stylesheet" href="css/ie.css" />
+		<![endif]-->
+		<!--[if gte IE 9]>
+			<style type="text/css">
+				.gradient {
+					filter: none !important;
+				}
+			</style>
+		<![endif]-->
+		<title>Medic Joint</title>
+	</head>
+	<body>
+		<div id="wrapper" class="clearfix">
+			<div class="wrapSlider">
+				<header id="header" class="adminHeader"> 
+					<a href="index.html"><img class="logo" src="img/logo.png" alt="" /></a>
+					<div class="signIn">
+						<a href="#">Iniciar sesión</a>
+					</div>
+					<div class="signInForm clearfix">
+						<div class="signInFormWrap">
+							<ul class="signInForm_links">
+								<li><a href="#">Registrarse</a></li>
+								<li><a href="#">Registaurar contraseña</a></li>
+							</ul>
+							<form action="" method="post">
+								<div><input type="text" placeholder="Nombre de usuario" value="" name="name" id="name" required="required"></div>
+								<div><input type="text" placeholder="Contraseña" value="" name="password" id="password" required="required"></div>
+								<div class="button"><input type="button" value="Aplicar"></div>
+							</form>
+						</div>
+					</div>					
+				</header>
+			</div>				
+			<div id="body" class="adminBody">
+				<div class="text">
+					<h1 class="tac mt30">Ya eres socio?</h1>
+					<p class="tac">Por favor inicia sesión.</p>
+					<div class="form signInRegForm">
+						<form action="#">
+							<div class="form_field"><span class="label">Nombre de Usuario:</span><input type="text" name="name1"></div>
+							<div class="form_field"><span class="label">Contraseña:</span><input type="text" name="name2" class="validate"></div>
+							<div class="validate validate_pad form_field">Hubo un problema al iniciar sesion. El usuario o la contrasena no son validos. Por favor intente de nuevo.</div>
+							<div class="form_field capcha_field">
+								<span class="password"><a href="#fancy" class="fancybox">¿Has olvidado tu contraseña?</a></span>
+								<span class="label"><span>*</span>Verificación de seguridad:</span>
+								<span class="capcha"><img src="img/capcha.jpg" /></span>
+								<span class="validate_capcha validate">Los simbolos son incorrectos. Por favor intente de nuevo.</span>
+								<a class="reload" href="#"></a>
+								<input class="capcha_input validate" type="text" name="name3" placeholder="Introduzca los símbolos...">
+							</div>
+							<div class="button"><input type="button" value="Iniciar sesión"></div>
+						</form>	
+						<div style="display:none" id="fancy">
+							<img class="logo" src="img/logo.png" alt="" />
+							<div class="popup_form form">
+								<form method="post" action="" id="ajaxform">	
+									<div class="form_field"><span class="label"><span>*</span>E-mail:</span></div>
+									<div class="form_field"><input type="email" required="required"></div>
+									<div class="validate form_field">El correo proporcionado no está registrado en nuestro sistema, por favor inténtelo nuevamente.</div>
+									<div class="tac button"><input type="submit" value="Restaurar contraseña"></div>
+								</form>
+							</div>
+							<p class="popup_form_result tac">
+								Se le ha mandado un correo con las instrucciones para restaurar su contraseña.
+							</p>	
+						</div>
+					</div>
+				</div>
+				<div class="title">¿Quiere registrarse como socio?</div>	
+				<div class="text">
+					<p class="tac">Por favor llene el siguiente formulario.</p>
+					<div class="form registration">
+						<form action="#">
+							<div class="subtitle">Datos generales</div>
+							<hr />
+							<div class="clearfix">
+								<div class="half">
+									<div class="form_field"><span class="label"><span>*</span>Nombre o razon social:</span></div>
+									<div class="form_field"><input type="text"></div>
+									<div class="form_field"><span class="label"><span>*</span>Nombre de contacto:</span></div>
+									<div class="form_field"><input type="text"></div>
+									<div class="form_field"><span class="label">Telefono de contacto:</span></div>
+									<div class="form_field"><input type="text"></div>
+									<div class="form_field"><span class="label">Actividad principal:</span></div>
+									<div class="form_field">
+									<select class="niceSelect">
+										<option>Actividad principal-1</option>
+										<option>Actividad principal-2</option>
+										<option>Actividad principal-3</option>
+									</select>
+									</div>
+								</div>
+								<div class="half">
+									<div class="form_field"><span class="label"><span>*</span>R.F.C.:</span></div>
+									<div class="form_field"><input type="text"></div>
+									<div class="form_field"><span class="label"><span>*</span>Correo electronico de contacto:</span></div>
+									<div class="form_field"><input type="text"></div>
+									<div class="form_field"><span class="label transparent">Telefono secundario:</span></div>
+									<div class="form_field form_field_add"><a href="#" class="add"></a><input class="transparent new_input" type="text"></div>
+									<div class="form_field"><span class="label">Sector principal:</span></div>
+									<div class="form_field">
+									<select class="niceSelect">
+										<option>Sector principal-1</option>
+										<option>Sector principal-2</option>
+										<option>Sector principal-3</option>
+									</select>							
+									</div>
+								</div>						
+							</div>
+							<div class="subtitle">Datos generales</div>
+							<hr />
+							<div class="clearfix">
+								<div class="half">
+									<div class="form_field"><span class="label">Calle:</span></div>
+									<div class="form_field"><input type="text"></div>
+									<div class="form_field"><span class="label">Colonia:</span></div>
+									<div class="form_field"><input type="text"></div>
+									<div class="form_field"><span class="label">Pais:</span></div>
+									<div class="form_field"><input type="text"></div>
+								</div>
+								<div class="half">
+									<div class="clearfix">
+										<div class="half">
+											<div class="form_field"><span class="label">Numero exterior:</span></div>
+											<div class="form_field"><input type="text"></div>
+											<div class="form_field"><span class="label">Delegacion/Municipio:</span></div>
+											<div class="form_field"><input type="text"></div>
+										</div>
+										<div class="half">
+											<div class="form_field"><span class="label">Numero interior:</span></div>
+											<div class="form_field"><input type="text"></div>
+											<div class="form_field"><span class="label">Estado:</span></div>
+											<div class="form_field"><input type="text"></div>
+										</div>
+									</div>	
+									<div class="form_field"><span class="label">C.P.:</span></div>
+									<div class="form_field"><input type="text"></div>									
+								</div>	
+							</div>
+							<div class="subtitle">Comentario</div>
+							<hr />
+							<div class="form_field"><textarea placeholder="Texto..."></textarea></div>
+							<div class="form_field validate validate-center">Por favor llene todos los campos marcados con!</div>
+							<div class="button tar"><input type="button" value="Registrarse"></div>
+						</form>
+						<p class="tac">Gracias! En breve le mandaremos un correo con las instrucciones para continuarcon su registro! Por favor siga las instrucciones ahí explicadas.</p>
+					</div>						
+				</div>
+
+			</div>
+		</div>
+		<footer id="footer" class="adminFooter">
+			<div class="copyright">&copy 2015 <a href="#">Aviso de privacidad</a></div>
+		</footer>
+		
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="js/ie10-viewport-bug-workaround.js"></script>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+		<script src="js/plugins.js"></script>
+		<script src="js/jquery.bxslider.min.js"></script>
+		<script src="js/select2.min.js"></script>
+		<script src="js/jquery.fancybox.pack.js"></script>
+		<script src="js/scripts.js"></script>
+	</body>
+</html>

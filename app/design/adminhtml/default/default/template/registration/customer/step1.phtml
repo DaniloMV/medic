@@ -1,0 +1,156 @@
+<?php
+$zip_state = Mage::getModel('loregistration/zip')
+    ->getCollection()
+    ->addFieldToSelect('state')
+    ->addFieldToSelect('zip_code');
+$zip_state->getSelect()->group('state');
+?>
+<div class="subtitle">General information</div>
+<hr/>
+<div class="clearfix" id="step1_div">
+  
+    <div class="half">
+        <div class="form_field">
+            <span required="required" for="company" class="label"><?php echo $this->__("Name or Company Name");?></span>
+        </div>
+        <div class="form_field">
+            <input type="text" title="<?php echo $this->__("Company");?>" value="" id="company" name="account[company]">
+            <input type="hidden" class="" title="" value="1" id="website_id" name="account[website_id]">
+        </div>
+        <div class="form_field">
+            <span for="firstname" class="label"><span>*</span><?php echo $this->__("Contact name");?></span>
+        </div>        
+        <div class="form_field">
+            <input type="text" maxlength="255" class="required-entry" title="<?php echo $this->__("Contact name");?>" value="" name="account[firstname]" id="firstname">
+        </div>
+        <div class="form_field">
+            <span for="activity" class="label"><?php echo $this->__("Main activity");?></span>
+        </div>
+        <div class="form_field">
+            <select title="" class="" id="activity" name="account[activity]" tabindex="-1">
+                <option value="1"><?php echo $this->__("Pharmacy");?></option>
+                <option value="2"><?php echo $this->__("Hospital");?></option>
+                <option value="3"><?php echo $this->__("Distributor");?></option>
+                <option value="4"><?php echo $this->__("Pharmacy laboratory");?></option>
+            </select>
+        </div>             
+        <div class="form_field">
+            <span for="telephone_alternate" class="label"><?php echo $this->__("Alternative phone number");?></span>
+        </div>
+        <div class="form_field form_field_add">
+            <input type="text" title="<?php echo $this->__("Alternative phone number");?>" value="" id="telephone_alternate" name="account[telephone_alternate]" class="new_input">
+        </div>
+    </div>
+    <div class="half">
+        <div class="form_field">
+            <span for="taxvat" class="label"><?php echo $this->__("Social security number (Tax ID)");?></span>
+        </div>        
+        <div class="form_field">
+            <input type="text" maxlength="255" title="<?php echo $this->__("Social security number (Tax ID)");?>" value="" class="mask"  placeholder="AAA123456@@@ or AAAA123456@@@" name="account[taxvat]" id="taxvat">
+        </div>
+        <div class="form_field">
+            <span required="required" for="email" class="label"><span>*</span><?php echo $this->__("Contact e-mail");?></span>
+        </div>
+        <div class="form_field">
+            <input type="email" class="input-text validate-email required-entry" title="<?php echo $this->__("Contact e-mail");?>" value="" id="email" name="account[email]" spellcheck="false" autocorrect="off" autocapitalize="off">
+        </div>
+        <div class="form_field">
+            <span for="sector" class="label"><?php echo $this->__("Main sector");?></span>
+        </div>
+        <div class="form_field">
+            <select title="" class="" id="sector" name="account[sector]" tabindex="-1" >
+                <option value="1"><?php echo $this->__("Private sector");?></option>
+                <option value="2"><?php echo $this->__("Government sector");?></option>
+            </select>
+        </div>                    
+    </div>
+</div>
+
+<div class="clearfix subtitle padding-top"><?php echo $this->__("Comments");?></div>
+<hr />
+<div class="clearfix">
+    <div class="form_field"><textarea id="comments" placeholder="<?php echo $this->__("Text...");?>" name="account[comments]"></textarea></div>
+</div>
+<br>
+<div class="clearfix subtitle padding-top"><?php echo $this->__("Actions");?></div>
+<hr />
+<div class="clearfix">
+    <div class="half">
+        <div class="form_field">
+            <span for="registration_recruter" class="label"><?php echo $this->__("Recruiter");?></span>
+        </div>
+        <div class="form_field" id="registration_recruter"></div>
+    </div>
+    <div class="half">
+        <input type="hidden" id="reg_status_hidden" name="account[registration_status]" value="">
+    </div>
+</div>
+<br>
+<div class="clearfix subtitle padding-top"><?php echo $this->__("Password Management");?></div>
+<hr />
+<div class="clearfix" id="password_fieldset">
+</div>
+<input type="hidden" name="taxmask" value="" id="taxmask"/>
+<script type="text/javascript">
+    jQuery( document ).ready(function() {
+//            jQuery( document ).ready(function() {
+//                jQuery('#customer_info_tabs_addresses').parent().hide();
+//            });
+            jQuery('#step1_div input,#step1_div select').each(function(){
+            jQuery(this).val(jQuery('#_account'+jQuery(this).attr('id')).val());
+            jQuery('#_account'+jQuery(this).attr('id')).remove();
+        });
+        jQuery('#registration_recruter').html(jQuery('#_accountregistration_recruter').get());
+
+        jQuery('#comments').val(jQuery('#_accountcomments').val());
+      
+        
+        jQuery('#password_fieldset').html(jQuery('#_accountpassword_fieldset').html());
+        jQuery('#_accountpassword_fieldset').remove();
+        jQuery('#password_fieldset input:text,#password_fieldset input:password').each(function(){
+            jQuery(this).parent().addClass('form_field');
+        });
+        if(jQuery('#_accountregistration_status').val()) {
+            jQuery('#reg_status_hidden').val(jQuery('#_accountregistration_status').val());
+            jQuery('.content-header .form-buttons:first').prepend('<span for="registration_status" id="label_status" style="font:1.1em \'Courier\'" class="label form_field"><?php echo $this->__("Registration status");?></span>');
+            jQuery('.content-header .form-buttons:first #label_status').append(jQuery('#_accountregistration_status').get());
+            jQuery('#_accountregistration_status').change(function() {
+                    jQuery("#reg_status_hidden").val(jQuery(this).val());
+                });
+        }
+        jQuery('#website_id').val(1);
+        checkTaxId();
+    });
+    
+    $j('.mask').inputmask({mask:"a{3,4}9{6}*{3}",placeholder: ""});
+        
+        function checkTaxId() {
+            var el = $j('#taxvat');
+            if($j(el).val().length<1) return true;
+            
+            if($j(el).hasClass('error-input')) {
+                $j(el).removeClass('error-input');
+            }
+            if($j(el).val().length<12) {
+                $j(el).addClass('error-input');
+                return false;
+            }
+            if($j(el).val().substring(3,4).replace(/\D/g, '').length>0 && $j(el).val().length!=12) {
+                $j(el).addClass('error-input');
+                return false;
+            }
+            if($j(el).val().substring(3,4).replace(/\D/g, '').length==0 && $j(el).val().length!=13) {
+                $j(el).addClass('error-input');
+                return false;
+            }
+        }
+        jQuery('#taxvat').blur(function(){
+            checkTaxId();
+        });
+        
+</script>
+<style>
+    .error-input,.validation-failed{
+        border: 2px solid red !important;
+    }
+</style>

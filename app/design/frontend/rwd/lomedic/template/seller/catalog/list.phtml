@@ -1,0 +1,225 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+/* @var $this Mage_Catalog_Block_Product_List */
+?>
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $helper = $this->helper('catalog/output');
+    $govCatalog = $this->getGovermentCatalogCollection();
+?>
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+<div class="category-products">
+    <?php echo $this->getToolbarHtml() ?>
+    <?php // List mode ?>
+    <?php $_iterator = 0; ?>
+    <ol class="products-list itemContainer" id="products-list">
+    <?php foreach ($_productCollection as $products): ?>
+        <li class="productItem style='margin-bottom:0px' <?php echo $class = ($i == count($this->getCollection()))? 'wk_last_tr':''?>">
+
+            <input type="hidden" class="hidden_id" value="<?php echo $products->getEntityId(); ?>" />
+            <div class="productItem_name" style="padding:0 3%">
+                    <a href="<?php echo $this->getUrl('seller/marketplaceaccount/viewproduct/search_name/'.$products->getEntityId());?>">
+                        <?php echo $products->getName();?>
+                    </a>
+            </div>
+            <div class="productItem_bpart" style="width:73%">
+                <table class="productItem_values">
+                    <tbody>
+                        <tr>
+                            <td class="bold"><?php echo $helper->__("General name"); ?>:</td>
+                            <td>
+                                <?php
+                                if(isset($govCatalog[$products->getData('generic_name')]) && isset($govCatalog[$products->getData('generic_name')]['generic_name'])) {
+                                    echo $govCatalog[$products->getData('generic_name')]['generic_name'];
+                                }
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bold"><?php echo $helper->__("Description"); ?>:</td>
+                            <td>
+                                <?php
+                                if(isset($govCatalog[$products->getData('description_a')]) && isset($govCatalog[$products->getData('description_a')]['description'])) {
+                                    echo $govCatalog[$products->getData('description_a')]['description'];
+                                }
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bold"><?php echo $helper->__("Presentation"); ?>:</td>
+                            <td>
+                                <?php
+                                if(isset($govCatalog[$products->getData('presentation')]) && isset($govCatalog[$products->getData('presentation')]['presentation'])) {
+                                    echo $govCatalog[$products->getData('presentation')]['presentation'];
+                                }
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bold"><?php echo $helper->__("Concentration/Quantity"); ?>:</td>
+                            <td>
+                                <?php
+                                if(isset($govCatalog[$products->getData('qty')]) && isset($govCatalog[$products->getData('qty')]['qty'])) {
+                                    echo $govCatalog[$products->getData('qty')]['qty'];
+                                }
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bold"><?php echo $helper->__("Medical specialty"); ?>:</td>
+                            <td>
+                                <?php
+                                if(isset($govCatalog[$products->getData('category')]) && isset($govCatalog[$products->getData('category')]['category'])) {
+                                    echo $govCatalog[$products->getData('category')]['category'];
+                                }
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="bold"><?php echo $helper->__("Basic frame ID"); ?>:</td>
+                            <td>
+                                <?php
+                                if(isset($govCatalog[$products->getData('code')]) && isset($govCatalog[$products->getData('code')]['code'])) {
+                                    echo $govCatalog[$products->getData('code')]['code'];
+                                }
+                                ?>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="productItem_spart">
+                <div class="form">
+                    <div class="button">
+                        <input type="button" class="mp_delete" data-type="<?php echo $products->getTypeId(); ?>" value="<?php echo $helper->__("Delete"); ?>"></div>
+                </div>
+                <!--
+                <div class="form">
+                    <div class="button">
+                        <input type="button" data-type="<?php echo $products->getTypeId(); ?>" value="<?php echo $helper->__("Copy"); ?>"></div>
+                </div> -->
+            </div>
+        </li>
+    <?php endforeach; ?>
+    </ol>
+    <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+
+
+    <div class="toolbar-bottom">
+        <?php echo $this->getToolbarHtml() ?>
+    </div>
+</div>
+<?php endif; ?>
+<?php
+// Provides a block where additional page components may be attached, primarily good for in-page JavaScript
+if ($this->getChild('after')) {
+    $_afterChildren = $this->getChild('after')->getSortedChildren();
+    foreach ($_afterChildren as $_afterChildName) {
+        $_afterChild = $this->getChild('after')->getChild($_afterChildName);
+        //set product collection on after blocks
+        $_afterChild->setProductCollection($_productCollection);
+        echo $_afterChild->toHtml();
+    }
+}
+?>
+<script type="text/javascript">
+
+        var $wk_jq=jQuery.noConflict();
+        var newCustomerProductForm1 = new VarienForm('formmassdelete', true);
+        (function($wk_jq){
+            $wk_jq('body').delegate('.mp_edit','click',function(){
+                var id=$wk_jq(this).parents('.productItem').find('.hidden_id').val();
+                var dicision=confirm('<?php echo $helper->__(" Are you sure you want to edit this product ? ")?>');
+                if(dicision==true){
+                    var $type_id=$wk_jq(this).attr('data-type');
+                    if($type_id=='simple')
+                        window.location = "<?php echo $this->getUrl('marketplace/marketplaceaccount/editapprovedsimple/') ?>".concat("id/",id);
+                    if($type_id=='downloadable')
+                        window.location = "<?php echo $this->getUrl('marketplace/marketplaceaccount/editapproveddownloadable/') ?>".concat("id/",id);
+                    if($type_id=='virtual')
+                        window.location = "<?php echo $this->getUrl('marketplace/marketplaceaccount/editapprovedvirtual/') ?>".concat("id/",id);
+                    if($type_id=='configurable')
+                        window.location = "<?php echo $this->getUrl('marketplace/marketplaceaccount/editapprovedconfigurable/') ?>".concat("id/",id);
+                    if($type_id=='batch')
+                        window.location = "<?php echo $this->getUrl('loseller/marketplaceaccount/editapprovedbatch/') ?>".concat("id/",id);
+                    <?php
+                    echo $this->getChildHtml('mpgrouped_productslist');
+                    echo $this->getChildHtml('mpbundle_productslist');
+                    ?>
+                }
+            });
+            $wk_jq('#mass_delete_butn').click(function(e){
+                var flag =0;
+                $wk_jq('.mpcheckbox').each(function(){
+                    if (this.checked == true){
+                        flag =1;
+                    }
+                });
+                if (flag == 0){
+                    alert("<?php echo $helper->__(' No Checkbox is checked ') ?>");
+                    return false;
+                }
+                else{
+                    var dicisionapp=confirm('<?php echo $helper->__(" Are you sure you want to delete these product ? ")?>');
+                    if(dicisionapp==true){
+                        $wk_jq('#form-customer-product-new').submit();
+                    }else{
+                        return false;
+                    }
+                }
+            });
+
+            $wk_jq('#mpselecctall').click(function(event) {
+                if(this.checked) {
+                    $wk_jq('.mpcheckbox').each(function() {
+                        this.checked = true;
+                    });
+                }else{
+                    $wk_jq('.mpcheckbox').each(function() {
+                        this.checked = false;
+                    });
+                }
+            });
+
+            $wk_jq('.mp_delete').click(function(){
+                var id=$wk_jq(this).parents('.productItem').find('.hidden_id').val();
+                var dicisionapp=confirm('<?php echo $helper->__(" Are you sure you want to delete this product ? ")?>');
+                if(dicisionapp==true)
+                    window.location = "<?php echo $this->getUrl('seller/marketplaceaccount/delete/') ?>".concat("id/",id);
+            });
+        })($wk_jq);
+    </script>

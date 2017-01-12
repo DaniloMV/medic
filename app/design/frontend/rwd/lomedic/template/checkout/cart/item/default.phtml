@@ -1,0 +1,20 @@
+<?php
+$_item    = $this->getItem();
+$_product = Mage::getModel('catalog/product')->load($_item->getProductId());
+?>
+
+    <img src="<?php echo $this->getProductThumbnail(); ?>" alt="<?php echo $this->escapeHtml($this->getProductName()); ?>">
+    <div class="cart_charact">
+        <div class="cart_charact_item">
+            <span class="bold"> <?php echo Mage::helper('loregistration')->__("Commercial name");?>:</span>
+            <span><?php echo $this->escapeHtml($this->getProductName()); ?></span>
+        </div>
+    </div>
+</td>
+<td class="tac js_quantity">
+    <a class="minus" href="#">-</a>
+    <input type="text" pattern="\d*" name="cart[<?php echo $_item->getId(); ?>][qty]" value="<?php echo $this->getQty(); ?>" size="4" title="<?php echo $this->__('Qty') ?>" maxlength="12">
+    <a class="plus" href="#">+</a>
+</td>
+<td><?php echo $this->helper('checkout')->formatPrice($_item->getCalculationPrice()); ?> / <?php echo $this->getQty(); ?> item(s)</td>
+<td><a href="<?php echo $this->getDeleteUrl() ?>" title="<?php echo $this->__('Remove Item') ?>" class="del"></a></td>

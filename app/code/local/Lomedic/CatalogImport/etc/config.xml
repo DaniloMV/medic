@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2015, Мedic Joint.
+ * Developed by Softeq Development Corp. for Lomedic S.A..
+ */
+-->
+<config>
+    <modules>
+        <Lomedic_CatalogImport>
+            <version>1.0.0.0</version>
+        </Lomedic_CatalogImport>
+    </modules>
+    <global>
+        <helpers>
+            <loimport>
+                <class>Lomedic_CatalogImport_Helper</class>
+            </loimport>
+        </helpers>
+        <blocks>
+            <loimport>
+                <class>Lomedic_CatalogImport_Block</class>
+            </loimport>
+        </blocks>
+        <models>
+            <loimport>
+                <class>Lomedic_CatalogImport_Model</class>
+                <resourceModel>loimport_resource</resourceModel>
+            </loimport>
+            <loimport_resource>
+                <class>Lomedic_CatalogImport_Model_Resource</class>
+                <deprecatedNode>loimport_mysql4</deprecatedNode>
+                <entities>
+                    <files>
+                        <table>customer_files</table>
+                    </files>
+                </entities>
+            </loimport_resource>
+        </models>
+        <resources>
+            <loimport_setup>
+                <setup>
+                    <module>Lomedic_CatalogImport</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+            </loimport_setup>
+        </resources>
+        <events>
+        </events>
+        <loimport module="loimport">
+            <import_entities>
+                <goverment_catalog translate="label">
+                    <model_token>loimport/import_entity_catalog</model_token>
+                    <label>Goverment Catalog Options</label>
+                </goverment_catalog>
+            </import_entities>
+        </loimport>
+    </global>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Lomedic_CatalogImport>
+                    <files>
+                        <default>Lomedic_CatalogImport.csv</default>
+                    </files>
+                </Lomedic_CatalogImport>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <loimport>
+                    <file>loimport.xml</file>
+                </loimport>
+            </updates>
+        </layout>
+    </adminhtml>
+    <frontend>
+        <routers>
+            <loimport>
+                <use>standard</use>
+                <args>
+                    <module>Lomedic_CatalogImport</module>
+                    <frontName>import</frontName>
+                </args>
+            </loimport>
+        </routers>
+        <events>
+        </events>
+        <translate>
+            <modules>
+                <Lomedic_CatalogImport>
+                    <files>
+                        <default>Lomedic_CatalogImport.csv</default>
+                    </files>
+                </Lomedic_CatalogImport>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <loimport>
+                    <file>loimport.xml</file>
+                </loimport>
+            </updates>
+        </layout>
+    </frontend>
+    <default>
+    </default>
+</config>

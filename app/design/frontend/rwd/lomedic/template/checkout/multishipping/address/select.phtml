@@ -1,0 +1,38 @@
+<?php $quoteBilling = $this->getCheckout()->getQuote()->getBillingAddress(); ?>
+<div class="text multiple-checkout">
+    <div class="form clearfix">
+        <div class="page-title">
+            <h1><?php echo $this->__('Change Billing Address') ?></h1>
+        </div>
+
+        <?php echo $this->getMessagesBlock()->toHtml(); ?>
+
+        <div class="clearfix form_field_radio addressBlock">
+            <?php $_index = 1; foreach ($this->getAddressCollection() as $_address): ?>
+                <?php if ($_address->getIsClone()): ?>
+                    <?php continue; ?>
+                <?php endif; ?>
+
+                <div class="form_field radio addressBlock_item">
+                    <input type="radio" name="bill[address]" id="roundedOne<?php echo $_index; ?>" value="<?php echo $_address->getId(); ?>" <?php if ($quoteBilling->getCustomerAddressId() == $_address->getId()): ?>checked<?php endif; ?>>
+                    <label class="mt0 mb0" for="roundedOne<?php echo $_index; ?>"><?php echo $this->__('Address') . " $_index"; ?></label>
+                    <div class="addressBlock_item_desc"><?php echo $_address->format('html'); ?></div>
+                </div>
+            <?php $_index++; endforeach; ?>
+        </div>
+
+        <div class="buttons-set">
+            <p class="back-link"><a href="<?php echo $this->getBackUrl() ?>"><small>&laquo; </small><?php echo $this->__('Back to Billing Information') ?></a></p>
+            <button type="submit" data-action="checkout-continue-billing" title="<?php echo $this->__('Continue to Billing Information') ?>" class="button tar" onclick=""><span><span><?php echo $this->__('Continue to Billing Information') ?></span></span></button>
+        </div>
+    </div>
+</div>
+<script>
+$j(function(){
+    $j('button[data-action*=continue]').on('click', function(e) {
+        e.preventDefault();
+        var addressId = $j('input[name*=address]:checked').val();
+        window.location.href = '/checkout/multishipping_address/setBilling/id/' + addressId;
+    });
+});
+</script>

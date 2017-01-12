@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <news_index_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="news/news" name="news" template="news/newslist.phtml">
+                <block type="core/template" name='social' template="socialshare/socialbar.phtml" />
+            </block>
+        </reference>
+    </news_index_index>
+
+    <news_index_view>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="news/news" name="news.view" template="news/news.phtml">
+                <block type="core/template" name='social' template="socialshare/socialbar.phtml" />
+            </block>
+        </reference>
+    </news_index_view>
+</layout> 

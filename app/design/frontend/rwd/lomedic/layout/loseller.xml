@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <marketplace_account_batchproduct>
+        <update handle="customer_account"/>
+        <reference name="head">
+            <action method="addCss"><stylesheet>marketplace/css/style.css</stylesheet></action>		
+            <action method="addCss"><stylesheet>css/jquery.datetimepicker.css</stylesheet></action>		
+            <action method="addItem"><type>skin_js</type><script>marketplace/js/nicEdit-latest.js</script></action>		
+            <action method="addItem"><type>skin_js</type><script>js/jquery.datetimepicker.js</script></action>		
+        </reference>
+        <reference name="content">
+            <block type="loseller/marketplace_batchproduct" name="marketplace_addproduct" template="seller/newbatchproduct.phtml"/>
+        </reference>
+    </marketplace_account_batchproduct>
+    <marketplace_marketplaceaccount_mydashboard>
+        <reference name='root'>
+             <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </marketplace_marketplaceaccount_mydashboard>
+    <loseller_marketplaceaccount_filterproductlistajax>
+         <block type="core/text_list" name="root" output="toHtml">
+            <block type='loseller/marketplace_batches' name='batch_product_grid' template='seller/productlist.phtml'/>
+        </block>
+    </loseller_marketplaceaccount_filterproductlistajax>
+    <loseller_marketplaceaccount_batches>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>marketplace/css/style.css</stylesheet>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <script>marketplace/js/nicEdit-latest.js</script>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <script>js/jquery.validate.js</script>
+            </action>
+        </reference>
+        <reference name='root'>
+             <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type='loseller/marketplace_batches' name='batch_product_form' template='seller/batches.phtml'>
+                <block type='loseller/marketplace_batches' name='batch_product_grid' template='seller/productlist.phtml'/>
+            </block>
+        </reference>
+    </loseller_marketplaceaccount_batches>
+    <loseller_marketplaceaccount_batchedit>
+        <update handle="customer_account"/>
+        <reference name="head">
+            <action method="addCss"><stylesheet>marketplace/css/style.css</stylesheet></action>		
+            <action method="addCss"><stylesheet>css/jquery.datetimepicker.css</stylesheet></action>		
+            <action method="addItem"><type>skin_js</type><script>marketplace/js/nicEdit-latest.js</script></action>		
+            <action method="addItem"><type>skin_js</type><script>js/jquery.datetimepicker.js</script></action>		
+        </reference>
+         <reference name='root'>
+             <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="loseller/marketplace_batchproduct" name="marketplace_editproduct" template="seller/editbatchproduct.phtml"/>
+        </reference>
+    </loseller_marketplaceaccount_batchedit>
+
+    <loseller_marketplaceaccount_viewproduct>
+        <reference name='root'>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="loseller/marketplace_viewproduct" name="marketplace_viewproduct" template="seller/viewproduct.phtml"/>
+            <block type='loseller/marketplace_batches' name='batch_product_grid' template='seller/productlist.phtml'/>
+        </reference>
+    </loseller_marketplaceaccount_viewproduct>
+    <!--
+    <loseller_marketplaceaccount_new>
+        <reference name='root'>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="loseller/marketplace_new" name="marketplace_new" template="seller/simpleproduct.phtml"/>
+        </reference>
+    </loseller_marketplaceaccount_new>
+
+    -->
+    <sales_email_order_items>
+        <reference name="mail">
+            <action method="setTemplate">
+                <template>sales/order/mail.phtml</template>
+            </action>
+        </reference>
+    </sales_email_order_items>
+</layout>

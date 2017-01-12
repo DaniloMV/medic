@@ -1,0 +1,362 @@
+<div class="text">
+    <h1 class="tac mt30"><?php echo $this->__('Status of the process of registration')?></h1>
+    <?php if($this->getRecruter()): ?>
+        <div class="subtitle tac"><?php echo $this->__("Your personal recruiter is: %s <a href='mailto:%s'>%s</a>",$this->getRecruter()->getName(),$this->getRecruter()->getEmail(),$this->getRecruter()->getEmail())?></div>
+    <?php endif; ?>
+        <div class="tac"><?php echo $this->__("<p>On this step of registration it is necessary to fill in pre-registration form. To continue click on 'Save and continue' button. </p><p>If you have any questions please contact with us by using our online chat or write to us from our support page</p>")?>.</div>
+    <p class="tac"><a href="<?php echo $this->getSupportUrl()?>"><?php echo $this->__('Support')?></a></p>
+    <ul class="registerSteps">
+        <li class="filled"><a href="<?php echo $this->getUrl('*/*/step1')?>"><?php echo $this->__('Registration request')?></a></li>
+        <li class="active"><?php if($this->getPage2Url()):?>
+                <a href="<?php echo $this->getPage2Url()?>"><?php echo $this->__('Pre-registration form')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Pre-registration form')?>
+            <?php endif;?>
+        </li>
+        <li><?php if($this->getPage3Url()):?>
+            <a href="<?php echo $this->getPage3Url()?>"><?php echo $this->__('Documentation')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Documentation')?>
+            <?php endif;?>
+        </li>
+        <li>
+            <?php if($this->getPage4Url()):?>
+                <a href="<?php echo $this->getPage4Url()?>"><?php echo $this->__('Visit\Validation')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Visit\Validation')?>
+            <?php endif;?>
+        </li>
+        <li><?php if($this->getPage5Url()):?>
+                <a href="<?php echo $this->getPage5Url()?>"><?php echo $this->__('Contract')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Contract')?>
+            <?php endif;?>
+        </li>
+    </ul>
+
+    <div class="form">
+        <form action="<?php echo $this->getPostActionUrl()?>" id="step2" name="step2" method="post" enctype="multipart/form-data">
+            <input type="hidden" name='address[billing][id]' value='<?php echo $this->getCustomer()->getBilingAddress()->getId()?>'/>
+            <input type="hidden" name='address[other][id]' value='<?php echo $this->getCustomer()->getOtherAddress()->getId()?>'/>
+            <input type="hidden" name="registration_step" value="<?php echo (($this->getCustomer()->getRegistrationStep()>3)?$this->getCustomer()->getRegistrationStep():3)?>" />
+            <input type="hidden" name="registration_status" value="<?php echo (($this->getCustomer()->getRegistrationStatus()<Lomedic_Registration_Model_System_Config_Source_Status::PREREGISTRATION_COMPLETED)?Lomedic_Registration_Model_System_Config_Source_Status::PREREGISTRATION_COMPLETED:$this->getCustomer()->getRegistrationStatus())?>"/>
+            <div class="subtitle"><?php echo $this->__('Administrative')?></div>
+            <hr />
+            <div class="form_field halfAndHalf">
+                    <div class="rightpart label 1_label_account_type"><span>*</span><?php echo $this->__('Name')?>:</div>
+                    <div class="rightpart label 2_label_account_type" style='display:none;'><span>*</span><?php echo $this->__('Company name')?>:</div>
+            </div>
+            <div class="form_field halfAndHalf" style='height: 40px;'>
+                <?php echo $this->getAccountTypeHtmlSelect('tabindex="2"') ?>								
+                <input tabindex="2" type="text" id='real_name' name='real_name' style='position: relative; top: -50px;' class="rightpart" require="require" value='<?php echo $this->escapeHtml($this->getCustomer()->getRealName())?>'/>
+            </div>
+            <div class="form_field halfAndHalf 2_label_account_type" style='margin-top: 40px;'>
+                <span class="label tar leftpart"><span>*</span><?php echo $this->__('Article association registry number')?>:</span>
+                <input type="text" class="rightpart" name='association_number' tabindex="2" id='association_number' value='<?php echo $this->escapeHtml($this->getCustomer()->getAssociationNumber())?>'>
+            </div>
+            <div class="form_field halfAndHalf 2_label_account_type">
+                <span class="label tar leftpart"><span>*</span><?php echo $this->__('Article association registration number before Public Registry of property and commerce (PRPC)')?>:</span>
+                <input type="text" class="rightpart" name='association_number_before' tabindex="2" id="association_number_before" value='<?php echo $this->escapeHtml($this->getCustomer()->getAssociationNumberBefore())?>'>
+            </div>
+            <div class="clearfix"></div>
+            <div class="2_label_account_type">
+            <div class="form_field halfAndHalf">
+                <div class="rightpart">
+                    <input type="checkbox" name="is_association_number_modified" tabindex="2" id="is_association_number_mod" value="" <?php echo ($this->getCustomer()->getAssociationNumberMod()?' checked="checked"':'')?>>
+                    <label for="is_association_number_mod"><span class="checkSpan"></span><?php echo $this->__('Article association modifications?')?></label>
+                </div>
+            </div>											
+            <div class="form_field halfAndHalf is_association_number_mod">
+                <span class="label tar leftpart"><span>*</span><?php echo $this->__('Article association registry modification number')?>:</span>
+                <input type="text" class="rightpart" id='association_number_mod' tabindex="2" name='association_number_mod' value='<?php echo $this->escapeHtml($this->getCustomer()->getAssociationNumberMod())?>'>
+            </div>
+            <div class="form_field halfAndHalf is_association_number_mod">
+                <span class="label tar leftpart"><span>*</span><?php echo $this->__('Article association modification registration number before PRPC')?>:</span>
+                <input type="text" class="rightpart" tabindex="2" id='association_number_mod_before' name='association_number_mod_before' value='<?php echo $this->escapeHtml($this->getCustomer()->getAssociationNumberModBefore())?>'>
+            </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="subtitleGrey"><span>*</span><?php echo $this->__('Billing address')?></div>
+            <div class="clearfix">
+                <div class="half">
+                    <div class="form_field"><span for="country" class="label"><span>*</span><?php echo $this->__('Country') ?></span></div>
+                    <div class="form_field">
+                        <select title="Country" class="validate-select" tabindex="3" id="country" name="address[billing][country_id]">
+                            <option value="MX">Mexico</option>
+                        </select>
+                    </div>
+                    <div class="form_field"><span for="municipality_billing" class="label"><span>*</span><?php echo $this->__('Municipality') ?></span></div>
+                    <div class="form_field" style="margin-bottom: 5px"><input tabindex="5" require="require" style="width: 100%;"  type="text" name="address[billing][municipality]" value="<?php echo $this->escapeHtml($this->getCustomer()->getBilingAddress()->getMunicipality()) ?>" title="<?php echo $this->__('Municipality') ?>" id="municipality_billing" class="input-text " /></div>
+                    
+                    
+
+                    <div class="form_field halfAndHalf"><span for="colonia_billing" class="label"><span>*</span><?php echo $this->__('Cologne') ?></span></div>
+                    <div class="form_field" style="margin-bottom: 5px"><input tabindex="7" require="require" style="width: 100%;" type="text" name="address[billing][colonia]" value="<?php echo $this->escapeHtml($this->getCustomer()->getBilingAddress()->getColonia()) ?>" title="<?php echo $this->__('Cologne') ?>" id="colonia_billing" class="input-text" /></div>
+
+                    <div class="clearfix">
+                        <div class="half">
+                            <div class="form_field"><span for="street_number" class="label"><span>*</span><?php echo $this->__('Street Number') ?></span></div>
+                            <div class="form_field"><input tabindex="9" require="require" style="width: 100%;"  type="text" name="address[billing][street_number]" value="<?php echo $this->escapeHtml($this->getCustomer()->getBilingAddress()->getStreetNumber()) ?>" title="<?php echo $this->__('Street Number') ?>" id="street_number" class="input-text" /></div>
+                        </div>
+                        <div class="half">
+                            <div class="form_field"><span for="appartment_number" class="label"><?php echo $this->__('Apartment number') ?></span></div>
+                            <div class="form_field"><input tabindex="10"  style="width: 100%;"  type="text" name="address[billing][apartment_number]" value="<?php echo $this->escapeHtml($this->getCustomer()->getBilingAddress()->getApartmentNumber()) ?>" title="<?php echo $this->__('Apartment number') ?>" id="appartment_number" class="input-text " /></div>
+                        </div>
+                    </div>
+                    </div>
+                <div class="half">
+                    <?php echo $this->getStateBilling($this->getCustomer()->getBilingAddress()->getRegion(),'tabindex="4"') ?>
+                    
+                    <div class="form_field"><span for="city" class="label"><span>*</span><?php echo $this->__('City/Location') ?></span></div>
+                    <div class="form_field"><input tabindex="6" require="require" style="width: 100%;"  type="text" name="address[billing][city]" value="<?php echo $this->escapeHtml($this->getCustomer()->getBilingAddress()->getCity()) ?>" title="<?php echo $this->__('City') ?>" id="city" class="input-text" /></div>
+
+                    <div class="form_field"><span class="label"><span>*</span><?php echo $this->__('Street')?>:</span></div>
+                    <?php $street = $this->getCustomer()->getBilingAddress()->getStreet(); ?>
+                    <div class="form_field"><input tabindex="8" style="width: 100%;" require="require" type="text" name='address[billing][street][0]' value='<?php echo $this->escapeHtml(isset($street[0])?$street[0]:'')?>' class="input-text" ></div>
+                
+                    <div id="zip_billing" style="">
+                        <div id="zip_loading_billing" style="display: none; height: 53px; padding-top: 35px; color: #008000; font-size: 15px;">Please wait..</div>
+                        <?php echo $this->getZipCodeBilling($this->getCustomer()->getBilingAddress()->getPostcode(),$this->getCustomer()->getBilingAddress()->getRegion(),'tabindex="11"'); ?>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="subtitleGrey addForm clearfix"><a href="#"></a><?php echo $this->__('Add other address')?></div>
+
+            <div class="clearfix registration hidden" id='other-address'>
+
+                <div class="half">
+                    <div class="form_field"><span for="country" class="label"><span>*</span><?php echo $this->__('Country') ?></span></div>
+                    <div class="form_field">
+                        <select title="Country" class="validate-select" id="country" name="address[other][country_id]" tabindex="12">
+                            <option value="MX">Mexico</option>
+                        </select>
+                    </div>
+                    <div class="form_field"><span for="municipality_other" class="label"><span>*</span><?php echo $this->__('Municipality') ?></span></div>
+                    <div class="form_field"><input tabindex="14" type="text" name="address[other][municipality]" value="<?php echo $this->escapeHtml($this->getCustomer()->getOtherAddress()->getMunicipality()) ?>" title="<?php echo $this->__('Municipality') ?>" id="municipality_other" class="input-text " /></div>
+
+                    
+                    <div class="form_field"><span for="colonia_other" class="label"><span>*</span><?php echo $this->__('Cologne') ?></span></div>
+                    <div class="form_field" style="margin-top:15px;"><input tabindex="16" type="text" name="address[other][colonia]" value="<?php echo $this->escapeHtml($this->getCustomer()->getOtherAddress()->getColonia()) ?>" title="<?php echo $this->__('Cologne') ?>" id="colonia_other" class="input-text" /></div>
+                    <div class="clearfix" style="margin-top:15px;">
+                        <div class="half">
+                            <div class="form_field"><span for="street_number" class="label"><?php echo $this->__('Street Number') ?></span></div>
+                            <div class="form_field"><input tabindex="18" type="text" name="address[other][street_number]" value="<?php echo $this->escapeHtml($this->getCustomer()->getOtherAddress()->getStreetNumber()) ?>" title="<?php echo $this->__('Street Number') ?>" id="street_number" class="input-text" /></div>
+                        </div>
+                        <div class="half">
+                            <div class="form_field"><span for="appartment_number" class="label"><?php echo $this->__('Apartment number') ?></span></div>
+                            <div class="form_field"><input tabindex="19" type="text" name="address[other][apartment_number]" value="<?php echo $this->escapeHtml($this->getCustomer()->getOtherAddress()->getApartmentNumber()) ?>" title="<?php echo $this->__('Apartment number') ?>" id="appartment_number" class="input-text " /></div>
+                        </div>
+                    </div>
+                    </div>
+                <div class="half">
+                    <?php echo $this->getStateOther($this->getCustomer()->getOtherAddress()->getRegion(),'tabindex="13"') ?>
+                    <div class="form_field"><span for="city" class="label"><?php echo $this->__('City/Location') ?></span></div>
+                    <div class="form_field"><input tabindex="15" type="text" name="address[other][city]" value="<?php echo $this->escapeHtml($this->getCustomer()->getOtherAddress()->getCity()) ?>" title="<?php echo $this->__('City') ?>" id="city" class="input-text" /></div>
+                    <div class="form_field"><span class="label"><span>*</span><?php echo $this->__('Street')?>:</span></div>
+                    <?php $street = $this->getCustomer()->getOtherAddress()->getStreet(); ?>
+                    <div class="form_field "><input tabindex="17" type="text" id="hide_street" name='address[other][street][0]' value='<?php echo $this->escapeHtml(isset($street[0])?$street[0]:'')?>'></div>
+                    <div id="zip_other" style="">
+                        <div id="zip_loading_other" style="display: none; height: 53px; padding-top: 35px; color: #008000; font-size: 15px;">Please wait..</div>
+                        <?php echo $this->getZipCodeOther($this->getCustomer()->getOtherAddress()->getPostcode(),$this->getCustomer()->getOtherAddress()->getRegion(),'tabindex="20"'); ?>
+                    </div>
+
+                    
+                </div>
+
+
+
+
+
+            </div>							
+
+            <div class="tac"><?php echo $this->__("<p>The information requested hereafter is very important for us. With it, we can guarantee that all our members and partners are reliable and serious companies. </p><p>In addition, it allows us to have a deeper understanding of your business and goals. Thus, we will be able to offer a solution special designed to fit your needs.</p>")?></div>
+            <div class="subtitle"><?php echo $this->__('Financial')?></div>
+            <hr />
+            <div class="form_field halfAndHalf">
+                <span class="label tar leftpart"><span>*</span><?php echo $this->__('Amount of equity for the previous year')?>:</span>
+                <input tabindex="21" type="text" class="rightpart validate-number" require="require" name="year_amount" value='<?php echo $this->escapeHtml($this->getCustomer()->getYearAmount())?>'/>
+            </div>
+            <div class="subtitle"><?php echo $this->__('Infrastructure')?></div>
+            <hr />
+            <div class="form_field halfAndHalf">
+                <span class="label tar leftpart"><span>*</span><?php echo $this->__('Quantity of employees of the company')?>:</span>
+                <input tabindex="22" type="text" class="rightpart validate-number" require="require" name='employees_qty' value='<?php echo $this->escapeHtml($this->getCustomer()->getEmployeesQty())?>'/>
+            </div>							
+            <div class="form_field halfAndHalf">
+                <span class="label tar leftpart"><span>*</span><?php echo $this->__('Quantity of computer equipment')?>:</span>
+                <input tabindex="23" type="text" class="rightpart validate-number" require="require" name='computer_qty' value='<?php echo $this->escapeHtml($this->getCustomer()->getComputerQty())?>'>
+            </div>	
+            <div class="form_field halfAndHalf">
+                <span class="label tar leftpart"><span>*</span><?php echo $this->__('Office area')?>:</span>
+                <input tabindex="24" type="text" class="rightpart validate-number" require="require" name='office_area' value='<?php echo $this->escapeHtml($this->getCustomer()->getOfficeArea())?>'>
+            </div>	
+            <div class="form_field halfAndHalf">
+                <span class="label tar leftpart"><span>*</span><?php echo $this->__('Warehouse area')?>:</span>
+                <input tabindex="25" type="text" class="rightpart validate-number" require="require" name='warehouse_area' value='<?php echo $this->escapeHtml($this->getCustomer()->getWarehouseArea())?>'>
+            </div>	
+            <div class="form_field halfAndHalf">
+                <span class="label tar leftpart"><span>*</span><?php echo $this->__('Quantity of vehicles of the company')?>:</span>
+                <input tabindex="26" type="text" class="rightpart validate-number" require="require" name='vehicles_qty' value='<?php echo $this->escapeHtml($this->getCustomer()->getVehiclesQty())?>'>
+            </div>								
+
+            <div class="subtitle"><?php echo $this->__('Licenses and permits')?></div>
+            <hr />
+            <div class="form_field halfAndHalf">
+                <span class="label tar leftpart"><span>*</span><?php echo $this->__('Operation statement before COFEPRIS')?>:</span>
+                <input tabindex="27" type="text" class="rightpart" require="require" name='operation_statment' value='<?php echo $this->escapeHtml($this->getCustomer()->getOperationStatment())?>'>
+            </div>
+            <div class="form_field halfAndHalf">
+                <span class="label tar leftpart"><span>*</span><?php echo $this->__('Responsible health professional before COFEPRIS')?>:</span>
+                <input tabindex="28" type="text" class="rightpart" require="require" name='resp_health_professional' value='<?php echo $this->escapeHtml($this->getCustomer()->getRespHealthProfessional())?>'>
+            </div>			
+            <div class="form_field halfAndHalf">
+                <span class="label tar leftpart"><span>*</span><?php echo $this->__('Professional license number of the health professional')?>:</span>
+                <input tabindex="29" type="text" class="rightpart" require="require" name='resp_health_prof_license_num' value='<?php echo $this->escapeHtml($this->getCustomer()->getRespHealthProfLicenseNum())?>'>
+            </div>	
+	
+            <div class="form_field halfAndHalf">
+                <div class="rightpart">
+                    <input input type="checkbox" name="handle_controlled_medicines_or_products_of_biological_origin" id="handle_controlled_medicines_or_products_of_biological_origin" value="" <?php echo ($this->getCustomer()->getHealthLicenseNumber()?' checked="checked"':'')?>>
+                    <label class="label" for="handle_controlled_medicines_or_products_of_biological_origin"><span class="checkSpan"></span><?php echo $this->__('Handle controlled medicines or products of biological origin')?></label>
+                </div>
+            </div>			
+            <div class="clearfix"></div>
+            <div class="clearfix form_field halfAndHalf handle_controlled_medicines_or_products_of_biological_origin">
+                <span class="label tar leftpart"><span>*</span><?php echo $this->__('Health license certificate number')?>:</span>
+                <input tabindex="30" type="text" class="rightpart" id='health_license_number' name='health_license_number' value='<?php echo $this->escapeHtml($this->getCustomer()->getHealthLicenseNumber())?>'>
+            </div>								
+            <div class="form_field validate validate-center"><?php echo $this->__('Please fill in all the fields marked with *!')?></div>
+            <div class="form_field halfAndHalf">
+                <input type="hidden" name="continue" value='' id='step2-continue'/>
+                <?php if($this->getCustomer()->getRegistrationStatus()!=Lomedic_Registration_Model_System_Config_Source_Status::CLOSED):?>
+                    <div class="button tal"><input tabindex="31" type="submit" value="<?php echo $this->__('Save and continue')?>"></div>
+                <?php else: ?>
+                    <p style="color: red; font-size: 17px; margin-top: 30px;"><?php echo $this->__('Process is closed! If you have solved the impediments and inconveniences detected, please contact you personal assistant to reopen the process.'); ?></p>
+                <?php endif;?>
+            </div>	
+        </form>
+    </div>						
+</div>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('step2', true);
+        $j('#step2').submit(function(event) {
+            var hasErrors = false;
+//            if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+                //If require attribute is not supported or browser is Safari (Safari thinks that it has this attribute, but it does not work), then check all fields that has require attribute
+                $j("#step2 [require]:visible, #step2 select[require]").each(function(index) {
+                    if (!$j(this).closest('#other-address').is(':hidden') && !$j(this).val()) {
+                     $j(this).addClass('error-input');
+                         //If at least one require value is empty, then ask to fill all require fields.
+                        hasErrors = true;
+                    } else {
+                        if($j(this).hasClass('error-input')) {
+                            $j(this).removeClass('error-input');
+                        }
+                    }
+                });
+                if(hasErrors) {
+                    event.preventDefault();
+                    return false;
+                }
+        //    }
+            $j("#step2 [require]").each(function(index) {
+                if($j(this).hasClass('error-input')) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+        });
+    //]]>
+
+    function saveAndContinue() {
+        dataForm.submit();
+    }
+    
+    $j('#account_type').on("change", function () { 
+        var result = $j(this).val();
+        accountType(result);
+    });
+
+    $j('.subtitleGrey').on("click", function () {
+        setTimeout(function(){
+            var element = $j('#other-address');
+            if ( element.css('display') !== 'none') {
+                $j('#hide_street').prop('require',true);
+            } else {
+                $j('#hide_street').prop('require',false);
+            }
+        },1500);
+    });
+
+    accountType($j('#account_type').val());
+    
+    function accountType(value) {
+        if(value!='1') {
+            $j('.1_label_account_type').hide(500);
+            $j('.2_label_account_type').show(500);
+            $j('#association_number').prop('require',true);
+            $j('#association_number_before').prop('require',true);
+        } else {
+            $j('.1_label_account_type').show(500);
+            $j('.2_label_account_type').hide(500);
+            $j('#association_number').prop('require',false);
+            $j('#association_number_before').prop('require',false);
+            $j('#association_number').prop('require',false);
+            $j('#association_number_mod').prop('require',false);
+	    $j('#association_number_mod_before').prop('require',false);
+            $j('#is_association_number_modified').prop("checked", false);
+            $j('#is_association_number_mod').prop("checked", false);
+	    $j('.is_association_number_mod').hide();
+        }
+    }
+    
+    $j('#is_association_number_mod').on('change',function() {
+        var result = $j('#is_association_number_mod:checked').length;
+        associationNumberMod(result);
+    })
+    
+    associationNumberMod($j('#is_association_number_mod:checked').length);
+   
+    function associationNumberMod(value) {
+         if(value>0) {
+            $j('.is_association_number_mod').show(500);
+            $j('#is_association_number_mod').val(true);
+            $j('#association_number_mod_before').prop('require',true);
+            $j('#association_number_mod').prop('require',true);
+        } else {
+            $j('.is_association_number_mod').hide(500);
+            $j('#is_association_number_mod').val(false);
+            $j('#association_number_mod_before').prop('require',false);
+            $j('#association_number_mod').prop('require',false);
+        }
+    }
+    
+    $j('#handle_controlled_medicines_or_products_of_biological_origin').on('change',function() {
+        var result = $j('#handle_controlled_medicines_or_products_of_biological_origin:checked').length;
+        handleControlledMedicinesOrProductsOfBiologicalOrigin(result);
+    
+    })
+    
+    handleControlledMedicinesOrProductsOfBiologicalOrigin($j('#handle_controlled_medicines_or_products_of_biological_origin:checked').length);
+    
+    function handleControlledMedicinesOrProductsOfBiologicalOrigin(value) {
+        if(value>0) {
+            $j('.handle_controlled_medicines_or_products_of_biological_origin').show(500);
+            $j('#handle_controlled_medicines_or_products_of_biological_origin').val(true);
+            $j('#health_license_number').prop('require',true);
+        } else {
+            $j('.handle_controlled_medicines_or_products_of_biological_origin').hide(500);
+            $j('#handle_controlled_medicines_or_products_of_biological_origin').val(false);
+            $j('#health_license_number').prop('require',false);
+        }
+    }
+    <?php if(isset($street[0]) && !empty($street[0])): ?>
+        $j('#other-address').show();
+        $j('#hide_street').prop('require',true);
+    <?php endif; ?>
+    changeForm('step2');
+</script>

@@ -1,0 +1,80 @@
+<?php
+$isPartner = Mage::getModel('marketplace/userprofile')->isPartner();
+$helper    = Mage::helper('marketplace');
+$user      = Mage::getSingleton('customer/session')->getCustomer();
+$user_company = Mage::getSingleton('customer/session')->getUserCompany();
+?>
+<div class="text">
+    <h1 class="tac mt30"><?php echo $this->__('My Dashboard') ?></h1>
+
+    <?php echo $this->getMessagesBlock()->toHtml() ?>
+    <?php
+
+if ($isPartner == 1): ?>
+    <!--
+    <div class="page-title">
+        <h1 style="float:left;"><?php echo $helper->__('My Dashboard') ?></h1>
+        <button class="askque button"><span><?php echo $helper->__('Ask Question to Admin') ?></span></button>
+    </div>
+    -->
+    
+    <?php
+    if($user_company):
+        $aaa = Mage::getModel('loregistration/usersCompany')->load($user_company);
+    ?>
+        <p class="hello"><?php echo $this->__('Hello, %s, %s!', $this->escapeHtml($aaa->getName()), $this->escapeHtml($user->getCompany())); ?></p>
+    <?php else:?>
+        <p class="hello"><?php echo $this->__('Hello, %s, %s!', $this->escapeHtml($user->getFirstname()), $this->escapeHtml($user->getCompany())); ?></p>
+    <?php endif;?>
+
+    <div class="wk_mp_design" style="margin-top: 20px;">
+        <div class="block block-account">
+            <div class="block-title">
+                <strong><span><h2><?php echo $helper->__('Addresses') ?></h2></span></strong>
+            </div>
+        </div>
+        <div class="fieldset">
+            <div class="grid">
+                <div class="hor-scroll">
+                    <div class="clearfix form_field_radio addressBlock">
+                        <?php $i = 1; foreach ($user->getAddresses() as $_address):?>
+                            <div class="form_field radio addressBlock_item" style="float: left; margin-bottom: 20px;">
+                                <?php if ($i<3): ?>
+                                    <?php if ($i<2): ?>
+                                        <label class="mt0 mb0"><?php echo $this->__('Main address'); ?></label>
+                                    <?php else: ?>
+                                        <label class="mt0 mb0"><?php echo $this->__('Billing address'); ?></label>
+                                    <?php endif;?>
+                                <?php else: ?>
+                                    <label class="mt0 mb0"><?php echo $this->__('Additional address %s', $i-2); ?></label>
+                                <?php endif;?>
+                                <div class="addressBlock_item_desc"><?php echo $_address->format('html'); ?></div>
+                            </div>
+                            <?php $i++; endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wk_mp_design" style="margin-top: 20px;">
+        <div class="fieldset">
+            <div class="grid">
+                <div class="hor-scroll">
+                   <?php $_recruter = Mage::helper('loregistration')->getRecruter($user->getRegistrationRecruter()); if($_recruter->getId()): ?>
+                        <?php echo $this->__('If you have any questions contact your personal recruiter: %s, %s.', $_recruter->getName(), $_recruter->getEmail()); ?>
+                    <?php endif;?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="buttons-set">
+        <p class="back-link">
+            <a href="javascript:;" onclick="javascript: window.history.back();" class="left">&laquo; <?php echo $helper->__('Back') ?></a>
+        </p>
+    </div> -->
+<?php else: ?>
+    <h2 class="wk_new_msg"><?php echo $helper->__('To BECOME SELLER PLEASE CONTACT TO ADMIN.'); ?></h2>
+<?php endif; ?>
+</div>

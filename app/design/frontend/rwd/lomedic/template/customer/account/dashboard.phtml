@@ -1,0 +1,31 @@
+<?php
+$user = Mage::getSingleton('customer/session')->getCustomer();
+$user_company = Mage::getSingleton('customer/session')->getUserCompany();
+?>
+<div class="text">
+    <h1 class="tac mt30"><?php echo $this->__('My Dashboard') ?></h1>
+
+    <?php echo $this->getMessagesBlock()->toHtml() ?>
+    <?php
+    if($user_company):
+        $aaa = Mage::getModel('loregistration/usersCompany')->load($user_company);
+        ?>
+        <p class="hello"><?php echo $this->__('Hello, %s, %s!', $this->escapeHtml($aaa->getName()), $this->escapeHtml($user->getCompany())); ?></p>
+    <?php else:?>
+        <?php echo $this->getChildHtml('hello') ?>
+    <?php endif;?>
+
+    <?php echo $this->getChildHtml('address') ?>
+
+    <div class="wk_mp_design" style="margin-top: 20px;">
+        <div class="fieldset">
+            <div class="grid">
+                <div class="hor-scroll">
+                    <?php $_recruter = Mage::helper('loregistration')->getRecruter($user->getRegistrationRecruter()); if($_recruter->getId()): ?>
+                        <?php echo $this->__('If you have any questions contact your personal recruiter: %s, %s.', $_recruter->getName(), $_recruter->getEmail()); ?>
+                    <?php endif;?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

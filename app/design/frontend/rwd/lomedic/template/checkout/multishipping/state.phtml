@@ -1,0 +1,42 @@
+<div class="text multiple-checkout">
+    <ul class="checkout-progress registerSteps" id="checkout-progress-state">
+        <?php $fillStep = true; ?>
+
+        <?php foreach ($this->getSteps() as $_index => $_step): ?>
+            <?php
+                $isActive = $_step->getIsActive();
+                if ($isActive) {
+                    $fillStep = false;
+                }
+
+                switch ($_index) {
+                    case 'multishipping_addresses':
+                        $url = 'checkout/multishipping/addresses/';
+                        break;
+                    case 'multishipping_shipping':
+                        $url = 'checkout/multishipping/shipping/';
+                        break;
+                    case 'multishipping_billing':
+                        $url = 'checkout/multishipping/billing/';
+                        break;
+                    case 'multishipping_overview':
+                        $url = 'checkout/multishipping/overview/';
+                        break;
+                }
+            ?>
+
+            <?php if ($fillStep || $isActive): ?>
+                <li class="filled">
+                    <?php if ($url): ?>
+                        <a href="<?php echo $this->getUrl($url); ?>"><span><?php echo $_step->getLabel(); ?></span></a>
+                    <?php else: ?>
+                        <span><?php echo $_step->getLabel(); ?></span>
+                    <?php endif; ?>
+                </li>
+            <?php else:; ?>
+                <li><span><?php echo $_step->getLabel(); ?></span></li>
+            <?php endif; ?>
+
+        <?php endforeach; ?>
+    </ul>
+</div>

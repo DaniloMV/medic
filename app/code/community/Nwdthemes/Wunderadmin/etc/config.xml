@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<config>
+
+    <modules>
+        <Nwdthemes_Wunderadmin>
+            <version>1.0.6</version>
+        </Nwdthemes_Wunderadmin>
+    </modules>
+
+	<global>
+		<helpers>
+			<wunderadmin>
+				<class>Nwdthemes_Wunderadmin_Helper</class>
+			</wunderadmin>
+		</helpers>
+        <models>
+            <wunderadmin>
+                <class>Nwdthemes_Wunderadmin_Model</class>
+                <resourceModel>wunderadmin_mysql4</resourceModel>
+			</wunderadmin>
+            <wunderadmin_mysql4>
+                <class>Nwdthemes_Wunderadmin_Model_Mysql4</class>
+                <entities>
+                    <themes>
+                        <table>nwdthemes_wunderadmin_themes</table>
+                    </themes>
+                    <settings>
+                        <table>nwdthemes_wunderadmin_settings</table>
+                    </settings>
+				</entities>
+            </wunderadmin_mysql4>
+        </models>
+        <blocks>
+            <wunderadmin>
+                <class>Nwdthemes_Wunderadmin_Block</class>
+            </wunderadmin>
+        </blocks>
+		<resources>
+			<nwdthemes_wunderadmin_setup>
+				<setup>
+					<module>Nwdthemes_Wunderadmin</module>
+				</setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+			</nwdthemes_wunderadmin_setup>
+		</resources>
+        <events>
+            <adminhtml_controller_action_predispatch_start>
+                <observers>
+                    <nwdthemes_wunderadmin_admin_predispatch>
+                        <class>Nwdthemes_Wunderadmin_Model_Adminhtml_Observer</class>
+                        <method>setTheme</method>
+                    </nwdthemes_wunderadmin_admin_predispatch>
+                </observers>
+            </adminhtml_controller_action_predispatch_start>
+        </events>
+	</global>
+
+	<default>
+		<wunderadmin_config>
+			<general>
+				<enabled>1</enabled>
+			</general>
+		</wunderadmin_config>
+	</default>
+
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<wunderadmin after="Mage_Adminhtml">Nwdthemes_Wunderadmin_Adminhtml</wunderadmin>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+	
+    <adminhtml>
+        <layout>
+            <updates>
+                <wunderadmin>
+                    <file>nwdthemes/wunderadmin.xml</file>
+                </wunderadmin>
+            </updates>
+        </layout>		
+	</adminhtml>
+
+</config>

@@ -1,0 +1,24 @@
+<div class="box-account box-info">
+    <div class="box-head">
+        <h2><?php echo $this->__('Addresses') ?></h2>
+    </div>
+    <div class="clearfix form_field_radio addressBlock">
+        <?php $i = 1; foreach (Mage::getSingleton('customer/session')->getCustomer()->getAddresses() as $_address):  ?>
+        <?php if($_address->getIsClone()): 
+                continue;
+        endif;?>
+            <div class="form_field radio addressBlock_item" style="float: left; margin-bottom: 20px;">
+                <?php if ($i<3): ?>
+                    <?php if ($i<2): ?>
+                        <label class="mt0 mb0"><?php echo $this->__('Main address'); ?></label>
+                    <?php else: ?>
+                        <label class="mt0 mb0"><?php echo $this->__('Billing address'); ?></label>
+                    <?php endif;?>
+                <?php else: ?>
+                    <label class="mt0 mb0"><?php echo $this->__('Additional address %s', $i-2); ?></label>
+                <?php endif;?>
+                <div class="addressBlock_item_desc"><?php echo $_address->format('html'); ?></div>
+            </div>
+        <?php $i++; endforeach; ?>
+    </div>
+</div>

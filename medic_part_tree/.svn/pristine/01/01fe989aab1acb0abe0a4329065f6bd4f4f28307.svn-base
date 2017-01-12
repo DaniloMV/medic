@@ -1,0 +1,138 @@
+<?php
+/** @var $installer Mage_Core_Model_Resource_Setup */
+$installer = $this;
+
+$installer->startSetup();
+$installer->addAttribute('customer', 'visit_date', array(
+    'input'         => 'datetime',
+    'type'          => 'datetime',
+    'time'          => 1,
+    'label'         => 'Visit Date&Time',
+    'visible'       => 1,
+    'format'        => 'yyyy-MM-dd HH:mm',
+    'required'      => 0,
+    'user_defined'  => 1,
+    'global'        => 1,
+    'value'         => 1
+));
+
+Mage::getSingleton('eav/config')
+    ->getAttribute('customer', 'visit_date')
+    ->setData('used_in_forms', array('adminhtml_customer', 'customer_account_create', 'customer_account_edit', 'adminhtml_checkout'))
+    ->save();
+
+$installer->addAttribute('customer', 'visit_address_check', array(
+    'input'         => 'boolean',
+    'type'          => 'int',
+    'label'         => 'Use billing address',
+    'visible'       => 1,
+    'required'      => 0,
+    'user_defined'  => 1,
+    'global'        => 1,
+));
+
+Mage::getSingleton('eav/config')
+    ->getAttribute('customer', 'visit_address_check')
+    ->setData('used_in_forms', array('adminhtml_customer', 'customer_account_create', 'customer_account_edit', 'adminhtml_checkout'))
+    ->save();
+
+$installer->addAttribute('customer', 'visit_address', array(
+    'input'         => 'textarea',
+    'type'          => 'text',
+    'label'         => 'Visit Address',
+    'visible'       => 1,
+    'required'      => 0,
+    'user_defined'  => 1,
+    'global'        => 1
+));
+
+Mage::getSingleton('eav/config')
+    ->getAttribute('customer', 'visit_address')
+    ->setData('used_in_forms', array('adminhtml_customer', 'customer_account_create', 'customer_account_edit', 'adminhtml_checkout'))
+    ->save();
+
+$installer->addAttribute('customer', 'visit_message', array(
+    'input'         => 'textarea',
+    'type'          => 'text',
+    'label'         => 'Visit Message',
+    'visible'       => 1,
+    'required'      => 0,
+    'user_defined'  => 1,
+    'global'        => 1
+));
+
+Mage::getSingleton('eav/config')
+    ->getAttribute('customer', 'visit_message')
+    ->setData('used_in_forms', array('adminhtml_customer', 'customer_account_create', 'customer_account_edit', 'adminhtml_checkout'))
+    ->save();
+
+$installer->addAttribute('customer', 'pre_approve', array(
+    'input'         => 'boolean',
+    'type'          => 'int',
+    'label'         => 'Pre-approve',
+    'visible'       => 1,
+    'required'      => 0,
+    'user_defined'  => 1,
+    'global'        => 1
+));
+
+Mage::getSingleton('eav/config')
+    ->getAttribute('customer', 'pre_approve')
+    ->setData('used_in_forms', array('adminhtml_customer', 'customer_account_create', 'customer_account_edit', 'adminhtml_checkout'))
+    ->save();
+
+$installer->addAttribute('customer', 'visit_message_to_manager', array(
+    'input'         => 'textarea',
+    'type'          => 'text',
+    'label'         => 'Visit Message to Manager',
+    'visible'       => 1,
+    'required'      => 0,
+    'user_defined'  => 1,
+    'global'        => 1
+));
+
+Mage::getSingleton('eav/config')
+    ->getAttribute('customer', 'visit_message_to_manager')
+    ->setData('used_in_forms', array('adminhtml_customer', 'customer_account_create', 'customer_account_edit', 'adminhtml_checkout'))
+    ->save();
+
+$installer->addAttribute('customer', 'visit_date_update', array(
+    'input'         => 'hidden',
+    'type'          => 'datetime',
+    'time'          => 1,
+    'label'         => 'Visit Date&Time Update',
+    'visible'       => 1,
+    'required'      => 0,
+    'user_defined'  => 1,
+    'global'        => 1,
+    'value'         => 1
+));
+
+Mage::getSingleton('eav/config')
+    ->getAttribute('customer', 'visit_date_update')
+    ->setData('used_in_forms', array('adminhtml_customer', 'customer_account_create', 'customer_account_edit', 'adminhtml_checkout'))
+    ->save();
+
+$table_tree = $installer->getConnection()
+    ->newTable($installer->getTable('customer_visit_messages'))
+    ->addColumn('message_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
+        'identity'  => true,
+        'unsigned'  => true,
+        'nullable'  => false,
+        'primary'   => true,
+    ), 'Id')
+    ->addColumn(
+        'customer_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(), 'Customer'
+    )
+    ->addColumn(
+        'text', Varien_Db_Ddl_Table::TYPE_TEXT, null, array(), 'Customer attribute'
+    )
+    ->addColumn(
+        'date', Varien_Db_Ddl_Table::TYPE_DATETIME, null, array(), 'Date Time'
+    );
+
+if (!$installer->getConnection()->isTableExists($table_tree->getName())) {
+    $installer->getConnection()->createTable($table_tree);
+}
+
+$installer->endSetup();

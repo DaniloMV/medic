@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ */
+-->
+<config>
+    <modules>
+        <Lomedic_CatalogImport>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Lomedic_CatalogImport>
+    </modules>
+</config>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+/**
+ * Copyright (c) 2015, Мedic Joint.
+ * Developed by Softeq Development Corp. for Lomedic S.A..
+ */
+-->
+<config>
+    <menu>
+        <visits module="loregistration" translate="title">
+            <title>Management</title>
+            <sort_order>100</sort_order>
+            <children>
+                <index module="loregistration" translate="title">
+                    <title>Manage visits</title>
+                    <sort_order>1</sort_order>
+                    <action>adminhtml/visits</action>
+                </index>
+                <companies module="loregistration" translate="title">
+                    <title>Manage Companies</title>
+                    <sort_order>2</sort_order>
+                    <action>adminhtml/companies</action>
+                </companies>
+            </children>
+        </visits>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <visits translate="title" module="loregistration">
+                        <title>Management</title>
+                        <sort_order>100</sort_order>
+                        <children>
+                            <index translate="title">
+                                <title>Manage visits</title>
+                                <sort_order>1</sort_order>
+                            </index>
+                            <companies translate="title">
+                                <title>Manage Companies</title>
+                                <sort_order>2</sort_order>
+                            </companies>
+                        </children>
+                    </visits>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <layout>
+        <updates>
+            <employee>
+                <file>visits.xml</file>
+            </employee>
+        </updates>
+    </layout>
+</config>

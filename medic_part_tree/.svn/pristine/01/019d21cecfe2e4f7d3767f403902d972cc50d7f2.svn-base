@@ -1,0 +1,37 @@
+<?php
+
+class Lomedic_Registration_Adminhtml_VisitsController extends Mage_Adminhtml_Controller_Action
+{
+    public function indexAction()
+    {
+        $this->loadLayout()
+            ->_setActiveMenu('visits')
+            ->_title($this->__('Visit Action'));
+
+        $this->_addContent($this->getLayout()->createBlock('loregistration/adminhtml_visits'));
+
+        $this->renderLayout();
+    }
+
+    public function gridAction()
+    {
+        $this->loadLayout()
+            ->_setActiveMenu('visits');
+        $this->getResponse()->setBody(
+            $this->getLayout()->createBlock('loregistration/adminhtml_visits/grid')->toHtml()
+        );
+    }
+
+    /*
+    public function listAction()
+    {
+        $this->loadLayout()
+            ->_setActiveMenu('mycustomtab')
+            ->_title($this->__('List Action'));
+
+        // my stuff
+
+        $this->renderLayout();
+    }
+    */
+}

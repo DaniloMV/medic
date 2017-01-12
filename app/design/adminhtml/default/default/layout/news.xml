@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <news_adminhtml_news_index>
+         <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/jquery.datetimepicker.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/jquery.datetimepicker.js</name></action>
+        </reference>
+        <reference name="content">
+        <block  type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                <action method="setUseConfirm"><params>0</params></action>
+            </block>
+            <block type="news/adminhtml_news" name="news" />
+        </reference>
+    </news_adminhtml_news_index>
+    <news_adminhtml_news_edit>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/jquery.datetimepicker.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/jquery.datetimepicker.js</name></action>
+        </reference>
+        <update handle="editor" />
+    </news_adminhtml_news_edit>
+</layout>

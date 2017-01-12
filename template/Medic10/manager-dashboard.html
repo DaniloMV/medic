@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<!--[if IE 6]>         <html class="no-js ie ie6 lte-ie6 lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js ie ie7 lte-ie7 lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js ie ie8 lte-ie8 lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie ie9 lte-ie9 lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<!--[if lte IE 8]>
+			<meta http-equiv="refresh" content="0;url=http://browsehappy.com">
+		<![endif]-->
+		
+		<!-- if we need ie8, put this on conditional comment for ie8 -->
+		<!-- <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> -->
+		
+
+		<!--[if IE]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+			<link rel="stylesheet" href="css/ie.css" />
+		<![endif]-->
+		
+
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/select2.css">
+		<link rel="stylesheet" href="css/jquery.datetimepicker.css">
+		<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+		<meta name="title" content="" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+		<!-- <script src="js/modernizr-2.6.2.min.js"></script> -->
+
+		<!--[if IE]>
+			<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js">IE7_PNG_SUFFIX=".png";</script>
+			<link rel="stylesheet" href="css/ie.css" />
+		<![endif]-->
+		<!--[if gte IE 9]>
+			<style type="text/css">
+				.gradient {
+					filter: none !important;
+				}
+			</style>
+		<![endif]-->
+		<title>Medic Joint</title>
+	</head>
+	<body>
+		<div id="wrapper" class="clearfix">
+			<div class="wrapSlider">
+				<header id="header" class="adminHeader"> 
+					<a href="index.html"><img class="logo" src="img/logo.png" alt="" /></a>
+					<div class="user clearfix">
+						<div class="user_name">Supervisor1 “nombre”</div>
+						<div class="user_img"><i count="9"><img src="img/user.jpg" /></i></div>
+						<div class="user_off"><a href="#">Cerrar sesión</a></div>
+					</div>					
+				</header>
+			</div>				
+			<div id="body" class="adminBody">
+				<div class="text">
+					<div class="form managerCalendarForm">
+						<div class="blueLine">
+							<a href="manager-calendar.html" class="backlink">Mostrar el calendario de las visitas</a>	
+							<div class="search form_field">
+								<input type="text" placeholder="Buscar..."><span></span>
+							</div>
+						</div>
+						<p class="big">Filtros:</p>
+						<div class="clearfix">
+							<div class="half">
+								<div class="form_field form_field_select">
+									<select class="niceSelect" multiple="multiple" data-placeholder="Seleccione un asistente personal">
+										<option>Tom A</option>
+										<option>Tom B</option>
+										<option>Tom C</option>
+										<option>Tom D</option>
+										<option>Tom E</option>
+										<option>Tom F</option>
+										<option>Tom G</option>
+										<option>Tom H</option>
+										<option>Tom I</option>								
+									</select>							
+								</div>	
+								<div class="form_field form_field_select">
+									<select class="niceSelect" multiple="multiple" data-placeholder="Persona asignada">
+										<option>Tom A</option>
+										<option>Tom B</option>
+										<option>Tom C</option>
+										<option>Tom D</option>
+										<option>Tom E</option>
+										<option>Tom F</option>
+										<option>Tom G</option>
+										<option>Tom H</option>
+										<option>Tom I</option>								
+									</select>							
+								</div>	
+								<div class="form_field form_field_select">
+									<select class="niceSelect" multiple="multiple" data-placeholder="Seleccione una etapa de proceso">
+										<option>Tom A</option>
+										<option>Tom B</option>
+										<option>Tom C</option>
+										<option>Tom D</option>
+										<option>Tom E</option>
+										<option>Tom F</option>
+										<option>Tom G</option>
+										<option>Tom H</option>
+										<option>Tom I</option>								
+									</select>							
+								</div>	
+								<div class="form_field">
+									<input type="checkbox" name="check" id="checkbox" value="">
+									<label for="checkbox"><span class="checkSpan"></span>Mostrar procedimientos completados</label>
+								</div>	
+								<p class="clear_button tar"><a href="#" class="reset">Vaciar campos</a></p>									
+							</div>
+							<div class="half">
+								<ul class="messageList">
+									<li><a href="#" class="registr-ic">2 solicitud(es) de registro. En espera de asignación de asistente personal!</a></li>
+									<li><a href="#" class="arrest-ic">1 proceso(s) detenido(s). Favor de revisarlo(s)!</a></li>
+									<li><a href="#" class="del-ic">1 visita(s) programada(s). Favor de revisarla(s)!</a></li>
+									<li class="active"><a href="#" class="approve-ic">3 usuario(s) ha(n) sido pre-aprobado(s) por su asistente personal. En espera de aprobación final!</a></li>
+									<li><a href="#" class="sign-ic">2 contrato(s) en espera de ser firmado(s) y cargado(s) en el sistema.</a></li>
+									<li><a href="#" class="close-ic">1 proceso(s) ha(n) sido cerrado(s) por el asistente personal.En espera de confirmación!</a></li>
+								</ul>
+								<p class="refresh_button tar"><a href="#">Refresar</a></p>									
+							</div>						
+						</div>
+						
+						
+					</div>
+					<div class="managerCalendarTbl">
+
+				
+					<div class="scroll" style="height: 412px;">
+					  <table class="table">
+					  <thead>
+						<tr>
+							<th width="4%">№</th>
+							<th width="11%">Nombre/Razon  social</th>
+							<th width="11%">R.F.C</th>
+							<th width="11%">Nombre de contacto</th>
+							<th width="11%">E-mail</th>
+							<th width="11%">Asistente</th>
+							<th width="11%">Etapa</th>
+							<th width="11%">Aviso</th>
+							<th width="11%">Persona asignada</th>							
+							<th width="8%">Proceso</th>
+						</tr>	
+					  </thead>
+					  <tbody>					  
+						<tr>
+							<td width="4%">1</td>
+							<td width="11%">Company 1</td>
+							<td width="11%">DFTD8599013R2</td>
+							<td width="11%">Roy Trumb</td>
+							<td width="11%">mail1@mail.com</td>
+							<td width="11%">Nueva solicitud de registro</td>
+							<td width="11%">Asistente</td>
+							<td width="11%">Aviso</td>
+							<td width="11%">Supervisor1</td>
+							<td width="8%"><a class="info" href="#"></a></td>						
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Company 1</td>
+							<td>DFTD8599013R2</td>
+							<td>Roy Trumb</td>
+							<td>mail1@mail.com</td>
+							<td>Nueva solicitud de registro</td>
+							<td>Asistente</td>
+							<td>Aviso</td>
+							<td>Supervisor1</td>
+							<td><a class="info" href="#"></a></td>						
+						</tr>	
+						<tr>
+							<td>1</td>
+							<td>Company 1</td>
+							<td>DFTD8599013R2</td>
+							<td>Roy Trumb</td>
+							<td>mail1@mail.com</td>
+							<td>Nueva solicitud de registro</td>
+							<td>Asistente</td>
+							<td>Aviso</td>
+							<td>Supervisor1</td>
+							<td><a class="info" href="#"></a></td>						
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Company 1</td>
+							<td>DFTD8599013R2</td>
+							<td>Roy Trumb</td>
+							<td>mail1@mail.com</td>
+							<td>Nueva solicitud de registro</td>
+							<td>Asistente</td>
+							<td>Aviso</td>
+							<td>Supervisor1</td>
+							<td><a class="info" href="#"></a></td>						
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Company 1</td>
+							<td>DFTD8599013R2</td>
+							<td>Roy Trumb</td>
+							<td>mail1@mail.com</td>
+							<td>Nueva solicitud de registro</td>
+							<td>Asistente</td>
+							<td>Aviso</td>
+							<td>Supervisor1</td>
+							<td><a class="info" href="#"></a></td>						
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Company 1</td>
+							<td>DFTD8599013R2</td>
+							<td>Roy Trumb</td>
+							<td>mail1@mail.com</td>
+							<td>Nueva solicitud de registro</td>
+							<td>Asistente</td>
+							<td>Aviso</td>
+							<td>Supervisor1</td>
+							<td><a class="info" href="#"></a></td>						
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Company 1</td>
+							<td>DFTD8599013R2</td>
+							<td>Roy Trumb</td>
+							<td>mail1@mail.com</td>
+							<td>Nueva solicitud de registro</td>
+							<td>Asistente</td>
+							<td>Aviso</td>
+							<td>Supervisor1</td>
+							<td><a class="info" href="#"></a></td>						
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Company 1</td>
+							<td>DFTD8599013R2</td>
+							<td>Roy Trumb</td>
+							<td>mail1@mail.com</td>
+							<td>Nueva solicitud de registro</td>
+							<td>Asistente</td>
+							<td>Aviso</td>
+							<td>Supervisor1</td>
+							<td><a class="info" href="#"></a></td>						
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Company 1</td>
+							<td>DFTD8599013R2</td>
+							<td>Roy Trumb</td>
+							<td>mail1@mail.com</td>
+							<td>Nueva solicitud de registro</td>
+							<td>Asistente</td>
+							<td>Aviso</td>
+							<td>Supervisor1</td>
+							<td><a class="info" href="#"></a></td>						
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Company 1</td>
+							<td>DFTD8599013R2</td>
+							<td>Roy Trumb</td>
+							<td>mail1@mail.com</td>
+							<td>Nueva solicitud de registro</td>
+							<td>Asistente</td>
+							<td>Aviso</td>
+							<td>Supervisor1</td>
+							<td><a class="info" href="#"></a></td>						
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Company 1</td>
+							<td>DFTD8599013R2</td>
+							<td>Roy Trumb</td>
+							<td>mail1@mail.com</td>
+							<td>Nueva solicitud de registro</td>
+							<td>Asistente</td>
+							<td>Aviso</td>
+							<td>Supervisor1</td>
+							<td><a class="info" href="#"></a></td>						
+						</tr>	
+					  </tbody>							
+					  </table>
+					</div>					
+					
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer id="footer" class="adminFooter">
+			<div class="copyright">&copy 2015 <a href="#">Aviso de privacidad</a></div>
+		</footer>
+		
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="js/ie10-viewport-bug-workaround.js"></script>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+		<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/select2.min.js"></script>
+		<script src="js/jquery.datetimepicker.js"></script>
+		<script src="js/jquery.mCustomScrollbar.js"></script>		
+		<script src="js/scripts.js"></script>
+	</body>
+</html>

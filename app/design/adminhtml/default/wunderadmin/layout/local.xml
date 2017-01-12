@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<layout version="1.0.0">
+
+    <default>
+		<reference name="root">
+    		<action method="addBodyClass"><className>wunderadmin</className></action>
+    	</reference>
+        <reference name="head">
+			<action method="addItem"><type>js</type><name>nwdthemes/jquery-1.11.0.min.js</name></action>
+			<action method="addItem"><type>js</type><name>nwdthemes/jquery-migrate-1.2.1.min.js</name></action>
+			<action method="addItem"><type>js</type><name>nwdthemes/jquery.noconflict.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.tipsy.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/wunderadmin.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/tipsy.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/font-awesome.min.css</name></action>
+            <action method="addItem"><type>skin_css</type><name helper="wunderadmin/data/getThemeCss" /></action>
+            <action method="addItem"><type>skin_css</type><name helper="wunderadmin/data/getSettingsCss" /></action>
+			<action method="addLinkRel"><type>stylesheet</type><name helper="wunderadmin/data/getGoogleFonts" /></action>
+		</reference>
+    </default>
+
+	<adminhtml_wunderadmin_index>
+		<reference name="head">
+			<action method="addJs"><file>jscolor/jscolor.js</file></action>
+			<action method="addJs"><file>nwdthemes/wunder_import.js</file></action>
+			<action method="addJs"><file>nwdthemes/googlefonts.js</file></action>
+            <action method="addItem"><type>js</type><name>prototype/window.js</name></action>
+            <action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+            <action method="addCss"><name>lib/prototype/windows/themes/magento.css</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/nwdthemes/wunderadmin.css</name></action>
+		</reference>
+	</adminhtml_wunderadmin_index>
+
+	<jquery_conflict_browser_fix>
+        <reference name="head">
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/browser.js</name></action>
+			<action method="addItem"><type>js</type><name>nwdthemes/mage/adminhtml/browser.js</name></action>
+		</reference>
+	</jquery_conflict_browser_fix>
+	<adminhtml_mobile_edittemplate><update handle="jquery_conflict_browser_fix" /></adminhtml_mobile_edittemplate>
+	<editor><update handle="jquery_conflict_browser_fix" /></editor>
+
+	<jquery_conflict_confirugable_fix>
+        <reference name="head">
+			<action method="removeItem"><type>js</type><name>varien/configurable.js</name></action>
+			<action method="addItem"><type>js</type><name>nwdthemes/varien/configurable.js</name></action>
+		</reference>
+	</jquery_conflict_confirugable_fix>
+	<adminhtml_customer_edit><update handle="jquery_conflict_confirugable_fix" /></adminhtml_customer_edit>
+	<adminhtml_sales_order_create_index><update handle="jquery_conflict_confirugable_fix" /></adminhtml_sales_order_create_index>
+
+	<jquery_conflict_widget_fix>
+        <reference name="head">
+			<action method="removeItem"><type>js</type><name>mage/adminhtml/wysiwyg/widget.js</name></action>
+			<action method="addItem"><type>js</type><name>nwdthemes/mage/adminhtml/wysiwyg/widget.js</name></action>
+		</reference>
+	</jquery_conflict_widget_fix>
+	<editor><update handle="jquery_conflict_widget_fix" /></editor>
+	<adminhtml_widget_instance_edit><update handle="jquery_conflict_widget_fix" /></adminhtml_widget_instance_edit>
+	<adminhtml_mobile_edittemplate><update handle="jquery_conflict_widget_fix" /></adminhtml_mobile_edittemplate>
+
+</layout>

@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<!--[if IE 6]>         <html class="no-js ie ie6 lte-ie6 lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js ie ie7 lte-ie7 lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js ie ie8 lte-ie8 lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie ie9 lte-ie9 lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<!--[if lte IE 8]>
+			<meta http-equiv="refresh" content="0;url=http://browsehappy.com">
+		<![endif]-->
+		
+		<!-- if we need ie8, put this on conditional comment for ie8 -->
+		<!-- <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> -->
+		
+
+		<!--[if IE]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+			<link rel="stylesheet" href="css/ie.css" />
+		<![endif]-->
+		
+
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/select2.css">
+		<meta name="title" content="" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+		<!-- <script src="js/modernizr-2.6.2.min.js"></script> -->
+
+		<!--[if IE]>
+			<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js">IE7_PNG_SUFFIX=".png";</script>
+			<link rel="stylesheet" href="css/ie.css" />
+		<![endif]-->
+		<!--[if gte IE 9]>
+			<style type="text/css">
+				.gradient {
+					filter: none !important;
+				}
+			</style>
+		<![endif]-->
+		<title>Medic Joint</title>
+	</head>
+	<body>
+		<div id="wrapper" class="clearfix">
+			<div class="wrapSlider">
+				<header id="header" class="adminHeader"> 
+					<a href="index.html"><img class="logo" src="img/logo.png" alt="" /></a>
+					<ul class="topMenu">
+						<li><a href="#">Configuración de perfil</a></li>
+						<li class="active"><a href="#">Catalogo de productos</a></li>
+						<li><a href="batches.html">Lotes y precios</a></li>
+						<li><a href="#">Ordenes</a></li>
+						<li><a href="#">Subastas y ofertas especiales</a>
+							<ul class="submenu">
+								<li><a href="#">Lorem ipsum dolor</a></li>
+								<li><a href="#">Lorem ipsum dolor</a></li>
+							</ul>				
+						</li>
+					</ul>					
+					<div class="user clearfix">						
+						<div class="user_img"><img src="img/user.jpg" /></div>
+						<div class="user_off"><a href="#">Cerrar sesión</a></div>
+					</div>					
+				</header>
+			</div>				
+			<div id="body" class="adminBody">
+				<div class="text clearfix">
+					<div class="left_column">
+						<div class="button mb20"><a href="seller-add-product.html">Agregar nuevo producto</a></div>
+						<div class="subtitle">Especialidad</div>
+						<ul class="leftMenu">
+							<li>
+								<a href="#">Grupo Nº1: Analgesia</a>
+								<ul>
+									<li><a href="#">Acido Acetilsalicico</a></li>
+									<li><a href="#">Metamizol Sodico</a></li>
+									<li><a href="#">Paracetamol</a></li>
+									<li><a href="#">Buprenorfina</a></li>
+									<li><a href="#">Capsaicina</a></li>
+									<li><a href="#">Clonixinato de lisina</a></li>
+									<li><a href="#">Dexmedetomidina</a></li>
+								</ul>
+							</li>
+							<li>
+							<a href="#">Grupo Nº3: Cardiología</a>
+								<ul>
+									<li><a href="#">Acido Acetilsalicico</a></li>
+									<li><a href="#">Metamizol Sodico</a></li>
+									<li><a href="#">Paracetamol</a></li>
+								</ul>							
+							</li>
+							<li>
+							<a href="#">Grupo Nº4: Dermatología</a>
+								<ul>
+									<li><a href="#">Acido Acetilsalicico</a></li>
+									<li><a href="#">Metamizol Sodico</a></li>
+									<li><a href="#">Paracetamol</a></li>
+									<li><a href="#">Buprenorfina</a></li>
+								</ul>							
+							</li>
+							<li>
+							<a href="#">Grupo Nº5: Endocrinología y Metabolismo</a>
+								<ul>
+									<li><a href="#">Acido Acetilsalicico</a></li>
+									<li><a href="#">Metamizol Sodico</a></li>
+								</ul>							
+							</li>
+						</ul>
+						<div class="menuCheck">
+							<input type="checkbox" value="" id="checkbox" name="check">
+							<label for="checkbox"><span class="checkSpan"></span>Para su venta al sector gobierno</label>
+						</div>
+						<div class="menuCheck">
+							<input type="checkbox" value="" id="checkbox2" name="check">
+							<label for="checkbox2"><span class="checkSpan"></span>Para su venta al sector privado</label>
+						</div>
+						<div class="form">
+							<div class="search form_field">
+								<input type="text" placeholder="Buscar..."><span></span>
+							</div>
+						</div>
+					</div>
+					<div class="right_column">
+					<ul id="itemContainer">
+						<li class="productItem">
+							<div class="productItem_mpart">
+								<div class="productItem_img"><a href="seller-product-page.html"><img src="img/product_list.jpg" /></a></div>
+								<div class="productItem_name"><a href="seller-product-page.html">Nombre comercial</a></div>
+							</div>
+							<div class="productItem_bpart">
+								<table class="productItem_values">
+									<tr>
+										<td class="bold">Nombre genérico:</td>
+										<td>Nombre</td>
+									</tr>
+									<tr>
+										<td class="bold">Descripción:</td>
+										<td>Descripción</td>
+									</tr>
+									<tr>
+										<td class="bold">Presentación:</td>
+										<td>Presentación</td>
+									</tr>
+									<tr>
+										<td class="bold">Cantidad:</td>
+										<td>Concentration</td>
+									</tr>
+									<tr>
+										<td class="bold">Especialidad:</td>
+										<td>Med spec</td>
+									</tr>
+									<tr>
+										<td class="bold">Clave de cuadro básico:</td>
+										<td>ID</td>
+									</tr>								
+								</table>
+							</div>	
+							<div class="productItem_spart">
+								<div class="form"><div class="button"><input type="button" value="Borrar"></div></div>
+								<div class="form"><div class="button"><input type="button" value="Copiar"></div></div>
+							</div>
+						</li>	
+						<li class="productItem">
+							<div class="productItem_mpart">
+								<div class="productItem_img"><a href="seller-product-page.html"><img src="img/product_list.jpg" /></a></div>
+								<div class="productItem_name"><a href="seller-product-page.html">Nombre comercial</a></div>
+							</div>
+							<div class="productItem_bpart">
+								<table class="productItem_values">
+									<tr>
+										<td class="bold">Nombre genérico:</td>
+										<td>Nombre</td>
+									</tr>
+									<tr>
+										<td class="bold">Descripción:</td>
+										<td>Descripción</td>
+									</tr>
+									<tr>
+										<td class="bold">Presentación:</td>
+										<td>Presentación</td>
+									</tr>
+									<tr>
+										<td class="bold">Cantidad:</td>
+										<td>Concentration</td>
+									</tr>
+									<tr>
+										<td class="bold">Especialidad:</td>
+										<td>Med spec</td>
+									</tr>
+									<tr>
+										<td class="bold">Clave de cuadro básico:</td>
+										<td>ID</td>
+									</tr>								
+								</table>
+							</div>	
+							<div class="productItem_spart">
+								<div class="form"><div class="button"><input type="button" value="Borrar"></div></div>
+								<div class="form"><div class="button"><input type="button" value="Copiar"></div></div>
+							</div>
+						</li>	
+						<li class="productItem">
+							<div class="productItem_mpart">
+								<div class="productItem_img"><a href="seller-product-page.html"><img src="img/product_list.jpg" /></a></div>
+								<div class="productItem_name"><a href="seller-product-page.html">Nombre comercial</a></div>
+							</div>
+							<div class="productItem_bpart">
+								<table class="productItem_values">
+									<tr>
+										<td class="bold">Nombre genérico:</td>
+										<td>Nombre</td>
+									</tr>
+									<tr>
+										<td class="bold">Descripción:</td>
+										<td>Descripción</td>
+									</tr>
+									<tr>
+										<td class="bold">Presentación:</td>
+										<td>Presentación</td>
+									</tr>
+									<tr>
+										<td class="bold">Cantidad:</td>
+										<td>Concentration</td>
+									</tr>
+									<tr>
+										<td class="bold">Especialidad:</td>
+										<td>Med spec</td>
+									</tr>
+									<tr>
+										<td class="bold">Clave de cuadro básico:</td>
+										<td>ID</td>
+									</tr>								
+								</table>
+								<div class="form"><div class="form_field validate">En espera de visto bueno por parte del almacén MedicJoint</div></div>
+							</div>	
+							<div class="productItem_spart">
+								<div class="form"><div class="button"><input type="button" value="Borrar"></div></div>
+								<div class="form"><div class="button"><input type="button" value="Copiar"></div></div>
+							</div>
+						</li>	
+						<li class="productItem">
+							<div class="productItem_mpart">
+								<div class="productItem_img"><a href="seller-product-page.html"><img src="img/product_list.jpg" /></a></div>
+								<div class="productItem_name"><a href="seller-product-page.html">Nombre comercial</a></div>
+							</div>
+							<div class="productItem_bpart">
+								<table class="productItem_values">
+									<tr>
+										<td class="bold">Nombre genérico:</td>
+										<td>Nombre</td>
+									</tr>
+									<tr>
+										<td class="bold">Descripción:</td>
+										<td>Descripción</td>
+									</tr>
+									<tr>
+										<td class="bold">Presentación:</td>
+										<td>Presentación</td>
+									</tr>
+									<tr>
+										<td class="bold">Cantidad:</td>
+										<td>Concentration</td>
+									</tr>
+									<tr>
+										<td class="bold">Especialidad:</td>
+										<td>Med spec</td>
+									</tr>
+									<tr>
+										<td class="bold">Clave de cuadro básico:</td>
+										<td>ID</td>
+									</tr>								
+								</table>
+							</div>	
+							<div class="productItem_spart">
+								<div class="form"><div class="button"><input type="button" value="Borrar"></div></div>
+								<div class="form"><div class="button"><input type="button" value="Copiar"></div></div>
+							</div>
+						</li>
+						<li class="productItem">
+							<div class="productItem_mpart">
+								<div class="productItem_img"><a href="seller-product-page.html"><img src="img/product_list.jpg" /></a></div>
+								<div class="productItem_name"><a href="seller-product-page.html">Nombre comercial</a></div>
+							</div>
+							<div class="productItem_bpart">
+								<table class="productItem_values">
+									<tr>
+										<td class="bold">Nombre genérico:</td>
+										<td>Nombre</td>
+									</tr>
+									<tr>
+										<td class="bold">Descripción:</td>
+										<td>Descripción</td>
+									</tr>
+									<tr>
+										<td class="bold">Presentación:</td>
+										<td>Presentación</td>
+									</tr>
+									<tr>
+										<td class="bold">Cantidad:</td>
+										<td>Concentration</td>
+									</tr>
+									<tr>
+										<td class="bold">Especialidad:</td>
+										<td>Med spec</td>
+									</tr>
+									<tr>
+										<td class="bold">Clave de cuadro básico:</td>
+										<td>ID</td>
+									</tr>								
+								</table>
+							</div>	
+							<div class="productItem_spart">
+								<div class="form"><div class="button"><input type="button" value="Borrar"></div></div>
+								<div class="form"><div class="button"><input type="button" value="Copiar"></div></div>
+							</div>
+						</li>
+						<li class="productItem">
+							<div class="productItem_mpart">
+								<div class="productItem_img"><a href="seller-product-page.html"><img src="img/product_list.jpg" /></a></div>
+								<div class="productItem_name"><a href="seller-product-page.html">Nombre comercial</a></div>
+							</div>
+							<div class="productItem_bpart">
+								<table class="productItem_values">
+									<tr>
+										<td class="bold">Nombre genérico:</td>
+										<td>Nombre</td>
+									</tr>
+									<tr>
+										<td class="bold">Descripción:</td>
+										<td>Descripción</td>
+									</tr>
+									<tr>
+										<td class="bold">Presentación:</td>
+										<td>Presentación</td>
+									</tr>
+									<tr>
+										<td class="bold">Cantidad:</td>
+										<td>Concentration</td>
+									</tr>
+									<tr>
+										<td class="bold">Especialidad:</td>
+										<td>Med spec</td>
+									</tr>
+									<tr>
+										<td class="bold">Clave de cuadro básico:</td>
+										<td>ID</td>
+									</tr>								
+								</table>
+							</div>	
+							<div class="productItem_spart">
+								<div class="form"><div class="button"><input type="button" value="Borrar"></div></div>
+								<div class="form"><div class="button"><input type="button" value="Copiar"></div></div>
+							</div>
+						</li>
+						<li class="productItem">
+							<div class="productItem_mpart">
+								<div class="productItem_img"><a href="seller-product-page.html"><img src="img/product_list.jpg" /></a></div>
+								<div class="productItem_name"><a href="seller-product-page.html">Nombre comercial</a></div>
+							</div>
+							<div class="productItem_bpart">
+								<table class="productItem_values">
+									<tr>
+										<td class="bold">Nombre genérico:</td>
+										<td>Nombre</td>
+									</tr>
+									<tr>
+										<td class="bold">Descripción:</td>
+										<td>Descripción</td>
+									</tr>
+									<tr>
+										<td class="bold">Presentación:</td>
+										<td>Presentación</td>
+									</tr>
+									<tr>
+										<td class="bold">Cantidad:</td>
+										<td>Concentration</td>
+									</tr>
+									<tr>
+										<td class="bold">Especialidad:</td>
+										<td>Med spec</td>
+									</tr>
+									<tr>
+										<td class="bold">Clave de cuadro básico:</td>
+										<td>ID</td>
+									</tr>								
+								</table>
+							</div>	
+							<div class="productItem_spart">
+								<div class="form"><div class="button"><input type="button" value="Borrar"></div></div>
+								<div class="form"><div class="button"><input type="button" value="Copiar"></div></div>
+							</div>
+						</li>
+						<li class="productItem">
+							<div class="productItem_mpart">
+								<div class="productItem_img"><a href="seller-product-page.html"><img src="img/product_list.jpg" /></a></div>
+								<div class="productItem_name"><a href="seller-product-page.html">Nombre comercial</a></div>
+							</div>
+							<div class="productItem_bpart">
+								<table class="productItem_values">
+									<tr>
+										<td class="bold">Nombre genérico:</td>
+										<td>Nombre</td>
+									</tr>
+									<tr>
+										<td class="bold">Descripción:</td>
+										<td>Descripción</td>
+									</tr>
+									<tr>
+										<td class="bold">Presentación:</td>
+										<td>Presentación</td>
+									</tr>
+									<tr>
+										<td class="bold">Cantidad:</td>
+										<td>Concentration</td>
+									</tr>
+									<tr>
+										<td class="bold">Especialidad:</td>
+										<td>Med spec</td>
+									</tr>
+									<tr>
+										<td class="bold">Clave de cuadro básico:</td>
+										<td>ID</td>
+									</tr>								
+								</table>
+							</div>	
+							<div class="productItem_spart">
+								<div class="form"><div class="button"><input type="button" value="Borrar"></div></div>
+								<div class="form"><div class="button"><input type="button" value="Copiar"></div></div>
+							</div>
+						</li>
+						<li class="productItem">
+							<div class="productItem_mpart">
+								<div class="productItem_img"><a href="seller-product-page.html"><img src="img/product_list.jpg" /></a></div>
+								<div class="productItem_name"><a href="seller-product-page.html">Nombre comercial</a></div>
+							</div>
+							<div class="productItem_bpart">
+								<table class="productItem_values">
+									<tr>
+										<td class="bold">Nombre genérico:</td>
+										<td>Nombre</td>
+									</tr>
+									<tr>
+										<td class="bold">Descripción:</td>
+										<td>Descripción</td>
+									</tr>
+									<tr>
+										<td class="bold">Presentación:</td>
+										<td>Presentación</td>
+									</tr>
+									<tr>
+										<td class="bold">Cantidad:</td>
+										<td>Concentration</td>
+									</tr>
+									<tr>
+										<td class="bold">Especialidad:</td>
+										<td>Med spec</td>
+									</tr>
+									<tr>
+										<td class="bold">Clave de cuadro básico:</td>
+										<td>ID</td>
+									</tr>								
+								</table>
+							</div>	
+							<div class="productItem_spart">
+								<div class="form"><div class="button"><input type="button" value="Borrar"></div></div>
+								<div class="form"><div class="button"><input type="button" value="Copiar"></div></div>
+							</div>
+						</li>
+						<li class="productItem">
+							<div class="productItem_mpart">
+								<div class="productItem_img"><a href="seller-product-page.html"><img src="img/product_list.jpg" /></a></div>
+								<div class="productItem_name"><a href="seller-product-page.html">Nombre comercial</a></div>
+							</div>
+							<div class="productItem_bpart">
+								<table class="productItem_values">
+									<tr>
+										<td class="bold">Nombre genérico:</td>
+										<td>Nombre</td>
+									</tr>
+									<tr>
+										<td class="bold">Descripción:</td>
+										<td>Descripción</td>
+									</tr>
+									<tr>
+										<td class="bold">Presentación:</td>
+										<td>Presentación</td>
+									</tr>
+									<tr>
+										<td class="bold">Cantidad:</td>
+										<td>Concentration</td>
+									</tr>
+									<tr>
+										<td class="bold">Especialidad:</td>
+										<td>Med spec</td>
+									</tr>
+									<tr>
+										<td class="bold">Clave de cuadro básico:</td>
+										<td>ID</td>
+									</tr>								
+								</table>
+							</div>	
+							<div class="productItem_spart">
+								<div class="form"><div class="button"><input type="button" value="Borrar"></div></div>
+								<div class="form"><div class="button"><input type="button" value="Copiar"></div></div>
+							</div>
+						</li>
+						<li class="productItem">
+							<div class="productItem_mpart">
+								<div class="productItem_img"><a href="seller-product-page.html"><img src="img/product_list.jpg" /></a></div>
+								<div class="productItem_name"><a href="seller-product-page.html">Nombre comercial</a></div>
+							</div>
+							<div class="productItem_bpart">
+								<table class="productItem_values">
+									<tr>
+										<td class="bold">Nombre genérico:</td>
+										<td>Nombre</td>
+									</tr>
+									<tr>
+										<td class="bold">Descripción:</td>
+										<td>Descripción</td>
+									</tr>
+									<tr>
+										<td class="bold">Presentación:</td>
+										<td>Presentación</td>
+									</tr>
+									<tr>
+										<td class="bold">Cantidad:</td>
+										<td>Concentration</td>
+									</tr>
+									<tr>
+										<td class="bold">Especialidad:</td>
+										<td>Med spec</td>
+									</tr>
+									<tr>
+										<td class="bold">Clave de cuadro básico:</td>
+										<td>ID</td>
+									</tr>								
+								</table>
+							</div>	
+							<div class="productItem_spart">
+								<div class="form"><div class="button"><input type="button" value="Borrar"></div></div>
+								<div class="form"><div class="button"><input type="button" value="Copiar"></div></div>
+							</div>
+						</li>
+						<li class="productItem">
+							<div class="productItem_mpart">
+								<div class="productItem_img"><a href="seller-product-page.html"><img src="img/product_list.jpg" /></a></div>
+								<div class="productItem_name"><a href="seller-product-page.html">Nombre comercial</a></div>
+							</div>
+							<div class="productItem_bpart">
+								<table class="productItem_values">
+									<tr>
+										<td class="bold">Nombre genérico:</td>
+										<td>Nombre</td>
+									</tr>
+									<tr>
+										<td class="bold">Descripción:</td>
+										<td>Descripción</td>
+									</tr>
+									<tr>
+										<td class="bold">Presentación:</td>
+										<td>Presentación</td>
+									</tr>
+									<tr>
+										<td class="bold">Cantidad:</td>
+										<td>Concentration</td>
+									</tr>
+									<tr>
+										<td class="bold">Especialidad:</td>
+										<td>Med spec</td>
+									</tr>
+									<tr>
+										<td class="bold">Clave de cuadro básico:</td>
+										<td>ID</td>
+									</tr>								
+								</table>
+							</div>	
+							<div class="productItem_spart">
+								<div class="form"><div class="button"><input type="button" value="Borrar"></div></div>
+								<div class="form"><div class="button"><input type="button" value="Copiar"></div></div>
+							</div>
+						</li>
+						<li class="productItem">
+							<div class="productItem_mpart">
+								<div class="productItem_img"><a href="seller-product-page.html"><img src="img/product_list.jpg" /></a></div>
+								<div class="productItem_name"><a href="seller-product-page.html">Nombre comercial</a></div>
+							</div>
+							<div class="productItem_bpart">
+								<table class="productItem_values">
+									<tr>
+										<td class="bold">Nombre genérico:</td>
+										<td>Nombre</td>
+									</tr>
+									<tr>
+										<td class="bold">Descripción:</td>
+										<td>Descripción</td>
+									</tr>
+									<tr>
+										<td class="bold">Presentación:</td>
+										<td>Presentación</td>
+									</tr>
+									<tr>
+										<td class="bold">Cantidad:</td>
+										<td>Concentration</td>
+									</tr>
+									<tr>
+										<td class="bold">Especialidad:</td>
+										<td>Med spec</td>
+									</tr>
+									<tr>
+										<td class="bold">Clave de cuadro básico:</td>
+										<td>ID</td>
+									</tr>								
+								</table>
+							</div>	
+							<div class="productItem_spart">
+								<div class="form"><div class="button"><input type="button" value="Borrar"></div></div>
+								<div class="form"><div class="button"><input type="button" value="Copiar"></div></div>
+							</div>
+						</li>
+						<li class="productItem">
+							<div class="productItem_mpart">
+								<div class="productItem_img"><a href="seller-product-page.html"><img src="img/product_list.jpg" /></a></div>
+								<div class="productItem_name"><a href="seller-product-page.html">Nombre comercial</a></div>
+							</div>
+							<div class="productItem_bpart">
+								<table class="productItem_values">
+									<tr>
+										<td class="bold">Nombre genérico:</td>
+										<td>Nombre</td>
+									</tr>
+									<tr>
+										<td class="bold">Descripción:</td>
+										<td>Descripción</td>
+									</tr>
+									<tr>
+										<td class="bold">Presentación:</td>
+										<td>Presentación</td>
+									</tr>
+									<tr>
+										<td class="bold">Cantidad:</td>
+										<td>Concentration</td>
+									</tr>
+									<tr>
+										<td class="bold">Especialidad:</td>
+										<td>Med spec</td>
+									</tr>
+									<tr>
+										<td class="bold">Clave de cuadro básico:</td>
+										<td>ID</td>
+									</tr>								
+								</table>
+							</div>	
+							<div class="productItem_spart">
+								<div class="form"><div class="button"><input type="button" value="Borrar"></div></div>
+								<div class="form"><div class="button"><input type="button" value="Copiar"></div></div>
+							</div>
+						</li>
+						<li class="productItem">
+							<div class="productItem_mpart">
+								<div class="productItem_img"><a href="seller-product-page.html"><img src="img/product_list.jpg" /></a></div>
+								<div class="productItem_name"><a href="seller-product-page.html">Nombre comercial</a></div>
+							</div>
+							<div class="productItem_bpart">
+								<table class="productItem_values">
+									<tr>
+										<td class="bold">Nombre genérico:</td>
+										<td>Nombre</td>
+									</tr>
+									<tr>
+										<td class="bold">Descripción:</td>
+										<td>Descripción</td>
+									</tr>
+									<tr>
+										<td class="bold">Presentación:</td>
+										<td>Presentación</td>
+									</tr>
+									<tr>
+										<td class="bold">Cantidad:</td>
+										<td>Concentration</td>
+									</tr>
+									<tr>
+										<td class="bold">Especialidad:</td>
+										<td>Med spec</td>
+									</tr>
+									<tr>
+										<td class="bold">Clave de cuadro básico:</td>
+										<td>ID</td>
+									</tr>								
+								</table>
+							</div>	
+							<div class="productItem_spart">
+								<div class="form"><div class="button"><input type="button" value="Borrar"></div></div>
+								<div class="form"><div class="button"><input type="button" value="Copiar"></div></div>
+							</div>
+						</li>	
+					</ul>
+					<div class="holder"></div>						
+					</div>												
+				</div>
+			</div>
+		</div>
+		<footer id="footer" class="adminFooter">
+			<div class="copyright">&copy 2015 <a href="#">Aviso de privacidad</a></div>
+		</footer>
+		
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="js/ie10-viewport-bug-workaround.js"></script>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+		<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/select2.min.js"></script>	
+		<script src="js/jPages.min.js"></script>	
+		<script src="js/scripts.js"></script>	
+	</body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout>
+    <loimport_import_index>
+       <reference name="content">
+            <block type="adminhtml/template" template="importexport/import/form/before.phtml" name="import.form.before" alias="form_before"/>
+            <block type="loimport/adminhtml_import_edit" name="import.form.container"/>
+            <block type="adminhtml/template" template="importexport/import/form/after.phtml" name="import.form.after" alias="form_after"/>
+        </reference>
+    </loimport_import_index>
+    <loimport_import_validate>
+        <block type="loimport/adminhtml_import_frame_result" template="importexport/import/frame/result.phtml" name="import.frame.result" alias="import_frame_result" output="toHtml"/>
+    </loimport_import_validate>
+    <loimport_import_start>
+        <block type="importexport/adminhtml_import_frame_result" template="importexport/import/frame/result.phtml" name="import.frame.result" alias="import_frame_result" output="toHtml"/>
+    </loimport_import_start>
+</layout>

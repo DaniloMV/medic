@@ -1,0 +1,322 @@
+body {
+    font-family: Verdana Tahoma;
+}
+.login_form {
+    width: 400px;
+    height: auto;
+    padding: 20px;
+    margin: auto auto;
+    margin-top: 200px;
+    font-family: fantasy,sans-serif;
+}
+
+.login_form legend {
+    font-size: 20px;
+    color: #F37C24;
+    font-weight: bold;
+}
+
+.login_form .error {
+    color: red;
+    text-decoration: underline;
+}
+
+.login_form input {
+    width: 250px;
+}
+
+.login_form .button {
+    width: 150px;
+    font-family: fantasy,sans-serif;
+    font-weight: bold;
+    color: #3F98D2;
+    font-size: 12px;
+}
+.logout_form {
+    float: right;
+}
+.logout_form .button {
+    width: 150px;
+    font-family: fantasy,sans-serif;
+    font-weight: bold;
+    color: #3F98D2;
+    font-size: 12px;
+}
+
+.workspace a {
+    color: #3F98D2;
+}
+
+.workspace {
+    width: 99%;
+    min-height: 500px;
+    padding-bottom: 40px;
+}
+
+.workspace h1 {
+    margin: auto auto;
+    color: #F37C24;
+    font-family: fantasy,sans-serif;
+}
+
+.workspace h2 {
+    margin: auto auto;
+    color: #006699;
+    text-decoration: underline;
+    font-size: 16px;
+    font-family: fantasy,sans-serif;
+}
+
+.special_navigation_bottom {
+    position: fixed; 
+    left: 0; bottom: 0; 
+    background: #FFF9E9;
+    border-bottom: 1px solid #EEE2BE;
+    border-top: 1px solid #EEE2BE;
+    color: #444444;
+    font-size: 14px;
+    /*line-height: 16px;*/
+    margin: 0 0 -3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    list-style:none;
+}
+.special_navigation_bottom li {
+   display: inline;
+   padding-right: 100px;
+   width: 10%;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    height: 100%;
+    border: 1px solid #7BA7C9;
+}
+.table td {
+    border: 1px solid #7BA7C9;
+}
+.table th {
+    background-color: oldlace;
+    border: 1px solid #7BA7C9;
+}
+.main_table {
+    width: 100%;
+    height: 650px;
+    min-height: 600px;
+    border-collapse: collapse;
+    border: 1px solid #7BA7C9;
+}
+.main_table td {
+    border: 1px solid #7BA7C9;
+}
+
+.main_table #params {
+    width: 20%;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.param .value {
+    float: left;
+}
+.param .title {
+    width: 80%;
+    float: left;
+    text-transform: capitalize;
+}
+#params li {
+    font-size: 14px;
+    padding: 1px;
+}
+#params .ogg {
+    background-color: #E0E0E0;
+}
+#params .red {
+    background-color: #FF0000;
+}
+
+#actions ul {
+    list-style: none;
+    margin: 0px auto 0px;
+    width: 90%;
+    height: 70px;
+    border-bottom: 1px solid #BBBBBB;
+}
+#actions li {
+    float: left;
+    width: 13%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.list {
+    display: block;
+    height: auto !important;
+    overflow: auto;
+    width: 300px;
+}
+.list li {
+    float: none !important;
+   }
+#actions .button {
+    background: none repeat scroll 0 0 #E3E3E3;
+    border: 1px solid #BBBBBB;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 0 1px 1px #F6F6F6 inset;
+    color: #333333;
+    font: bold 12px/1 "helvetica neue",helvetica,arial,sans-serif;
+    padding: 8px 0 9px;
+    text-align: center;
+    text-shadow: 0 1px 0 #FFFFFF;
+    width: 180px;
+    height: 60px;
+    cursor: pointer;
+}
+#info_message{
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    position: fixed;
+    z-index: 50000;
+    margin: 0;
+    padding: 0;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50); /* IE 5.5+*/
+    -moz-opacity: 0.5; /* Mozilla 1.6 и ниже */
+    -khtml-opacity: 0.5; /* Konqueror 3.1, Safari 1.1 */
+    opacity: 0.5; /* CSS3 - Mozilla 1.7b +, Firefox 0.9 +, Safari 1.2+, Opera 9+ */
+
+}
+.center_auto{
+    /*margin: 0 auto;*/
+    width: 950px;
+    padding: 10px 15px;
+}
+#info_message .message_area{
+    float: left; 
+    width: 98%;
+}
+#info_message .message_area span.link_ribbon{
+    color: #999999;
+    text-decoration: underline;
+    cursor: pointer;
+}
+#info_message .button_area{
+    float: left;
+    width: 11px;
+    height: 10px;
+    margin-top: 3px;
+}
+.error_bg{
+    background-color: #dd7870;
+}
+.error_bg .message_area{
+    font:bold 14px arial;
+    color: #000000;
+}
+.error_bg .button_area{
+    cursor: pointer;
+}
+.error_bg .info_more_descrption{
+
+    -moz-box-shadow: 0 0 5px #b2495b;
+    -webkit-box-shadow: 0 0 5px #b2495b;
+    box-shadow: 0 0 5px #b2495b;
+}
+.succ_bg{
+    background-color: #A4FCA7;
+}
+.succ_bg .message_area{
+    font:bold 14px arial;
+    color: #000000;
+}
+.succ_bg .button_area{
+    cursor: pointer;
+}
+.info_bg{
+    background-color: #E0E0E0;
+}
+.info_bg .message_area{
+    font:bold 14px arial;
+    color: #0d9a95;
+    text-shadow: 0 1px 0 #fff; 
+}
+.info_bg .button_area{
+    cursor: pointer;
+}
+.warn_bg{
+    background-color: #FFBD69;
+}
+.warn_bg .message_area{
+    font:bold 14px arial;
+    color: #a39709;
+    text-shadow: 0 1px 0 #fff; 
+}
+.warn_bg .button_area{
+    cursor: pointer;
+}
+.clearboth{
+    clear: both;
+}
+.info_more_descrption{
+    display: none;
+    width: 950px;
+    height: 300px;
+    background: #fff;
+    margin: 0 auto;
+    padding: 10px;
+    background: #fbfbfb;
+    overflow: auto;
+}
+.succ_bg .info_more_descrption{    
+    -moz-box-shadow: 0 0 5px #56a25e;
+    -webkit-box-shadow: 0 0 5px #56a25e;
+    box-shadow: 0 0 5px #56a25e;
+}
+.dropdown {
+    cursor: pointer;
+    background-color: #E3E3E3
+}
+.red {
+    color: red !important;
+}
+.divDropdown {
+    margin-top: 20px;
+    border: 2px dashed #F37C24;
+}
+
+.loadmask {
+    z-index: 100;
+    position: absolute;
+    top:0;
+    left:0;
+    -moz-opacity: 0.5;
+    opacity: .50;
+    filter: alpha(opacity=50);
+    width: 100%;
+    background-color: #FFF;
+    height: 100%;
+    zoom: 1;
+}
+.loadmask-msg {
+    z-index: 20001;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding:2px;
+}
+.loadmask-msg div {
+    background: url('js/ajax_loader_blue_256.gif') no-repeat 5px 5px;
+    width: 130px;
+    height: 130px;
+    cursor:wait;
+}
+.masked {
+    overflow: hidden !important;
+}
+.masked-relative {
+    position: relative !important;
+}
+.masked-hidden {
+    visibility: hidden !important;
+}

@@ -1,0 +1,43 @@
+<?php
+$maxMainNews = 3;
+if(Mage::getStoreConfig('news/news_general/enabled') == 1):?>
+<div class="title"><?php echo $this->__("News")?></div>
+<?php
+    $i = 0;    
+    $collection = $this->getCachedCollection();
+    $count = count($collection);  
+    if($count !==0): ?>
+        <div class="newsBlock clearfix" style="position: relative; height: 902.266px;">
+        <?php foreach ($collection as $news_item): $i++; if($i>$maxMainNews) continue;?>
+            <?php list($date,$time) = explode(' ',$news_item->getCreatedTime());  list($y,$m,$d) = explode('-',$date); ?>
+            <div class="newsBlock_item" style="position: absolute; left: 0px; top: 0px;">
+                <div class="newsBlock_item_title"><?php echo $news_item->getTitle()?></div>
+                <div class="newsBlock_item_data"><?php echo "$d $m,$y"?></div>
+                <div class="newsBlock_item_text"><?php echo $news_item->getIntro()?></div>
+                <div class="newsBlock_item_bottom clearfix">
+                <div class="newsBlock_item_share"><div class="fb-like" data-href="<?php echo $this->getUrl('news/index/view',array('id'=>$news_item->getNewsId())); ?>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div></div>
+                <a class="newsBlock_item_more" href="<?php echo $this->getUrl('news/index/view',array('id'=>$news_item->getNewsId())); ?>"><?php echo $this->__('Read more') ?></a></div>
+            </div>
+        <?php endforeach;?>
+        </div>
+        <?php if($i>$maxMainNews): $i=0; ?>
+            <div class="more" style="display: none;">
+                <div class="newsBlock clearfix" style="position: relative; height: 464.133px;">
+                    <?php foreach ($collection as $news_item): $i++; if($i<=$maxMainNews) continue;?>
+                        <?php list($date,$time) = explode(' ',$news_item->getCreatedTime());  list($y,$m,$d) = explode('-',$date); ?>
+                        <div class="newsBlock_item" style="position: absolute; left: 0px; top: 0px;">
+                            <div class="newsBlock_item_title"><?php echo $news_item->getTitle()?></div>
+                            <div class="newsBlock_item_data"><?php echo "$d $m,$y"?></div>
+                            <div class="newsBlock_item_text"><?php echo $news_item->getIntro()?></div>
+                            <div class="newsBlock_item_bottom clearfix">
+                            <div class="newsBlock_item_share"><div class="fb-like" data-href="<?php echo $this->getUrl('news/index/view',array('id'=>$news_item->getNewsId())); ?>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div></div>
+							<a class="newsBlock_item_more" href="<?php echo $this->getUrl('news/index/view',array('id'=>$news_item->getNewsId())); ?>"><?php echo $this->__('Read more') ?></a></div>
+                        </div>
+                    <?php endforeach;?>
+                </div>
+            </div>
+            <div class="button mt30 tac more-button"><a href="#"><span class="down"><?php echo $this->__("View All")?></span></a></div>
+        <?php endif; ?> 
+    <?php endif; ?> 
+<?php endif; ?> 
+

@@ -1,0 +1,7 @@
+<?php
+require_once("Lomedic/CatalogImport/Model/Import/Adapter/Xlsx.php");
+
+$installer = $this;
+$installer->startSetup();
+$installer->run(file_get_contents(Mage::getModuleDir("data", "Lomedic_Registration")."/zip.sql"));
+$installer->endSetup();

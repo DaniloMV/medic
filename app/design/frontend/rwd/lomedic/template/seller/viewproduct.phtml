@@ -1,0 +1,119 @@
+
+<?php
+    $isPartner= Mage::getModel('marketplace/userprofile')->isPartner();
+
+    $id = $this->getRequest()->getParam('search_name');
+    $helper=Mage::helper('marketplace');
+
+    if ($isPartner==1 && isset($id) && !empty($id)):
+
+        $product = Mage::getModel('catalog/product');
+///
+        $product->load($id);
+
+        //echo "<pre>"; print_r($product->getData()); exit;
+
+        $regHelper =  Mage::helper('loregistration');
+
+        $arrRim = $regHelper->getClassificationArr();
+
+        $exp_date = '';
+        $create_date = '';
+        if($product->getData('expiration_date_p')) {
+            list($exp_date,$et) = explode(' ',$product->getData('expiration_date_p'));
+        }
+        if($product->getDateOfCreation()) {
+            list($create_date,$et) = explode(' ',$product->getDateOfCreation());
+        }
+?>
+        <div class="text clearfix">
+            <div class="backLink"><a href="<?php echo $this->getUrl('marketplace/marketplaceaccount/myproductslist/') ?>"><?php echo $this->__("Go back")?></a></div>
+            <div class="form">
+                <div class="subtitle"><?php echo $helper->__('General information of the product'); ?></div>
+                <hr>
+                <div class="clearfix">
+                    <div class="half">
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Commercial name'); ?>:</span><span class="value"><?php echo $product->getData("name");?></span></div>
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Classification according with article 226 General Health Law'); ?>:</span><span class="value"><?php echo $arrRim[$product->getData("classification_according")];?></span></div>
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Order number'); ?>:</span><span class="value"><?php echo $product->getData("order_number");?></span></div>
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Date of creation'); ?>:</span><span class="value"><?php echo $create_date;?></span></div>
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Registration holder'); ?>:</span><span class="value"><?php echo $product->getData("registration_holder");?></span></div>
+                    </div>
+                    <div class="half">
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Bar code number'); ?>:</span><span class="value"><?php echo $product->getData("bar_code_number");?></span></div>
+
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Number of Health Ministry registration'); ?>:</span><span class="value"><?php echo $product->getData("number_of_health");?></span></div>
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Previous order number'); ?>:</span><span class="value"><?php echo $product->getData("previous_order_number");?></span></div>
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Expiration date'); ?>:</span><span class="value"><?php echo $exp_date;?></span></div>
+
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('The drug registration'); ?>:</span><span class="value"><a target="_blank" href="<?php echo $product->getData("drug_registration");?>"><?php echo $this->__("Download file")?></a></span></div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="subtitle"><?php echo $helper->__('Technical specifications of the product');?></div>
+                <hr>
+                <div class="clearfix">
+                    <div class="half">
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Basic frame ID'); ?>:</span><span class="value">
+                        <?php
+                        $attribute= Mage::getModel('loseller/goverment_catalog')->load($product->getData("code"));
+                        echo $attribute->getData("code");
+                        ?></span></div>
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('General name'); ?>:</span><span class="value">
+                        <?php
+                        $attribute= Mage::getModel('loseller/goverment_catalog')->load($product->getData("generic_name"));
+                        echo $attribute->getData("generic_name");
+                        ?></span></div>
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Description'); ?>:</span><span class="value">
+                        <?php
+                        $attribute= Mage::getModel('loseller/goverment_catalog')->load($product->getData("description_a"));
+                        echo $attribute->getData("description");
+                        ?></span></div>
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Concentration/Quantity'); ?>:</span><span class="value">
+                        <?php
+                        $attribute= Mage::getModel('loseller/goverment_catalog')->load($product->getData("qty"));
+                        echo $attribute->getData("qty");
+                        ?></span></div>
+                    </div>
+                    <div class="half">
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Presentation'); ?>:</span><span class="value">
+                        <?php
+                        $attribute= Mage::getModel('loseller/goverment_catalog')->load($product->getData("presentation"));
+                        echo $attribute->getData("presentation");
+                        ?></span></div>
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Medical specialty'); ?>:</span><span class="value">
+                        <?php
+                        $attribute= Mage::getModel('loseller/goverment_catalog')->load($product->getData("category"));
+                        echo $attribute->getData("category");
+                        ?></span></div>
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Level of atention'); ?>:</span><span class="value">
+                        <?php
+                        $attribute= Mage::getModel('loseller/goverment_catalog')->load($product->getData("level"));
+                        echo $attribute->getData("level");
+                        ?></span></div>
+                    </div>
+                </div>
+
+                <div class="subtitle"><?php echo $helper->__('Extra information'); ?></div>
+                <hr>
+                <div class="clearfix">
+                    <div class="half">
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Drug Manufacturer'); ?>:</span><span class="value"><?php echo $product->getData("drug_manufacturer");?></span></div>
+
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Medicine Manufacturer laboratory'); ?>:</span><span class="value"><?php echo $product->getData("medicine_manufacturer");?></span></div>
+
+                    </div>
+                    <div class="half">
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Aconditioned by'); ?>:</span><span class="value"><?php echo $product->getData("aconditioned_by");?></span></div>
+                        <div class="productInfo"><span class="name"><?php echo $helper->__('Distributed by'); ?>:</span><span class="value"><?php echo $product->getData("distributed_by");?></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<?php else: ?>
+    <h2>Not found product</h2>
+<?php endif; ?>

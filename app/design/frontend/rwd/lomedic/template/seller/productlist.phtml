@@ -1,0 +1,116 @@
+<?php
+$isPartner= Mage::getModel('marketplace/userprofile')->isPartner(); 
+$helper= Mage::helper('marketplace');
+$delimiter = '/';
+$fullActionName = Mage::app()->getRequest()->getRequestedRouteName().$delimiter.Mage::app()->getRequest()->getRequestedControllerName().$delimiter.Mage::app()->getRequest()->getRequestedActionName();
+if($isPartner==1): ?>
+    <div class="wk_mp_design">
+        
+        <hr>
+        
+        <div>
+            <div class="grid">
+                <div class="hor-scroll">
+                    <?php 
+                    if(count($this->getCollection())==0): ?>		
+                        <div class="fieldset wk_mp_fieldset">
+                            <div class="wk_emptymsg">
+                                <?php echo $helper->__('No Batch Available') ?>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                    <table cellspacing="0" class="dealerActionsTbl">
+                        <thead>
+                            <tr class="headings">
+                                <th class="">
+                                    <span class="name">
+                                        <?php echo $this->__('Batch')?>
+                                    </span>
+                                </th>
+                                <th class="">
+                                    <span class="name">
+                                        <?php echo $this->__('Product Name')?>
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="pro_status">
+                                        <?php echo $this->__('Expiration date')?>
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="qty">
+                                        <?php echo $this->__('Quantity of primary boxes')?>
+                                    </span>
+                                </th>
+                                <th>
+                                    <span class="qty">
+                                        <?php echo $this->__('Price')?><br>
+                                        <span class="small"><?php echo $this->__('(Private/Government)'); ?></span>
+                                    </span>
+                                </th>
+                                <?php if($fullActionName=='loseller/marketplaceaccount/batches' || $fullActionName=='loseller/marketplaceaccount/filterProductListAjax'): ?>
+                                <th>
+                                    <span class="qty">
+                                    </span>
+                                </th>
+                                <?php endif;?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                            $i = 0;
+                            foreach($this->getCollection() as $products):
+                                $i++;
+                                $productMediaConfig = Mage::getModel('catalog/product_media_config');
+                                $salesdetail=Mage::getModel('marketplace/saleslist')->getSalesdetail($products->getEntityId());
+                                ?>
+                                <tr style="cursor: pointer;" class=" <?php echo $class = ($i == count($this->getCollection()))? 'wk_last_tr':''?>">
+                                    <td onclick="location.href='<?php echo $this->getUrl('*/*/batchedit',array('id'=>$products->getEntityId()))?>'" class="">
+                                        <input type="hidden" class="hidden_id" value="<?php echo $products->getEntityId(); ?>" />
+                                        <?php echo $products->getBatchNumber();?>
+                                    </td>
+                                    <td onclick="location.href='<?php echo $this->getUrl('*/*/batchedit',array('id'=>$products->getEntityId()))?>'" class="">
+                                        <?php echo $products->getName();?>
+                                    </td>
+                                    <td onclick="location.href='<?php echo $this->getUrl('*/*/batchedit',array('id'=>$products->getEntityId()))?>'">
+                                        <?php list($date,$time) = explode(' ',$products->getExpirationDate());?>
+                                        <?php echo $date; ?>
+                                    </td>
+                                    <td onclick="location.href='<?php echo $this->getUrl('*/*/batchedit',array('id'=>$products->getEntityId()))?>'">
+                                        <?php echo (round($products->getQty())>0?round($products->getQty()):$this->__('Out of stock')); ?>
+                                    </td>
+                                    <td onclick="location.href='<?php echo $this->getUrl('*/*/batchedit',array('id'=>$products->getEntityId()))?>'">
+                                        <?php echo Mage::helper('core')->currency($products->getPrivatePrice(), true, false); ?>/<?php echo Mage::helper('core')->currency($products->getGovPrice(), true, false); ?>
+                                        
+                                    </td>
+                                    <?php if($fullActionName=='loseller/marketplaceaccount/batches' || $fullActionName=='loseller/marketplaceaccount/filterProductListAjax'): ?>
+                                    <td>
+                                        <div class="">
+                                            <a class="button" onclick="deleteBatch('<?php echo $products->getId()?>');" href="#">
+                                                <?php echo $this->__('Delete')?>
+                                            </a>
+                                        </div>
+                                    </td>
+                                <?php endif;?>
+                                </tr>
+                            <?php endforeach;?>
+                        </tbody>
+                    </table>
+                <?php endif; ?>
+                </div>
+            </div>
+        </div>	
+    </div>
+<?php else:
+    echo "<h2 class='wk_new_msg'>".$helper->__("To BECOME SELLER PLEASE CONTACT TO ADMIN.")."</h2>";
+endif;
+?>
+<script type="text/javascript">
+    function deleteBatch(batchId) {
+        if(confirm('<?php echo $this->__("Are you sure you want to delete these batch?")?>')) {
+            window.location.href="<?php echo $this->getUrl('loseller/marketplaceaccount/deletebatch')?>"+"id/"+batchId;
+            return true;
+        }
+        return false;
+    }
+</script>

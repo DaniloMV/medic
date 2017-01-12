@@ -1,0 +1,98 @@
+
+<div class="text">
+    <h1 class="tac mt30"><?php echo $this->__('Status of the process of registration')?></h1>
+    <div class="subtitle tac"><?php echo $this->__("Your personal recruiter is: %s %s",$this->getRecruter()?$this->getRecruter()->getName():"Not assigned",$this->getRecruter()?$this->getRecruter()->getEmail():"")?></div>
+    <p class="tac"><?php echo $this->__("On this step your personal recruiter will contact you for visit appointment.  If you have any questions please contact with us by using our online chat or write to us from our support page");?></p>
+    <p class="tac"><a href="<?php echo $this->getSupportUrl()?>"><?php echo $this->__('Support')?></a></p>
+    <ul class="registerSteps">
+        <li class="filled"><a href="<?php echo $this->getUrl('*/*/step1')?>"><?php echo $this->__('Registration request')?></a></li>
+        <li class="filled"><?php if($this->getPage2Url()):?>
+                <a href="<?php echo $this->getPage2Url()?>"><?php echo $this->__('Pre-registration form')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Pre-registration form')?>
+            <?php endif;?>
+        </li>
+        <li class="filled">
+            <?php if($this->getPage3Url()):?>
+                <a href="<?php echo $this->getPage3Url()?>"><?php echo $this->__('Documentation')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Documentation')?>
+            <?php endif;?>
+        </li>
+        <li class="active">
+            <?php if($this->getPage4Url()):?>
+                <a href="<?php echo $this->getPage4Url()?>"><?php echo $this->__('Visit\Validation')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Visit\Validation')?>
+            <?php endif;?>
+        </li>
+        <li><?php if($this->getPage5Url()):?>
+                <a href="<?php echo $this->getPage5Url()?>"><?php echo $this->__('Contract')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Contract')?>
+            <?php endif;?>
+        </li>
+    </ul>
+    <div class="visit">
+        <div class="visit_cell" style="margin-bottom: 30px; display: block;">
+            <div id="datetimepicker"></div>
+        </div>
+
+        <div class="visit_cell">
+            <div class="subtitle"><?php echo $this->__("Day and time of the visit:")?></div>
+            <p>
+                <?php if($this->getCustomer()->getVisitDate() || $this->getCustomer()->getVisitAddress() ):?>
+                    <?php echo $this->getCustomer()->getVisitDate()?date('d-m-Y h:i A', strtotime($this->getCustomer()->getVisitDate())):"";?>
+                <?php else: ?>
+                    <?php echo $this->__("The visit will be appointed soon! Your recruiter will contact you.")?>
+                <?php endif; ?>
+            </p>
+            <div class="subtitle">
+                <?php echo $this->__("Place of the visit:")?>
+            </div>
+            <p>
+                <?php if($this->getCustomer()->getVisitDate() || $this->getCustomer()->getVisitAddress() ):?>
+                    <?php echo $this->getCustomer()->getVisitAddress()?str_replace("\n","<br>",$this->getCustomer()->getVisitAddress()):"";?>
+                <?php endif; ?>
+            </p>
+            <?php if($this->getCustomer()->getVisitDate() || $this->getCustomer()->getVisitAddress() ):?>
+                <div class="subtitle"><?php echo $this->__("Attention!")?></div>
+                <p style="color:red;">
+                <?php echo $this->__("If you want to change appointed visit date or time  please contact your personal recruiter!")?>
+                </p>
+            <?php else: ?>
+                <p><?php echo $this->__("Recruiter will contact you to check your address.")?></p>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php if($this->getCustomer()->getVisitMessage()):?>
+        <div>
+            <div class="subtitle">
+                <?php echo $this->__("Comment from your personal recruiter")?>:
+            </div>
+            <div style="margin-top: 20px;">
+                <div style="width: 125px; float: left;"><?php echo substr($this->getCustomer()->getVisitDateUpdate(),0,10);?></div>
+                <div><?php echo $this->getCustomer()->getVisitMessage();?></div>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
+<script>
+    var lang = '<?php echo Mage::app()->getLocale()->getLocaleCode();?>';
+    var date = '<?php echo $this->getCustomer()->getVisitDate();?>';
+    var index = date.lastIndexOf(" ");
+    var date = date.substring(0,index);
+
+    var eng = 'es';
+    if(lang == 'en_US'){
+        eng = 'en';
+    }
+    jQuery('#datetimepicker').datetimepicker({
+        //format:'d.m.Y H:i',
+        inline:true,
+        lang: eng,
+        value:date,
+        timepicker:false,
+        format:'Y-m-d'
+    });
+</script>

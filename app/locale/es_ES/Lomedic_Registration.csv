@@ -1,0 +1,1092 @@
+"# of Use","# de uso"
+"%1$s incl tax.","%1$ incluido impuesto."
+"%s - %s","%s - %s"
+"%s Item(s)","%s Artículo(s)"
+"(Copy data from: %s)","(copiar datos desde: %s)"
+"(Will make search for the query above return results for this search.)","(Se buscará; en los resultados anteriores para que regrese resultados para esta búsqueda.)"
+"* Required Fields","* Campos requeridos"
+"-- Please Select --","-- Por favor, seleccione --"
+"Add Root Category","Añadir categoria padre"
+"Add New Row","Añadir nueva fila"
+"Add New Option","Añadir nueva opción"
+"Add Subcategory","Añadir subcategoria"
+"Add Tax","Añadir Impuesto"
+"Action","Acción"
+"Zoom In","Acercar"
+"Update","Actualizar"
+"Update assigned product","Actualizar asignación de producto"
+"Update Attributes","Actualizar atributos"
+"Update attributes","Actualizar atributos"
+"Update category","Actualizar categoría"
+"Update product image","Actualizar imagen del producto"
+"Update Tier Price","Actualizar nivel de precios"
+"Update product tier prices","Actualizar precio del producto"
+"Update product","Actualizar producto"
+"Update product link","Actualizar vínculo del producto"
+"Currently Shopping by","Actualmente está comprando por"
+"Add to Wishlist","Agregar a la lista de artículos de interés"
+"Add to Compare","Agregar a la lista de comparación"
+"Add to My Wishlist","Agregar a mi lista de artículos de interés"
+"Add to Cart","Agregar al carrito"
+"Add Items to Cart","Agregar artículos al carrito"
+"Add Product To Websites","Agregar el producto a los websites"
+"Add New Images","Agregar nuevas imágenes"
+"Add New","Agregar nuevo"
+"Add Attribute","Agregar un atributo"
+"Add Design Change","Agregar un cambio de diseño"
+"Add Group","Agregar un grupo"
+"Add New Attribute","Agregar un nuevo atributo"
+"Add New Set","Agregar un nuevo conjunto"
+"Add New Attribute Set","Agregar un nuevo conjunto de atributos"
+"Add Tier","Agregar un nuevo escalón"
+"Add New Group","Agregar un nuevo grupo"
+"Add New Search Term","Agregar un nuevo término de búsqueda"
+"Add Product","Agregar un producto"
+"Add Option","Agregar una opción"
+"Scope","Alcance"
+"Catalog Price Scope","Alcance del precio del catálogo"
+"Zoom Out","Alejar"
+"Product Alerts","Alertas del producto"
+"Maximum image height","Altura máxima de la imagen"
+"AM","AM"
+"Maximum image width","Ancho máximo de la imagen"
+"Last Name","Apellido"
+"Category attributes API","API atributos categoria"
+"Product attributes API","API atributos del producto"
+"Category API","API categoria"
+"Product attribute sets API","API conjunto de atributos del producto"
+"Product links API (related, cross sells, up sells)","API de los vínculos de los productos (relacionados, ventas cruzadas, más vendidos...)"
+"Product Images API","API imagen del producto"
+"Product Tier Price API","API nivel de precios de productos"
+"Product API","API producto"
+"Product types API","API tipos de producto"
+"Apply To","Aplicar a"
+"Apply To Configurable/Grouped Product","Aplicar a productos configurables/agrupados"
+"Approved","Aprobado"
+"Image file not found","Archivo de imagen no encontrado"
+"Text Area","Area de texto"
+"Top/Right","Arriba/Derecha"
+"Top/Left","Arriba/Izquierda"
+"Items %s to %s of %s total","Artículos %s a %s de %s totales"
+"Assigned Products","Asignación de Productos"
+"Assign","Asignar"
+"Assign product to category","Asignar a la categoría de productos"
+"Assign product link","Asignar producto vínculo"
+"Cart Item Attribute","Atributo del artículo del carrito"
+"Product Attribute","Atributo del producto"
+"Unknown attribute: %s","Atributo desconocido: %s"
+"Attributes","Atributos"
+"Product Attributes","Atributos del producto"
+"Unassigned Attributes","Atributos sin asignar"
+"Autogenerate","Autogenerar"
+"Are you sure you would like to remove all products from your comparison?","¿Esta seguro de eliminar todos los productos de su comparación?"
+"Are you sure you would like to remove this item from the compare products?","¿Está seguro de que quiere eliminar este producto de la lista de comparación?"
+"Based On","Basado en"
+"Search","Búsqueda"
+"Invalid block: %s","Block inválido: %s"
+"Block after Info Column","Bloque después de la columna de Información"
+"Static block only","Bloque estático solamente"
+"Static block and products","Bloque estático y productos"
+"Delete","Borrar"
+"Delete Attribute","Borrar atributo"
+"Delete Search","Borrar búsqueda"
+"Delete Category","Borrar categoría"
+"Delete Attribute Set","Borrar conjunto de atributos"
+"Delete Selected Group","Borrar el grupo seleccionado"
+"Delete Option","Borrar opción"
+"Clear All","Borrar todo"
+"Clear All Items","Borrar todos los articulos"
+"Searchable","Buscable"
+"Browse By","Buscar por"
+"each","Cada"
+"Change","Cambiar"
+"Change status","Cambiar el estado"
+"Change or Retrieve attribute store view","cambiar o recuperar atributo de la vista de la tienda"
+"Text Field","Campo de texto"
+"Qty","Cantidad"
+Ordered qty,Cantidad pedida
+"Qty for Item's Status to become Out of Stock","Cantidad de elementos antes de estar fuera de existencia"
+"Maximum Qty Allowed in Shopping Cart","Cantidad máxima permitida en el carrito de compras"
+"Minimum Qty Allowed in Shopping Cart","Cantidad mínima permitida en el carrito de compras"
+"Minimum Qty for Item's Status to be Out of Stock","Cantidad minima para que el estado del artículo sea ""sin existencias"""
+"Default Qty","Cantidad por defecto"
+"Letters","Cartas"
+"Catalog","Catálogo"
+"Catalog Section","Catálogo de la sección"
+"Catalog, Search","Catálogo, Búsqueda"
+"Category","Categoría"
+"Category deleted","Categoría borrada"
+"Category saved","Categoría grabada"
+"Invalid category","Categoría no válida"
+"Parent Category","Categoría padre"
+"Categories","Categorías"
+"categories","Categorías"
+"Product Categories","Categorías del producto"
+"Category Top Navigation","Categoria Padre"
+"Category URL Suffix","Categoria Sufijo URL"
+"SKU","Código"
+"Attribute Code","Código del atributo"
+"Missing SKU, skipping the record","Código perdido, se omite el registro"
+"Close Window","Cerrar la ventana"
+"Collapse All","Cerrar todo"
+"Set root category for this store in the <a href=""%s"">configuration</a>","Colocar la categoría raiz para esta tienda en la <a href=""%s"">configuración</a>"
+"Conditions Combination","Combinación de condiciones"
+"Customers Reviews","Comentarios de los clientes"
+"Products Reviews","Comentarios de los productos"
+"Product Reviews","Comentarios del producto "
+"Pending Reviews RSS","Comentarios pendientes por RSS"
+"Starting at:","Comenzando desde:"
+"Comparable","Comparable"
+"Comparable on Front-end","Comparable en el Frontend"
+"Compare Items","Comparar artículos"
+"Compare Products List","Comparar la lista de productos"
+"Compare Products","Comparar productos"
+"Compare Products (%d)","Comparar productos (%d)"
+"Compare Products - %d Items","Comparar productos - %d artículos"
+"Buy %1$s for %2$s","Comprar %1$s por %2$s"
+"Buy %1$s for %2$s (%3$s incl. tax) each","Comprar %1$s por %2$s (%3$s incl. impuestos)"
+"Buy %1$s for %2$s each","Comprar cada  %1$s por %2$s"
+"Shop by","Comprar por"
+"Check items to add to the cart or","Compruebe los elementos a añadir a la cesta o"
+"Super product attributes configuration","Configuración de los atributos de super productos"
+"Configurable Product Settings","Configuracion de los productos configurables"
+"Settings","Configuraciones"
+"Set Root Category For Store","Configurar la categoría raíz para la tienda"
+"Set Ascending Direction","Configurar sentido ascendente"
+"Set Descending Direction","Configurar sentido descendente"
+"Attribute Set","Conjunto de atributos"
+"Get special price","Consigue precio especial"
+"Search Query","Consulta de búsqueda"
+"Product Image Placeholders","Contenedores para las imágenes de los productos"
+"Continue","Continuar"
+"Options Control","Control de opciones"
+"Copy From Configurable","Copiar del configurable"
+"Email","Correo electrónico"
+"Quick Create","Creación rápida"
+"Quick simple product creation","Creación rápida de producto simple"
+"Create","Crear"
+"Create (Upload)","Crear (Subir)"
+"Create Product Settings","Crear configuraciones de productos"
+"Create new category","Crear nueva categoría"
+"Create new product","Crear nuevo producto"
+"Create Simple Associated Product","Crear producto simple asociado"
+"Create Empty","Crear vacío"
+"Grid","Cuadricula"
+"Category Data","Datos de la categoría"
+"Options is required","Debe elegir la opción"
+"must be in the allowed values list","Debe estar en la lista de valores permitidos"
+"Decimal","Decimal"
+"Declare attribute value saving scope","Declarar el alcance del valor del atributo a grabar"
+"leave blank if its not an image","Dejar en blanco si no hay una imagen"
+"Depends on design theme","Depende del diseño/tema"
+"Product Description","Descripción del producto"
+"Quick Overview","Descripción rápida"
+"Description","Description"
+"unselect all","deseleccionar todo"
+"Disabled","Deshabilitado"
+"Dropdown","Desplegable"
+"Design","Diseño"
+"Custom Design","Diseño personalizado"
+"Availability","Disponibilidad"
+"Stock Availability","Disponibilidad en existencia"
+"Availability: In stock.","Disponibilidad: En existencia"
+"Availability: Out of stock.","Disponibilidad: No se encuentra en existencia."
+"Double click on above image to view full picture","Doble click en la imagen para abrir/cerrar"
+"Double click on a group to rename it","Doble click en un grupo para renombrarlo"
+"Duplicate","Duplicar"
+"Duplicate website tier price customer group and quantity.","Duplicar el precio escalonado, el grupo de clientes y la cantidad del sitio web "
+"Duplicate website, country and state tax found.","Duplicar página web, país y impuestos encontrados."
+"Globally Editable","Editable en forma global"
+"Edit","Editar"
+"Edit Product Attribute","Editar el atributo del producto"
+"Edit Product Attribute ""%s""","Editar el atributo del producto ""%s"""
+"Edit Attribute Set '%s'","Editar el conjunto de atributos '%s'"
+"Edit Search","Editar la búqueda"
+"Edit Search '%s'","Editar la búqueda '%s'"
+"ex. http://domain.com","ej. http://dominio.com"
+"Invalid attribute %s","El atributo %s no es correcto"
+"Product attribute was successfully deleted","El atributo del producto fue borrado con éxito"
+"Product attribute was successfully saved","El atributo del producto fue grabado con éxito"
+"Review successfully deleted","El comentario fue borrado con éxito"
+"Review was successfully saved","El comentario fue grabado con éxito"
+"Review was saved successfully","El comentario fue grabado con éxito"
+"Invalid attribute set specified, skipping the record","El conjunto de atributos especificado es inválido, se omite el registro"
+"Filter must be as object. Set correct filter please","El filtro debe ser un objeto. Seleccione el filtro correcto"
+"Flat Catalog module has a limit of %2$d filterable and/or sort able attributes. Currently there are %1$d. Please reduce the number of filterable/sort able attributes in order to use this module.","El filtro del catalogo esta limitado a %2$d. Actualmente hay%1$d. Reduce el número de filtros en este módulo."
+"File options format is not valid","El formato de fichero no és válido"
+"Attribute group with the ""/name/"" name already exists","El grupo de atributo ""/ name/"" ya existe"
+"Invalid option id specified for %s (%s), skipping the record","El ID de opción especificado para %s (%s) es inválido, se omite el registro"
+"Attribute model not defined","El modelo del atributo no está; definido"
+"Filter model name must be declared","El nombre del modelo de filtro debe estar declarado"
+"Product %s successfully added to compare list","El producto %s fue agregado con éxito a la lista de comparación"
+"Product %s successfully removed from compare list","El producto %s fue quitado con éxito de la lista de comparación"
+"Visible on Product View Page on Front-end","El producto es visible en la parte pública"
+"Product was successfully created.","El producto fue creado con éxito."
+"Product was successfully saved.","El producto fue grabado con éxito."
+"Product has required options","El producto ha requerido opciones"
+"Web Site Store Must be checked","El sitio Web de la tienda debe ser verificado"
+"Web Site Item Must be checked","El sitio web debe ser comprobado"
+"Search Term with such search query already exist.","El término de búsqueda con dicha consulta de búsqueda ya existe."
+"Search Term was successfully saved","El término de búsqueda fue grabado con éxito"
+"Invalid image file type","El tipo de archivo de la imagen es inválido"
+"Image type and information need to be specified for each store view.","El tipo de imagen y la información deben ser especificos para cada vista de tienda."
+"Invalid product type specified, skipping the record","El tipo de producto especificado es inválido, omitiendo el registro"
+"Link product not exists.","El vínculo del producto no existe."
+"Remove product assignment","Eliminar assignación de productos"
+"Delete category","Eliminar categoría"
+"Remove Product From Websites","Eliminar el producto de los websites"
+"Remove product link","Eliminar el vínculo del producto"
+"Delete Row","Eliminar fila"
+"Remove product image","Eliminar la imagen del producto"
+"Delete product","Eliminar producto"
+"In stock","En existencia"
+"In Stock","En existencia"
+"In stock.","En existencia."
+"Nowhere","En ningún lugar"
+"Integer","Entero"
+"Email to a Friend","Envíe un correo sobre el producto"
+"Send Count","Enviar conteo"
+"Error while adding customers for %s alert. Message: %s","Error al agregar clientes %s a la alerta. Mensaje: %s"
+"Category delete error","Error al borrar la categoría"
+"Product saving error.","Error al grabar el producto"
+"Error while saving this group. Please try again later.","Error al grabar este grupo. Por favor, intente más tarde."
+"Error while saving this group. Group with the same name already exists.","Error al grabar este grupo. Ya existe un grupo con el mismo nombre."
+"Category move error","Error al mover la categoría"
+"Error during retrieval of option value: %s","Error durante la recuperación del valor de la opción: %s"
+"Wrong product instance type in options group","Error en el producto en las opciones de grupo"
+"Wrong BuyRequest instance in options group","Error en la solicitud de compra"
+"cache refresh needed","Es necesario refrescar la caché"
+"Is Default","Es por defecto"
+"This search no longer exists","Esta búsqueda no existe más"
+"This is a required option","Esta es una opción obligatoria"
+"Set special price","Establecer precio especial"
+"Status","Estado"
+"Are you sure you want to delete this category?","Está seguro de borrar esta categoría?"
+"Are you sure?","Está seguro?"
+"Static","Estático"
+"This attribute no longer exists","Este atributo no existe más"
+"This group contains system attributes. Please move system attributes to another group and try again.","Este grupo contiene atributos del sistema. Traslade los atributos del sistema a otro grupo e intente nuevamente."
+"This group contains attributes, used in configurable products. Please move these attributes to another group and try again.","Este grupo contiene los atributos utilizados en los productos configurables. Por favor mueva estos atributos a otro grupo y vuelva a intentarlo."
+"Stretch","Estiramiento"
+"Label","Etiqueta"
+"Attribute Label","Etiqueta del atributo"
+"Product Tags","Etiquetas del producto"
+"Exclude","Excluir"
+"Expand All","Expandir todo"
+"Failed","Fallo"
+"Failed to move file: %s","Fallo al mover el archivo: %s"
+"Datetime","Fecha-Hora"
+"Date","Fecha"
+"Date Subscribed","Fecha de suscripción"
+"Date & Time Custom Options","Fecha y hora opciones personalizadas"
+"Fixed","Fijo"
+"Filterable (with results)","Filtrable (con resultados)"
+"Filterable (no results)","Filtrable (sin resultados)"
+"Time format","Formato de la hora"
+"Frontend","Frontend"
+"Out of Stock","Fuera de existencia"
+"Out of stock","Fuera de existencia"
+"Out of stock.","Fuera de existencia."
+"Gallery","Galería"
+"Manage Stock","Gestión de existéncias"
+"Url Rewrite Management","Gestionar la reescritura de URL"
+"Manage Categories","Gestionar las categorías"
+"Manage Catalog Categories","Gestionar las categorías del catálogo"
+"Manage Label / Options","Gestionar las etiquetas / opciones"
+"Manage Options (values of your attribute)","Gestionar las opciones (valores de sus atributos)"
+"Manage Attributes","Gestionar los atributos"
+"Manage Product Attributes","Gestionar los atributos del producto"
+"Manage Attribute Sets","Gestionar los conjuntos de atributos"
+"Manage Product Sets","Gestionar los conjuntos del producto"
+"Manage Products","Gestionar los productos & lotes"
+"Manage Titles (Size, Color, etc.)","Gestionar los títulos (tamaño, color, etc.)"
+"Global","Global"
+"Customer Group","Grupo de clientes"
+"Groups","Grupos"
+"Saved ","Guardado"
+"Save","Guardar"
+"save","guardar"
+"Save Attribute","Guardar el atributo"
+"Save Attribute Set","Guardar el conjunto de atributos"
+"Save Search","Guardar la búsqueda"
+"Save Category","Guardar la categoría"
+"Save And Continue Edit","Guardar y continuar editando"
+"Please be careful as once you click on the row it will load package data form the selected file and all unsaved form data will be lost.","Guarde los datos antes de hacer clic en la fila de lo contrario perderá todos los datos."
+"Enabled","Habilitado"
+"There was an error while adding products to websites","Hubo un error al agregar productos a los websites"
+"There was an error while removing products from websites","Hubo un error al eliminar productos de los websites"
+"Problem saving the collection, aborting. Error: %s","Hubo un problema al grabar la colección, cancelando. Error: %s"
+"ID","ID"
+"ID: %s","ID: %s"
+"Image","Imagen"
+"Image not specified.","Imagen no especificada."
+"Invalid image type.","Imagen no válida."
+"Media Image","Imágenes de medios"
+"Product Images","Imágenes del producto"
+"Amount","Importe"
+"Print This Page","Imprimir esta página"
+"Tax","Impuestos"
+"Incl. Tax","Impuestos incluidos"
+"Bottom/Right","Inferior/Derecha"
+"Bottom/Left","Inferior/Izquierda"
+"Additional Information","Información adicional"
+"Search Information","Información de búsqueda"
+"Products Information","Información de los productos"
+"Attribute Information","Información del atributo"
+"Product Information","Información del producto"
+"Product Info Column","Información del producto"
+"General Information","Información general"
+"Home","Inicio"
+"Inventory","Inventario"
+"Go to Home Page","Ir a la página de Inicio"
+"Customers for alert %s was successfuly added to queue","La alerta por clientes %s fue agregada a la cola de tareas con éxito"
+"Search was successfully deleted","La búsqueda fue borrada con éxito"
+"Qty Uses Decimals","Cantidad Usos Decimales"
+"Category must be instance of Mage_Catalog_Model_Category","La categoria depende de la instancia Mage_Catalog_Model_Category"
+"Selected configuration is not available.","La configuración seleccionada no está disponible."
+"Image content is not valid base64 data.","La imagen no es de ""base64"""
+"Image not exists","La imagen no existe"
+"Please specify date required option(s)","La opción de fecha és obligatoria"
+"Invalid attribute option specified for attribute %s (%s), skipping the record","La opción del atributo especificada es inválida para el atributo %s (%s), se omite el registro"
+"Invalid store specified","La tienda especificada es inválida"
+"Invalid store specified, skipping the record","La tienda especificada es inválida, se omite el registro"
+"Line %d, SKU: %s","Línea %d, código: %s"
+"Line %d, Email: %s","Línea %d, correo electrónico: %s"
+"Letters(a-zA-Z) or Numbers(0-9)","Letras(a-zA-Z) o números(0-9)"
+"Link (Related, Up sell, Cross sell)","Link (Related, Up sell, Cross sell)"
+"List","Lista"
+"Used in product listing","Lista de productos utilizados"
+"Used for sorting in product listing","Lista de productos utilizados para la clasificación"
+"Product listing sort by","Listado de productos por tipo"
+"Items that you don't want to show in the catalog or search results should have status 'Disabled' in the desired store.","Los artículos que no quiere mostrar en el catálogo o en los resultados de las búsquedas deben tener como estado 'Deshabilitado' en la tienda deseada."
+"Filters must be as array","Los filtros deben ser cadenas"
+"Invalid category IDs","Los IDs de las categorías son inválidos"
+"Attrribute names can be specified per store.","Los nombres de atributos se puede especificar por tienda."
+"Price values for options should be specified in system base currency.","Los valores de precio para las opciones deben especificarse en la moneda base del sistema."
+"Site Map","Mapa del sitio"
+"Sitemap","Mapa del sitio"
+"Categories Sitemap","Mapa del sitio de categorías"
+"Products Sitemap","Mapa del sitio para Productos"
+"Watermark","Marca de agua"
+"Product Image Watermarks","Marcas de agua para las imágenes de los productos"
+"More Views","Más vistas"
+"Maximal Depth","Máxima profundidad"
+"Best Value","Mejor valor"
+"Backend Model","Modelo de backend"
+"Attribute Model","Modelo del atributo"
+"Frontend Model","Modelo del Frontend"
+"List Mode","Modo de la lista"
+"Show","Mostrar"
+"Show Details","Mostrar detalles"
+"Display in Suggested Terms","Mostrar en los términos sugeridos"
+"Show Tags","Mostrar etiquetas"
+"Move","Mover"
+"Move category in tree","Mueve la categoría en árbol"
+"Category Navigation:","Navegación de la categoría"
+"Number of results<br/>(For last time placed)","Número de resultados<br/>(Desde la última vez)"
+"Number of Uses","Número de usos"
+"Decimal Number","Número decimal"
+"Integer Number","Número entero"
+"Maximum number of characters","Número máximo de caracteres"
+"Max Characters","Número máximo de caracteres"
+"Minimum Lines Per Page","Número mínimo de línias por página"
+"None","Ninguno"
+"No","No"
+"Not shared with other products","No compartido con otros productos"
+"Unable to complete request. Please try again later.","No es posible completar su solicitud. Por favor, intente más tarde."
+"There are no %s available.","No hay %s disponible."
+"There are no customers for this alert","No hay clientes para esta alerta"
+"No image","No hay imágen"
+"No options of this product are available.","No hay opciones de este producto disponibles."
+"There are no products matching the selection.","No hay productos que concuerden con la selección."
+"You cannot update this attribute","No puede actualizar este atributo"
+"You cannot delete this attribute","No puede borrar este atributo"
+"Can't create image.","No puede crear imagen."
+"You cannot edit this attribute","No puede editar este atributo"
+"You cannot remove system attribute from this set.","No puede quitar este atributo de este conjunto."
+"No product collections found","No se encontraron colecciones del producto"
+"Unable to find an attribute to delete","No se encuentra un atributo para borrar"
+"Unable to find a search term to delete","No se encuentra un término de búsqueda para borrar"
+"Base directory to upload image file is not specified","No se ha especificado el directorio base para subir el archivo de la imágen"
+"Option validation failed to add product to cart","No se ha podido añadir a la cesta de productos"
+"Cannot create writeable directory '%s'","No se ha podido crear el directorio '%s'"
+"File upload failed","No se han podido cargar  los ficheros"
+"Unable to get product id.","No se puede obtener el ID del producto."
+"You have no items to compare.","No tiene artículos para comparar."
+"Name","Nombre"
+"First Name","Nombre"
+"Tag Name","Nombre de la etiqueta"
+"Attribute Name:","Nombre del atributo:"
+"Set Name","Nombre del conjunto"
+"Attrib. Set Name","Nombre del conjunto de atributos"
+"Product Name","Nombre del producto"
+"Name In %s","Nombre en %s"
+"Name<br/>(For internal use)","Nombre<br/>(Para uso interno)"
+"Notify Low Stock RSS","Notificar existencia baja por RSS"
+"Notify for Quantity Below","Notificar para cantidad menor que"
+"Our customer service is available 24/7. Call us at (555) 555-0123.","Nuestro servicio de atención al cliente está disponible 24/7. Llámenos al (555) 555-0123."
+"New Search","Nueva búsqueda"
+"New Category","Nueva categoría"
+"New Product Attribute","Nuevo atributo del producto"
+"New Set Name","Nuevo nombre del conjunto"
+"New Product","Nuevo producto"
+"New Products","Nuevos productos"
+"OR","O"
+"Set/Get current store view","Obtener vista actual tienda"
+"Skip import row, store ""%s"" field not exists","Omitir la fila de importación, el campo de la tienda ""%s"" no existe"
+"Skip import row, required field ""%s"" not defined","Omitir la fila de importación, el campo requerido ""%s"" no está; definido"
+"Skip import row, required field ""%s"" for new customer not defined","Omitir la fila de importación, el campo requerido ""%s"" para el nuevo cliente no está definido"
+"Skip import row, required field ""%s"" for new products not defined","Omitir la fila de importación, el campo requerido ""%s"" para los nuevos productos no está definido"
+"Skip import row, is not valid value ""%s"" for field ""%s""","Omitir la fila de importación, no es un valor válido ""%s"" para el campo ""%s"""
+"Wrong option instance type in options group","Opción erronea en las opciones del grupo"
+"Option:","Opción:"
+"Shopping Options","Opciones de compra"
+"Custom Options","Opciones personalizadas"
+"Reviews","Opiniones"
+"Search Engine Optimizations","Optimizaciones para el motor de búsqueda"
+"Sort Order","Orden de clasificación"
+"Sort by","Ordenar por"
+"Date fields order","Ordenar por fecha"
+"Source Model","Origen del modelo"
+"Country/State","País"
+"For reindex enabled product(s) you need specify store or product","Para habilitar los productos necesita especificar tienda o producto"
+"For internal use. Must be unique with no spaces","Para uso interno. Debe ser único y sin espacios"
+"Roll Over for preview","Pasar el mouse para una vista previa"
+"Page:","Página:"
+"Backorders","Pedidos de artículos agotados pendientes"
+"Pending","Pendiente"
+"Allowed File Extensions","Permitir extenciones de ficheros"
+"Allowed file extensions to upload","Permitir extenciones de ficheros para descargar"
+"Allow HTML-tags on Front-end","Permitir HTML-tags en la parte pública"
+"Please refresh ""Catalog Rewrites"" and ""Layered Navigation Indices"" in System -> <a href=""%s"">Cache Management</a>","Please refresh ""Catalog Rewrites"" and ""Layered Navigation Indices"" in System -> <a href=""%s"">Cache Management</a>"
+"PM","PM"
+"Please add rows to option.","Por favor, añadir filas a la opción."
+"Please enter a new group name","Por favor, escriba un nuevo nombre de grupo"
+"Please specify the product option(s)","Por favor, especifique el producto"
+"Please specify time required option(s)","Por favor, especifique el tiempo necesario"
+"Please specify the product(s) quantity","Por favor, especifique la cantidad de producto(s)"
+"Please specify the product required option(s)","Por favor, especifique la opción de producto"
+"Please set up merge date/time .","Por favor, establezca combinación de fecha/hora."
+"Please click on Close Window button if it won't be closed automatically","Por favor, presione el botón 'Cerrar ventana' si no se cierra automáticamente"
+"Please select product(s)","Por favor, seleccione producto(s)"
+"Please select products for attributes update","Por favor, seleccione productos para la actualización de los atributos"
+"Please select  items","Por favor, seleccione registros"
+"Please select static block ...","Por favor, seleccione un bloque estático  ..."
+"Please select one or more attributes.","Por favor, seleccione uno o más atributos"
+"Please, use four-digit year format","Por favor, utilice el formato de cuatro dígitos para especificar el año"
+"per page","por página"
+"Percentage","Porcentaje"
+"Position","Posición"
+"Watermark Position","Posición de la marca de agua"
+"Position of attribute in layered navigation block","Posición del atributo en el bloque de navegación por capas"
+"Position In Layered Navigation","Posición en la navegación por capas"
+"Price","Precio"
+"Old Price:","Precio anterior:"
+"Tier Pricing","Precio escalonado"
+"Special Price:","Precio especial:"
+"Default price","Precio por defecto"
+"Regular Price:","Precio regular:"
+"Price:","Precio:"
+"Invalid Tier Prices","Precios no válidos"
+"Prev","Prev"
+"Previous","Previo"
+"Url rewrie save problem.","Problema al guardar la rescriptura de URL"
+"Product","Producto"
+"Grouped Product","Producto agrupado"
+"Product deleted","Producto borrado"
+"Product with this combination of attributes already associated to configurable.","Producto con esta combinación de atributos ya asociado a configurable."
+"Configurable Product","Producto configurable"
+"Product duplicated","Producto duplicado"
+"Customers Tagged Product","Producto etiquetado por los clientes"
+"Simple Product","Producto simple"
+"Virtual Product","Producto virtual"
+"Products","Productos"
+"products","Productos"
+"Associated Products","Productos asociados"
+"Category Products","Productos de la categoría"
+"Feature Products","Productos destacados"
+"Product In Websites","Productos en los Sitios Web"
+"Products per Page on List allowed values","Productos por página en formato lista"
+"Products per page on Grid allowed values","Productos por página en formato parrilla"
+"Related Products","Productos relacionados"
+"Properties","Propiedades"
+"Attribute Properties","Propiedades del atributo"
+"Frontend Properties","Propiedades del Frontend"
+"System Properties","Propiedades del sistema"
+"px.","px."
+"Remove","Quitar"
+"Remove This Item","Quitar este artículo"
+"Remove Product","Quitar producto"
+"Root","Raiz"
+"Year Range","Rango de año"
+"Retrieve categories tree","Recupera el arbol de categorías"
+"Retrieve product","Recupera el producto"
+"Retrieve product image types","Recupera la imagen de los tipos de producto"
+"Retrieve product image","Recupera la imagen del producto"
+"Retrieve list of assigned products","Recupera la lista de los productos"
+"Retrieve product image list","Recupera las imagenes del producto"
+"Retrieve category attributes","Recupera los atributos de la categoría"
+"Retrieve category data","Recupera los datos de la categoría"
+"Retrieve linked products","Recupera los productos relacionados"
+"Retrieve attribute data","Recuperar datos de los atributos"
+"Retrieve attribute list","Recuperar la lista de los atributos"
+"Retrieve products list by filters","Recuperar la lista de productos"
+"Retrieve attribute options","Recuperar las opciones  del atributo"
+"Retrieve product link type attributes","Recuperar los atributos del producto"
+"Retrieve product attribute sets","Recuperar los conjuntos de atributos de los productos"
+"Retrieve product tier prices","Recuperar los precios de productos"
+"Retrieve products data","Recuperar los productos"
+"Retrieve product types","Recuperar los tipos de producto"
+"Retrieve one level of categories by website/store view/parent category","Recuperar un nivel de categoria de website/store view/parent"
+"Retrieve product link types","Recuperar vínculo del producto"
+"Redirect","Redireccionar"
+"Records for ""","Registros por """
+"Reset","Reiniciar"
+"Required","Requerido"
+"Results","Resultados"
+"Retrieve hierarchical tree","Retrieve hierarchical tree"
+"Learn More","Saber más"
+"Yes","Sí"
+"Product collection expected","Se esperaba una colección de producto"
+"Compare list successfully cleared","Se ha borrado con éxito la lista de comparación"
+"There was an error while cleared compare list","Se ha producido un error al comparar la lista"
+"There was an error while updating product(s) status","Se ha producido un error durante la actualización"
+"Product saving error. ","Se ha producido un error en el momento de guardar."
+"There was an error while updating product(s) attributes","Se produjo un error mientras se actualizaban los atributos de producto(s)"
+"Is Required","Se requiere"
+"A name is required","Se requiere un nombre"
+"Multiple Select","Selección múltiple"
+"Select Configurable Attributes ","Seleccionar atributos configurables "
+"select all","seleccionar todo"
+"Select type of option","Seleccione el tipo de opción"
+"Select type options required values rows.","Seleccione las opciones necesarias en las filas."
+"Choose option...","Seleccione opción..."
+"Choose an Option...","Seleccione una opción..."
+"comma separated","Separado por comas"
+"Page Title Separator","Separador del título de la página"
+"Short Description","Short Description"
+"If you do not specify an option value for a specific store view then the default (Admin) value will be used.","Si no especifica una opción para la vista de la tienda por defecto (Administardor) usará la vista global."
+"Yes/No","Si/No"
+"Next","Siguiente"
+"No layout updates","Sin actualizaciones de layout"
+"Synonym for","Sinónimo para"
+"Synonym For","Sinónimo Para"
+"System","Sistema"
+"Website","Sitio web"
+"Websites","Sitios web"
+"Products only","Solo productos"
+"Can be used only with catalog input type Dropdown","Solo puede usarse con un tipo de dato de menú desplegable en el catálogo"
+"Can be used only with catalog input type Dropdown, Multiple Select and Price","Solo puede usarse con un tipo de dato de menú desplegable en el catálogo, selección múltiple y precio"
+"Upload new product image ","Subir nueva imagen del producto"
+"Product URL Suffix","Sufijo en la URL de los productos"
+"Subscribe to RSS Feed","Suscribirse al feed RSS"
+"Subscribe to Feed","Suscribirse al feed RSS"
+"Backend Table","Tabla de backend"
+"Maximum Image Size","Tamaño máximo de la imagen"
+"Watermark Default Size","Tamaño por defecto de la marca de agua"
+"You may also be interested in the following product(s)","También pueden interesarle los siguientes productos"
+"We Also Recommend","También recomendamos"
+"As low as:","Tan bajo como:"
+"Tile","Título"
+"Title","Título"
+"Backend Table Title","Título de la tabla de backend"
+"Text","Texto"
+"Length of text is too long","Texto demasiado largo"
+"Store","Tienda"
+"Type","Tipo"
+"Input Type","Tipo de entrada"
+"Catalog Input Type for Store Owner","Tipo de entrada del catálogo para el dueño de la tienda"
+"Price Type","Tipo de precio"
+"Product Type","Tipo de producto"
+"Data Type for Saving in Database","Tipos de datos para grabar en la base de datos"
+"Selected Product Types","Tipos de productos seleccionados"
+"All","Todo"
+"ALL GROUPS","TODOS LOS GRUPOS"
+"All products of this set will be deleted! Are you sure you want to delete this attribute set?","Todos los productos seran eliminados. ¿Esta seguro que quiere eliminarlos?"
+"All Product Types","Todos los tipos de productos"
+"Total incl. Tax: %1$s","Total incl. Impuestos: %1$s"
+"Total Qty Base Items","Total Qty Base Items"
+"Last Notification","Ultima notificación"
+"Total of %d record(s) were successfully updated","Un total de %d registro(s) fueron actualizados con éxito"
+"Total of %d record(s) were successfully deleted","Un total de %d registro(s) fueron borrados con éxito"
+"Url","URL"
+"Redirect URL","URL de redireccionamiento"
+"Use Default Value","Usar el valor por defecto"
+"Use in advanced search","Usar en búsqueda avanzada"
+"Use in quick search","Usar en búsqueda rápida"
+"Use In Layered Navigation","Usar en la navegación por capas"
+"Use In Layered Navigation<br/>(Can be used only with catalog input type 'Dropdown')","Usar en la navegacion por capas<br/>(Puede ser usado solo con el tipo de entrada del catálogo de menú 'Desplegable')"
+"Use Config Settings","Usar las configuraciones de Config"
+"Use To Create Configurable Product","Usar para crear un Producto configurable"
+"Use categories path for product URLs","Usar rutas de categorías para la URL de los productos"
+"Use Flat Catalog Category","Use Flat Catalog Category"
+"Use Flat Catalog Product","Use Flat Catalog Product"
+"Use In Search Results Layered Navigation","Use In Search Results Layered Navigation"
+"Use Tree Like Category Sitemap","Utilizar árbol de categorias en el mapa web"
+"Use JavaScript Calendar","Utilizar JavaScript Calendar"
+"Empty","Vacío"
+"Input Validation for Store Owner","Validacion de entrada para el propietario de la tienda"
+"Unique Value","Valor único"
+"Unique Value (not shared with other products)","Valor único (no compartido con otros productos)"
+"Default value","Valor por defecto"
+"Products per Page on Grid default value","Valor por defecto de productos por página en vista de cuadrícula"
+"Products per Page on List default value","Valor por defecto de productos por página en vista de lista"
+"Default Values","Valores por defecto"
+"Values Required","Valores requeridos"
+"Varchar","Varchar"
+"Cross-sells","Ventas cruzadas"
+"Up-sells","Ventas sugeridas"
+"View as","Ver como"
+"Visibility","Visibilidad"
+"Visible","Visible"
+"Visible on Catalog Pages on Front-end","Visible en las páginas del catálogo en el Front-end"
+"Store View","Vista de tienda"
+"Back","Volver atrás"
+"Wrong option type to get group instance.","Wrong option type to get group instance."
+"Wrong quote item instance in options group","Wrong quote item instance in options group"
+"Wrong quote item option instance in options group","Wrong quote item option instance in options group"
+"x","x"
+"and","y"
+"and above","y arriba"
+"Attribute with the same code already exists","Ya existe un atributo con el mismo código"
+"[GLOBAL]","[GLOBAL]"
+﻿Log in,INICIAR SESIÓN
+Log out,Cerrar sessión
+Are you a member?,¿YA ERES SOCIO?
+Please log in,Por favor inicia sesión.
+There was a problem with your request. Username or password is incorrect. Please check!,Hubo un problema al iniciar sesion. El usuario o la contraseña no son validos. Por favor intente de nuevo.
+User name,Nombre de Usuario
+Enter Email Address,Correo electrónico
+Password,Contraseña
+Security check,Verificación de seguridad
+Forgot your password,¿Has olvidado tu contraseña?
+Enter symbols,Introduzca los símbolos…
+Incorrect symbols. Please try again.,Los símbolos son incorrectos. Por favor intente de nuevo.
+Want to become a member? ,¿QUIERE REGISTRARSE COMO SOCIO?
+Please fill in the form.,Por favor llene el siguiente formulario.
+General information,DATOS GENERALES
+Name or Company Name,Nombre o razón social
+Company name,Razón social
+Social security number (Tax ID), R.F.C.
+Contact name, Nombre de contacto
+Contact e-mail, Correo electrónico de contacto
+Contact phone number,Teléfono de contacto
+Alternative phone number,Teléfono secundario
+Main activity,Actividad principal
+"Pharmacy","Farmacia"
+"Hospital","Hospital"
+"Distributor","Distribuidor"
+"Pharmacy laboratory","Laboratorio Farmacéutico"
+"Pharmacy/Hospital/Distributor/Pharmacy laboratory","Farmacia/Hospital/Distribuidor/Laboratorio Farmacéutico"
+Main sector,Sector principal
+"Private sector","Sector privado"
+"Government sector","Sector Gobierno"
+"Private sector/Government sector","Sector privado/Sector Gobierno"
+"Private/Government Price","Privado/Gobierno precios"
+Main address,Dirección principal
+Street,Calle
+Street Number,Número exterior
+Apartment number,Número interior
+Cologne,Colonia
+Municipality,Delegación/Municipio
+State,Estado
+Country,País
+Zip Code,C.P.
+Comments,Comentario
+Text,Texto
+Please fill in all the fields marked with *!,¡Por favor llene todos los campos marcados con *!
+Register,Registrate
+Thank you! We sent a letter to you with instructions to continue your registration! Please follow explained instructions.,¡Gracias! En breve le mandaremos un correo con las instrucciones para continuarcon su registro! Por favor siga las instrucciones ahí explicadas.
+Status of the process of registration,ESTATUS DE PROCESO DE REGISTRO
+Registration request,SOLICITUD DE REGISTRO
+Your personal recruiter is: %s %s,SU ASISTENTE PERSONAL ES: %s. %s
+"<p>Hello! On this step you see your request for registration. Please check the information. Fill in or edit any missed or incorrect fields. To continue click on 'Save and continue' button. </p><p>If you have any questions please contact with us by using our online chat or write to us from our support page</p>","<p>Hola! En este paso del proceso de registro usted puede ver su solicitud de registro. Por favor verifique la información. Llene o edite cualquier campo faltante o incorrecto. Al terminar dé clic en el botón 'Guardar y continuar'. </p><p>Si tiene alguna duda, por favor consúltenos a través de nuestro chat de asistencia en línea o escríbanos desde la sección de soporte técnico</p>"
+Support,Soporte
+Pre-registration form,FORMATO DE PRE-REGISTRO
+Documentation, DOCUMENTACIÓN
+Visit\Validation,VISITA/VALIDACIÓN
+Contract,CONTRATO
+Administrative,ADMINISTRATIVOS
+Select,Elegir
+Natural person,Persona física
+Legal person,Persona Moral
+Name/Company name,Nombre/Razón Social
+"Article association registry number","Número de escritura del acta constitutiva"
+Article association registration number before Public Registry of property and commerce (PRPC),Folio de registro público de la propiedad del acta constitutiva:
+Article association modifications?,Hay modificaciones al acta constitutiva
+Article association registry modification number,Número de instrumento de última modificación
+Article association modification registration number before PRPC,Folio de registro público de la propiedad última modificación
+Billing address,Domicilio de facturación
+Add other address,AÑADIR DOMICILIO ALTERNO
+"<p>The information requested hereafter is very important for us. With it, we can guarantee that all our members and partners are reliable and serious companies. </p><p>In addition, it allows us to have a deeper understanding of your business and goals. Thus, we will be able to offer a solution special designed to fit your needs.</p>","<p>La información que en lo sucesivo se le solicita es de suma importancia para su beneficio y seguridad, ya que gracias ella podemos garantizar que todos nuestros socios son empresas serias y confiables. </p><p>De igual forma, el tener una visión más amplia de su negocio nos permite ofrecerle un servicio diseñado especialmente para usted y su empresa.</p>"
+Financial,Finanzas
+Amount of equity for the previous year,Capital contable declarado en el año fiscal anterior
+Infrastructure,Infraestructura
+Quantity of employees of the company,Número de personas que laboran en su empresa
+Quantity of computer equipment,Número de equipos de cómputo en su empresa
+Office area,Área de las instalaciones de oficina
+Warehouse area,Área de las instalaciones de almacén
+Quantity of vehicles of the company,Número de vehículos con los que cuenta la empresa
+Licenses and permits,Licencias y permisos
+Operation statement before COFEPRIS,Aviso de funcionamiento ante COFEPRIS
+Responsible health professional before COFEPRIS,Nombre del responsable sanitario COFEPRIS
+Professional license number of the health professional,Número de cédula profesional SEP del responsable sanitario
+Handle controlled medicines or products of biological origin,Manejo de medicamentos controlados o productos de origin biológico
+Health license certificate number,Número de Licencia sanitaria COFEPRIS
+Please fill in all the fields marked with *!,¡Por favor llene todos los campos marcados con *!
+Edit,Editar
+Save and continue,Guardar y continuar
+Upload document,Cargar documento
+upload document,Cargar documento
+Administrative,Administrativos
+ID for taxation purposes,R.F.C. cedula fiscal
+Subscription in taxes department,Alta en Hacienda
+"Article association registry","Número de escritura del acta constitutiva"
+Article association registration before PRPC,Registro Público de la Propiedad del acta constitutiva
+If there are modifications to the article association document, Hay modificaciones al acta constitutiva (sí/no)
+Article association modification registry,Acta o instrumento de última modificación
+Modification to Article association registration before PRPC,Registro público de la propiedad última modificación
+Facilities,Instalaciones
+Proof of address,Comprobantes de domicilio
+Financial,Financiero
+Financial statements of the last three years,Estados financieros de los últimos 3 años.
+Last 3 bank statements,Últimos 3 estados bancarios
+Last year taxes statement,Última declaración anual ante el S.A.T.
+Licenses and permits,Licencias y permisos
+Operation statement before COFEPRIS,Fecha de aviso de funcionamiento COFEPRIS:
+"ID of the Responsible health professional before COFEPRIS","Pasaporte o credencial de elector del responsable sanitario ante COFEPRIS"
+Professional license of the health professional,Cédula profesional SEP del responsable sanitario ante COFEPRIS
+Statement of Responsible health professional before COFEPRIS,Aviso de responsable sanitario ante COFEPRIS
+Certificates of good manufacturing practices,Certificado de buenas practicas del fabricante
+Health license certificate document (Just in case that manages controlled substances),Licencia sanitaria COFEPRIS
+Manages controlled substances,Manejo medicamentos controlados
+Certificates of good practices,Licencia sanitaria COFEPRIS
+Incorrect CAPTCHA.,Los símbolos son incorrectos. Por favor intente de nuevo
+"<p>In this step, we ask you to upload in our system the digitalized version of the documents we require through the next form. </p><p>We strongly recommend to click the button 'Save and continue' after each upload in order to save the changes.</p>","<p>En este paso del proceso de registro le pedimos que cargue en nuestro sistema la versión digitalizada de los documentos solicitados a través del siguiente formulario. </p><p>Le recomendamos que después de cargar un documento dé clic en el botón 'Guardar y continuar' para guardar el documento cargado y continuar subiendo el resto de documentos. </p><p>Si tiene alguna duda, por favor consúltenos a través de nuestro chat de asistencia en línea o escríbanos desde la sección de soporte técnico.</p>"
+"<p>On this step of registration it is necessary to fill in pre-registration form. To continue click on 'Save and continue' button. </p><p>If you have any questions please contact with us by using our online chat or write to us from our support page</p>","<p>En este paso del proceso de registro es necesario que llene el formulario de pre-registro.  Al terminar dé clic en el botón 'Guardar y continuar'. </p><p>Si tiene alguna duda, por favor consúltenos a través de nuestro chat de asistencia en línea o escríbanos desde la sección de soporte técnico</p>"
+Certificates of good practices,Certificado de buenas prácticas
+Incorrect CAPTCHA.,Los símbolos son incorrectos. Por favor intente de nuevo
+Entered e-mail is not registered in our system. Please correct,"El correo proporcionado no está registrado en nuestro sistema, por favor inténtelo nuevamente"
+Restore password,Restaurar contraseña
+We sent an e-mail with instructions for password recovery.,Se le ha mandado un correo con las instrucciones para restaurar su contraseña.
+Please enter your email.,Correo electrónico
+"<p>In order to make the visit process more agile, we ask you to upload the digitalized version of the documents listed in the following form. </p><p>For security purposes, we ask you to have the original documents while the visit is carried out. If you do not want to upload you documents, please call your personal assistant; he will ask you to have copies of the solicited documentation at the beginning of the visit to your facilities. If you do not have some documents, we can help and assist you, please let us know by telling you personal assistant which documents are missing. </p><p>He will help you to go forward in the registration process. Your satisfaction and safety is very important for us. </p><p>Keep in mind that our technical support team is prepared to help and support you in any part of the registration process.</p>","<p>Con la finalidad de agilizar el proceso de visita de sus instalaciones le solicitamos que cargue la versión digitalizada de los documentos enlistados en el siguiente formulario.</p><p>Para garantizar su seguridad y la de todos los socios, es importante que usted tenga en su poder los documentos originales al momento de la visita a sus instalaciones para su cotejo. En caso de que no desee hacer el proceso de carga de documentos digitalizados en nuestro sistema, le pedimos que se comunique con su asistente personal 'ASSISTENTE NOMBRE'. Él le pedirá copias de los documentos solicitados al momento de la visita a sus instalaciones. </p><p>En caso de que no cuente con algún documento estamos para servirle y asesorarlo, por favor hágaselo saber a su asiste personal 'ASSISTENTE NOMBRE'. Él lo apoyará para seguir adelante con el registro. </p><p>Su satisfacción y seguridad es lo más importante para nosotros. Recuerde que nuestro equipo de soporte está preparado para ayudarlo y apoyarlo en cualquier parte del proceso de registro.</p>"
+%s waiting for recruiter assignment.,%s en espera de asignación de asistente personal!
+%s stand-by process. Please check it!,%s proceso(s) detenido(s). Favor de revisarlo(s)!
+%s visit is appointed. Please check!,%s visita(s) programada(s). Favor de revisarla(s)!
+%s prospects were pre-approved by the recruiter. Waiting for approval!,%s usuario(s) ha(n) sido pre-aprobado(s) por su asistente personal. En espera de aprobación final!
+%s contracts should be signed and uploaded to the system.,%s contrato(s) en espera de ser firmado(s) y cargado(s) en el sistema.
+%s process was closed by the recruiter. Waiting for confirmation!,%s proceso(s) ha(n) sido cerrado(s) por el asistente personal. En espera de confirmación!
+Recruiter,Asistente
+Registration satus,EtapaRegistration Step 1,Registration Step 1
+On this step your personal recruiter will contact you for visit appointment.  If you have any questions please contact with us by using our online chat or write to us from our support page,En este paso su asistente personal lo contactará para programar una visita a las instalaciones de su empresa. Si tiene alguna duda, por favor consúltenos a través de nuestro chat de asistencia en línea o escríbanos desde la sección de soporte técnico.
+Day and time of the visit:,Fecha programada de visita:
+The visit will be appointed soon! Your recruiter will contact you.,La visita será programada pronto! Su asistente personal lo contactará a la brevedad.
+Place of the visit:,Lugar de visita:
+Recruiter will contact you to check your address.,Su asistente personal lo contactará para verificar la dirección de sus instalaciones.
+Attention!,ATENCIÓN!
+Attention message,ATENCIÓN Mensaje
+If you want to change appointed visit date or time  please contact your personal recruiter!,Si desea hacer cambios en la programación de la visita a sus instalaciones por favor hágaselo saber a su asistente personal!
+Comment from your personal recruiter,Comentarios de su asistente personal
+A client is pre-approved.,El solicitante ha sido pre-aprobado.
+A client wasn't approved.,El solicitante ha sido rechazado.
+"In this step we will provide the contract and ask you to sign it. Your personal assistant %s will contact you to arrange the signing mechanisms that best fits your needs. If you have any question, contact us through our online chat or write to us  through technical support section.","En este paso le haremos llegar el contrato solicitándole la firma del mismo. Su asistente personal %s se comunicará con usted para acordar el mecanismo de firma que más le convenga. Si tiene alguna duda, por favor consúltenos a través de nuestro chat de asistencia en línea o escríbanos desde la sección de soporte técnico."
+Customer is to check with the manager, please wait.Customer es consultar con el gerente, por favor espere
+No comments,Sin comentarios
+Comment by recruiter,El comentario de reclutador
+Comments from manager,Comentarios de gerente
+Client registration is completed,Registro de cliente se ha completado
+Comment,Comentario
+"Visit Date&Time","Visita Fecha Hora"
+Use billing address,Utilice la dirección de facturación
+Visit Address,Visita Dirección
+Visit Message,Visita Mensaje
+Visit Message to Manager,Visita Mensaje al administrador
+"Oficial ID (Voting card or Passport)","Identificación oficial (Credencial de elector o Pasaporte)"
+Profile Settings,Configuración de perfil
+Product catalog,Catalogo de productos
+Lots and Prices,Lotes y precios
+Orders,Ordenes
+Auctions and special offers,Subastas y ofertas especiales
+"Description","Descripción"
+"Presentation","Presentación"
+Quantity,Cantidad
+Specialty,Especialidad
+Delete,Borrar
+Copy,Copiar
+Long,Largo
+Width,Ancho
+Height,Altura
+Weight,Peso
+Price,Precio
+Add new product,Agregar nuevo producto
+Status,Estado
+Particularity,Especialidad
+Sale for government sector,Para su venta al sector gobierno
+Sale for private sector,Para su venta al sector privado
+"For safety, we ask you to create a password with length bigger than 7 and to include at least one capital letter, one lower case letter, and one number.","Por seguridad le pedimos que use al menos una mayúscula, una minúscula y un número y una longitud mínima de 7 caracteres al momento de crear su clave de seguridad"
+"Commercial name","Nombre comercial"
+"General name","Nombre genérico"
+"Concentration/Quantity","Cantidad"
+"Medical specialty","Especialidad"
+"Clear all","Limpiar todos"
+"Search...","Buscar..."
+"City/Location","Cuidad/Localidad"
+"New product","Nuevo producto"
+"The information you provide must match with that stated in the Health Ministry registration of the medicine added.","La información que proporcione deberá coincidir con la que aparece en el registro sanitario del medicamento que desea agregar."
+"General information of the product","Generales del Producto"
+"Classification according with article 226 General Health Law","Clasificación artículo 226 Ley General de Salud"
+"Order number","No. de solicitud de registro sanitario"
+"Date of creation","Fecha de expedición del registro sanitario"
+"Registration holder","Titular del Registro Sanitario"
+"Bar code number","Código de barras"
+"Number of Health Ministry registration","Número de registro sanitario"
+"Expiration date","Fecha de vencimiento del registro sanitario"
+"Previous order number","No. de solicitud previo de registro sanitario"
+"Yes","Si"
+"No","No"
+"The drug registration","El registro sanitario del medicamento"
+"There was an error loading the document, please try again","Hubo un error al cargar el documento,por favor inténtelo nuevamente"
+"Empty fields","Vaciar campos"
+"Technical specifications of the product","Especificaciones técnicas del producto"
+"Basic frame ID","Clave de cuadro básico"
+"Level of atention","Nivel de atención"
+"add","añadir"
+"If you cann't find the product in the catalogue, please click Add and fill in the fields. The product will be moderated by MJ specialist","Si usted no puede encontrar el producto en el catálogo, por favor haga clic en Agregar y rellene los campos. El producto será moderado por el especialista MJ"
+"Extra information","Datos adicionales"
+"Drug Manufacturer","Fabricante del fármaco"
+"Medicine Manufacturer laboratory","Laboratorio fabricante del medicamento"
+"Aconditioned by","Acondicionado por"
+"Distributed by","Distribuido por"
+"Save","Guardar"
+"Please Select","Por Favor Seleccione"
+"Approve file","Aprobado"
+"Not approve file","No Aprobado"
+"cancel","cancelar"
+"New request for registration","Nueva solicitud de registro"
+"New process","Nuevo proceso"
+"Stand-by process","Proceso detenido"
+"Pre-registration completed","Pre-registro completo"
+"Validation","Verifique documentación"
+"Correction","En espera de correcciones"
+"Validated","Expdeiente corregido"
+"Visit appointment","Programación de visita"
+"Visitation","Visita"
+"Visit completed","Visita completada"
+"Visit complete","Visita completada"
+Completed,Completo
+correction,Corrección
+"Pre-approved","Pre-aprobado"
+"Pre-closed","Pre-cerrado"
+"Pre-approve","Pre-aprobado"
+Approve,Aprobado
+"Pre-close","Pre-cerrado"
+"Not approved","Solicitante rechazado"
+"Not approve","Solicitante rechazado"
+"Top picture","Foto de arriba"
+"Bottom picture","Foto de abajo"
+"Left picture","Foto izquierda"
+"Right picture","Foto derecha"
+"Front picture","Foto frente"
+"Back picture","Foto trasera"
+"Commercial picture","Foto comercial"
+"Length","Largo"
+"Width","Ancho"
+"Height","Altura"
+"Weight","Peso"
+"Select product","Seleccione un producto"
+"Add a batch","Agregar lote"
+"Batch","Lote"
+"Expiration date","Fecha de caducidad"
+"Quantity of primary boxes","Cantidad de cajas unitarias"
+"Price","Precio"
+"General Name","Nombre genérico"
+"Number of Health Ministry registration"," Número de registro sanitario"
+"Order number","No. de solicitud de registro sanitario"
+"Description","Descripción"
+"Presentation","Presentación"
+"Quantity"," Cantidad"
+"Sale for government sector","Para su venta al sector gobierno"
+"Sale for private sector","Para su venta al sector privado"
+"Analytical certificate","Certificado analítico"
+"Where a batch is stored?","¿Donde se almacenará el lote?"
+"Own warehouse","Su propio almacén"
+"MedicJoint warehouse","Almacén de MedicJoint"
+"Foto and characteristics","FOTO Y CARACTERÍSTICAS"
+"Remember to provide trustworthy information. Also it's important to take care about images because it's one of the factors for client to choose a product. If information below doesn't coincide with real information about the product you can have extra taxes because of returns or extra payments for order delivery because of incorrect calculations.","Recuerde proporcionar información fidedigna. Así mismo, es importante que cuide la imagen de su producto ya que es un factor de elección de los clientes. Si la información abajo proporcionada no coincide con la del producto se podrán generar cargos por devoluciones o costos extra de envío resultado de un mal cálculo del peso volumétrico."
+"Your Product Has Been Sucessfully Deleted From Your Account","Su producto ha sido borrado exitosamente de su cuenta"
+"YOU ARE NOT AUTHORIZE TO DELETE THIS PRODUCT.","No está autorizado para borrar este producto"
+"MarketPlace Product Type: Simple Product","Tipo de producto del mercado en línea: producto simple"
+"Product Type Invalide Or Not Allowed","Tipo de producto invalido o no permitido"
+"Your product was successfully Deleted","Su producto ha sido borrado exitosamente"
+"Batch not exist","Este lote no existe"
+"Please specify batch","Favor de especificar lote"
+"Your product was successfully Saved","Su producto ha sido salvado exitosamente"
+"I would like to inform you that recently I have added a new product in the store.","Le informo que recientemente he agregado un nuevo producto al inventario ."
+"Product not exist","Este producto no existe"
+"Add Group Price","Agregar precio grupal"
+"Auctions and special offers"," Subastas y ofertas especiales"
+"Sales","Ventas"
+"Batches","Lotes"
+"Product catalog","Catalogo de productos"
+"Dashboard","Panel de control"
+Registration status,Estatus de proceso
+"Are you sure you want to delete the company?","Seguro que quieres eliminar la empresa?"
+"Block / Activate","Bloquear / Activar"
+"Users","Usuarios"
+"Delete","Borrar"
+"Go back","volver"
+Download file,Cargar documento
+No Batch Available,Lotes no existen
+Login,INICIAR SESIÓN,
+"Data saved","Archivos guardados"
+"Please include an '@' in the email address. %s is missing an '@'","Favor de incluir la '@' en la dirección de correo"
+"Please wait","Por favor espere"
+"Please fill out this field.","Favor de llenar este campo"
+"Please select files less than 10Mb","El tamaño del archivo excede el límite de 10 Mb"
+"Please select files less than 40Mb","El tamaño del archivo excede el límite de 40 Mb"
+"Your form is processed, after passing the test you will be notified","Estamos validando sus archivos, el resultado se le notificará a la brevedad"
+"Your files have been validated","Algunos de tus archivos han sido validados"
+"This account is blocked. Contact your personal recruiter for clarifications","Esta cuenta está bloqueada. Póngase en contacto con su reclutador personal para aclaraciones"
+"Your files have been validated","Algunos de tus archivos han sido validados"
+"Profile/Setting","Perfil / Configuración"
+"My registration","Mi registro"
+"Buy now","Comprar ahora"
+"Available quantity","Cantidad disponible"
+"Search by ID","Buscar por ID"
+"Search by description","Buscar por descripción"
+"Search by seller","Buscar por vendedor"
+"Sort By","Ordenar por"
+"SORT BY:","Ordenar por"
+"New Orders","Nueva orden"
+"I received this order","Recibí esta orden"
+"Flat Rate - Fixed","Tarifa fija del"
+"Check / Money order","Cheque / Transferencia"
+"Commercial name","Nombre comercial"
+"Subtotal","Subtotal"
+"Total general","Total"
+"My products","Mis productos"
+"No Product Available","Producto no disponible"
+"New product form:","Nueva forma del producto:"
+"Please select an option.","Favor seleccione una opción"
+"Please use numbers only in this field. Please avoid spaces or other characters such as dots or commas.","Favor de utilizar números únicamente. Evite espacios u otros caracteres tales como puntos y comas."
+"The From Date value should be less than or equal to the To Date value.","El valor de la fecha Desde debe ser menor o igual al valor de la fecha Hasta."
+"Manage companies grid:","Administrar empresas cuadrícula:"
+"Create date","Crear cita"
+"Block","Bloquear"
+"Grid of users of company:","Rejilla de los usuarios de la compañía:"
+"Surname","Apellido"
+"Add user","Agregar usuario"
+"Add user form:","Agregar usuario"
+"Add user company","Agregar usuario"
+"Generate Password","Generar contraseña"
+"Manage Products","Gestionar los productos & lotes"
+"Manage Products1","Administrar productos"
+"Manage Batches","Administrar lotes"
+"Manage Sales","Administrar Ventas"
+"Manage profile settings","Administrar configuración de perfil"
+"Incorrect date. Check!","Fecha incorrecta. Verifíquela!"
+"Your form is processed, after passing the test you will be notified. or After documents uploading your personal recruiter will validate the documents and the next step will become available. Please wait","Su registro esta en proceso , después de pasar la prueba se le notificará. o Después de subir sus documentos su reclutador personal los validará y el próximo paso estará disponible. por favor espere"
+(Private/Government),(Privado/Gobierno)
+"Your message...","Su mensaje..."
+"Access denied!","¡acceso denegado!"
+"%s new process. Please check!","%s nuevo(s) proceso(s). Favor de revisarlo(s)!"
+"%s stand-by process. Please check it!","%s proceso(s) detenido(s). Favor de revisarlo(s)!"
+"%s Pre-registration form is completed. Please check!","%s proceso(s) de pre-registro completado(s). Favor de revisarlo(s)!"
+"%s Documentation completed. Waiting for approval.","%s Expediente(s) completo(s). A la espera de aprobación!"
+"%s Documentation corrected. Waiting for approval.","%s Expediente(s) corregido(s). A la espera de aprobación!"
+"%s prospect is waiting for visit appointment","%s solicitante(s) a la espera de programación de visita."
+"%s prospect waiting for pre-approval.","%s solicitante(s) a la espera de pre-aprobación!"
+"%s process wasn\'t approved by the manager. Please check!","%s proceso(s) ha sido rechazado por el supervisor. Favor de revisarlo!"
+"%s process wasn't approved by the manager. Please check!","%s proceso(s) ha sido rechazado por el supervisor. Favor de revisarlo!"
+"Access denied!","¡acceso denegado!"
+"Privileges","Privilegios"
+"New order","Nueva orden"
+"Delivered","Entregado"
+"Process is closed! If you have solved the impediments and inconveniences detected, please contact you personal assistant to reopen the process.","El proceso ha sido cerrado! Una vez que haya solucionado los impedimentos e inconvenientes detectados, favor de contactar a su asistente personal para que abra el proceso de registro nuevamente"
+"Verify the information you have entered.","Verifique la información que ha ingresado."
+"We sent an e-mail with instructions for password recovery.","Hemos enviado un correo electrónico con instrucciones para la restauración de contraseña."
+Purchased,Comprado
+From:,Desde:
+To:,Hasta:
+Payment,Pago
+Buyer name,Nombre del comprador
+List of orders,lista de orden
+Company Seller,Empresa socio commercial
+For sale to the public sector,Para su venta al sector gobierno
+For sale to the private sector,Para su venta al sector privado
+Send email,Enviar email
+Special offers & Auctions,Ofertas especiales y Subastas
+Statistics,Estadísticas
+Catalog,Catálogo
+About Us,"¿Quienes somos?"
+Name (commercial),Nombre (comercial)
+Seller,Socio commercial
+"Hello, %s, %s!","Hola, %s, %s!"
+Purchased on,Adquirido en
+Total Price,Precio total
+"As soon as you have uploaded the required documentation, they will be validated for your personal assistant. In case all of them are valid, you will be able to continue to the next step of the process. Otherwise, You can see the cause of refusal beside the file uploaded and we will appreciate that you upload a new document once you have fixed the problem.","Tan pronto como haya cargado los documentos solicitados, estos serán validados por su asistente personal. En caso de que todos sean válidos, usted podrá pasar al siguiente paso del proceso de registro. En caso contrario, usted podrá ver la causa de negativa junto al archivo que proporcionó y le agradeceremos cargue de nuevo el documento una vez que haya corregido el problema."
+"The R.F.C. you provided is already registered! For clarification please contact one of our consultants through our chat or call 01 800 xxx ####","El R.F.C. proporcionado ya está registrado! Para aclaraciones favor de contactar a uno de nuestros asesores mediante nuestro chat o llame al 01 800 xxx ####"
+"Would you like to save uploaded files?","Desea guardar los archivos cargados?"
+"If you have any questions contact your personal recruiter: %s, %s.","Para cualquier duda o aclaración favor de contactar a su asistente personal?: %s, %s."
+"View Order Details","Ver detalles de la orden"
+"Payment received","El pago ha sido recibido"
+Credit Card (saved),"Tarjeta de crédito (guardada)"
+"Cart","Carrito"
+My Order History,Mi historial de ordenes
+Fulfill order,Llenar orden
+Buyer Information,Información del comprador
+Read more,Ver mas
+News,Noticias
+View Shopping Cart,Ver carrito de compras
+Save batch,Salvar lote
+Please select a file,Seleccione archivo
+"Please select .pdf file",Seleccione archivo (.pdf)
+Management,Administración
+Manage visits,Administrar visitas
+Manage Companies,Administrar compañías
+Buy from this seller,COMPRAR DE ESTE VENDEDOR
+Buy all,Comprar todo
+Your Shopping Cart,Tu carrito de compras
+Seller,Vendedor
+Total price,Precio Total
+All total (%s products),Total (%s productos)
+"Remove all items",Quitar todos los productos
+Back to Shopping Cart,Regresar a carrito de compras
+Ship to Address,Enviar a la dirección:
+Back to Select Addresses,Regresar a selección de dirección
+Required filed,Campo requerido
+New batch,NUEVO LOTE
+Send,ENVIAR
+Please fill out this field,Favor de llenar este campo
+"For safety, we ask you to create a password with length bigger than 7 and to include at least one capital letter, one lower case letter, and one number.","Por seguridad le pedimos que use al menos una mayúscula, una minúscula y un número y una longitud mínima de 7 caracteres al momento de crear su clave de seguridad."
+Please select a file,Por favor seleccione un archivo
+Government Catalog,Catálogo del gobierno
+Required field,Campo requerido
+Edit Info,Editar la información
+View Certificate,Ver certificado analítico
+Batch (No),Lote (#)
+Batch #,Lote #
+Seller:,VENDEDOR:
+"Are you sure you want to delete these batch?","Esta seguro de que desea borrar este lote?"
+Qty,Cant.
+"Back to Billing Information","Regresar a información de cuenta o facturación"
+<<<<<<< HEAD
+<<<<<<< HEAD
+"Save and Continue Edit","Salvar y continuar editando"
+"Save and inform client","Salvar y informar cliente"
+"Privacy policy", "Aviso de Privacidad"
+"Power of attorney of the legal representative", "Poder notarial del representante legal"
+"%s was added to your shopping cart", "%s fue agregado al carrito de compras"
+=======
+"Save and Continue Edit","Guardar y continuar editando"
+<<<<<<< HEAD
+"Save and inform client","Guardar e informar al cliente"
+=======
+"Save and inform client","Guardar e informar al cliente"
+>>>>>>> 5071f3937b4ce69bddc70e5a5bea214f8efd73b7
+=======
+"Save and Continue Edit","Guardar y continuar editando"
+"Save and inform client","Guardar e informar al cliente"
+>>>>>>> 78990e58095f8c60ab9153fe92e504024597dfb7
+>>>>>>> 51af5ffb963130241bc6f05638a48a259b22b292

@@ -1,0 +1,5 @@
+<?php
+
+class Vovsky_Customerprice_Model_Resource_Eav_Mysql4_Setup extends Vovsky_Customerprice_Model_Resource_Setup
+{
+}

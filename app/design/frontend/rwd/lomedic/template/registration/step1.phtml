@@ -1,0 +1,243 @@
+<div class="text">
+    <h1 class="tac mt30"><?php echo $this->__('Status of the process of registration')?></h1>
+    <?php if($this->getRecruter()): ?>
+        <div class="subtitle tac"><?php echo $this->__("Your personal recruiter is: %s <a href='mailto:%s'>%s</a>",$this->getRecruter()->getName(),$this->getRecruter()->getEmail(),$this->getRecruter()->getEmail())?></div>
+    <?php endif; ?>
+    <div class="tac"><?php echo $this->__("<p>Hello! On this step you see your request for registration. Please check the information. Fill in or edit any missed or incorrect fields. To continue click on 'Save and continue' button. </p><p>If you have any questions please contact with us by using our online chat or write to us from our support page</p>")?>.</div>
+    <p class="tac"><a href="<?php echo $this->getSupportUrl()?>"><?php echo $this->__('Support')?></a></p>
+    <ul class="registerSteps">
+        <li class="active"><a href="<?php echo $this->getUrl('*/*/step1')?>"><?php echo $this->__('Registration request')?></a></li>
+        <li><?php if($this->getPage2Url()):?>
+                <a href="<?php echo $this->getPage2Url()?>"><?php echo $this->__('Pre-registration form')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Pre-registration form')?>
+            <?php endif;?>
+        </li>
+        <li><?php if($this->getPage3Url()):?>
+            <a href="<?php echo $this->getPage3Url()?>"><?php echo $this->__('Documentation')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Documentation')?>
+            <?php endif;?>
+        </li>
+        <li>
+            <?php if($this->getPage4Url()):?>
+                <a href="<?php echo $this->getPage4Url()?>"><?php echo $this->__('Visit\Validation')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Visit\Validation')?>
+            <?php endif;?>
+        </li>
+        <li><?php if($this->getPage5Url()):?>
+                <a href="<?php echo $this->getPage5Url()?>"><?php echo $this->__('Contract')?></a>
+            <?php else: ?>
+                <?php echo $this->__('Contract')?>
+            <?php endif;?>
+        </li>
+    </ul>
+<?php //echo "<pre>"; print_r($this->getCustomer()->getData()); exit; ?>
+    <div class="form registration">
+        <form action="<?php echo $this->getPostActionUrl() ?>" method="post" class="" id="step1" enctype="multipart/form-data">
+            <input type="hidden" name="address[id]" value="<?php echo $this->escapeHtml($this->getCustomer()->getAddress()->getId())?>"/>
+            <div class="fieldset">
+            <div class="subtitle"><?php echo $this->__('General information')?></div>
+            <hr />
+            <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+            <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+            <input type="hidden" name="create_address" value="1" />
+            <input type="hidden" name="default_billing" value="<?php echo (($this->getCustomer()->getDefaultBilling())?$this->getCustomer()->getDefaultBilling():'')?>" />
+            <input type="hidden" name="default_shipping" value="<?php echo (($this->getCustomer()->getDefaultBilling())?$this->getCustomer()->getDefaultBilling():'')?>" />
+            <input type="hidden" name="registration_step" value="<?php echo (($this->getCustomer()->getRegistrationStep()>2)?$this->getCustomer()->getRegistrationStep():2)?>" />
+            <input type="hidden" name="city" value="City" />
+             <div class="clearfix">
+                <div class="half">
+                    <div class="form_field">
+                        <span class="label" for="company"><span>*</span><?php echo $this->__('Name or Company Name') ?></span>
+                    </div>
+                    <div class="form_field">
+                        <input tabindex="1" type="text" name="company" id="company" value="<?php echo $this->escapeHtml($this->getCustomer()->getCompany()) ?>" title="<?php echo $this->__('Company') ?>" require="require" />
+                    </div>
+                    <div class="form_field">
+                        <span class='label' for="firstname"><span>*</span><?php echo $this->__('Contact name') ?></label></span>
+                    </div>        
+                    <div class="form_field">
+                        <input tabindex="3" type="text" id="firstname" name="firstname" value="<?php echo $this->escapeHtml($this->getCustomer()->getFirstname()) ?>" title="<?php echo $this->__('Contact name') ?>" maxlength="255" require="require" />
+                    </div>
+                    <div class="form_field">
+                        <span class="label" for="telephone"><?php echo $this->__('Contact phone number') ?></span>
+                    </div>
+                    <div class="form_field">
+                        <input tabindex="5" type="tel" name="address[telephone]" id="telephone" value="<?php echo $this->escapeHtml($this->getCustomer()->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Contact phone number') ?>" class="input-text" />
+                    </div>
+                    <div class="form_field">
+                    </div>
+                    <?php echo $this->getActivityHtmlSelect('tabindex="7"') ?>
+                </div>
+                <div class="half">
+                    <div class="form_field">
+                        <span class='label' for="taxvat"><span>*</span><?php echo $this->__('Social security number (Tax ID)') ?></label></span>
+                    </div>        
+                    <div class="form_field">
+                        <input tabindex="2" type="text" id="taxvat" class="mask"  placeholder="AAA123456@@@ or AAAA123456@@@" name="taxvat" value="<?php echo $this->escapeHtml($this->getCustomer()->getTaxvat()) ?>" title="<?php echo $this->__('Social security number (Tax ID)') ?>" maxlength="255" require="require" />
+                    </div>
+                    <div class="form_field">
+                        <span class="label" for="email_address"><span>*</span><?php echo $this->__('Contact e-mail') ?></span>
+                    </div>
+                    <div class="form_field">
+                        <input tabindex="4" type="email" autocapitalize="off" autocorrect="off" disabled="disabled" spellcheck="false" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Contact e-mail') ?>" require="require" />
+                        <input type="hidden" name="email" value="<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" />
+                    </div>
+                    <div class="form_field">
+                        <span class="label" for="telephone_alternate" class="transparent"><?php echo $this->__('Alternative phone number') ?></span>
+                    </div>
+                    <div class="form_field">
+                        <input tabindex="6" type="tel" class="" name="telephone_alternate" id="telephone_alternate" value="<?php echo $this->escapeHtml($this->getCustomer()->getTelephoneAlternate()) ?>" title="<?php echo $this->__('Alternative phone number') ?>">
+                    </div>
+                    <div class="form_field">
+                    </div>
+                    <?php echo $this->getSectorHtmlSelect('tabindex="7"') ?>
+                </div>
+             </div>
+           
+            <div class="subtitle padding-top"><?php echo $this->__('Main address')?></div>
+            <hr />
+
+
+                <div class="clearfix">
+                    <div class="half">
+                        <div class="form_field"><span for="country" class="label"><span>*</span><?php echo $this->__('Country') ?></span></div>
+                        <div class="form_field">
+                            <select  tabindex="7" title="Country" class="validate-select" id="country" name="country_id">
+                                <option value="MX">Mexico</option>
+                            </select>
+                        </div>
+                        <div class="form_field"><span for="municipality" class="label"><span>*</span><?php echo $this->__('Municipality') ?></span></div>
+                        <div class="form_field"><input tabindex="9" type="text" name="address[municipality]" value="<?php echo $this->escapeHtml($this->getCustomer()->getAddress()->getMunicipality()) ?>" title="<?php echo $this->__('Municipality') ?>" id="municipality" class="input-text" /></div>
+
+                        <div class="form_field"><span for="colonia" class="label"><span>*</span><?php echo $this->__('Cologne') ?></span></div>
+                        <div class="form_field"><input tabindex="12" type="text" name="address[colonia]" value="<?php echo $this->escapeHtml($this->getCustomer()->getAddress()->getColonia()) ?>" title="<?php echo $this->__('Cologne') ?>" id="colonia" class="input-text" /></div>
+                        <div class="clearfix">
+                            <div class="half">
+                                <div class="form_field"><span for="street_number" class="label"><?php echo $this->__('Street Number') ?></span></div>
+                                <div class="form_field"><input tabindex="14" type="text" name="address[street_number]" value="<?php echo $this->escapeHtml($this->getCustomer()->getAddress()->getStreetNumber()) ?>" title="<?php echo $this->__('Street Number') ?>" id="street_number" class="input-text" /></div>
+                            </div>
+                            <div class="half">
+                                <div class="form_field"><span for="appartment_number" class="label"><?php echo $this->__('Apartment number') ?></span></div>
+                                <div class="form_field"><input tabindex="15" type="text" name="address[apartment_number]" value="<?php echo $this->escapeHtml($this->getCustomer()->getAddress()->getApartmentNumber()) ?>" title="<?php echo $this->__('Apartment number') ?>" id="appartment_number" class="input-text " /></div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="half">
+
+                        <?php echo $this->getStateTwo($this->getCustomer()->getAddress()->getRegion(),'tabindex="8"'); ?>
+                         <div class="form_field"><span for="city" class="label"><?php echo $this->__('City/Location') ?></span></div>
+                        <div class="form_field"><input tabindex="11" type="text" name="address[city]" value="<?php echo $this->escapeHtml($this->getCustomer()->getAddress()->getCity()) ?>" title="<?php echo $this->__('City') ?>" id="city" class="input-text" /></div>
+
+                        <div class="form_field" style="margin-bottom:5px;">
+                            <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+                            <span class="label" for="street_1" class="label"><span>*</span><?php echo $this->__('Street') ?></span>
+                        </div>
+                        <?php $street = $this->getCustomer()->getAddress()->getStreet(); ?>
+                        <div class="form_field" style="margin-bottom:5px;"><input tabindex="13" type="text" name="address[street][]" value="<?php echo $this->escapeHtml($street[0]) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" require="require" class="input-text" /></div>
+                     
+                        <div id="zip" style="">
+                            <?php echo $this->getZipCodeTwo($this->getCustomer()->getAddress()->getPostcode(),$this->getCustomer()->getAddress()->getRegion(),'tabindex="16"'); ?>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="subtitle padding-top"><?php echo $this->__('Comments')?></div>
+            <hr />
+            <div class="form_field"><?php echo $this->escapeHtml($this->getCustomer()->getComments())?></div>
+            <hr />
+            <div class="form_field validate validate-center"><?php echo $this->__('Please fill in all the fields marked with *!')?></div>
+                <?php if($this->getCustomer()->getRegistrationStatus()!=Lomedic_Registration_Model_System_Config_Source_Status::CLOSED):?>
+                    <div class="button tal"><input tabindex="17" type="submit" value="<?php echo $this->__('Save and continue')?>"></div>
+                <?php else: ?>
+                    <p style="color: red; font-size: 17px; margin-top: 30px;"><?php echo $this->__('Process is closed! If you have solved the impediments and inconveniences detected, please contact you personal assistant to reopen the process.'); ?></p>
+                <?php endif;?>
+        </form>
+    </div>				
+</div>
+</div>
+</div>
+    <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('step1', true);
+        $j('#step1').submit(function(event) {
+            var hasErrors = false;
+           // if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+                //If required attribute is not supported or browser is Safari (Safari thinks that it has this attribute, but it does not work), then check all fields that has required attribute
+                $j("#step1 [require]:visible, #step1 select[require]").each(function(index) {
+                    if (!$j(this).val()) {
+                        $j(this).addClass('error-input');
+                         //If at least one required value is empty, then ask to fill all required fields.
+                        hasErrors = true;
+                    } else {
+                        if($j(this).hasClass('error-input')) {
+                            $j(this).removeClass('error-input');
+                        }
+                    }
+                });
+                if(hasErrors) {
+                    event.preventDefault();
+                    return false;
+                }
+        //    }
+            $j("#step1 [require]").each(function(index) {
+                if($j(this).hasClass('error-input')) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+        });
+
+
+    $$('.form_field_edit').each(function(el){
+        if($(el).readAttribute('data-type')) {
+            el.observe('click',function(){
+                changeDivToSelect(el);
+            });
+        }
+        var divId = el.id;
+        var inputId = el.id+'_input';
+        $('step1').insert({
+            top: new Element('input', { 'type': 'hidden', name: divId, id: inputId,value: el.innerHTML })
+        });
+
+        el.observe('blur',function(){
+          $(inputId).value = el.innerHTML;
+        })
+    });
+
+
+    $j('.mask').inputmask({mask:"a{3,4}9{6}*{3}",placeholder: ""});
+        
+        function checkTaxId() {
+            var el = $j('#taxvat');
+            if($j(el).val().length<1) return true;
+            
+            if($j(el).hasClass('error-input')) {
+                $j(el).removeClass('error-input');
+            }
+            if($j(el).val().length<12) {
+                $j(el).addClass('error-input');
+                return false;
+            }
+            if($j(el).val().substring(3,4).replace(/\D/g, '').length>0 && $j(el).val().length!=12) {
+                $j(el).addClass('error-input');
+                return false;
+            }
+            if($j(el).val().substring(3,4).replace(/\D/g, '').length==0 && $j(el).val().length!=13) {
+                $j(el).addClass('error-input');
+                return false;
+            }
+        }
+        $j('#taxvat').blur(function(){
+            checkTaxId();
+        });
+        checkTaxId();
+        
+changeForm('step1');
+    //]]>
+</script>

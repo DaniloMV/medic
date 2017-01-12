@@ -1,0 +1,162 @@
+<?php $format = 'm/d/Y h:i A'; ?>
+<div class="visit" id="step4_div">
+    <div class="visit_cell">
+        <input id="visit_date" name="account[visit_date]" class="openCalendar_withDate" type="text">
+    </div>
+    <div class="visit_cell w500">
+        <div class="subtitle"><?php echo $this->__('Day and time of the visit:')?></div>
+        <p id="visit_date_p"></p>
+        <div class="subtitle"><?php echo $this->__('Place of the visit:')?></div>
+        <p id="address_field"></p>
+
+        <div class="subtitle blue"><?php echo $this->__('Attention message')?>:</div>
+        <p id="visit_message"></p>
+    </div>
+
+    <div class="form w500">
+        <div class="subtitleGrey"><?php echo $this->__('Visit Message to Manager')?>:</div>
+        <div class="comment">
+            <div id="comment_text" class="comment_text"></div>
+        </div>
+    </div>
+</div>
+
+<?php
+
+    $customer = Mage::registry('current_customer');
+    $addresses = $customer->getAddresses();
+    $str = "";
+
+
+    $addresses = $customer->getAddresses();
+    $addressD = array();
+    $keyAddress = 0;
+
+    $count = 0;
+    foreach ($addresses as $key => $value) {
+        if ($count == 1) {
+            $keyAddress = $key;
+            $addressD = $value;
+            break;
+        }
+        $count++;
+    }
+
+    if ($addressD) {
+        $billingAdress = $addressD->getData();
+        $country = isset($billingAdress["country"]) && !empty($billingAdress["country"]) ? $billingAdress["country"] : 'Mexico';
+        $str = "Country: " . $country . " \\nMunicipality: " . $billingAdress["municipality"] . " \\nZip Code: " . $billingAdress["postcode"] . " \\nStreet Number: " . $billingAdress["street_number"] . " \\nApartment number: " . $billingAdress["apartment_number"] . " \\nPhone: " . $billingAdress["telephone"] . " \\nColonia: " . $billingAdress["colonia"] . " \\nRegion: " . $billingAdress["region"] . " \\nCity: " . $billingAdress["city"] . " \\nStreet: " . $billingAdress["street"];
+    }
+
+    $mess_approved = "";
+
+    if ($customer->getRegistrationStatus() == Lomedic_Registration_Model_System_Config_Source_Status::APPROVED) {
+        $mess_approved = Mage::helper('customer')->__("A client is approved.");
+    }
+
+    $preapprove = 0;
+
+    if ($customer->getRegistrationStatus() == Lomedic_Registration_Model_System_Config_Source_Status::PREAPPROVED) {
+        $preapprove = 1;
+    }
+
+    $preclosed = 0;
+
+    if ($customer->getRegistrationStatus() == Lomedic_Registration_Model_System_Config_Source_Status::PRECLOSED) {
+        $preclosed = 1;
+    }
+
+?>
+<script>
+    var preapprove = '<?php echo $preapprove; ?>';
+    var preclosed = '<?php echo $preclosed; ?>';
+
+    $j("#_accountvisit_date").attr("readonly","");
+
+    if(preapprove == 1 || preclosed == 1){
+        $j("#_accountvisit_message_to_manager").parents("tr").hide();
+        $j("#_accountvisit_date").parents("tr").hide();
+        $j("#_accountvisit_address_check").parents("tr").hide();
+        $j("#_accountvisit_address").parents("tr").hide();
+        $j("#_accountvisit_message").parents("tr").hide();
+        $j("#_accountvisit_message_to_manager").parents("tr").hide();
+    }else{
+        $j("#_accountvisit_message_to_manager").parents("tr").show();
+    }
+
+    $j(document).on("change","#_accountvisit_address_check",function(){
+
+        var val = $j(this).val();
+
+        if(val == 0){
+            $j("#_accountvisit_address").html("");
+            $j("#_accountvisit_address").val("");
+        }else{
+            if($j("#_accountvisit_address").val() == ""){
+                $j("#_accountvisit_address").html("<?php echo $str; ?>");
+                $j("#_accountvisit_address").val("<?php echo $str; ?>");
+            }
+        }
+    }).change();
+
+    $j(document).on("change","#_accountregistration_status",function(){
+
+        var val_pre_approve = $j(this).find("option:selected").val();
+
+        if(val_pre_approve == "<?php echo Lomedic_Registration_Model_System_Config_Source_Status::PREAPPROVED; ?>"  || val_pre_approve == "<?php echo Lomedic_Registration_Model_System_Config_Source_Status::PRECLOSED; ?>"){
+            $j("#_accountvisit_message_to_manager").parents("tr").hide();
+            $j("#_accountvisit_date").parents("tr").hide();
+            $j("#_accountvisit_address_check").parents("tr").hide();
+            $j("#_accountvisit_address").parents("tr").hide();
+            $j("#_accountvisit_message").parents("tr").hide();
+            $j("#_accountvisit_message_to_manager").parents("tr").hide();
+        }else{
+            $j("#_accountvisit_message_to_manager").parents("tr").show();
+            $j("#_accountvisit_date").parents("tr").show();
+            $j("#_accountvisit_address_check").parents("tr").show();
+            $j("#_accountvisit_address").parents("tr").show();
+            $j("#_accountvisit_message").parents("tr").show();
+            $j("#_accountvisit_message_to_manager").parents("tr").show();
+        }
+    }).change();
+
+    var d = new Date();
+    $j("#_accountvisit_date_update").val(d.toLocaleString());
+
+    $j("#_accountpre_approve").after("<p style=\"color: green;\"><?php echo $mess_approved; ?></p>");
+
+
+    jQuery(function () {
+            if(jQuery('#_accountvisit_date').val()) {
+               var defaultDate = jQuery('#_accountvisit_date').val();
+            }
+
+            if(defaultDate != undefined){
+                jQuery('#visit_date').val(defaultDate);
+                jQuery('#visit_date_p').html(defaultDate);
+            }else{
+                jQuery('#visit_date_p').html("<?php echo date($format)?>");
+            }
+        jQuery('.openCalendar_withDate').datetimepicker({
+            lang:'<?php echo substr(Mage::app()->getLocale()->getLocaleCode(),0,2)?>',
+            timepicker:true,
+            todayButton:false,
+            inline:true,
+                    minDate: 0,
+                    step:15,
+            format:'<?php echo $format?>'
+        });
+    });
+
+    jQuery('#visit_date').change(function(){
+        jQuery('#visit_date_p').html(jQuery(this).val());
+    });
+
+    jQuery('#address_field').append("<p>");
+    jQuery('#address_field p:first').append('<div><?php echo $this->__('Use billing address');?></div>');
+    jQuery('#address_field p:first').append(jQuery('#_accountvisit_address_check').get());
+    jQuery('#address_field').append("<p>");
+    jQuery('#address_field p:not(:first)').append(jQuery('#_accountvisit_address').get());
+    jQuery('#visit_message').html(jQuery('#_accountvisit_message').get());
+    jQuery('#comment_text').html(jQuery('#_accountvisit_message_to_manager').get());
+</script>
