@@ -1,8 +1,0 @@
-var/backups
-var/backups/!.htaccess
-var/cache
-var/export
-var/importexport
-var/log
-var/session
-app/etc/local.xml
